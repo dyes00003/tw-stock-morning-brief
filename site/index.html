@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台股晨報看板</title>
+    <meta
+      name="description"
+      content="把每天的台股題材晨報整理成手機也好讀的單頁網站。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-backdrop"></div>
+    <div class="shell">
+      <header class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Taiwan Equity Morning Brief</p>
+          <h1>台股晨報看板</h1>
+          <p class="hero-text">
+            把每天 08:00 的題材、個股、風險與變動原因，整理成手機上更好滑、更容易比較的版本。
+          </p>
+        </div>
+        <nav class="quick-nav" aria-label="快速導覽">
+          <a href="#summary">摘要</a>
+          <a href="#focus">先看</a>
+          <a href="#themes">題材</a>
+          <a href="#changes">變動</a>
+          <a href="#sources">來源</a>
+        </nav>
+      </header>
+
+      <main id="app" class="app">
+        <section class="loading-card">
+          <p class="loading-kicker">載入中</p>
+          <h2>正在整理今天的晨報畫面</h2>
+          <p>如果是第一次打開，請稍等資料載入完成。</p>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
