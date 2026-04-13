@@ -75,8 +75,8 @@ function render(report) {
             : `
               <article class="loading-card compact-card">
                 <p class="loading-kicker">這次沒有新增</p>
-                <h2>這次更新沒有可獨立列示的新消息</h2>
-                <p>首頁會自動隱藏「新消息」入口，避免把純流程更新誤當成新資訊。</p>
+                <h2>這次更新沒有新抓到可獨立列示的新聞或資訊</h2>
+                <p>像重跑、資料映射、排名沒變、生成 log 這些流程更新都不算，首頁也會自動隱藏「新消息」入口。</p>
               </article>
             `
         }
@@ -88,7 +88,7 @@ function render(report) {
         <div>
           <p class="section-kicker">來源</p>
           <h2>這次新消息仍對應到同一份晨報來源池</h2>
-          <p>頁面只負責濃縮本次新抓到的內容；原始引用仍以首頁晨報與最新資料檔為準。</p>
+          <p>頁面只負責濃縮本次新抓到的新聞或資訊；原始引用仍以首頁晨報與最新資料檔為準。</p>
         </div>
       </div>
       <article class="source-card">

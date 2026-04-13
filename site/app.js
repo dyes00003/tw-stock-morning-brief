@@ -100,7 +100,7 @@ function render(report) {
           <div>
             <p class="section-kicker">本次新消息</p>
             <h2>這次更新新抓到的重點</h2>
-            <p>這裡只放本次更新新增、而且會影響題材或選股判斷的消息；若沒有新消息，首頁就不顯示這一段。</p>
+            <p>這裡只放本次更新新抓到的新聞或資訊，像公司公告、法說、營收、產能、價格、政策或跨國供應鏈事件；若沒有，就不顯示這一段。</p>
           </div>
           <div class="page-actions">
             <a class="button-link" href="./news.html">打開新消息頁面</a>
