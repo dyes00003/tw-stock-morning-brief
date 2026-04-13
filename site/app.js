@@ -34,6 +34,8 @@ async function loadReport() {
 
 function render(report) {
   const discoveries = getNewDiscoveries(report);
+  const foreignFlowDisplay = formatSignedAmount(report.marketSnapshot.foreignFlowTwdBn);
+  const foreignFlowTone = flowTone(foreignFlowDisplay);
   const themeCards = report.themes
     .map((theme, index) => renderTheme(theme, index === 0))
     .join("");
@@ -149,7 +151,7 @@ function render(report) {
           </article>
           <article class="metric-card">
             <p class="metric-label">外資現貨</p>
-            <p class="metric-value tone-up">+${report.marketSnapshot.foreignFlowTwdBn} 億</p>
+            <p class="metric-value ${foreignFlowTone}">${foreignFlowDisplay} 億</p>
             <p class="metric-note">以 ${report.priceDate} 收盤後資料為準</p>
           </article>
           <article class="metric-card">
@@ -401,6 +403,17 @@ function flowTone(value) {
   if (value.startsWith("+")) return "tone-up";
   if (value.startsWith("-")) return "tone-down";
   return "tone-flat";
+}
+
+function formatSignedAmount(value) {
+  const number = Number(value);
+  if (Number.isNaN(number)) {
+    return String(value);
+  }
+
+  if (number > 0) return `+${number.toFixed(2)}`;
+  if (number < 0) return number.toFixed(2);
+  return "0.00";
 }
 
 loadReport();
