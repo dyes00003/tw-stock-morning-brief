@@ -1,5 +1,8 @@
 export async function loadLatestReport(dataPath = "./data/latest.json") {
-  const response = await fetch(dataPath);
+  const bust = Date.now();
+  const separator = dataPath.includes("?") ? "&" : "?";
+  const requestUrl = `${dataPath}${separator}t=${bust}`;
+  const response = await fetch(requestUrl, { cache: "no-store" });
   if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
