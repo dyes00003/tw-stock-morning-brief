@@ -137,6 +137,10 @@ h1 {
   font-size: 0.92rem;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 .app {
   display: grid;
   gap: 18px;
@@ -176,6 +180,7 @@ h1 {
 .market-strip,
 .macro-grid,
 .focus-grid,
+.discovery-grid,
 .theme-meta,
 .stock-metrics,
 .source-list,
@@ -487,6 +492,65 @@ h1 {
   color: var(--muted);
 }
 
+.page-actions {
+  display: flex;
+  align-items: center;
+}
+
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--jade);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.button-link:hover {
+  background: #124b3b;
+}
+
+.discovery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.discovery-card {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(20, 35, 29, 0.08);
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: var(--shadow);
+}
+
+.discovery-card-strong {
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(255, 248, 240, 0.86)),
+    rgba(255, 255, 255, 0.4);
+}
+
+.discovery-card h3 {
+  margin-bottom: 10px;
+}
+
+.discovery-why {
+  margin: 14px 0 0;
+  line-height: 1.7;
+  color: var(--jade);
+}
+
+.discovery-impact {
+  margin-top: 14px;
+}
+
+.compact-card {
+  padding: 18px;
+}
+
 .changes-layout,
 .sources-layout {
   display: grid;
@@ -542,7 +606,8 @@ h1 {
   .changes-layout,
   .sources-layout,
   .split-copy,
-  .focus-grid {
+  .focus-grid,
+  .discovery-grid {
     grid-template-columns: 1fr;
   }
 
@@ -586,6 +651,14 @@ h1 {
   .section-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .page-actions {
+    width: 100%;
+  }
+
+  .button-link {
+    width: 100%;
   }
 
   .market-strip {

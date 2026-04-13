@@ -1,4 +1,12 @@
+import {
+  escapeHtml,
+  formatNumber,
+  getNewDiscoveries,
+  loadLatestReport,
+} from "./report-utils.js";
+
 const app = document.getElementById("app");
+const newsNavLink = document.getElementById("news-nav-link");
 
 const heatToneMap = {
   偏熱: "heat-hot",
@@ -10,12 +18,7 @@ const heatToneMap = {
 
 async function loadReport() {
   try {
-    const response = await fetch("./data/latest.json");
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    const report = await response.json();
+    const report = await loadLatestReport();
     render(report);
   } catch (error) {
     app.innerHTML = `
@@ -30,6 +33,7 @@ async function loadReport() {
 }
 
 function render(report) {
+  const discoveries = getNewDiscoveries(report);
   const themeCards = report.themes
     .map((theme, index) => renderTheme(theme, index === 0))
     .join("");
@@ -89,6 +93,38 @@ function render(report) {
     )
     .join("");
 
+  const discoverySection = discoveries.length
+    ? `
+      <section class="panel animate-rise delay-1" id="news">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">本次新消息</p>
+            <h2>這次更新新抓到的重點</h2>
+            <p>這裡只放本次更新新增、而且會影響題材或選股判斷的消息；若沒有新消息，首頁就不顯示這一段。</p>
+          </div>
+          <div class="page-actions">
+            <a class="button-link" href="./news.html">打開新消息頁面</a>
+          </div>
+        </div>
+        <div class="discovery-grid">
+          ${discoveries
+            .slice(0, 3)
+            .map(
+              (item) => `
+                <article class="discovery-card">
+                  <p class="card-kicker">${item.scope}</p>
+                  <h3>${item.title}</h3>
+                  <p class="body-copy">${item.detail}</p>
+                  <p class="discovery-why">${item.whyItMatters}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </section>
+    `
+    : "";
+
   app.innerHTML = `
     <section class="panel overview animate-rise" id="summary">
       <div class="panel-grid">
@@ -144,6 +180,8 @@ function render(report) {
         </div>
       </div>
     </section>
+
+    ${discoverySection}
 
     <section class="panel animate-rise delay-1" id="focus">
       <div class="section-header">
@@ -205,6 +243,12 @@ function render(report) {
       </div>
     </section>
   `;
+
+  if (discoveries.length > 0) {
+    newsNavLink?.classList.remove("is-hidden");
+  } else {
+    newsNavLink?.classList.add("is-hidden");
+  }
 }
 
 function renderTheme(theme, open) {
@@ -347,10 +391,6 @@ function renderStock(theme, stock) {
   `;
 }
 
-function formatNumber(value) {
-  return new Intl.NumberFormat("zh-TW").format(value);
-}
-
 function toneClass(tone) {
   if (tone === "up") return "tone-up";
   if (tone === "down") return "tone-down";
@@ -361,14 +401,6 @@ function flowTone(value) {
   if (value.startsWith("+")) return "tone-up";
   if (value.startsWith("-")) return "tone-down";
   return "tone-flat";
-}
-
-function escapeHtml(text) {
-  return text
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
 }
 
 loadReport();
