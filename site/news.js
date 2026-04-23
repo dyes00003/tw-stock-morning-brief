@@ -3,6 +3,7 @@ import {
   getNewDiscoveries,
   loadLatestReport,
 } from "./report-utils.js";
+import { initReadingMode } from "./reading-mode.js";
 
 const app = document.getElementById("news-app");
 
@@ -99,4 +100,5 @@ function render(report) {
   `;
 }
 
+initReadingMode();
 loadNewsPage();

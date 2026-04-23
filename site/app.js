@@ -4,6 +4,7 @@ import {
   getNewDiscoveries,
   loadLatestReport,
 } from "./report-utils.js";
+import { initReadingMode } from "./reading-mode.js";
 
 const app = document.getElementById("app");
 const newsNavLink = document.getElementById("news-nav-link");
@@ -416,4 +417,5 @@ function formatSignedAmount(value) {
   return "0.00";
 }
 
+initReadingMode();
 loadReport();

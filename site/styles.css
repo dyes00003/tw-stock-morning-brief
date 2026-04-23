@@ -137,6 +137,72 @@ h1 {
   font-size: 0.92rem;
 }
 
+.reading-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid rgba(20, 35, 29, 0.08);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(255, 248, 239, 0.5)),
+    rgba(255, 255, 255, 0.36);
+}
+
+.reading-mode-toggle:empty {
+  display: none;
+}
+
+.reading-mode-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.reading-mode-label {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.reading-mode-copy strong {
+  font-family: var(--mono-font);
+  color: var(--jade);
+  font-size: 0.98rem;
+}
+
+.reading-mode-copy span:last-child {
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.reading-mode-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.reading-mode-buttons button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(20, 35, 29, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.54);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.reading-mode-buttons button:hover,
+.reading-mode-buttons button.is-active {
+  border-color: rgba(22, 91, 71, 0.32);
+  background: var(--jade);
+  color: #fff;
+}
+
 .is-hidden {
   display: none !important;
 }
@@ -588,6 +654,131 @@ h1 {
 
 .delay-3 {
   animation-delay: 240ms;
+}
+
+html[data-reading-mode="phone"] {
+  --content-width: 720px;
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+}
+
+html[data-reading-mode="phone"] .shell {
+  width: min(calc(100% - 16px), var(--content-width));
+  padding-top: 12px;
+}
+
+html[data-reading-mode="phone"] .hero,
+html[data-reading-mode="phone"] .loading-card,
+html[data-reading-mode="phone"] .panel {
+  padding: 16px;
+}
+
+html[data-reading-mode="phone"] h1 {
+  max-width: 100%;
+  font-size: clamp(2.05rem, 11vw, 3.2rem);
+}
+
+html[data-reading-mode="phone"] .hero-text,
+html[data-reading-mode="phone"] .section-header p,
+html[data-reading-mode="phone"] .body-copy,
+html[data-reading-mode="phone"] .stock-note,
+html[data-reading-mode="phone"] .theme-summary,
+html[data-reading-mode="phone"] .info-text {
+  line-height: 1.78;
+}
+
+html[data-reading-mode="phone"] .quick-nav {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+}
+
+html[data-reading-mode="phone"] .quick-nav a {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+html[data-reading-mode="phone"] .quick-nav::-webkit-scrollbar {
+  display: none;
+}
+
+html[data-reading-mode="phone"] .reading-mode-toggle {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+html[data-reading-mode="phone"] .reading-mode-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+html[data-reading-mode="phone"] .reading-mode-buttons button {
+  padding: 0 8px;
+}
+
+html[data-reading-mode="phone"] .overview,
+html[data-reading-mode="phone"] .changes-layout,
+html[data-reading-mode="phone"] .sources-layout,
+html[data-reading-mode="phone"] .split-copy,
+html[data-reading-mode="phone"] .focus-grid,
+html[data-reading-mode="phone"] .discovery-grid,
+html[data-reading-mode="phone"] .market-strip,
+html[data-reading-mode="phone"] .macro-grid,
+html[data-reading-mode="phone"] .theme-meta,
+html[data-reading-mode="phone"] .stock-metrics {
+  grid-template-columns: 1fr;
+}
+
+html[data-reading-mode="phone"] .section-header,
+html[data-reading-mode="phone"] .stock-header,
+html[data-reading-mode="phone"] .theme-head {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+html[data-reading-mode="phone"] .theme-card summary,
+html[data-reading-mode="phone"] .theme-body,
+html[data-reading-mode="phone"] .stock-card,
+html[data-reading-mode="phone"] .focus-card,
+html[data-reading-mode="phone"] .source-card,
+html[data-reading-mode="phone"] .change-card {
+  padding: 15px;
+}
+
+html[data-reading-mode="tablet"] {
+  --content-width: 980px;
+}
+
+html[data-reading-mode="tablet"] .overview,
+html[data-reading-mode="tablet"] .changes-layout,
+html[data-reading-mode="tablet"] .sources-layout,
+html[data-reading-mode="tablet"] .split-copy,
+html[data-reading-mode="tablet"] .focus-grid {
+  grid-template-columns: 1fr;
+}
+
+html[data-reading-mode="tablet"] .market-strip,
+html[data-reading-mode="tablet"] .macro-grid,
+html[data-reading-mode="tablet"] .theme-meta,
+html[data-reading-mode="tablet"] .stock-metrics,
+html[data-reading-mode="tablet"] .discovery-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+html[data-reading-mode="tablet"] .stock-header,
+html[data-reading-mode="tablet"] .theme-head {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+html[data-reading-mode="desktop"] {
+  --content-width: 1240px;
+}
+
+html[data-reading-mode="desktop"] .stock-metrics {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 @keyframes rise {
