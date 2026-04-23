@@ -656,6 +656,97 @@ h1 {
   animation-delay: 240ms;
 }
 
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .overview,
+  .changes-layout,
+  .sources-layout,
+  .split-copy,
+  .focus-grid,
+  .discovery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .market-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .theme-meta,
+  .stock-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    width: min(calc(100% - 18px), var(--content-width));
+    padding-top: 14px;
+    padding-bottom: 48px;
+  }
+
+  .hero,
+  .loading-card,
+  .panel {
+    padding: 18px;
+  }
+
+  .theme-card summary,
+  .theme-body,
+  .stock-card,
+  .focus-card,
+  .source-card,
+  .change-card {
+    padding: 16px;
+  }
+
+  h1 {
+    max-width: 100%;
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+  }
+
+  .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .page-actions {
+    width: 100%;
+  }
+
+  .button-link {
+    width: 100%;
+  }
+
+  .market-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-nav {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .quick-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stock-header,
+  .theme-head {
+    flex-direction: column;
+  }
+}
+
+/* Reading modes live after responsive breakpoints so manual choices win. */
 html[data-reading-mode="phone"] {
   --content-width: 720px;
   --radius-xl: 24px;
@@ -777,98 +868,102 @@ html[data-reading-mode="desktop"] {
   --content-width: 1240px;
 }
 
+html[data-reading-mode="desktop"] .shell {
+  width: min(calc(100% - 24px), var(--content-width));
+}
+
+html[data-reading-mode="desktop"] .hero,
+html[data-reading-mode="desktop"] .loading-card,
+html[data-reading-mode="desktop"] .panel {
+  padding: 24px;
+}
+
+html[data-reading-mode="desktop"] .reading-mode-toggle,
+html[data-reading-mode="desktop"] .section-header,
+html[data-reading-mode="desktop"] .stock-header,
+html[data-reading-mode="desktop"] .theme-head {
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+html[data-reading-mode="desktop"] .reading-mode-toggle {
+  align-items: center;
+}
+
+html[data-reading-mode="desktop"] .reading-mode-buttons {
+  display: flex;
+  grid-template-columns: none;
+}
+
+html[data-reading-mode="desktop"] .overview,
+html[data-reading-mode="desktop"] .changes-layout,
+html[data-reading-mode="desktop"] .sources-layout,
+html[data-reading-mode="desktop"] .focus-grid,
+html[data-reading-mode="desktop"] .discovery-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+}
+
+html[data-reading-mode="desktop"] .split-copy,
+html[data-reading-mode="desktop"] .theme-meta {
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+html[data-reading-mode="desktop"] .market-strip,
+html[data-reading-mode="desktop"] .macro-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+}
+
 html[data-reading-mode="desktop"] .stock-metrics {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(112px, 100%), 1fr));
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+html[data-reading-mode="desktop"] .theme-card summary,
+html[data-reading-mode="desktop"] .theme-body,
+html[data-reading-mode="desktop"] .stock-card,
+html[data-reading-mode="desktop"] .focus-card,
+html[data-reading-mode="desktop"] .source-card,
+html[data-reading-mode="desktop"] .change-card {
+  padding: 18px;
 }
 
-@media (max-width: 980px) {
-  .overview,
-  .changes-layout,
-  .sources-layout,
-  .split-copy,
-  .focus-grid,
-  .discovery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .market-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .theme-meta,
-  .stock-metrics {
-    grid-template-columns: 1fr;
-  }
+html[data-reading-preference="desktop"] .app {
+  gap: 14px;
 }
 
-@media (max-width: 720px) {
-  .shell {
-    width: min(calc(100% - 18px), var(--content-width));
-    padding-top: 14px;
-    padding-bottom: 48px;
-  }
+html[data-reading-preference="desktop"] .hero,
+html[data-reading-preference="desktop"] .loading-card,
+html[data-reading-preference="desktop"] .panel {
+  padding: 22px;
+}
 
-  .hero,
-  .loading-card,
-  .panel {
-    padding: 18px;
-  }
+html[data-reading-preference="desktop"] .theme-card summary,
+html[data-reading-preference="desktop"] .theme-body,
+html[data-reading-preference="desktop"] .stock-card,
+html[data-reading-preference="desktop"] .focus-card,
+html[data-reading-preference="desktop"] .source-card,
+html[data-reading-preference="desktop"] .change-card {
+  padding: 16px;
+}
 
-  .theme-card summary,
-  .theme-body,
-  .stock-card,
-  .focus-card,
-  .source-card,
-  .change-card {
-    padding: 16px;
-  }
+html[data-reading-preference="desktop"] .info-block,
+html[data-reading-preference="desktop"] .metric-card,
+html[data-reading-preference="desktop"] .metric-pill {
+  padding: 12px;
+}
 
-  h1 {
-    max-width: 100%;
-    font-size: clamp(2.2rem, 11vw, 3.4rem);
-  }
+html[data-reading-preference="desktop"] .hero-text,
+html[data-reading-preference="desktop"] .section-header p,
+html[data-reading-preference="desktop"] .body-copy,
+html[data-reading-preference="desktop"] .stock-note,
+html[data-reading-preference="desktop"] .theme-summary,
+html[data-reading-preference="desktop"] .info-text,
+html[data-reading-preference="desktop"] .focus-note {
+  line-height: 1.55;
+}
 
-  .section-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .page-actions {
-    width: 100%;
-  }
-
-  .button-link {
-    width: 100%;
-  }
-
-  .market-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .quick-nav {
-    overflow-x: auto;
-    padding-bottom: 4px;
-  }
-
-  .quick-nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .stock-header,
-  .theme-head {
-    flex-direction: column;
-  }
+html[data-reading-preference="desktop"] .stock-metrics {
+  grid-template-columns: repeat(auto-fit, minmax(min(96px, 100%), 1fr));
 }
 
 @media (prefers-reduced-motion: reduce) {
