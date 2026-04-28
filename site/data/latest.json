@@ -1,223 +1,1036 @@
 {
-  "reportDate": "2026-04-28",
-  "priceDate": "2026-04-27（週一；TWSE / TPEX 官方收盤、T86、BFI82U、BWIBBU_d 與 TPEX 日行情資料；2026-04-28 為台股交易日開盤前版本，採前一交易日收盤）",
+  "reportDate": "2026-04-29",
+  "priceDate": "2026-04-28（週二；TWSE / TPEX 官方收盤、T86、BFI82U、BWIBBU_d 與 TPEX 日行情資料；2026-04-29 為台股交易日開盤前版本，採前一交易日收盤）",
   "weekRange": {
     "start": "2026-04-27",
     "end": "2026-05-01"
   },
-  "headline": "4/28 開盤前版：沿用 4/27 官方收盤，前五題材不變，DRAM / NAND 補漲仍第 2，霍爾木茲新消息仍未把航運 / 軍工推進前五。",
-  "deck": "以台灣時間 2026-04-28（週二）開盤前強制重跑；今天還沒有新的台股收盤，因此股價、法人與估值仍採 2026-04-27 TWSE / TPEX 官方收盤、T86、BFI82U、BWIBBU_d 與 TPEX 日行情。這次重點不是換盤後資料，而是確認自前一版 2026-04-27 夜間 rerun 以來，美國是否有新的官方 macro release、霍爾木茲 / 航運 / 能源風險是否升溫，以及五大題材是否需要切得更細。結果是前五題材排序維持，但子題材命名更聚焦，並補入 2026-04-27 的兩條 AP 霍爾木茲新消息。",
+  "headline": "4/29 開盤前版：採 4/28 官方收盤，記憶體升至第 1，光模組 / 網通 / 電源進榜，高速 CCL 與 CoWoS 暫退後排。",
+  "deck": "以台灣時間 2026-04-29（週三）開盤前強制重跑；今天還沒有新的台股收盤，因此股價、法人與估值採 2026-04-28 TWSE / TPEX 官方收盤、T86、BFI82U、BWIBBU_d 與 TPEX 日行情。這次最重要的不是新的美國 macro 數字，而是 4/28 官方 tape 真的把資金方向換掉了：記憶體延續、光模組 / 資料中心網通 / 伺服器電源轉強，而 4/27 還在前排的高速 CCL、傳統機櫃液冷與 CoWoS 廠務暫時退到候選池。",
   "executiveSummary": [
-    "今天是 2026-04-28（週二）開盤前版，台股尚未開盤，晨報基準價沿用 2026-04-27 官方收盤。",
-    "自前一版 2026-04-27 夜間 rerun 以來，沒有更晚的美國官方 macro release：weekly claims 仍是 2026-04-23 公布、截至 2026-04-18 當週 214,000；CPI 仍是 2026-04-10 的 3 月年增 3.3%；非農仍是 2026-04-03 的 3 月 +178,000、失業率 4.3%。",
-    "2026-04-27 台股主盤沒有改變：加權指數收 39,616.63 點、上漲 1.76%，半導體類指數上漲 3.03%，建材營造類指數下跌 1.12%，外資現股賣超約 511.96 億元。",
-    "五大題材維持不變，但名稱切得更細：HBM4 / AI ASIC / 台積 3DFabric 仍第 1，記憶體 / DRAM / NAND 價格重估第 2，高速 CCL / M8-M9 材料鏈第 3，高功率機櫃 / 液冷配套第 4，CoWoS 廠務 / 封裝設備裝機第 5。",
-    "霍爾木茲風險在 2026-04-27 有新進展：AP 報導海員仍被困在波灣、霍爾木茲實際上仍接近封鎖，另有 AP 報導伊朗提出「若美國解除封鎖則重開航道」的條件式方案。這代表能源、保險與航運風險持續，但 4/27 台股航運、塑化與軍工廣度仍不足以進前五。",
-    "Top picks 暫維持 2408 南亞科、2330 台積電、2383 台光電、2344 華邦電、8299 群聯、8210 勤誠，主軸仍是 AI 核心平台加上記憶體補漲。"
+    "今天是 2026-04-29（週三）開盤前版，台股尚未開盤，晨報基準價採 2026-04-28 官方收盤。",
+    "自上一版 2026-04-28 開盤前版以來，沒有更晚的美國官方 macro release：weekly claims 仍是 2026-04-23 的 214,000，CPI 仍是 2026-04-10 的 3 月年增 3.3%，非農仍是 2026-04-03 的 3 月 +178,000。",
+    "4/28 加權指數收 39,521.73 點、下跌 0.24%，但這不是全面轉弱：通信網路類指數 +1.99%、電子零組件類指數 +1.48%、電機機械類指數 +1.91%，半導體類指數反而下跌 1.13%。",
+    "這讓題材排名明顯洗牌：記憶體 / DRAM / NAND 價格重估升到第 1，光模組 / 矽光子第 2，AI 交換器 / 資料中心網通第 3，伺服器電源 / BBU 第 4，HBM4 / AI ASIC IP / 台積 3DFabric 退到第 5。",
+    "霍爾木茲 / 航運 / 能源風險這次有重新檢查，但自上一版以來沒有比 2026-04-27 AP 更晚、且足以改變台股交易主線的 verified update；航運、軍工、塑化仍留在候選池，不進前五。",
+    "Top picks 改成 2408 南亞科、2345 智邦、2308 台達電、6442 光聖、2337 旺宏、3443 創意，核心思路是跟著 4/28 的量價切換，而不是硬守 4/27 的排名。"
   ],
   "marketSnapshot": {
-    "indexClose": 39616.63,
-    "indexChangePct": 1.76,
-    "foreignFlowTwdBn": -51.2,
+    "indexClose": 39521.73,
+    "indexChangePct": -0.24,
+    "foreignFlowTwdBn": -39.3,
     "strongestGroup": {
-      "name": "半導體類指數",
-      "change": "+3.03%"
+      "name": "通信網路類指數",
+      "change": "+1.99%"
     }
   },
   "macroDrivers": [
     {
       "label": "初請失業金",
       "value": "214,000（截至 2026-04-18 當週）",
-      "detail": "自前一版 2026-04-27 夜間 rerun 以來，沒有更晚的 DOL 官方 claims release。最新仍是 2026-04-23 公布：截至 2026-04-18 當週 initial claims 214,000，較前週修正後 208,000 增加 6,000；insured unemployment 1,821,000，較前週修正後 1,809,000 增加 12,000。勞動市場沒有失速，但也沒有鬆到讓市場重押快速降息。",
+      "detail": "自上一版 2026-04-28 開盤前版以來，沒有更晚的 DOL 官方 weekly claims。最新仍是 2026-04-23 公布：截至 2026-04-18 當週 initial claims 214,000，前週修正為 208,000；insured unemployment 1,821,000，前週修正為 1,809,000。",
       "tone": "neutral"
     },
     {
       "label": "CPI / PPI",
       "value": "CPI 3.3% YoY；PPI 4.0% YoY",
-      "detail": "自前一版以來沒有更晚的官方通膨數據。最新 CPI 仍是 BLS 2026-04-10 公布的 2026 年 3 月資料：總 CPI 月增 0.9%、年增 3.3%，前月月增 0.3%；core CPI 月增 0.2%、年增 2.6%。最新 PPI 仍是 BLS 2026-04-14 公布的 2026 年 3 月資料：final demand 月增 0.5%、年增 4.0%，前月月增 0.7%、年增 3.4%。",
+      "detail": "自上一版以來沒有更晚的官方通膨 release。CPI 最新仍是 BLS 2026-04-10 公布的 2026 年 3 月：總 CPI 月增 0.9%、年增 3.3%，core CPI 月增 0.2%、年增 2.6%。PPI 最新仍是 BLS 2026-04-14 公布的 2026 年 3 月：final demand 月增 0.5%、年增 4.0%。",
       "tone": "down"
     },
     {
       "label": "非農 / 失業率 / 薪資",
       "value": "+178,000；4.3%；AHE +3.5% YoY",
-      "detail": "自前一版以來沒有更晚的 BLS 就業報告。最新仍是 2026-04-03 發布的 2026 年 3 月 Employment Situation：nonfarm payrolls +178,000，前月由 -92,000 下修為 -133,000，1 月由 +126,000 上修為 +160,000；失業率 4.3%；平均時薪月增 0.2%、年增 3.5%。這對台股代表景氣沒有硬著陸，但高評價題材仍需要靠訂單與報價支撐。",
+      "detail": "自上一版以來沒有更晚的 BLS 就業報告。最新仍是 2026-04-03 發布的 2026 年 3 月 Employment Situation：nonfarm payrolls +178,000，前月下修為 -133,000，失業率 4.3%，平均時薪年增 3.5%。",
       "tone": "neutral"
     },
     {
-      "label": "零售銷售",
-      "value": "3 月 +1.7% MoM",
-      "detail": "自前一版以來沒有更晚的 Census retail release。最新仍是 2026-04-21 公布的 2026 年 3 月 advance retail sales：總銷售月增 1.7%、年增 4.0%，2 月月增由 0.6% 上修到 0.7%。這讓美國內需沒有轉弱，但對台股最直接的利多仍在 AI 與記憶體，不在防守內需股。",
-      "tone": "up"
-    },
-    {
-      "label": "PCE / GDP",
-      "value": "PCE 2.8% YoY；GDP 4Q25 third est 0.5%",
-      "detail": "自前一版以來沒有更晚的 BEA PCE 或 GDP release。最新 PCE 仍是 BEA 2026-04-09 公布的 2026 年 2 月資料：PCE price index 月增 0.4%、年增 2.8%，1 月月增 0.3%；core PCE 月增 0.4%、年增 3.0%。最新 GDP 仍是 BEA 2026-04-09 公布的 2025 年第 4 季 third estimate：實質 GDP 年化季增 0.5%，較 second estimate 0.7% 再下修 0.2 個百分點。",
+      "label": "零售 / PCE / GDP",
+      "value": "retail +1.7% MoM；PCE 2.8% YoY；GDP 0.5%",
+      "detail": "自上一版以來沒有更晚的 Census retail sales、BEA PCE 或 GDP release。最新 retail 仍是 2026-04-21 的 2026 年 3 月月增 1.7%；PCE 仍是 2026-04-09 的 2026 年 2 月年增 2.8%；GDP 仍是 2026-04-09 的 2025Q4 third estimate 年化季增 0.5%。",
       "tone": "neutral"
     },
     {
       "label": "ISM / 工業生產",
-      "value": "ISM 製造 52.7；服務 54.0；IP -0.5%",
-      "detail": "自前一版以來沒有更晚的 ISM 或 Fed G.17 release。最新 ISM 製造業仍是 2026-04-01 發布的 2026 年 3 月 52.7，高於 2 月 52.4，Prices 78.3 高於 70.5；最新 ISM 服務業仍是 2026-04-03 發布的 54.0，低於 2 月 56.1，但 Prices 70.7 高於 63.0。最新 Fed G.17 仍是 2026-04-16：3 月工業生產月減 0.5%，但第 1 季年化仍成長 2.4%。",
+      "value": "ISM 製造 52.7；ISM 服務 54.0；IP -0.5%",
+      "detail": "自上一版以來沒有更晚的 ISM 或 Fed G.17 release。製造業 PMI 仍是 2026-04-01 的 52.7，服務業 PMI 仍是 2026-04-03 的 54.0；工業生產仍是 2026-04-16 公布的 3 月月減 0.5%。",
       "tone": "neutral"
     },
     {
-      "label": "地緣政治 / 航運 / 能源",
-      "value": "霍爾木茲風險持續，台股未形成主流交易",
-      "detail": "AP 於 2026-04-27 新增兩條可歸因更新：一是海員仍被困在波灣、霍爾木茲實際上仍近乎封閉；二是伊朗提出若美國解除封鎖則可重開航道。Jin10 也仍把中東、油價與航線安全列為快訊重點。這讓能源、保險與運價風險持續，但 2026-04-27 台股軍工、航運、塑化沒有出現足夠廣度。",
+      "label": "地緣政治 / 能源 / 航運",
+      "value": "霍爾木茲風險延續，但沒有比 4/27 AP 更晚的新轉折",
+      "detail": "這次有重新檢查 AP、IMO、GOV.UK 與 Jin10。結論是自上一版以來沒有更晚、且足以改變台股短線題材排名的 verified 新事件；因此霍爾木茲仍是背景風險，而不是 4/28 台股主流交易。",
       "tone": "down"
     }
   ],
   "newDiscoveries": [
     {
-      "id": "ap-hormuz-seafarers-20260427",
-      "scope": "AP｜2026-04-27",
-      "title": "AP 指出海員仍滯留波灣，霍爾木茲對商船仍接近封閉狀態",
-      "detail": "AP 2026-04-27 報導，波斯灣商船船員已在高風險區滯留數週，霍爾木茲海峽對商業航運仍有效受阻。",
-      "whyItMatters": "這讓油價、塑化原料、保險與航線風險不是單日新聞，而是可能持續影響數日到數週的供應鏈變數。"
+      "id": "twse-memory-continuation-20260428",
+      "scope": "TWSE / TPEX｜2026-04-28",
+      "title": "記憶體從 4/27 的單日爆發延續到 4/28，正式升為本週第 1 主線",
+      "detail": "4/28 官方收盤顯示 2337 旺宏 +10.00%、3260 威剛 +10.00%、8299 群聯 +7.36%、2408 南亞科 +4.86%、2344 華邦電 +1.70%，代表記憶體不是一天行情，而是連續兩天的主流量價。",
+      "whyItMatters": "這把記憶體從「可交易題材」推升成「本週最強題材」，排名由第 2 升到第 1。"
     },
     {
-      "id": "ap-iran-conditional-hormuz-20260427",
-      "scope": "AP｜2026-04-27",
-      "title": "伊朗提出條件式重開霍爾木茲方案",
-      "detail": "AP 2026-04-27 報導，伊朗表示若美國解除對伊封鎖且戰事結束，願意重開霍爾木茲。",
-      "whyItMatters": "這代表航道恢復並非時間問題，而是政治談判問題；對台股的航運、能源、塑化與軍工題材仍屬背景風險，尚未形成最強主線。"
+      "id": "twse-optics-network-power-rotation-20260428",
+      "scope": "TWSE / TPEX｜2026-04-28",
+      "title": "4/28 官方 tape 顯示資金從高速 CCL 轉向光模組 / 網通 / 伺服器電源",
+      "detail": "4/28 通信網路類指數 +1.99%，2345 智邦 +5.52%、6442 光聖 +7.32%、4908 前鼎 +9.76%、2308 台達電 +5.20%，而 2383 台光電下跌 7.51%、2330 台積電下跌 2.21%。",
+      "whyItMatters": "這代表市場正在把 AI 需求從材料 bottleneck 轉譯成網路互連與電力輸出，對短線排名與選股都很重要。"
     }
   ],
-  "changesComparedToPrevious": {
-    "comparedTo": "2026-04-27 23:02 收盤強制重跑版（採 2026-04-27 週一收盤）",
-    "summary": "這次是 2026-04-28 開盤前版本，使用的台股 price date 仍是 2026-04-27，因此最重要的變化不是盤後股價，而是硬規則檢查結果：自上一版以來沒有更晚的美國官方 macro release，前五題材與 top picks 也沒有被更晚的官方資料推翻；但霍爾木茲新增兩條 2026-04-27 AP 訊號，且子題材名稱進一步收斂到更可交易的 bottleneck node。",
-    "items": [
-      {
-        "title": "前五題材排名維持不變",
-        "reason": "沒有新的台股收盤資料，4/27 的量價結構仍是目前最新 official tape。"
-      },
-      {
-        "title": "題材名稱切得更細",
-        "reason": "高階 CCL / AI PCB 改寫成「高速 CCL / M8-M9 材料鏈」；AI 機櫃 / 液冷 / 高功率互連改寫成「高功率機櫃 / 液冷配套」；CoWoS / 先進封裝設備 / 廠務改寫成「CoWoS 廠務 / 封裝設備裝機」。"
-      },
-      {
-        "title": "沒有新的官方 macro release",
-        "reason": "本次明確確認 weekly claims、CPI、PPI、非農、retail sales、PCE、GDP、ISM、industrial production、housing starts / permits 自上一版以來都沒有更晚 release。"
-      },
-      {
-        "title": "霍爾木茲候選題材得到兩條新 AP 訊號",
-        "reason": "2026-04-27 AP 新聞顯示航道仍近乎封閉，且伊朗提出條件式重開方案；但台股航運、軍工、塑化廣度仍不夠進前五。"
-      },
-      {
-        "title": "top picks 維持 2408 / 2330 / 2383 / 2344 / 8299 / 8210",
-        "reason": "在沒有新盤後價格與新官方 macro release 的前提下，4/27 的最強表達仍是 AI 核心平台加上記憶體補漲。"
-      }
-    ]
-  },
   "themes": [
     {
       "rank": 1,
-      "name": "HBM4 / AI ASIC IP / 台積電 3DFabric 生態系",
-      "heat": "平台主線未變，4/27 權值續強但設計股分化",
-      "stance": "第 1 優先，先買核心底座，再挑設計服務回檔點",
-      "summary": "Broader family：半導體製造 / AI 平台。Exact subtheme：HBM4 / AI ASIC IP / 台積電 3DFabric；nearest comparable：CoWoS 廠務 / 封裝設備裝機；不合併因前者吃平台估值與設計溢價，後者吃 CAPEX 落地與裝機進度。2026-04-28 開盤前沒有新的官方 macro or company event 推翻這條主線，台積在 4/27 續強後仍是最穩的 AI 平台底座。",
-      "pricingView": "上游看 EDA、IP、HBM4、UCIe 與先進材料；中游是台積 3nm / CoWoS / SoIC / 3DFabric；下游是 Google、CSP 與 AI ASIC 客戶。瓶頸仍在 HBM4 與先進封裝供給，而不是終端故事。",
-      "policyView": "美國 AI 與雲端基建政策仍偏擴張，Google Cloud Next 與 White House 的 AI / 製造政策沒有轉弱；台灣端最直接受惠的是台積與 ASIC / IP 設計服務鏈。",
-      "premiumSpace": "上一版之後沒有更晚的官方新數據，代表主線沒有被證偽；若再有客戶投片、封裝排程或管理層新指引，仍有第二段溢價。",
+      "name": "記憶體 / DRAM / NAND 價格重估",
+      "heat": "連續兩個交易日形成最完整的量價廣度",
+      "stance": "第 1 優先，先做原廠，再延伸到 controller / module",
+      "summary": "Broader family：半導體製造。Exact subtheme：記憶體 / DRAM / NAND 價格重估；nearest comparable：HBM-related spillover；不合併因這條線的核心驅動是合約價、供需與 mature-node capacity，不是先進封裝平台估值。4/28 盤後最強證據是它不只延續 4/27，而是進一步擴散到 2337、3260、8299。",
+      "pricingView": "上游要看 Micron / Samsung / SK hynix 供給與 node migration、HBM crowd-out effects、成熟製程 bit supply；中游是 DRAM / NAND 原廠與 controller；下游是 enterprise SSD、模組、AI server。這輪 bottleneck 在成熟記憶體供給與價格重估，而不是終端故事。",
+      "policyView": "台灣端沒有直接政策加分，真正支撐來自 AI server 記憶體需求與 Nanya 私募引入四大客戶後的供應安全。",
+      "premiumSpace": "從 2026-04-13 南亞科官方 Q1 財報到 2026-04-28 二度擴散，市場明顯是分段反映，不是一次完成。",
       "whyNow": [
         {
-          "label": "fresh official",
-          "text": "Google Cloud Next 2026 於 2026-04-22 發布 TPU 8t / 8i、Virgo Network 與 Agent Platform。"
+          "label": "fresh official tape",
+          "text": "2026-04-28 旺宏與威剛雙雙漲停，群聯 +7.36%，代表題材已從原廠擴散到 controller / module。"
+        },
+        {
+          "label": "older but active structural",
+          "text": "TrendForce 2026-03-31 仍預估 2Q26 DRAM / NAND 合約價大幅季增。"
         },
         {
           "label": "fresh company",
-          "text": "GUC 於 2026-04-23 公布 3nm 12Gbps HBM4 PHY / Controller，直接連到 TSMC 3nm、CoWoS 與 SoIC。"
+          "text": "南亞科 2026-04-13 官方 Q1 財報已先把 ASP、四大客戶與新廠設備時程講清楚。"
         },
         {
-          "label": "fresh official tape",
-          "text": "2026-04-27 台積電 +3.66%，顯示資金在記憶體外，仍保留 AI 主線核心部位。"
-        },
-        {
-          "label": "split",
-          "text": "本題材與 CoWoS 設備分開，因主體是 ASIC / IP / 晶圓平台，不是廠務與設備接單。"
+          "label": "why selected over next best",
+          "text": "比 HBM4 spillover 更直接，因為 4/28 的實際量價強度與供需證據都更完整。"
         }
       ],
       "downsideEvents": [
-        "若 Google Cloud Next 的 TPU / Cloud CAPEX 後續沒有轉成客戶採購與台積投片，設計股會先修正。",
-        "若 HBM4、CoWoS 或 SoIC 交期遞延，ASIC / IP 題材的第二段溢價會被延後。",
-        "若 2026-04-27 之後台積與設計股同步跌破 4/24-4/27 這段加速區，主線會進入整理。"
+        "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
+        "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
+        "若 4/28 的強勢只是短線軋空而不是新買盤，次日量縮就會讓題材排名快速下修。"
       ],
       "stocks": [
         {
           "rank": 1,
-          "ticker": "2330",
-          "name": "台積電",
-          "role": "全球先進晶圓代工與 3DFabric / CoWoS 平台核心，位於中游製造與先進封裝樞紐；上游依賴 EUV / 蝕刻 / 材料設備，下游連到 Google、CSP 與 ASIC 設計客戶。",
-          "priceDate": "2026-04-27",
-          "close": "2265",
-          "entry": "2220-2285",
-          "target": "2460",
-          "stop": "2170",
-          "pe": "34.19",
-          "pb": "10.84",
-          "foreignFlow": "-18,940,165 股",
-          "institutionFlow": "-13,408,091 股",
-          "coreReason": "Google 的 AI 資本支出與 GUC HBM4 把市場重新拉回台積平台價值；2026-04-27 即使外資賣超，台積仍收 2265 元、上漲 3.66%，代表權值資金先回核心。",
-          "notPricedIn": "2026-04-24 到 2026-04-27 的漲勢已反映第一波 AI 平台重估，但設計股並未同步創高，說明市場還在等後續客戶與投片細節，屬部分反映。",
-          "targetLogic": "2460 元對應 Google / CSP CAPEX 延續、3nm 與 3DFabric 平台溢價，以及台積在 AI 供應鏈中的定價權。",
+          "ticker": "2408",
+          "name": "南亞科",
+          "role": "DRAM 原廠，位於中游製造；上游連到成熟製程設備、化學品與 wafer input，下游對接 PC、server、工控與私募導入的四大策略客戶。",
+          "priceDate": "2026-04-28",
+          "close": "237.5",
+          "entry": "231-239",
+          "target": "268",
+          "stop": "223",
+          "pe": "111.50",
+          "pb": "4.32",
+          "foreignFlow": "+9,472,212 股",
+          "institutionFlow": "+12,942,260 股",
+          "coreReason": "南亞科的優勢是「官方營運訊號先出、股價第二天才繼續反映」：4/13 Q1 財報已講 ASP 季增超過 70%，4/27 漲停後 4/28 再漲 4.86%。",
+          "notPricedIn": "2026-04-13 的關鍵財報訊號到 4/27-4/28 才被市場完整交易，代表利多不是一天就反映完，仍屬分段重估。",
+          "targetLogic": "268 元對應 DRAM 合約價重估、DDR5 / server mix 提升與四大客戶綁定後的供應安全溢價。",
           "catalysts": [
-            "2026-04-27 收 2265 元、單日 +3.66%。",
-            "已讀 Google Cloud Next 2026、TPU 8t / 8i 與 TSMC 2026 Technology Symposium 官方內容。",
-            "外資研報檢查：已驗證 UBS open-access 原始頁；公開評等 / 目標價歷史頁存在，但舊聚合值已落後現價。",
-            "董監 / 內部人持股檢查：本次未驗證到 2026-04-27 前新增，未列為買進主因。"
+            "2026-04-28 收 237.5 元、單日 +4.86%。",
+            "2026-04-28 外資 +9,472,212 股，三大法人合計 +12,942,260 股。",
+            "已讀 2026-04-13 官方 Q1 財報與 2026-03-31 TrendForce 2Q26 DRAM / NAND 報價調查。",
+            "董監 / 內部人持股檢查：本次未驗證到比上一版更新的官方新增變動；私募四大客戶仍是已知結構性支持。"
           ],
           "downside": [
-            "若 Google Cloud Next 的 TPU / Cloud CAPEX 後續沒有轉成客戶採購與台積投片，設計股會先修正。",
-            "若 HBM4、CoWoS 或 SoIC 交期遞延，ASIC / IP 題材的第二段溢價會被延後。",
-            "若 2026-04-27 之後台積與設計股同步跌破 4/24-4/27 這段加速區，主線會進入整理。"
+            "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
+            "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
+            "若 4/28 的強勢只是短線軋空而不是新買盤，次日量縮就會讓題材排名快速下修。"
           ],
           "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Google Cloud Next 2026 官方頁",
-            "Google TPU 8t / 8i 官方文章",
-            "GUC 2026-04-23 HBM4 官方新聞稿",
-            "TSMC 2026 Technology Symposium",
-            "UBS 台積電 2330 open-access / compliance 頁",
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "Nanya 2026-04-13 Q1 財報",
+            "TrendForce 2026-03-31 記憶體價格調查",
+            "鉅亨外資評等 2408 南亞科",
             "tw_stock_supply_chain_tags.json"
           ]
         },
         {
           "rank": 2,
-          "ticker": "3443",
-          "name": "創意",
-          "role": "台積生態系 ASIC / NRE / HBM4 IP 整合服務商，位於上游設計；上游受惠 EDA / HBM IP，下游連到客製 ASIC 客戶與台積先進封裝。",
-          "priceDate": "2026-04-27",
-          "close": "3955",
-          "entry": "3880-3990",
-          "target": "4300",
-          "stop": "3810",
-          "pe": "140.60",
-          "pb": "41.04",
-          "foreignFlow": "+82,165 股",
-          "institutionFlow": "+260,914 股",
-          "coreReason": "2026-04-27 股價回檔 1.98%，但外資與法人仍是淨買方，顯示 4/23 HBM4 事件後的整理屬於強勢換手，不是主線失效。",
-          "notPricedIn": "關鍵利多發生在 2026-04-23，但 2026-04-27 只回檔整理、沒有把題材完全吐回，代表市場還在等第二波客戶驗證，尚非完全反映。",
-          "targetLogic": "4300 元反映 HBM4 IP、NRE 與台積 3nm / 先進封裝平台溢價。",
+          "ticker": "2337",
+          "name": "旺宏",
+          "role": "NOR / NAND 記憶體製造商，位於中游製造；下游連工業、車用、消費與嵌入式儲存需求。",
+          "priceDate": "2026-04-28",
+          "close": "159.5",
+          "entry": "155-160",
+          "target": "177",
+          "stop": "149",
+          "pe": "目前未驗證",
+          "pb": "6.72",
+          "foreignFlow": "+19,881,646 股",
+          "institutionFlow": "+29,086,150 股",
+          "coreReason": "旺宏 4/28 直接漲停，代表記憶體重估從 DRAM 原廠往其他 memory maker 擴散。",
+          "notPricedIn": "4/28 的 10% 漲停已反映熱度，但它屬第二圈擴散，若記憶體主線再走一段，旺宏仍可能延續補漲。",
+          "targetLogic": "177 元對應 memory 景氣從 DRAM 向 NAND / NOR 擴散與大額法人回補。",
           "catalysts": [
-            "2026-04-27 收 3955 元、單日 -1.98%。",
-            "2026-04-27 外資 +82,165 股，三大法人合計 +260,914 股。",
-            "外資研報檢查：已驗證鉅亨 / FactSet 公開聚合頁，舊目標價明顯低於現價，故不把舊賣方價當尚未反映依據。",
-            "董監 / 內部人持股檢查：本次未驗證到新增。"
+            "2026-04-28 收 159.5 元、單日 +10.00%。",
+            "2026-04-28 外資 +19,881,646 股，三大法人合計 +29,086,150 股。",
+            "本次未驗證到更近的完整官方法說逐字稿或營收更新。",
+            "外資評級檢查：已驗證鉅亨外資評等個股總覽頁存在，較新完整原始 broker report 仍未驗證。"
           ],
           "downside": [
-            "若 Google Cloud Next 的 TPU / Cloud CAPEX 後續沒有轉成客戶採購與台積投片，設計股會先修正。",
-            "若 HBM4、CoWoS 或 SoIC 交期遞延，ASIC / IP 題材的第二段溢價會被延後。",
-            "若 2026-04-27 之後台積與設計股同步跌破 4/24-4/27 這段加速區，主線會進入整理。"
+            "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
+            "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
+            "若 4/28 的強勢只是短線軋空而不是新買盤，次日量縮就會讓題材排名快速下修。"
           ],
           "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "TrendForce 2026-03-31 記憶體價格調查",
+            "鉅亨外資評等 2337 旺宏",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 3,
+          "ticker": "8299",
+          "name": "群聯",
+          "role": "NAND controller / enterprise SSD controller 供應商，位於上游設計；上游承接 NAND 原廠，下游對接 enterprise SSD、模組與品牌客戶。",
+          "priceDate": "2026-04-28",
+          "close": "1970",
+          "entry": "1910-1985",
+          "target": "2140",
+          "stop": "1840",
+          "pe": "目前未驗證",
+          "pb": "目前未驗證",
+          "foreignFlow": "-530,158 股",
+          "institutionFlow": "+442,622 股",
+          "coreReason": "群聯代表這波不是只有 memory 原廠漲，而是連 controller 也在重估。",
+          "notPricedIn": "它受惠的是記憶體價格重估往下游 enterprise SSD 擴散，這個鏈條比 DRAM 原廠晚被市場交易。",
+          "targetLogic": "2140 元對應 enterprise SSD / controller 在記憶體重估週期中的第二階段放大。",
+          "catalysts": [
+            "2026-04-28 收 1970 元、單日 +7.36%。",
+            "2026-04-28 三大法人合計 +442,622 股。",
+            "外資評級檢查：已驗證鉅亨公開評等頁存在；本次未驗證到更新的可歸因完整外資原文。",
+            "本次未驗證到更近的完整官方法說逐字稿。"
+          ],
+          "downside": [
+            "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
+            "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
+            "若 4/28 的強勢只是短線軋空而不是新買盤，次日量縮就會讓題材排名快速下修。"
+          ],
+          "sourceRefs": [
+            "TPEX 2026-04-28 日行情",
+            "TPEX 2026-04-28 三大法人",
+            "TrendForce 2026-03-31 記憶體價格調查",
+            "鉅亨外資評等 8299 群聯",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 4,
+          "ticker": "2344",
+          "name": "華邦電",
+          "role": "利基型記憶體 IDM，涵蓋 NOR Flash、DRAM 與 embedded memory；位於中游製造。",
+          "priceDate": "2026-04-28",
+          "close": "95.5",
+          "entry": "93-96",
+          "target": "106",
+          "stop": "89.5",
+          "pe": "108.52",
+          "pb": "3.98",
+          "foreignFlow": "+15,807,133 股",
+          "institutionFlow": "+15,547,347 股",
+          "coreReason": "華邦電雖然漲幅比南亞科和旺宏小，但 4/28 仍延續上攻，代表記憶體熱度沒有只集中在單一名字。",
+          "notPricedIn": "它比 DRAM 原廠慢熱，若記憶體主線延續，仍可能補反映。",
+          "targetLogic": "106 元對應利基記憶體與法人回補的估值上移。",
+          "catalysts": [
+            "2026-04-28 收 95.5 元、單日 +1.70%。",
+            "2026-04-28 外資 +15,807,133 股，三大法人合計 +15,547,347 股。",
+            "外資評級檢查：已驗證鉅亨公開評等頁存在。",
+            "本次未驗證到更近的完整官方法說逐字稿或新增內部人加碼。"
+          ],
+          "downside": [
+            "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
+            "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
+            "若 4/28 的強勢只是短線軋空而不是新買盤，次日量縮就會讓題材排名快速下修。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "TrendForce 2026-03-31 記憶體價格調查",
+            "鉅亨外資評等 2344 華邦電",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 5,
+          "ticker": "3260",
+          "name": "威剛",
+          "role": "記憶體模組 / SSD 業者，位於中游模組；上游承接 DRAM / NAND 與 controller，下游對接通路與企業客戶。",
+          "priceDate": "2026-04-28",
+          "close": "484",
+          "entry": "472-488",
+          "target": "530",
+          "stop": "452",
+          "pe": "目前未驗證",
+          "pb": "目前未驗證",
+          "foreignFlow": "-5,404,841 股",
+          "institutionFlow": "-5,359,894 股",
+          "coreReason": "威剛 4/28 再度漲停，證明這波 memory 重估已經傳導到模組與 SSD。",
+          "notPricedIn": "模組股通常比原廠晚被資金確認，連續兩天強勢說明市場正在補這段落差。",
+          "targetLogic": "530 元對應模組庫存利益與報價傳導。",
+          "catalysts": [
+            "2026-04-28 收 484 元、單日 +10.00%。",
+            "2026-04-28 三大法人合計 -5,359,894 股，顯示漲勢不完全依賴法人追價。",
+            "供應鏈標籤顯示其位於記憶體模組 / SSD 中游。",
+            "本次未驗證到更近的完整官方法說逐字稿或新增內部人加碼。"
+          ],
+          "downside": [
+            "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
+            "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
+            "若 4/28 的強勢只是短線軋空而不是新買盤，次日量縮就會讓題材排名快速下修。"
+          ],
+          "sourceRefs": [
+            "TPEX 2026-04-28 日行情",
+            "TPEX 2026-04-28 三大法人",
+            "TrendForce 2026-03-31 記憶體價格調查",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "光模組 / 矽光子",
+      "heat": "4/28 正式形成通信網路類領漲分支",
+      "stance": "第 2 優先，先做最強 liquid leader，再做第二梯隊模組股",
+      "summary": "Broader family：Space and telecom / AI interconnect。Exact subtheme：光模組 / 矽光子；nearest comparable：AI 交換器 / 資料中心網通設備；不合併因 optics 的 bottleneck 在 DSP、laser、optical engine 與 qualification timing，而交換器設備的 monetization 在 system build。4/28 的 6442、4908、3163、4979 同步走強，說明這條線已經成為台股主流候選。",
+      "pricingView": "上游要看 laser、DSP、optical engine、silicon photonics 與先進封裝；中游是模組與光通訊零件；下游是 hyperscaler 與 data-center interconnect。這條線最大的 gap 是：台股已經開始交易，但更細的 hyperscaler qualification 原始文件仍不完整。",
+      "policyView": "直接政策支持不強，主要吃美系 AI data-center network buildout。Google Cloud Next 2026 的 Virgo Network 是目前最可歸因的下游訊號。",
+      "premiumSpace": "因為公開可歸因的 qualification 細節還不完整，市場仍以 tape 與需求想像先行，代表題材還可能有第二段資訊補價差。",
+      "whyNow": [
+        {
+          "label": "fresh official tape",
+          "text": "2026-04-28 通信網路類指數 +1.99%，光聖 +7.32%、前鼎 +9.76%、波若威 +2.88%。"
+        },
+        {
+          "label": "older but active structural",
+          "text": "Google Cloud Next 2026 仍把 Virgo Network 與 AI network fabric 當成核心建設。"
+        },
+        {
+          "label": "checked but not fully verified",
+          "text": "更細的 hyperscaler qualification、DSP 與 laser vendor 時程，本次未驗證到完整原始文件。"
+        },
+        {
+          "label": "why selected over next best",
+          "text": "比高階 CCL 更強，因為 4/28 通信網路與光模組是順勢走強，而材料龍頭台光電明顯轉弱。"
+        }
+      ],
+      "downsideEvents": [
+        "若 hyperscaler qualification 與出貨節奏沒有更進一步證據，光模組股容易被視為題材熱度交易。",
+        "若通信網路類指數無法延續 4/28 的強勢，光模組高 beta 股回檔會很快。",
+        "若 DSP / laser / optical engine 等上游供應鏈沒有同步強化，台股先漲的光模組股容易先整理。"
+      ],
+      "stocks": [
+        {
+          "rank": 1,
+          "ticker": "6442",
+          "name": "光聖",
+          "role": "光模組 / 矽光子 / 射頻供應商，位於中游光互連零件；上游依賴 DSP、laser、optical engine 與先進封裝，下游對接資料中心與高速互連客戶。",
+          "priceDate": "2026-04-28",
+          "close": "1905",
+          "entry": "1860-1915",
+          "target": "2070",
+          "stop": "1780",
+          "pe": "83.37",
+          "pb": "21.67",
+          "foreignFlow": "+305,833 股",
+          "institutionFlow": "+219,508 股",
+          "coreReason": "光聖是 4/28 光模組轉強裡最乾淨的 TWSE 表達之一，股價 +7.32%、法人同步買超。",
+          "notPricedIn": "4/28 強彈代表市場開始把 AI network 需求往光互連轉譯，但公開可歸因的 hyperscaler qualification 細節仍不完整，表示題材尚未 fully priced-in。",
+          "targetLogic": "2070 元對應高速光模組與矽光子生態的重新評價。",
+          "catalysts": [
+            "2026-04-28 收 1905 元、單日 +7.32%。",
+            "2026-04-28 外資 +305,833 股，三大法人合計 +219,508 股。",
+            "外資評級檢查：已驗證鉅亨外資評等頁存在；更新的完整原始 report 本次未驗證。",
+            "本次未驗證到更近的完整官方法說逐字稿；下游主要引用 Google Cloud Next 2026 的網路升級訊號。"
+          ],
+          "downside": [
+            "若 hyperscaler qualification 與出貨節奏沒有更進一步證據，光模組股容易被視為題材熱度交易。",
+            "若通信網路類指數無法延續 4/28 的強勢，光模組高 beta 股回檔會很快。",
+            "若 DSP / laser / optical engine 等上游供應鏈沒有同步強化，台股先漲的光模組股容易先整理。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "Google Cloud Next 2026 官方頁",
+            "Google TPU 8t / 8i 官方文章",
+            "鉅亨外資評等 6442 光聖",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 2,
+          "ticker": "4908",
+          "name": "前鼎",
+          "role": "光模組 / 光通訊零件業者，位於中游光互連；下游客戶偏資料中心與電信傳輸。",
+          "priceDate": "2026-04-28",
+          "close": "180",
+          "entry": "174-181",
+          "target": "196",
+          "stop": "167",
+          "pe": "目前未驗證",
+          "pb": "目前未驗證",
+          "foreignFlow": "+140,000 股",
+          "institutionFlow": "+131,000 股",
+          "coreReason": "前鼎 4/28 上漲 9.76%，是 TPEX 光模組高 beta 的強勢代表。",
+          "notPricedIn": "它更像市場對光模組主題的放大器，若通信網路和資料中心互連熱度延續，還沒完全反映。",
+          "targetLogic": "196 元對應光模組主題第二段追價。",
+          "catalysts": [
+            "2026-04-28 收 180 元、單日 +9.76%。",
+            "2026-04-28 三大法人合計 +131,000 股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。",
+            "供應鏈標籤將其歸在光模組 / 矽光子 / 射頻中游零件。"
+          ],
+          "downside": [
+            "若 hyperscaler qualification 與出貨節奏沒有更進一步證據，光模組股容易被視為題材熱度交易。",
+            "若通信網路類指數無法延續 4/28 的強勢，光模組高 beta 股回檔會很快。",
+            "若 DSP / laser / optical engine 等上游供應鏈沒有同步強化，台股先漲的光模組股容易先整理。"
+          ],
+          "sourceRefs": [
+            "TPEX 2026-04-28 日行情",
+            "TPEX 2026-04-28 三大法人",
+            "Google Cloud Next 2026 官方頁",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 3,
+          "ticker": "3163",
+          "name": "波若威",
+          "role": "光模組 / 矽光子供應商，位於中游零件層；受高速資料傳輸與光互連需求帶動。",
+          "priceDate": "2026-04-28",
+          "close": "1070",
+          "entry": "1040-1075",
+          "target": "1160",
+          "stop": "998",
+          "pe": "目前未驗證",
+          "pb": "目前未驗證",
+          "foreignFlow": "-1,139,351 股",
+          "institutionFlow": "-1,441,885 股",
+          "coreReason": "波若威是這條線的高價龍頭之一，4/28 續漲 2.88%，代表光模組不是單一個股表現。",
+          "notPricedIn": "相較 4908 和 6442，波若威漲幅較節制，保留後續補漲空間。",
+          "targetLogic": "1160 元對應資料中心光互連與矽光子預期升溫。",
+          "catalysts": [
+            "2026-04-28 收 1070 元、單日 +2.88%。",
+            "2026-04-28 三大法人合計 -1,441,885 股，屬股價強於籌碼的延續行情。",
+            "本次未驗證到更近的完整官方法說逐字稿或新增內部人加碼。"
+          ],
+          "downside": [
+            "若 hyperscaler qualification 與出貨節奏沒有更進一步證據，光模組股容易被視為題材熱度交易。",
+            "若通信網路類指數無法延續 4/28 的強勢，光模組高 beta 股回檔會很快。",
+            "若 DSP / laser / optical engine 等上游供應鏈沒有同步強化，台股先漲的光模組股容易先整理。"
+          ],
+          "sourceRefs": [
+            "TPEX 2026-04-28 日行情",
+            "TPEX 2026-04-28 三大法人",
+            "Google Cloud Next 2026 官方頁",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 4,
+          "ticker": "3450",
+          "name": "聯鈞",
+          "role": "光模組 / 矽光子 / 射頻鏈中的中游零件商；上游連射頻與光學元件，下游連高速光通訊模組。",
+          "priceDate": "2026-04-28",
+          "close": "305.5",
+          "entry": "298-307",
+          "target": "331",
+          "stop": "286",
+          "pe": "60.98",
+          "pb": "8.79",
+          "foreignFlow": "-1,892,267 股",
+          "institutionFlow": "-2,641,281 股",
+          "coreReason": "聯鈞 4/28 雖只漲 1.33%，但作為大型 liquid name，能承接更大資金。",
+          "notPricedIn": "比起高 beta TPEX 光模組股，聯鈞更像還沒 fully reflect 的中大型表達。",
+          "targetLogic": "331 元對應光模組主題在大型股上的估值補漲。",
+          "catalysts": [
+            "2026-04-28 收 305.5 元、單日 +1.33%。",
+            "2026-04-28 三大法人合計 -2,641,281 股，代表股價尚未得到全面法人追價。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若 hyperscaler qualification 與出貨節奏沒有更進一步證據，光模組股容易被視為題材熱度交易。",
+            "若通信網路類指數無法延續 4/28 的強勢，光模組高 beta 股回檔會很快。",
+            "若 DSP / laser / optical engine 等上游供應鏈沒有同步強化，台股先漲的光模組股容易先整理。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "Google Cloud Next 2026 官方頁",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 5,
+          "ticker": "4979",
+          "name": "華星光",
+          "role": "光通訊 / 模組零件供應商，位於中游；受資料中心與高速互連週期帶動。",
+          "priceDate": "2026-04-28",
+          "close": "561",
+          "entry": "547-564",
+          "target": "610",
+          "stop": "525",
+          "pe": "目前未驗證",
+          "pb": "目前未驗證",
+          "foreignFlow": "+130,090 股",
+          "institutionFlow": "-121,910 股",
+          "coreReason": "華星光 4/28 續漲 2.75%，補足光模組題材的中價位梯隊。",
+          "notPricedIn": "相較前排龍頭，它仍屬跟漲但未爆量的第二梯隊。",
+          "targetLogic": "610 元對應光互連主題第二圈輪動。",
+          "catalysts": [
+            "2026-04-28 收 561 元、單日 +2.75%。",
+            "2026-04-28 三大法人合計 -121,910 股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若 hyperscaler qualification 與出貨節奏沒有更進一步證據，光模組股容易被視為題材熱度交易。",
+            "若通信網路類指數無法延續 4/28 的強勢，光模組高 beta 股回檔會很快。",
+            "若 DSP / laser / optical engine 等上游供應鏈沒有同步強化，台股先漲的光模組股容易先整理。"
+          ],
+          "sourceRefs": [
+            "TPEX 2026-04-28 日行情",
+            "TPEX 2026-04-28 三大法人",
+            "Google Cloud Next 2026 官方頁",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "AI 交換器 / 資料中心網通設備",
+      "heat": "由智邦領漲，網通設備開始接棒半導體與材料股",
+      "stance": "第 3 優先，先做系統龍頭，再看估值與位階較低的後段設備股",
+      "summary": "Broader family：AI infrastructure。Exact subtheme：AI 交換器 / 資料中心網通設備；nearest comparable：光模組 / 矽光子；不合併因這條線的 bottleneck 在 switch fabric / system integration / customer build schedule，而不是單純 optical lanes。4/28 智邦 +5.52% 是最清楚的領頭訊號。",
+      "pricingView": "上游是高階 PCB、ASIC、光模組與電源；中游是 switch / CPE / 網通設備系統整合；下游是 hyperscaler、enterprise data center 與 telecom。當下最重要的 bottleneck 是 AI network fabric 與高速交換平台。",
+      "policyView": "直接政策不強，主要依賴 hyperscaler capex 與 AI cluster networking buildout。",
+      "premiumSpace": "4/28 這條線才剛從智邦擴散到其他網通設備，表示 still early in local tape instead of fully crowded。",
+      "whyNow": [
+        {
+          "label": "fresh official tape",
+          "text": "智邦 +5.52%、啟碁 +2.84%、智易 +0.93%，通信網路類指數成為最強大型類股。"
+        },
+        {
+          "label": "older but active structural",
+          "text": "Google Cloud Next 2026 的 Virgo Network 仍是這條線最直接的下游驗證。"
+        },
+        {
+          "label": "checked but not fully verified",
+          "text": "更細的客戶 build schedule 與 switch 平台轉換時點，本次未驗證到完整原始排程。"
+        },
+        {
+          "label": "why selected over next best",
+          "text": "比傳統機櫃 / 液冷更強，因為 4/28 真正領漲的是交換器與網通設備，而不是機構件。"
+        }
+      ],
+      "downsideEvents": [
+        "若資料中心網通設備需求沒有延續到更廣的網通族群，智邦單點強勢可能無法帶動整題材。",
+        "若 AI 交換器與 Virgo Network 的訂單敘事沒有新進度，網通設備股可能轉為區間震盪。",
+        "若美系資料中心 capex 節奏轉保守，網通設備會先反映訂單能見度下修。"
+      ],
+      "stocks": [
+        {
+          "rank": 1,
+          "ticker": "2345",
+          "name": "智邦",
+          "role": "AI 交換器 / 網通設備龍頭，位於中下游系統整合；上游依賴高階 PCB、ASIC、optics 與 power，下游直連 hyperscaler 與大型資料中心。",
+          "priceDate": "2026-04-28",
+          "close": "2295",
+          "entry": "2250-2305",
+          "target": "2480",
+          "stop": "2175",
+          "pe": "48.70",
+          "pb": "22.29",
+          "foreignFlow": "+830,472 股",
+          "institutionFlow": "+1,137,498 股",
+          "coreReason": "智邦 4/28 +5.52% 且外資、法人同步站買方，是資料中心網通設備最乾淨的 liquid leader。",
+          "notPricedIn": "Google Virgo Network 是 4/22 就有的下游訊號，但 4/28 才明顯被台股系統設備鏈重新交易，代表網路基建這段仍屬後段反映。",
+          "targetLogic": "2480 元對應 AI 交換器、網路 fabric 升級與資料中心互連需求。",
+          "catalysts": [
+            "2026-04-28 收 2295 元、單日 +5.52%。",
+            "2026-04-28 外資 +830,472 股，三大法人合計 +1,137,498 股。",
+            "外資評級檢查：已驗證鉅亨公開評等頁存在；本次未驗證到新的完整原始外資報告。",
+            "本次未驗證到更近的完整官方法說逐字稿；下游主要引用 Google Cloud Next 2026 的 Virgo Network。"
+          ],
+          "downside": [
+            "若資料中心網通設備需求沒有延續到更廣的網通族群，智邦單點強勢可能無法帶動整題材。",
+            "若 AI 交換器與 Virgo Network 的訂單敘事沒有新進度，網通設備股可能轉為區間震盪。",
+            "若美系資料中心 capex 節奏轉保守，網通設備會先反映訂單能見度下修。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "Google Cloud Next 2026 官方頁",
+            "Google TPU 8t / 8i 官方文章",
+            "鉅亨外資評等 2345 智邦",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 2,
+          "ticker": "6285",
+          "name": "啟碁",
+          "role": "網通設備 / 無線通訊整合商，位於中下游設備層；連到 CPE、無線與企業網通終端。",
+          "priceDate": "2026-04-28",
+          "close": "217.5",
+          "entry": "213-219",
+          "target": "235",
+          "stop": "206",
+          "pe": "34.36",
+          "pb": "3.07",
+          "foreignFlow": "-1,687,463 股",
+          "institutionFlow": "-1,576,842 股",
+          "coreReason": "啟碁 4/28 上漲 2.84%，屬於網通題材裡偏穩定的第二線設備股。",
+          "notPricedIn": "相較智邦，它的股價反應較慢，若網通主題再延續，會更像補漲位。",
+          "targetLogic": "235 元對應網通設備重新定價與通訊類股熱度擴散。",
+          "catalysts": [
+            "2026-04-28 收 217.5 元、單日 +2.84%。",
+            "2026-04-28 三大法人合計 -1,576,842 股，代表還沒得到全面法人追價。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若資料中心網通設備需求沒有延續到更廣的網通族群，智邦單點強勢可能無法帶動整題材。",
+            "若 AI 交換器與 Virgo Network 的訂單敘事沒有新進度，網通設備股可能轉為區間震盪。",
+            "若美系資料中心 capex 節奏轉保守，網通設備會先反映訂單能見度下修。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 3,
+          "ticker": "3596",
+          "name": "智易",
+          "role": "交換器 / CPE / 網通設備供應商，位於中下游設備；受企業與電信網通需求帶動。",
+          "priceDate": "2026-04-28",
+          "close": "163.5",
+          "entry": "160-164.5",
+          "target": "174",
+          "stop": "154",
+          "pe": "12.98",
+          "pb": "2.13",
+          "foreignFlow": "-7,000 股",
+          "institutionFlow": "-6,267 股",
+          "coreReason": "智易雖然漲幅只有 0.93%，但 PE / PB 壓力明顯比高 beta AI 股低，是網通題材裡風險報酬較平衡的名字。",
+          "notPricedIn": "它沒有像智邦那樣先行大漲，因此若網通熱度擴散，反而保留更多重估空間。",
+          "targetLogic": "174 元反映網通設備估值往上修復。",
+          "catalysts": [
+            "2026-04-28 收 163.5 元、單日 +0.93%。",
+            "2026-04-28 三大法人合計 -6,267 股，屬還未被資金大舉擁擠的設備股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若資料中心網通設備需求沒有延續到更廣的網通族群，智邦單點強勢可能無法帶動整題材。",
+            "若 AI 交換器與 Virgo Network 的訂單敘事沒有新進度，網通設備股可能轉為區間震盪。",
+            "若美系資料中心 capex 節奏轉保守，網通設備會先反映訂單能見度下修。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 4,
+          "ticker": "5388",
+          "name": "中磊",
+          "role": "網通設備供應商，位於中下游設備；與寬頻、CPE、企業網路終端需求連動。",
+          "priceDate": "2026-04-28",
+          "close": "77",
+          "entry": "75-77.5",
+          "target": "83",
+          "stop": "72",
+          "pe": "19.20",
+          "pb": "1.45",
+          "foreignFlow": "+120,500 股",
+          "institutionFlow": "-520,863 股",
+          "coreReason": "中磊 4/28 雖小跌 0.52%，但通信網路大題材轉強時，這類落後股更容易在後面補動。",
+          "notPricedIn": "它還沒被市場當成最純 AI 網通股去追，反而留下補漲空間。",
+          "targetLogic": "83 元對應網通設備第二圈輪動。",
+          "catalysts": [
+            "2026-04-28 收 77 元、單日 -0.52%。",
+            "2026-04-28 外資 +120,500 股，但三大法人合計 -520,863 股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若資料中心網通設備需求沒有延續到更廣的網通族群，智邦單點強勢可能無法帶動整題材。",
+            "若 AI 交換器與 Virgo Network 的訂單敘事沒有新進度，網通設備股可能轉為區間震盪。",
+            "若美系資料中心 capex 節奏轉保守，網通設備會先反映訂單能見度下修。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 5,
+          "ticker": "2419",
+          "name": "仲琦",
+          "role": "交換器 / CPE / 網通設備供應商，位於中下游設備。",
+          "priceDate": "2026-04-28",
+          "close": "31.35",
+          "entry": "30.5-31.6",
+          "target": "34",
+          "stop": "29.2",
+          "pe": "目前未驗證",
+          "pb": "2.12",
+          "foreignFlow": "-31,500 股",
+          "institutionFlow": "-36,249 股",
+          "coreReason": "仲琦是這題材裡的相對落後股，適合拿來觀察網通熱度是否擴散到非龍頭。",
+          "notPricedIn": "4/28 還沒真正被市場追價，代表若題材延續，後段補漲空間反而更大。",
+          "targetLogic": "34 元反映網通設備題材由龍頭往後段擴散。",
+          "catalysts": [
+            "2026-04-28 收 31.35 元、單日 -0.79%。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。",
+            "供應鏈標籤顯示其為交換器 / CPE / 網通設備中下游設備股。"
+          ],
+          "downside": [
+            "若資料中心網通設備需求沒有延續到更廣的網通族群，智邦單點強勢可能無法帶動整題材。",
+            "若 AI 交換器與 Virgo Network 的訂單敘事沒有新進度，網通設備股可能轉為區間震盪。",
+            "若美系資料中心 capex 節奏轉保守，網通設備會先反映訂單能見度下修。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "伺服器電源 / BBU",
+      "heat": "台達帶頭，power bottleneck 開始獨立成題材",
+      "stance": "第 4 優先，優先做最能直接 monetise rack-level power upgrade 的名字",
+      "summary": "Broader family：AI infrastructure。Exact subtheme：伺服器電源 / BBU；nearest comparable：高功率機櫃 / 液冷；不合併因 power 的 bottleneck 是 power conversion、backup power 與 power-density，而不是結構件或熱管理。4/28 台達電 +5.20%，比機櫃 / 液冷更能代表這輪新資金方向。",
+      "pricingView": "上游是 power semiconductor、磁性材料、supercap、battery module 與線束；中游是 power module、UPS、BBU 與 power connection；下游是高功率 AI rack 與資料中心。這條線真正的約束是 power density / efficiency，而不是外觀結構。",
+      "policyView": "台灣政策不是核心，主要來自 hyperscaler power envelope 提升與資料中心升級。",
+      "premiumSpace": "這條線 4/28 才真正從資料中心大故事裡分拆出來，還沒像記憶體那樣進入第二天全面擴散。",
+      "whyNow": [
+        {
+          "label": "fresh official tape",
+          "text": "台達電 +5.20%、康舒 +2.25%、鈺邦 +3.44%，顯示電源與 BBU 不是單一股票表現。"
+        },
+        {
+          "label": "older but active structural",
+          "text": "Google Cloud Next 2026 延續資料中心網路與 infrastructure 升級敘事。"
+        },
+        {
+          "label": "checked but not fully verified",
+          "text": "更細的 BBU / CDU adoption ratio，本次未驗證到完整原始客戶文件。"
+        },
+        {
+          "label": "why selected over next best",
+          "text": "比重電 / 電網更強，因為 4/28 真正被資金買的是資料中心 power module，而不是傳統變壓器龍頭。"
+        }
+      ],
+      "downsideEvents": [
+        "若 rack-level power upgrade 只是單日輪動，台達與 BBU 供應鏈很快會回到整理。",
+        "若電源、超級電容與 BBU 實際採用率沒有進一步驗證，高估值成長股會先修正。",
+        "若 AI 伺服器 build schedule 延後，BBU / UPS / power module 題材的短線動能會下降。"
+      ],
+      "stocks": [
+        {
+          "rank": 1,
+          "ticker": "2308",
+          "name": "台達電",
+          "role": "伺服器電源 / UPS / power module 龍頭，位於中游電力轉換層；上游連功率元件與磁性材料，下游連 AI 伺服器、資料中心與工業客戶。",
+          "priceDate": "2026-04-28",
+          "close": "2125",
+          "entry": "2080-2135",
+          "target": "2280",
+          "stop": "2010",
+          "pe": "91.83",
+          "pb": "20.59",
+          "foreignFlow": "+3,731,630 股",
+          "institutionFlow": "+3,806,543 股",
+          "coreReason": "台達電 4/28 +5.20%，而且外資與三大法人同步大買，是資料中心 power theme 最乾淨的核心股。",
+          "notPricedIn": "4/28 的大漲反映資金開始交易 power bottleneck，但它不像小型 BBU 股那麼擁擠，仍有續航空間。",
+          "targetLogic": "2280 元對應高功率 AI rack、UPS / BBU 與 power efficiency 升級的溢價。",
+          "catalysts": [
+            "2026-04-28 收 2125 元、單日 +5.20%。",
+            "2026-04-28 外資 +3,731,630 股，三大法人合計 +3,806,543 股。",
+            "外資評級檢查：已驗證鉅亨公開評等頁存在；更新的完整原始外資報告本次未驗證。",
+            "本次未驗證到更近的完整官方法說逐字稿；下游主要引用 Google Cloud Next 2026 的 power / network infrastructure 訊號。"
+          ],
+          "downside": [
+            "若 rack-level power upgrade 只是單日輪動，台達與 BBU 供應鏈很快會回到整理。",
+            "若電源、超級電容與 BBU 實際採用率沒有進一步驗證，高估值成長股會先修正。",
+            "若 AI 伺服器 build schedule 延後，BBU / UPS / power module 題材的短線動能會下降。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "Google Cloud Next 2026 官方頁",
+            "鉅亨外資評等 2308 台達電",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 2,
+          "ticker": "6282",
+          "name": "康舒",
+          "role": "BBU / UPS 電源模組供應商，位於中游 power module。",
+          "priceDate": "2026-04-28",
+          "close": "47.7",
+          "entry": "46.2-47.9",
+          "target": "52",
+          "stop": "43.8",
+          "pe": "265.00",
+          "pb": "1.81",
+          "foreignFlow": "+801,000 股",
+          "institutionFlow": "+1,051,540 股",
+          "coreReason": "康舒是 power 題材中的中價位純種股，4/28 續漲 2.25%。",
+          "notPricedIn": "它還沒有像台達那樣先被市場完全定價，但供應鏈位置相對純。",
+          "targetLogic": "52 元對應 power module 題材重估。",
+          "catalysts": [
+            "2026-04-28 收 47.7 元、單日 +2.25%。",
+            "2026-04-28 三大法人合計 +1,051,540 股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若 rack-level power upgrade 只是單日輪動，台達與 BBU 供應鏈很快會回到整理。",
+            "若電源、超級電容與 BBU 實際採用率沒有進一步驗證，高估值成長股會先修正。",
+            "若 AI 伺服器 build schedule 延後，BBU / UPS / power module 題材的短線動能會下降。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 3,
+          "ticker": "6449",
+          "name": "鈺邦",
+          "role": "超級電容 / 備援電源零件供應商，位於 BBU 鏈的中游零件節點。",
+          "priceDate": "2026-04-28",
+          "close": "165.5",
+          "entry": "161-166.5",
+          "target": "179",
+          "stop": "154",
+          "pe": "23.21",
+          "pb": "3.14",
+          "foreignFlow": "+91,000 股",
+          "institutionFlow": "-105,875 股",
+          "coreReason": "鈺邦 4/28 上漲 3.44%，是 BBU 鏈裡最接近真正 bottleneck 零件的表達之一。",
+          "notPricedIn": "相較台達，鈺邦更像 BBU 滲透率提高時的高彈性零件股，短線仍有空間。",
+          "targetLogic": "179 元對應超級電容 / 備援電源需求放大。",
+          "catalysts": [
+            "2026-04-28 收 165.5 元、單日 +3.44%。",
+            "2026-04-28 外資 +91,000 股，但三大法人合計 -105,875 股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若 rack-level power upgrade 只是單日輪動，台達與 BBU 供應鏈很快會回到整理。",
+            "若電源、超級電容與 BBU 實際採用率沒有進一步驗證，高估值成長股會先修正。",
+            "若 AI 伺服器 build schedule 延後，BBU / UPS / power module 題材的短線動能會下降。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 4,
+          "ticker": "3023",
+          "name": "信邦",
+          "role": "BBU 線束 / 連接供應商，位於中游零件與系統連接節點。",
+          "priceDate": "2026-04-28",
+          "close": "275",
+          "entry": "270-277",
+          "target": "295",
+          "stop": "262",
+          "pe": "21.53",
+          "pb": "3.77",
+          "foreignFlow": "+1,291,255 股",
+          "institutionFlow": "+914,125 股",
+          "coreReason": "信邦是 power theme 裡相對穩健的零件表達，雖然 4/28 小跌，但作為線束 / 連接仍有後續受惠邏輯。",
+          "notPricedIn": "比高 beta BBU 電池股更不擁擠，若 power 主題延續，信邦屬慢反映型。",
+          "targetLogic": "295 元對應 power connection 需求提升。",
+          "catalysts": [
+            "2026-04-28 收 275 元、單日 -0.72%。",
+            "2026-04-28 外資 +1,291,255 股，三大法人合計 +914,125 股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若 rack-level power upgrade 只是單日輪動，台達與 BBU 供應鏈很快會回到整理。",
+            "若電源、超級電容與 BBU 實際採用率沒有進一步驗證，高估值成長股會先修正。",
+            "若 AI 伺服器 build schedule 延後，BBU / UPS / power module 題材的短線動能會下降。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 5,
+          "ticker": "6412",
+          "name": "群電",
+          "role": "BBU / UPS 電源模組供應商，位於中游 power 模組。",
+          "priceDate": "2026-04-28",
+          "close": "76.6",
+          "entry": "75-77.5",
+          "target": "83",
+          "stop": "72",
+          "pe": "14.73",
+          "pb": "2.01",
+          "foreignFlow": "+483,718 股",
+          "institutionFlow": "-118,061 股",
+          "coreReason": "群電評價相對便宜，是 power theme 裡的估值防守型標的。",
+          "notPricedIn": "因為 4/28 仍小跌，尚未被 power 題材全面拉動，反而保留補漲機會。",
+          "targetLogic": "83 元對應 UPS / BBU 模組主題擴散。",
+          "catalysts": [
+            "2026-04-28 收 76.6 元、單日 -0.91%。",
+            "2026-04-28 外資 +483,718 股，但三大法人合計 -118,061 股。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
+          ],
+          "downside": [
+            "若 rack-level power upgrade 只是單日輪動，台達與 BBU 供應鏈很快會回到整理。",
+            "若電源、超級電容與 BBU 實際採用率沒有進一步驗證，高估值成長股會先修正。",
+            "若 AI 伺服器 build schedule 延後，BBU / UPS / power module 題材的短線動能會下降。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "HBM4 / AI ASIC IP / 台積電 3DFabric 生態系",
+      "heat": "主線未死，但 4/28 讓位給記憶體與網路 / 電源支線",
+      "stance": "第 5 優先，挑最強設計服務與平台底座，不追後排弱股",
+      "summary": "Broader family：半導體製造 / AI 平台。Exact subtheme：HBM4 / AI ASIC IP / 台積電 3DFabric；nearest comparable：CoWoS 廠務 / 封裝設備裝機；不合併因前者吃平台估值與設計 / IP 價差，後者吃 CAPEX 與裝機時點。4/28 這條線在盤面上讓位給記憶體與資料中心網路，但創意仍單日大漲 5.94%，說明主題尚未結束。",
+      "pricingView": "上游是 EDA、IP、HBM4、先進材料；中游是台積 3nm / CoWoS / SoIC / 3DFabric；下游是 Google / CSP / 客製 ASIC 客戶。真正瓶頸仍在 HBM4 與先進封裝供給。",
+      "policyView": "美國 AI 與雲端建設政策仍偏擴張，Google Cloud Next 2026 沒有轉弱。",
+      "premiumSpace": "因為 4/28 平台股分化，反而讓最強的設計 / IP 股與台積底座變得更可挑選，不必全線追價。",
+      "whyNow": [
+        {
+          "label": "fresh official tape",
+          "text": "創意 +5.94%，但台積 -2.21%、世芯 -3.85%、智原 -5.36%，代表平台主線退到篩選期。"
+        },
+        {
+          "label": "older but active structural",
+          "text": "Google Cloud Next 2026、GUC 2026-04-23 HBM4 與台積 3DFabric 生態仍是原始催化來源。"
+        },
+        {
+          "label": "checked but not fully verified",
+          "text": "更細的新客戶投片與封裝排程，本次未驗證到更新的完整原始進度。"
+        },
+        {
+          "label": "why selected over next best",
+          "text": "比 CoWoS 設備更值得留在前五，因為即使 4/28 分化，設計 / IP 仍有創意這種明顯強勢股。"
+        }
+      ],
+      "downsideEvents": [
+        "若台積與設計股後續沒有新的客戶投片或封裝排程消息，4/28 的分化可能延續。",
+        "若 HBM4 / 3DFabric 供給與封裝節奏遞延，設計服務股會先修正高估值。",
+        "若市場資金持續從半導體平台股轉向網通與記憶體，這條線短線排名仍可能被壓低。"
+      ],
+      "stocks": [
+        {
+          "rank": 1,
+          "ticker": "3443",
+          "name": "創意",
+          "role": "台積生態系 ASIC / HBM4 IP / NRE 整合服務商，位於上游設計；上游連 EDA / HBM IP，下游連客製 ASIC 客戶與台積先進封裝。",
+          "priceDate": "2026-04-28",
+          "close": "4190",
+          "entry": "4120-4210",
+          "target": "4520",
+          "stop": "3970",
+          "pe": "148.95",
+          "pb": "43.48",
+          "foreignFlow": "+73,090 股",
+          "institutionFlow": "+109,817 股",
+          "coreReason": "創意是 4/28 半導體分化裡最強的設計服務股，單日 +5.94%。",
+          "notPricedIn": "4/23 的 HBM4 官方新聞到 4/28 還能繼續發酵，說明市場仍在反映第二段設計服務 / IP 連動，不是一次到位。",
+          "targetLogic": "4520 元對應 HBM4 PHY / controller、3nm 與 3DFabric 溢價。",
+          "catalysts": [
+            "2026-04-28 收 4190 元、單日 +5.94%。",
+            "2026-04-28 外資 +73,090 股，三大法人合計 +109,817 股。",
+            "已讀 2026-04-23 GUC HBM4 官方新聞稿。",
+            "外資評級檢查：已驗證鉅亨外資評等頁存在；公開評等頁屬 evidence level 2。"
+          ],
+          "downside": [
+            "若台積與設計股後續沒有新的客戶投片或封裝排程消息，4/28 的分化可能延續。",
+            "若 HBM4 / 3DFabric 供給與封裝節奏遞延，設計服務股會先修正高估值。",
+            "若市場資金持續從半導體平台股轉向網通與記憶體，這條線短線排名仍可能被壓低。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
             "GUC 2026-04-23 HBM4 官方新聞稿",
             "TSMC 2026 Technology Symposium",
+            "鉅亨外資評等 3443 創意",
+            "tw_stock_supply_chain_tags.json"
+          ]
+        },
+        {
+          "rank": 2,
+          "ticker": "2330",
+          "name": "台積電",
+          "role": "全球先進晶圓代工與 3DFabric / CoWoS 平台核心，位於中游製造與先進封裝樞紐。",
+          "priceDate": "2026-04-28",
+          "close": "2215",
+          "entry": "2180-2230",
+          "target": "2390",
+          "stop": "2120",
+          "pe": "33.44",
+          "pb": "10.60",
+          "foreignFlow": "-22,113,589 股",
+          "institutionFlow": "-20,752,110 股",
+          "coreReason": "台積 4/28 下跌 2.21%，讓 AI 平台核心從追價股回到可承接區間。",
+          "notPricedIn": "4/28 的回檔更像資金短線切換，而不是 Google / ASIC / 3DFabric 平台價值被否定。",
+          "targetLogic": "2390 元對應先進製程 / 先進封裝平台底座與 AI capex 的權值溢價。",
+          "catalysts": [
+            "2026-04-28 收 2215 元、單日 -2.21%。",
+            "2026-04-28 外資 -22,113,589 股，三大法人合計 -20,752,110 股。",
+            "已讀 Google Cloud Next 2026、TPU 8t / 8i 與 TSMC 2026 Technology Symposium 官方內容。",
+            "外資評級檢查：已驗證 UBS open-access 原始頁；公開評等頁亦可見。"
+          ],
+          "downside": [
+            "若台積與設計股後續沒有新的客戶投片或封裝排程消息，4/28 的分化可能延續。",
+            "若 HBM4 / 3DFabric 供給與封裝節奏遞延，設計服務股會先修正高估值。",
+            "若市場資金持續從半導體平台股轉向網通與記憶體，這條線短線排名仍可能被壓低。"
+          ],
+          "sourceRefs": [
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+            "Google Cloud Next 2026 官方頁",
+            "Google TPU 8t / 8i 官方文章",
+            "TSMC 2026 Technology Symposium",
+            "UBS 台積電 2330 open-access / compliance 頁",
             "tw_stock_supply_chain_tags.json"
           ]
         },
@@ -225,33 +1038,33 @@
           "rank": 3,
           "ticker": "3661",
           "name": "世芯-KY",
-          "role": "高階 ASIC 客製晶片設計服務商，位於上游設計並連到台積先進製程 / 封裝；下游客戶多為大型 CSP 與 AI 加速器開發者。",
-          "priceDate": "2026-04-27",
-          "close": "4160",
-          "entry": "4090-4210",
-          "target": "4500",
-          "stop": "4010",
-          "pe": "60.40",
-          "pb": "8.29",
-          "foreignFlow": "-45,719 股",
-          "institutionFlow": "+33,729 股",
-          "coreReason": "2026-04-27 只回跌 1.30%，代表 4/24 大漲後並未被完全反轉；在 ASIC / CSP 題材中仍屬高槓桿標的。",
-          "notPricedIn": "若後續再有客戶投片或新案進度，4/27 的小幅回檔仍像整理，不像利多出盡。",
-          "targetLogic": "4500 元對應客製 AI ASIC 專案能見度與台積平台高槓桿。",
+          "role": "高階 ASIC 客製晶片設計服務商，位於上游設計，連到台積先進製程與封裝。",
+          "priceDate": "2026-04-28",
+          "close": "4000",
+          "entry": "3920-4020",
+          "target": "4320",
+          "stop": "3820",
+          "pe": "58.08",
+          "pb": "7.97",
+          "foreignFlow": "+519,950 股",
+          "institutionFlow": "+478,491 股",
+          "coreReason": "世芯 4/28 下跌 3.85%，但仍是客製 ASIC 的關鍵高槓桿表達。",
+          "notPricedIn": "相對台積與創意，它的回檔更大，若 AI ASIC 主線再度回流，反而是彈性更高的補漲標的。",
+          "targetLogic": "4320 元反映客製 AI ASIC 專案與台積平台高槓桿。",
           "catalysts": [
-            "2026-04-27 收 4160 元、單日 -1.30%。",
-            "2026-04-27 三大法人合計 +33,729 股。",
-            "本次未驗證到較新的完整官方逐字稿，僅採官方盤後與供應鏈來源，不虛構管理層指引。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
+            "2026-04-28 收 4000 元、單日 -3.85%。",
+            "2026-04-28 外資 +519,950 股，三大法人合計 +478,491 股。",
+            "本次未驗證到更近的完整官方法說逐字稿。"
           ],
           "downside": [
-            "若 Google Cloud Next 的 TPU / Cloud CAPEX 後續沒有轉成客戶採購與台積投片，設計股會先修正。",
-            "若 HBM4、CoWoS 或 SoIC 交期遞延，ASIC / IP 題材的第二段溢價會被延後。",
-            "若 2026-04-27 之後台積與設計股同步跌破 4/24-4/27 這段加速區，主線會進入整理。"
+            "若台積與設計股後續沒有新的客戶投片或封裝排程消息，4/28 的分化可能延續。",
+            "若 HBM4 / 3DFabric 供給與封裝節奏遞延，設計服務股會先修正高估值。",
+            "若市場資金持續從半導體平台股轉向網通與記憶體，這條線短線排名仍可能被壓低。"
           ],
           "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
             "Google Cloud Next 2026 官方頁",
             "TSMC 2026 Technology Symposium",
             "tw_stock_supply_chain_tags.json"
@@ -261,34 +1074,33 @@
           "rank": 4,
           "ticker": "3035",
           "name": "智原",
-          "role": "ASIC / SoC 設計服務與 IP 整合商，位於上游設計；受惠台積製程平台與 AI / 網通 SoC 需求。",
-          "priceDate": "2026-04-27",
-          "close": "186.5",
-          "entry": "183-188",
-          "target": "205",
-          "stop": "178",
-          "pe": "66.37",
-          "pb": "3.72",
-          "foreignFlow": "-8,194,834 股",
-          "institutionFlow": "-8,558,941 股",
-          "coreReason": "智原是這條鏈的補漲位階股；4/27 還能守在 186.5 元上方，代表 4/24 的漲停式噴發沒有完全結束。",
-          "notPricedIn": "相較台積與創意，智原屬第二圈擴散；如果 AI ASIC 主線續強，它的時間差仍未完全反映。",
-          "targetLogic": "205 元對應補漲與設計服務議價延續。",
+          "role": "ASIC / SoC 設計服務與 IP 整合商，位於上游設計。",
+          "priceDate": "2026-04-28",
+          "close": "176.5",
+          "entry": "172-178",
+          "target": "194",
+          "stop": "166",
+          "pe": "62.81",
+          "pb": "3.52",
+          "foreignFlow": "-908,142 股",
+          "institutionFlow": "-1,395,808 股",
+          "coreReason": "智原 4/28 回跌 5.36%，是 HBM4 / ASIC 題材裡更靠後排的補漲候選。",
+          "notPricedIn": "因為 4/24-4/28 的走勢比創意更弱，若資金重新回到 ASIC 設計鏈，它的時間差最大。",
+          "targetLogic": "194 元對應 ASIC 設計服務補漲。",
           "catalysts": [
-            "2026-04-27 收 186.5 元、單日 +0.81%。",
-            "供應鏈標籤顯示位於上游 IC 設計並連到 AI / 網通終端。",
-            "本次未驗證到較新的完整官方法說逐字稿；若未來出現，應優先覆蓋目前文字。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
+            "2026-04-28 收 176.5 元、單日 -5.36%。",
+            "2026-04-28 三大法人合計 -1,395,808 股。",
+            "本次未驗證到更近的完整官方法說逐字稿。"
           ],
           "downside": [
-            "若 Google Cloud Next 的 TPU / Cloud CAPEX 後續沒有轉成客戶採購與台積投片，設計股會先修正。",
-            "若 HBM4、CoWoS 或 SoIC 交期遞延，ASIC / IP 題材的第二段溢價會被延後。",
-            "若 2026-04-27 之後台積與設計股同步跌破 4/24-4/27 這段加速區，主線會進入整理。"
+            "若台積與設計股後續沒有新的客戶投片或封裝排程消息，4/28 的分化可能延續。",
+            "若 HBM4 / 3DFabric 供給與封裝節奏遞延，設計服務股會先修正高估值。",
+            "若市場資金持續從半導體平台股轉向網通與記憶體，這條線短線排名仍可能被壓低。"
           ],
           "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
+            "TWSE 2026-04-28 大盤與個股收盤",
+            "TWSE 2026-04-28 三大法人 T86",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
             "tw_stock_supply_chain_tags.json"
           ]
         },
@@ -296,882 +1108,30 @@
           "rank": 5,
           "ticker": "6531",
           "name": "愛普*",
-          "role": "記憶體 / IP 與 AI 介面晶片供應鏈，位於記憶體與邏輯整合層；上游連到先進記憶體，下游連到 AI 子系統與 SoC 客戶。",
-          "priceDate": "2026-04-27",
-          "close": "753",
-          "entry": "740-758",
-          "target": "820",
-          "stop": "724",
-          "pe": "97.41",
-          "pb": "10.01",
-          "foreignFlow": "-147,023 股",
-          "institutionFlow": "-175,006 股",
-          "coreReason": "4/27 跌 4.44% 讓它從追價股轉成回檔承接股；若 HBM / 記憶體子系統題材持續擴散，它比前排權值更有補漲彈性。",
-          "notPricedIn": "4/27 的回檔意味市場尚未把它當成主流一致擁擠標的，反而保留後續補漲空間。",
-          "targetLogic": "820 元反映記憶體介面與 AI IP 第二圈擴散。",
+          "role": "記憶體 / IP 與 AI 介面晶片供應鏈成員，位於中游整合層。",
+          "priceDate": "2026-04-28",
+          "close": "800",
+          "entry": "727-756",
+          "target": "810",
+          "stop": "702",
+          "pe": "103.49",
+          "pb": "10.63",
+          "foreignFlow": "-529,004 股",
+          "institutionFlow": "-478,932 股",
+          "coreReason": "愛普* 4/28 未列入最強漲幅，但作為 HBM / 記憶體介面題材仍具第二層彈性。",
+          "notPricedIn": "因為這波資金更明顯去追記憶體與網通，愛普* 反而沒有 fully reflect HBM spillover。",
+          "targetLogic": "810 元反映 AI 記憶體子系統與介面 IP 第二圈補漲。",
           "catalysts": [
-            "2026-04-27 收 753 元、單日 -4.44%。",
-            "本次未驗證到更新的官方法說逐字稿，因此僅引用官方盤後與供應鏈資料。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
+            "2026-04-28 收盤資料未列入最強族群前段，短線更適合看回檔承接。",
+            "本次未驗證到更近的完整官方法說逐字稿與新增內部人變動。"
           ],
           "downside": [
-            "若 Google Cloud Next 的 TPU / Cloud CAPEX 後續沒有轉成客戶採購與台積投片，設計股會先修正。",
-            "若 HBM4、CoWoS 或 SoIC 交期遞延，ASIC / IP 題材的第二段溢價會被延後。",
-            "若 2026-04-27 之後台積與設計股同步跌破 4/24-4/27 這段加速區，主線會進入整理。"
+            "若台積與設計股後續沒有新的客戶投片或封裝排程消息，4/28 的分化可能延續。",
+            "若 HBM4 / 3DFabric 供給與封裝節奏遞延，設計服務股會先修正高估值。",
+            "若市場資金持續從半導體平台股轉向網通與記憶體，這條線短線排名仍可能被壓低。"
           ],
           "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        }
-      ]
-    },
-    {
-      "rank": 2,
-      "name": "記憶體 / DRAM / NAND 價格重估",
-      "heat": "4/27 正式成為主流量價題材，開盤前仍維持高優先級",
-      "stance": "第 2 優先，優先做原廠，再往控制 IC / 模組擴散",
-      "summary": "Broader family：記憶體。Exact subtheme：記憶體 / DRAM / NAND 價格重估；nearest comparable：HBM spillover；不合併因這條線的核心驅動是合約價、供需與 mature-node capacity，不是同一套先進封裝平台估值。2026-04-27 已形成全市場廣度，而 2026-04-28 開盤前沒有更晚官方資料推翻這個重估邏輯。",
-      "pricingView": "上游是晶圓、設備、化學品與先進記憶體製程；中游是 DRAM / NAND 原廠與控制 IC；下游是 enterprise SSD、模組、PC OEM 與北美 CSP。這波最關鍵的 bottleneck 是 server DRAM 與 enterprise SSD 配置，而 ոչ單純 PC 補庫。",
-      "policyView": "直接的台灣政策支持不強，但美國 AI 伺服器與 CSP 長約把需求端穩住；南亞科私募引入四大客戶，也讓供應安全成為實質支撐。",
-      "premiumSpace": "由於 4/13 南亞科官方 Q1 財報到 4/27 才出現全族群擴散，代表市場是分段反映，不是一步到位。",
-      "whyNow": [
-        {
-          "label": "fresh industry",
-          "text": "TrendForce 2026-03-31 預估 2Q26 conventional DRAM 合約價季增 58-63%，NAND 合約價季增 70-75%。"
-        },
-        {
-          "label": "fresh company",
-          "text": "南亞科 2026-04-13 官方 Q1 財報顯示 ASP 季增超過 70%，並揭露四大客戶私募入股。"
-        },
-        {
-          "label": "fresh official tape",
-          "text": "2026-04-27 南亞科、旺宏、華邦電、威剛、群聯、十銓同步大漲，題材正式成形。"
-        },
-        {
-          "label": "split",
-          "text": "本題材與 HBM4 / ASIC 分開，因驅動因子是記憶體報價與供需，不是同一套平台估值。"
-        }
-      ],
-      "downsideEvents": [
-        "若 2Q26 DRAM / NAND 合約價談判不如 TrendForce 預估，記憶體族群漲勢容易回吐。",
-        "若 AI server 與 enterprise SSD 拉貨不連續，控制 IC 與模組股的彈性會先消失。",
-        "若 4/27 的記憶體廣度只是單日軋空，後續量能沒有延續，題材排名會快速下修。"
-      ],
-      "stocks": [
-        {
-          "rank": 1,
-          "ticker": "2408",
-          "name": "南亞科",
-          "role": "DRAM 原廠與中游製造核心；上游依賴設備、材料與製程技術，下游對接 PC、server、工控與四大策略客戶。",
-          "priceDate": "2026-04-27",
-          "close": "226.5",
-          "entry": "220-229",
-          "target": "255",
-          "stop": "212",
-          "pe": "106.34",
-          "pb": "4.12",
-          "foreignFlow": "+36,559,346 股",
-          "institutionFlow": "+38,583,200 股",
-          "coreReason": "南亞科 2026-04-13 官方 Q1 財報先給出 ASP 季增超過 70%、營收季增 63.1% 與四大客戶私募入股，直到 2026-04-27 股價才正式以漲停回應，代表利多不是一天就完全反映。",
-          "notPricedIn": "關鍵營運訊號發生在 2026-04-13，但 4/27 才出現全市場廣度擴散，說明市場前段時間仍偏保守，現在屬於從半反映走向全面反映的過程。",
-          "targetLogic": "255 元對應 DRAM 報價重估、DDR5 與 AI UWIO 起量，以及四大客戶綁定後的供應安全溢價。",
-          "catalysts": [
-            "2026-04-27 收 226.5 元、單日 +9.95%。",
-            "2026-04-27 外資 +36,559,346 股，三大法人合計 +38,583,200 股。",
-            "2026-04-13 官方 Q1 財報：ASP 季增超過 70%，DDR5 約占營收 10%，新廠設備預計 2027Q1 安裝。",
-            "董監 / 內部人持股檢查：未驗證到新增；但 2026-04-08 完成四大客戶私募入股，屬結構性支持。"
-          ],
-          "downside": [
-            "若 2Q26 DRAM / NAND 合約價談判不如 TrendForce 預估，記憶體族群漲勢容易回吐。",
-            "若 AI server 與 enterprise SSD 拉貨不連續，控制 IC 與模組股的彈性會先消失。",
-            "若 4/27 的記憶體廣度只是單日軋空，後續量能沒有延續，題材排名會快速下修。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Nanya 2026-04-13 Q1 財報",
-            "Nanya 2026-04-08 3 月營收新聞稿",
-            "TrendForce 2026-03-31 記憶體價格調查",
-            "鉅亨外資評等 2408 南亞科",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 2,
-          "ticker": "8299",
-          "name": "群聯",
-          "role": "NAND 控制 IC 與企業級儲存控制器供應商，位於上游設計；上游承接 NAND 原廠，下游連到 enterprise SSD、模組與品牌客戶。",
-          "priceDate": "2026-04-27",
-          "close": "1835",
-          "entry": "1780-1845",
-          "target": "1980",
-          "stop": "1710",
-          "pe": "目前未驗證",
-          "pb": "目前未驗證",
-          "foreignFlow": "+1,373,337 股",
-          "institutionFlow": "+1,856,627 股",
-          "coreReason": "這波不只是 DRAM 原廠，而是連控制 IC 都被拉起來；群聯 2026-04-27 大漲 9.23%，說明市場在押 enterprise SSD 與 AI server 對 NAND / controller 的連動需求。",
-          "notPricedIn": "4/27 的爆發較像市場重新評價 NAND 供應鏈位置，而不是單一公告落地；若企業級 SSD 報價與拉貨延續，仍未完全反映。",
-          "targetLogic": "1980 元反映 controller 端對 enterprise SSD 與資料中心需求的高彈性。",
-          "catalysts": [
-            "2026-04-27 收 1835 元、單日 +9.23%。",
-            "2026-04-27 外資 +1,373,337 股，三大法人合計 +1,856,627 股。",
-            "外資評級 / 目標價歷史頁檢查：已查鉅亨公開頁，但本次未驗證到更新且高於現價的完整原始 broker 報告，因此不把舊目標價當主要論據。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
-          ],
-          "downside": [
-            "若 2Q26 DRAM / NAND 合約價談判不如 TrendForce 預估，記憶體族群漲勢容易回吐。",
-            "若 AI server 與 enterprise SSD 拉貨不連續，控制 IC 與模組股的彈性會先消失。",
-            "若 4/27 的記憶體廣度只是單日軋空，後續量能沒有延續，題材排名會快速下修。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TrendForce 2026-03-31 記憶體價格調查",
-            "鉅亨外資評等 8299 群聯",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 3,
-          "ticker": "2344",
-          "name": "華邦電",
-          "role": "利基型記憶體 IDM，涵蓋 NOR Flash、DRAM 與 embedded 記憶體，位於中游製造；下游連工控、車用與消費終端。",
-          "priceDate": "2026-04-27",
-          "close": "93.9",
-          "entry": "91-94.5",
-          "target": "104",
-          "stop": "88.5",
-          "pe": "106.70",
-          "pb": "3.91",
-          "foreignFlow": "+11,770,458 股",
-          "institutionFlow": "+30,707,932 股",
-          "coreReason": "華邦電 2026-04-27 上漲 6.46%，而且三大法人買超超過 3,000 萬股，屬於記憶體擴散中的中大型量價共振股。",
-          "notPricedIn": "相較南亞科的單日漲停，華邦電 4/27 的漲幅與位階仍偏第二圈，若市場繼續從 DRAM 原廠往周邊擴散，它還沒有完全反映。",
-          "targetLogic": "104 元對應記憶體報價重估往利基型產品延伸，以及大額法人回補後的估值上移。",
-          "catalysts": [
-            "2026-04-27 收 93.9 元、單日 +6.46%。",
-            "2026-04-27 外資 +11,770,458 股，三大法人合計 +30,707,932 股。",
-            "外資評級 / 目標價歷史頁檢查：已查鉅亨公開頁，完整原始報告本次未驗證。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人加碼。"
-          ],
-          "downside": [
-            "若 2Q26 DRAM / NAND 合約價談判不如 TrendForce 預估，記憶體族群漲勢容易回吐。",
-            "若 AI server 與 enterprise SSD 拉貨不連續，控制 IC 與模組股的彈性會先消失。",
-            "若 4/27 的記憶體廣度只是單日軋空，後續量能沒有延續，題材排名會快速下修。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "TrendForce 2026-03-31 記憶體價格調查",
-            "鉅亨外資評等 2344 華邦電",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 4,
-          "ticker": "2337",
-          "name": "旺宏",
-          "role": "NOR Flash / NAND 記憶體製造商，位於中游製造；下游連工業、車用、遊戲與嵌入式儲存需求。",
-          "priceDate": "2026-04-27",
-          "close": "145",
-          "entry": "141-146",
-          "target": "160",
-          "stop": "137",
-          "pe": "0.00",
-          "pb": "6.11",
-          "foreignFlow": "+29,694,190 股",
-          "institutionFlow": "+31,899,430 股",
-          "coreReason": "2026-04-27 旺宏幾乎漲停，且法人買盤非常集中，顯示這波記憶體重估已擴散到非 DRAM 純種族群。",
-          "notPricedIn": "旺宏更像市場把記憶體景氣從 DRAM 往 NOR / NAND 擴散的第二層表達，當天強度很高，但結構性重估可能還沒結束。",
-          "targetLogic": "160 元對應記憶體景氣擴散與法人追價延續。",
-          "catalysts": [
-            "2026-04-27 收 145 元、單日 +9.85%。",
-            "2026-04-27 外資 +29,694,190 股，三大法人合計 +31,899,430 股。",
-            "本次未驗證到較新的完整官方法說逐字稿；若之後有營收 / 財報公告，應優先覆蓋。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
-          ],
-          "downside": [
-            "若 2Q26 DRAM / NAND 合約價談判不如 TrendForce 預估，記憶體族群漲勢容易回吐。",
-            "若 AI server 與 enterprise SSD 拉貨不連續，控制 IC 與模組股的彈性會先消失。",
-            "若 4/27 的記憶體廣度只是單日軋空，後續量能沒有延續，題材排名會快速下修。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "TrendForce 2026-03-31 記憶體價格調查",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 5,
-          "ticker": "3260",
-          "name": "威剛",
-          "role": "記憶體模組與 SSD 業者，位於中游模組 / 下游品牌環節；上游承接 DRAM / NAND 原廠與控制器，下游對接通路與企業客戶。",
-          "priceDate": "2026-04-27",
-          "close": "440",
-          "entry": "430-442",
-          "target": "485",
-          "stop": "418",
-          "pe": "目前未驗證",
-          "pb": "目前未驗證",
-          "foreignFlow": "+5,887,156 股",
-          "institutionFlow": "+6,810,608 股",
-          "coreReason": "威剛 2026-04-27 直接漲停，代表記憶體報價不只反映在原廠，也擴散到模組 / 品牌端。",
-          "notPricedIn": "模組股通常比原廠晚被市場確認；4/27 的漲停像是第一天被主流資金納入，而不是最後一棒。",
-          "targetLogic": "485 元對應模組 / SSD 庫存利益與價格傳導。",
-          "catalysts": [
-            "2026-04-27 收 440 元、單日 +10.00%。",
-            "2026-04-27 外資 +5,887,156 股，三大法人合計 +6,810,608 股。",
-            "供應鏈標籤明確標示為記憶體模組 / SSD，這次用來補足原廠之外的擴散層。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人加碼。"
-          ],
-          "downside": [
-            "若 2Q26 DRAM / NAND 合約價談判不如 TrendForce 預估，記憶體族群漲勢容易回吐。",
-            "若 AI server 與 enterprise SSD 拉貨不連續，控制 IC 與模組股的彈性會先消失。",
-            "若 4/27 的記憶體廣度只是單日軋空，後續量能沒有延續，題材排名會快速下修。"
-          ],
-          "sourceRefs": [
-            "TPEX 2026-04-27 日行情",
-            "TPEX 2026-04-27 三大法人",
-            "TrendForce 2026-03-31 記憶體價格調查",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        }
-      ]
-    },
-    {
-      "rank": 3,
-      "name": "高速 CCL / M8-M9 材料鏈",
-      "heat": "龍頭續強、材料純度越高越有議價力",
-      "stance": "第 3 優先，做高速材料龍頭與回檔純度股",
-      "summary": "Broader family：電子材料與板材。Exact subtheme：高速 CCL / M8-M9 材料鏈；nearest comparable：AI server PCB / 交換器板；不合併因本題材的真正 bottleneck 在高速材料規格、上游日系玻纖布 / 樹脂 / 銅箔議價，而不是所有板廠一起漲。4/27 盤面顯示龍頭台光電續強、次梯隊分化，最適合用材料 bottleneck 角度解讀。",
-      "pricingView": "上游看 Panasonic、Nittobo、Sumitomo Bakelite、銅箔與低損耗樹脂；中游是高速 CCL 與高規格板材；下游才是 AI server board 與 switch board。最核心瓶頸在 M8 / M9、低損耗與高頻高速規格。",
-      "policyView": "這條線沒有直接的台灣政策紅利，主要由美系雲端與 AI 伺服器平台升級驅動。White House 關稅與金屬政策讓上游材料成本偏緊，反而有利具議價權的台廠。",
-      "premiumSpace": "4/24 到 4/27 的第一段主要反映「AI 需要高規格材料」，但日系上游調價與料號升級還沒完全反映在所有台廠估值。",
-      "whyNow": [
-        {
-          "label": "fresh upstream",
-          "text": "Panasonic 2026-04-09 與 Sumitomo Bakelite 的跨國上游材料調價訊號，延續高階板材價格支撐。"
-        },
-        {
-          "label": "fresh official tape",
-          "text": "2026-04-27 台光電 +5.70%、金像電 +2.16%、臻鼎-KY +3.17%，顯示族群沒退潮。"
-        },
-        {
-          "label": "cross-border chain",
-          "text": "Nittobo 玻纖布、低損耗樹脂與高多層板材仍是高速交換器與 AI server 的瓶頸之一。"
-        },
-        {
-          "label": "split",
-          "text": "本題材與光通訊 / 機櫃分開，因核心盈利驅動是材料與板層升級，不是光模組或整機。"
-        }
-      ],
-      "downsideEvents": [
-        "若 Panasonic、Sumitomo 等上游漲價無法持續轉嫁到終端板價，毛利預期會被壓縮。",
-        "若 AI 伺服器板與交換器板拉貨節奏放緩，高位板材股容易先修正估值。",
-        "若台光電 / 金像電 / 臻鼎在 4/27 後失去族群廣度，題材將從主升段轉為震盪段。"
-      ],
-      "stocks": [
-        {
-          "rank": 1,
-          "ticker": "2383",
-          "name": "台光電",
-          "role": "高階高速 CCL 龍頭，位於上中游材料層；上游連玻纖布、樹脂、銅箔，下游連 AI 伺服器板、交換器板與高多層 PCB 廠。",
-          "priceDate": "2026-04-27",
-          "close": "4730",
-          "entry": "4650-4760",
-          "target": "5150",
-          "stop": "4480",
-          "pe": "115.70",
-          "pb": "33.59",
-          "foreignFlow": "+517,572 股",
-          "institutionFlow": "+588,374 股",
-          "coreReason": "台光電是這條線最乾淨的龍頭，2026-04-27 在 4/24 大漲後再漲 5.70%，代表資金仍願意為高速 CCL 供應稀缺性付價。",
-          "notPricedIn": "2026-04-24 到 2026-04-27 的連漲已反映第一段熱度，但上游跨國材料漲價與 AI 板層升級還沒結束；只是更適合拉回分批，不宜追價。",
-          "targetLogic": "5150 元反映高階 CCL 議價權、材料漲價傳導與 AI 伺服器板層升級。",
-          "catalysts": [
-            "2026-04-27 收 4730 元、單日 +5.70%。",
-            "2026-04-27 外資 +517,572 股，三大法人合計 +588,374 股。",
-            "外資評級檢查：已驗證鉅亨 / FactSet 公開聚合頁，舊目標價明顯落後現價，因此不把舊共識當未反映證據。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
-          ],
-          "downside": [
-            "若 Panasonic、Sumitomo 等上游漲價無法持續轉嫁到終端板價，毛利預期會被壓縮。",
-            "若 AI 伺服器板與交換器板拉貨節奏放緩，高位板材股容易先修正估值。",
-            "若台光電 / 金像電 / 臻鼎在 4/27 後失去族群廣度，題材將從主升段轉為震盪段。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Panasonic 2026-04-09 CCL 價格調整通知",
-            "Sumitomo Bakelite 2026-01-29 積層板價格調整",
-            "Nittobo PCB Glass Cloth 官方頁",
-            "鉅亨 / FactSet 台光電 2383",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 2,
-          "ticker": "2368",
-          "name": "金像電",
-          "role": "AI 伺服器與網通高多層 PCB 廠，位於中游零件製造；上游吃 CCL / 銅箔，下游連白牌伺服器與交換器客戶。",
-          "priceDate": "2026-04-27",
-          "close": "1420",
-          "entry": "1390-1430",
-          "target": "1530",
-          "stop": "1340",
-          "pe": "74.70",
-          "pb": "21.43",
-          "foreignFlow": "-1,123,385 股",
-          "institutionFlow": "-501,667 股",
-          "coreReason": "即使 2026-04-27 外資轉賣，金像電仍能再漲 2.16%，說明市場對 AI 板與交換器板的需求認知沒有消失。",
-          "notPricedIn": "股價已反映不少熱度，但還沒看到高位爆量轉弱；在台光電續強的前提下，金像電還屬跟隨強勢股。",
-          "targetLogic": "1530 元對應高多層 AI 板持續供不應求。",
-          "catalysts": [
-            "2026-04-27 收 1420 元、單日 +2.16%。",
-            "本次未驗證到較新的完整官方法說逐字稿，仍以官方盤後與供應鏈資料為主。",
-            "外資評級檢查：公開聚合目標價落後現價，故更偏順勢交易而非估值修復。"
-          ],
-          "downside": [
-            "若 Panasonic、Sumitomo 等上游漲價無法持續轉嫁到終端板價，毛利預期會被壓縮。",
-            "若 AI 伺服器板與交換器板拉貨節奏放緩，高位板材股容易先修正估值。",
-            "若台光電 / 金像電 / 臻鼎在 4/27 後失去族群廣度，題材將從主升段轉為震盪段。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Panasonic 2026-04-09 CCL 價格調整通知",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 3,
-          "ticker": "4958",
-          "name": "臻鼎-KY",
-          "role": "高階 PCB 與系統板整合製造商，位於中游板件製造；上游連 CCL，下游連伺服器、手機與多種終端。",
-          "priceDate": "2026-04-27",
-          "close": "358.5",
-          "entry": "351-361",
-          "target": "390",
-          "stop": "340",
-          "pe": "56.46",
-          "pb": "3.09",
-          "foreignFlow": "-9,467,425 股",
-          "institutionFlow": "-5,380,816 股",
-          "coreReason": "臻鼎-KY 4/27 仍漲 3.17%，證明市場願意往第二層板廠擴散。",
-          "notPricedIn": "外資賣超下仍能上漲，表示價格行為比法人籌碼更強，題材還在延續期。",
-          "targetLogic": "390 元對應 AI server / 網通板需求擴散。",
-          "catalysts": [
-            "2026-04-27 收 358.5 元、單日 +3.17%。",
-            "供應鏈標籤把它放在 PCB 中游關鍵製造層。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人加碼。"
-          ],
-          "downside": [
-            "若 Panasonic、Sumitomo 等上游漲價無法持續轉嫁到終端板價，毛利預期會被壓縮。",
-            "若 AI 伺服器板與交換器板拉貨節奏放緩，高位板材股容易先修正估值。",
-            "若台光電 / 金像電 / 臻鼎在 4/27 後失去族群廣度，題材將從主升段轉為震盪段。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 4,
-          "ticker": "6274",
-          "name": "台燿",
-          "role": "高速 CCL / 特殊材料供應商，位於上游材料；下游連高多層 PCB 與高頻高速板。",
-          "priceDate": "2026-04-27",
-          "close": "990",
-          "entry": "970-995",
-          "target": "1070",
-          "stop": "940",
-          "pe": "目前未驗證",
-          "pb": "目前未驗證",
-          "foreignFlow": "-156,234 股",
-          "institutionFlow": "-177,347 股",
-          "coreReason": "4/27 回跌 5.26%，讓台燿從主升段轉成回檔承接股；如果高階 CCL 主線不變，它的風險報酬比反而改善。",
-          "notPricedIn": "2026-04-24 的強勢已先反映熱度，4/27 的回檔是在龍頭沒轉弱前重新給進場機會。",
-          "targetLogic": "1070 元對應高速材料補漲與高階 CCL 報價續強。",
-          "catalysts": [
-            "2026-04-27 收 990 元、單日 -5.26%。",
-            "上游日本材料漲價訊號仍在，價格邏輯未被破壞。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人加碼。"
-          ],
-          "downside": [
-            "若 Panasonic、Sumitomo 等上游漲價無法持續轉嫁到終端板價，毛利預期會被壓縮。",
-            "若 AI 伺服器板與交換器板拉貨節奏放緩，高位板材股容易先修正估值。",
-            "若台光電 / 金像電 / 臻鼎在 4/27 後失去族群廣度，題材將從主升段轉為震盪段。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "Panasonic 2026-04-09 CCL 價格調整通知",
-            "Sumitomo Bakelite 2026-01-29 積層板價格調整",
-            "Nittobo PCB Glass Cloth 官方頁",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 5,
-          "ticker": "6672",
-          "name": "騰輝電子-KY",
-          "role": "特殊 CCL 與高速板材供應商，位於上游材料層；下游連網通與工規板廠。",
-          "priceDate": "2026-04-27",
-          "close": "207.5",
-          "entry": "203-209",
-          "target": "225",
-          "stop": "196",
-          "pe": "42.78",
-          "pb": "4.15",
-          "foreignFlow": "-977,170 股",
-          "institutionFlow": "-1,051,195 股",
-          "coreReason": "這檔屬高階板材第二梯隊，4/27 小跌 1.43%，比起 4/24 的大漲更適合等回檔。",
-          "notPricedIn": "族群龍頭沒有轉弱前，第二梯隊的回檔通常是消化而非結束。",
-          "targetLogic": "225 元對應高階材料第二圈補漲。",
-          "catalysts": [
-            "2026-04-27 收 207.5 元、單日 -1.43%。",
-            "本次未驗證到更新的完整官方法說逐字稿。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
-          ],
-          "downside": [
-            "若 Panasonic、Sumitomo 等上游漲價無法持續轉嫁到終端板價，毛利預期會被壓縮。",
-            "若 AI 伺服器板與交換器板拉貨節奏放緩，高位板材股容易先修正估值。",
-            "若台光電 / 金像電 / 臻鼎在 4/27 後失去族群廣度，題材將從主升段轉為震盪段。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Panasonic 2026-04-09 CCL 價格調整通知",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        }
-      ]
-    },
-    {
-      "rank": 4,
-      "name": "高功率機櫃 / 液冷配套",
-      "heat": "4/27 普遍拉回，但同一套 rack-power 主線仍在",
-      "stance": "第 4 優先，先做回檔後仍保有訂單能見度的核心零件股",
-      "summary": "Broader family：AI infrastructure。Exact subtheme：高功率機櫃 / 液冷配套；nearest comparable：伺服器電源 / BBU；本次維持合併是因同樣由 hyperscaler rack power envelope、液冷滲透與資料中心 build schedule 驅動，近 3-10 個交易日的台股價格行為也高度同步。4/27 的普遍回檔讓這條線從追價題材轉成 pullback-buy 題材。",
-      "pricingView": "上游是銅材、連接器、高速線材、散熱材料與高功率電源零件；中游是機櫃、液冷、散熱、電源與高速互連整合；下游是 Nvidia / Google / CSP 機櫃平台與 ODM。瓶頸在高密度電力與散熱，而不是傳統伺服器箱體。",
-      "policyView": "這條線主要吃美系 AI 資本支出，不靠台灣政策。Google Cloud Next 與北美資料中心基建升級仍是最主要的需求來源。",
-      "premiumSpace": "因為 4/27 是整理而不是全面破線，只要北美 hyperscaler build schedule 沒變，下一段仍有機會由承接力較強的領頭羊先表態。",
-      "whyNow": [
-        {
-          "label": "fresh official",
-          "text": "Google Cloud Next 2026 持續強調 AI 資料中心網路、機櫃與電力效率。"
-        },
-        {
-          "label": "fresh tape",
-          "text": "2026-04-27 族群普遍回檔，代表市場從追價切到承接與排序。"
-        },
-        {
-          "label": "cross-border chain",
-          "text": "高功率機櫃仰賴銅、CCL、電源與高速互連零件，受全球供應鏈節奏影響大於單一台廠事件。"
-        },
-        {
-          "label": "merged",
-          "text": "機櫃、液冷、電源與高功率互連本次合併，因同受 hyperscaler rack power envelope 與平台升級驅動。"
-        }
-      ],
-      "downsideEvents": [
-        "若 hyperscaler 機櫃與液冷訂單只是 4/24 前的短線追價，4/27 這波拉回仍可能延續。",
-        "若高功率伺服器平台延後導入，機櫃、線束、散熱與電源的接單節奏會一起放慢。",
-        "若銅、CCL、電源零件成本上升但終端 ASP 不能同步轉嫁，獲利彈性會縮水。"
-      ],
-      "stocks": [
-        {
-          "rank": 1,
-          "ticker": "8210",
-          "name": "勤誠",
-          "role": "伺服器機殼 / 機櫃整合商，位於中下游整機與結構件層；上游連金屬加工與零組件，下游連 ODM / brand server 客戶。",
-          "priceDate": "2026-04-27",
-          "close": "1165",
-          "entry": "1135-1170",
-          "target": "1280",
-          "stop": "1105",
-          "pe": "41.02",
-          "pb": "13.41",
-          "foreignFlow": "-616,141 股",
-          "institutionFlow": "-366,425 股",
-          "coreReason": "勤誠 4/27 回跌 3.72%，讓 4/24 的急漲冷卻；若 AI rack 需求沒變，這種回檔比追在高點更合理。",
-          "notPricedIn": "2026-04-24 漲停已反映短線情緒，但 4/27 的拉回讓公開賣方目標價與現價重新接近，題材還沒走完。",
-          "targetLogic": "1280 元反映 AI 機櫃平台升級與機構件 ASP 上修。",
-          "catalysts": [
-            "2026-04-27 收 1165 元、單日 -3.72%。",
-            "外資評級檢查：已驗證鉅亨 / FactSet 公開聚合頁，公開目標價仍相對貼近現價。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。"
-          ],
-          "downside": [
-            "若 hyperscaler 機櫃與液冷訂單只是 4/24 前的短線追價，4/27 這波拉回仍可能延續。",
-            "若高功率伺服器平台延後導入，機櫃、線束、散熱與電源的接單節奏會一起放慢。",
-            "若銅、CCL、電源零件成本上升但終端 ASP 不能同步轉嫁，獲利彈性會縮水。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Google Cloud Next 2026 官方頁",
-            "鉅亨 / FactSet 勤誠 8210",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 2,
-          "ticker": "2345",
-          "name": "智邦",
-          "role": "高速交換器與資料中心網通設備供應商，位於中游系統整合；上游連高速 CCL、ASIC、光模組，下游對接 CSP 與大型資料中心。",
-          "priceDate": "2026-04-27",
-          "close": "2175",
-          "entry": "2140-2190",
-          "target": "2360",
-          "stop": "2080",
-          "pe": "46.15",
-          "pb": "21.13",
-          "foreignFlow": "-207,779 股",
-          "institutionFlow": "+592,637 股",
-          "coreReason": "智邦在機櫃 / 互連族群回檔日仍上漲 1.64%，顯示 800G / 1.6T 交換器仍是更強的子主題。",
-          "notPricedIn": "當同族群普遍回檔而智邦仍守強，通常代表下游客戶需求能見度更高，題材未完。",
-          "targetLogic": "2360 元對應高速交換器與 AI network fabric 升級。",
-          "catalysts": [
-            "2026-04-27 收 2175 元、單日 +1.64%。",
-            "2026-04-27 三大法人合計 +592,637 股。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。"
-          ],
-          "downside": [
-            "若 hyperscaler 機櫃與液冷訂單只是 4/24 前的短線追價，4/27 這波拉回仍可能延續。",
-            "若高功率伺服器平台延後導入，機櫃、線束、散熱與電源的接單節奏會一起放慢。",
-            "若銅、CCL、電源零件成本上升但終端 ASP 不能同步轉嫁，獲利彈性會縮水。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Google Cloud Next 2026 官方頁",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 3,
-          "ticker": "3665",
-          "name": "貿聯-KY",
-          "role": "高速線束、連接器與電力線材供應商，位於中游關鍵零組件層；上游連銅材與連接器，下游連 EV、伺服器與資料中心客戶。",
-          "priceDate": "2026-04-27",
-          "close": "2630",
-          "entry": "2570-2640",
-          "target": "2860",
-          "stop": "2480",
-          "pe": "56.95",
-          "pb": "11.00",
-          "foreignFlow": "+448,555 股",
-          "institutionFlow": "+375,297 股",
-          "coreReason": "雖然 4/27 跌 4.88%，但法人反而站在買方，代表市場在用回檔重整倉位，而不是直接放棄高功率互連。",
-          "notPricedIn": "貿聯屬跨 EV 與 AI 的連接器股，4/27 股價弱於基本面籌碼，仍有補修復空間。",
-          "targetLogic": "2860 元反映高速線束與高功率連接需求提升。",
-          "catalysts": [
-            "2026-04-27 收 2630 元、單日 -4.88%。",
-            "2026-04-27 外資 +448,555 股，三大法人合計 +375,297 股。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。"
-          ],
-          "downside": [
-            "若 hyperscaler 機櫃與液冷訂單只是 4/24 前的短線追價，4/27 這波拉回仍可能延續。",
-            "若高功率伺服器平台延後導入，機櫃、線束、散熱與電源的接單節奏會一起放慢。",
-            "若銅、CCL、電源零件成本上升但終端 ASP 不能同步轉嫁，獲利彈性會縮水。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 4,
-          "ticker": "3017",
-          "name": "奇鋐",
-          "role": "AI 散熱與液冷解決方案供應商，位於中游熱管理層；下游連 AI 伺服器、機櫃與資料中心平台。",
-          "priceDate": "2026-04-27",
-          "close": "2835",
-          "entry": "2770-2850",
-          "target": "3070",
-          "stop": "2690",
-          "pe": "57.95",
-          "pb": "24.93",
-          "foreignFlow": "-836,957 股",
-          "institutionFlow": "-611,796 股",
-          "coreReason": "奇鋐 4/27 跌 3.74%，但液冷仍是最確定的資料中心升級方向之一，回檔後反而比較能評估風險報酬。",
-          "notPricedIn": "液冷趨勢是結構性，不會因單日回檔結束；只是目前比 4/24 更適合等待承接。",
-          "targetLogic": "3070 元對應液冷滲透率提升與高階散熱模組 ASP。",
-          "catalysts": [
-            "2026-04-27 收 2835 元、單日 -3.74%。",
-            "供應鏈邏輯來自高功率機櫃散熱需求，而非單一客戶新聞。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。"
-          ],
-          "downside": [
-            "若 hyperscaler 機櫃與液冷訂單只是 4/24 前的短線追價，4/27 這波拉回仍可能延續。",
-            "若高功率伺服器平台延後導入，機櫃、線束、散熱與電源的接單節奏會一起放慢。",
-            "若銅、CCL、電源零件成本上升但終端 ASP 不能同步轉嫁，獲利彈性會縮水。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "Google Cloud Next 2026 官方頁",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 5,
-          "ticker": "2308",
-          "name": "台達電",
-          "role": "伺服器電源與電力管理龍頭，位於中游電源整合層；上游連功率元件與磁性材料，下游連資料中心、工控與重電客戶。",
-          "priceDate": "2026-04-27",
-          "close": "2020",
-          "entry": "1980-2030",
-          "target": "2190",
-          "stop": "1920",
-          "pe": "87.29",
-          "pb": "19.57",
-          "foreignFlow": "-3,573,792 股",
-          "institutionFlow": "-3,794,069 股",
-          "coreReason": "台達電是機櫃 / 液冷 / 電網三題材交集股，4/27 下跌 2.65% 讓進場難度降低。",
-          "notPricedIn": "它沒有像小型機櫃股那樣極端噴出，反而保留「慢慢反映高功率平台需求」的空間。",
-          "targetLogic": "2190 元反映 AI 伺服器電源與高效率電力管理的穩定溢價。",
-          "catalysts": [
-            "2026-04-27 收 2020 元、單日 -2.65%。",
-            "同時受惠 AI server power 與電網設備敘事，但本次仍以 AI 高功率平台邏輯排序。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。"
-          ],
-          "downside": [
-            "若 hyperscaler 機櫃與液冷訂單只是 4/24 前的短線追價，4/27 這波拉回仍可能延續。",
-            "若高功率伺服器平台延後導入，機櫃、線束、散熱與電源的接單節奏會一起放慢。",
-            "若銅、CCL、電源零件成本上升但終端 ASP 不能同步轉嫁，獲利彈性會縮水。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "White House 2026-04-20 DPA 電網基礎設施",
-            "Google Cloud Next 2026 官方頁",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        }
-      ]
-    },
-    {
-      "rank": 5,
-      "name": "CoWoS 廠務 / 封裝設備裝機",
-      "heat": "CAPEX 主線仍在，但短線優先級被記憶體與權值壓到第 5",
-      "stance": "第 5 優先，優先做裝機能見度高、不是只靠高 beta 的設備 / 廠務股",
-      "summary": "Broader family：先進封裝 CAPEX。Exact subtheme：CoWoS 廠務 / 封裝設備裝機；nearest comparable：2nm 設備 / testing；不合併因本題材真正吃的是 CoWoS / SoIC 產能交付與裝機時點，不是所有半導體設備一起漲。4/27 這條線被台積權值與記憶體吸走資金，但瓶頸節點沒有消失。",
-      "pricingView": "上游是設備、化學品、廠務工程與精密零件；中游是 CoWoS / SoIC 擴產現場；下游仍回到台積與 AI 晶片客戶。真正 bottleneck 在產能交付與設備裝機節奏。",
-      "policyView": "這條線最直接受惠的是台積 / AI 供應鏈 CAPEX，而不是單一政策補貼。只要 AI 客戶維持投片與封裝需求，設備廠的接單循環就還在。",
-      "premiumSpace": "只要後續還有封裝擴產或裝機節點確認，設備與廠務會再被資金拉回前排。",
-      "whyNow": [
-        {
-          "label": "fresh chain",
-          "text": "HBM4、CoWoS、SoIC 與 3DFabric 仍是 AI 供應鏈的產能瓶頸。"
-        },
-        {
-          "label": "fresh tape",
-          "text": "2026-04-27 設備股多數整理，顯示市場先做權值與記憶體，但並未否定設備資本循環。"
-        },
-        {
-          "label": "merged",
-          "text": "設備與廠務本次合併，因兩者都直接受台積 / 先進封裝裝機節奏驅動。"
-        },
-        {
-          "label": "split",
-          "text": "與 HBM4 / ASIC 題材分開，因設備鏈吃的是 CAPEX 實際落地，不是設計估值。"
-        }
-      ],
-      "downsideEvents": [
-        "若 CoWoS / 先進封裝擴產節奏慢於市場預期，設備與廠務股會先反映訂單遞延。",
-        "若 2026-04-27 的權值回流沒有擴散到設備股，次族群仍可能延續整理。",
-        "若國際客戶資本支出轉保守，設備鏈的接單 visibility 會下降。"
-      ],
-      "stocks": [
-        {
-          "rank": 1,
-          "ticker": "6196",
-          "name": "帆宣",
-          "role": "半導體廠務與機電整合工程廠，位於中游廠務執行層；直接受惠台積與封裝廠擴產。",
-          "priceDate": "2026-04-27",
-          "close": "380.5",
-          "entry": "372-383",
-          "target": "412",
-          "stop": "360",
-          "pe": "25.71",
-          "pb": "5.18",
-          "foreignFlow": "-166,099 股",
-          "institutionFlow": "-178,371 股",
-          "coreReason": "帆宣是設備 / 廠務裡能見度最直接的執行商，4/27 小跌 1.42% 保持相對穩定。",
-          "notPricedIn": "相較高 beta 設備股，帆宣更像 CAPEX 落地受益股，股價還沒有反映全部封裝擴產尾數。",
-          "targetLogic": "412 元對應先進封裝 / 廠務接單穩定落袋。",
-          "catalysts": [
-            "2026-04-27 收 380.5 元、單日 -1.42%。",
-            "本次未驗證到新的完整官方法說逐字稿，但 CAPEX 主線未變。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
-          ],
-          "downside": [
-            "若 CoWoS / 先進封裝擴產節奏慢於市場預期，設備與廠務股會先反映訂單遞延。",
-            "若 2026-04-27 的權值回流沒有擴散到設備股，次族群仍可能延續整理。",
-            "若國際客戶資本支出轉保守，設備鏈的接單 visibility 會下降。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "TSMC 2026 Technology Symposium",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 2,
-          "ticker": "2404",
-          "name": "漢唐",
-          "role": "無塵室與高階廠務工程承包商，位於封裝 / 晶圓廠擴產的中游工程層。",
-          "priceDate": "2026-04-27",
-          "close": "969",
-          "entry": "950-972",
-          "target": "1045",
-          "stop": "920",
-          "pe": "20.15",
-          "pb": "9.81",
-          "foreignFlow": "-767,534 股",
-          "institutionFlow": "-1,015,943 股",
-          "coreReason": "漢唐 4/27 跌 2.02%，但作為廠務與工程現場的核心執行者，風險報酬比比追高設備股更平衡。",
-          "notPricedIn": "市場焦點移到權值與記憶體時，漢唐反而更容易被低估；只要廠務進度延續，股價仍有補反映空間。",
-          "targetLogic": "1045 元反映廠務 / 無塵室工程接單持續。",
-          "catalysts": [
-            "2026-04-27 收 969 元、單日 -2.02%。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。",
-            "與 CoWoS / 先進封裝 CAPEX 直接綁定。"
-          ],
-          "downside": [
-            "若 CoWoS / 先進封裝擴產節奏慢於市場預期，設備與廠務股會先反映訂單遞延。",
-            "若 2026-04-27 的權值回流沒有擴散到設備股，次族群仍可能延續整理。",
-            "若國際客戶資本支出轉保守，設備鏈的接單 visibility 會下降。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "TSMC 2026 Technology Symposium",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 3,
-          "ticker": "5536",
-          "name": "聖暉*",
-          "role": "高科技廠房與機電整合工程商，位於中游工程與設備導入層。",
-          "priceDate": "2026-04-27",
-          "close": "928",
-          "entry": "905-932",
-          "target": "1000",
-          "stop": "878",
-          "pe": "目前未驗證",
-          "pb": "目前未驗證",
-          "foreignFlow": "+411,110 股",
-          "institutionFlow": "+385,746 股",
-          "coreReason": "聖暉* 4/27 雖跌 4.53%，但法人逆勢買超，反映整理中的承接力。",
-          "notPricedIn": "工程股通常比設備股慢反映 CAPEX 確認，4/27 的回檔未必代表訂單轉弱。",
-          "targetLogic": "1000 元反映高科技廠房接單與機電工程能見度。",
-          "catalysts": [
-            "2026-04-27 收 928 元、單日 -4.53%。",
-            "2026-04-27 外資 +411,110 股，三大法人合計 +385,746 股。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。"
-          ],
-          "downside": [
-            "若 CoWoS / 先進封裝擴產節奏慢於市場預期，設備與廠務股會先反映訂單遞延。",
-            "若 2026-04-27 的權值回流沒有擴散到設備股，次族群仍可能延續整理。",
-            "若國際客戶資本支出轉保守，設備鏈的接單 visibility 會下降。"
-          ],
-          "sourceRefs": [
-            "TPEX 2026-04-27 日行情",
-            "TPEX 2026-04-27 三大法人",
-            "TSMC 2026 Technology Symposium",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 4,
-          "ticker": "1560",
-          "name": "中砂",
-          "role": "半導體耗材與製程材料供應商，位於上游材料 / 耗材層；下游連到晶圓製造與封裝廠。",
-          "priceDate": "2026-04-27",
-          "close": "525",
-          "entry": "516-528",
-          "target": "570",
-          "stop": "500",
-          "pe": "56.82",
-          "pb": "9.49",
-          "foreignFlow": "-336,000 股",
-          "institutionFlow": "-485,231 股",
-          "coreReason": "中砂提供先進製程 / 封裝關鍵耗材，4/27 只小跌 1.87%，屬於較穩的製程支援股。",
-          "notPricedIn": "耗材股不像設備股那麼容易一次反映完 CAPEX，反而更偏長尾受益。",
-          "targetLogic": "570 元反映先進製程與封裝耗材需求延續。",
-          "catalysts": [
-            "2026-04-27 收 525 元、單日 -1.87%。",
-            "本次未驗證到更新的完整官方法說逐字稿與新增內部人持股。",
-            "供應鏈位置在上游耗材，與台積平台連動。"
-          ],
-          "downside": [
-            "若 CoWoS / 先進封裝擴產節奏慢於市場預期，設備與廠務股會先反映訂單遞延。",
-            "若 2026-04-27 的權值回流沒有擴散到設備股，次族群仍可能延續整理。",
-            "若國際客戶資本支出轉保守，設備鏈的接單 visibility 會下降。"
-          ],
-          "sourceRefs": [
-            "TWSE 2026-04-27 大盤與個股收盤",
-            "TWSE 2026-04-27 三大法人 T86",
-            "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-            "tw_stock_supply_chain_tags.json"
-          ]
-        },
-        {
-          "rank": 5,
-          "ticker": "7734",
-          "name": "印能科技",
-          "role": "先進封裝設備供應鏈成員，位於中游設備層；下游受 CoWoS / 封裝裝機節奏驅動。",
-          "priceDate": "2026-04-27",
-          "close": "3390",
-          "entry": "3300-3410",
-          "target": "3720",
-          "stop": "3180",
-          "pe": "目前未驗證",
-          "pb": "目前未驗證",
-          "foreignFlow": "+14,835 股",
-          "institutionFlow": "+232,794 股",
-          "coreReason": "印能科技 4/27 大跌 9.96%，波動極大，因此放到題材第 5 名的第 5 檔，用高 beta 回檔視角處理。",
-          "notPricedIn": "雖然跌幅大，但法人仍小幅站買方；如果後續有設備接單或封裝擴產新證據，修復速度也會最快。",
-          "targetLogic": "3720 元反映高 beta 設備股在題材回流時的估值修復。",
-          "catalysts": [
-            "2026-04-27 收 3390 元、單日 -9.96%。",
-            "2026-04-27 外資 +14,835 股，三大法人合計 +232,794 股。",
-            "外資研報檢查：本次仍未驗證到可公開歸因的完整 foreign-broker 原始頁或穩定聚合頁。",
-            "董監 / 內部人持股檢查：未驗證到新增。"
-          ],
-          "downside": [
-            "若 CoWoS / 先進封裝擴產節奏慢於市場預期，設備與廠務股會先反映訂單遞延。",
-            "若 2026-04-27 的權值回流沒有擴散到設備股，次族群仍可能延續整理。",
-            "若國際客戶資本支出轉保守，設備鏈的接單 visibility 會下降。"
-          ],
-          "sourceRefs": [
-            "TPEX 2026-04-27 日行情",
-            "TPEX 2026-04-27 三大法人",
-            "TSMC 2026 Technology Symposium",
+            "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
             "tw_stock_supply_chain_tags.json"
           ]
         }
@@ -1184,73 +1144,99 @@
       "ticker": "2408",
       "name": "南亞科",
       "theme": "記憶體 / DRAM / NAND 價格重估",
-      "reason": "2026-04-13 官方 Q1 財報先講出 ASP 季增超過 70% 與四大客戶私募入股，但股價直到 2026-04-27 才用漲停與超大法人買盤全面反映，屬時間差最清楚的主流股。"
+      "reason": "官方 Q1 財報的 ASP 與客戶訊號到 4/27-4/28 才被市場完整交易，兩天連續強勢讓它成為本週最乾淨的 memory 主軸。"
     },
     {
       "rank": 2,
-      "ticker": "2330",
-      "name": "台積電",
-      "theme": "HBM4 / AI ASIC IP / 台積電 3DFabric 生態系",
-      "reason": "2026-04-27 台積續漲 3.66%，證明即使資金轉向記憶體，AI 核心平台仍由台積鎮場；這是最不依賴情緒、最能承接 AI CAPEX 的底座。"
+      "ticker": "2345",
+      "name": "智邦",
+      "theme": "AI 交換器 / 資料中心網通設備",
+      "reason": "4/28 智邦 +5.52%，而且外資與三大法人同步買超，是資料中心網通設備裡最乾淨的 liquid leader。"
     },
     {
       "rank": 3,
-      "ticker": "2383",
-      "name": "台光電",
-      "theme": "高速 CCL / M8-M9 材料鏈",
-      "reason": "4/24 大漲後 4/27 再漲 5.70%，而且上游日本材料漲價訊號未消失；雖然公開賣方目標頁落後現價，但龍頭地位沒有改變。"
+      "ticker": "2308",
+      "name": "台達電",
+      "theme": "伺服器電源 / BBU",
+      "reason": "台達電 +5.20% 且大額法人同步買進，代表市場開始獨立交易資料中心 power bottleneck。"
     },
     {
       "rank": 4,
-      "ticker": "2344",
-      "name": "華邦電",
-      "theme": "記憶體 / DRAM / NAND 價格重估",
-      "reason": "在南亞科之後，華邦電是 2026-04-27 最有「原廠外擴散」味道的中大型股：股價 +6.46%，三大法人買超超過 3,000 萬股，屬記憶體第二圈受益。"
+      "ticker": "6442",
+      "name": "光聖",
+      "theme": "光模組 / 矽光子",
+      "reason": "光聖 +7.32% 是 4/28 光模組最有代表性的 TWSE 表達之一，具備主流題材與流動性。"
     },
     {
       "rank": 5,
-      "ticker": "8299",
-      "name": "群聯",
+      "ticker": "2337",
+      "name": "旺宏",
       "theme": "記憶體 / DRAM / NAND 價格重估",
-      "reason": "4/27 的記憶體不是只漲 DRAM 原廠，連企業級 SSD / NAND controller 也一起被重估；群聯 +9.23% 代表主流資金已往下游控制 IC 擴散。"
+      "reason": "旺宏 4/28 漲停，證明記憶體不是只漲 DRAM 原廠，而是已往其他 memory maker 擴散。"
     },
     {
       "rank": 6,
-      "ticker": "8210",
-      "name": "勤誠",
-      "theme": "高功率機櫃 / 液冷配套",
-      "reason": "AI 機櫃 / 液冷在 4/27 明顯拉回，勤誠由追價股轉成 pullback-buy 候選；公開賣方聚合頁仍能提供相對貼近現價的外部錨點。"
+      "ticker": "3443",
+      "name": "創意",
+      "theme": "HBM4 / AI ASIC IP / 台積電 3DFabric 生態系",
+      "reason": "半導體平台股 4/28 普遍分化，但創意仍大漲 5.94%，是 HBM4 / ASIC 主線裡最強的單一名字。"
     }
   ],
+  "changesComparedToPrevious": {
+    "comparedTo": "2026-04-28 開盤前版（採 2026-04-27 週一收盤）",
+    "summary": "這次改採 2026-04-28（週二）官方收盤後，主題排名出現明顯資金切換：記憶體從第 2 升到第 1，光模組 / 矽光子、AI 交換器 / 網通設備、伺服器電源 / BBU 新進前五；4/27 還在前排的高速 CCL / M8-M9、高功率機櫃 / 液冷、CoWoS 廠務 / 設備則暫時退到候選池。",
+    "items": [
+      {
+        "title": "記憶體升至第 1",
+        "reason": "4/28 不是單日追價，而是 2337 / 3260 / 8299 / 2408 / 2344 的第二天擴散，量價證據比其他題材完整。"
+      },
+      {
+        "title": "光模組 / 矽光子新進第 2",
+        "reason": "通信網路類指數 +1.99%，6442 / 4908 / 3163 / 4979 同步轉強，證明光互連已從候選變成可交易主題。"
+      },
+      {
+        "title": "AI 交換器 / 網通設備新進第 3",
+        "reason": "智邦 +5.52% 且外資、三大法人同步買進，資料中心 network fabric 開始被市場獨立交易。"
+      },
+      {
+        "title": "伺服器電源 / BBU 新進第 4",
+        "reason": "台達電 +5.20%、康舒 +2.25%、鈺邦 +3.44%，power bottleneck 開始比傳統機櫃 / 液冷更強。"
+      },
+      {
+        "title": "高速 CCL / M8-M9 與 CoWoS 暫退",
+        "reason": "2383 台光電 -7.51%，而設備 / 廠務股多數整理，顯示資金已從材料與 CAPEX 轉去 memory / network / power。"
+      }
+    ]
+  },
   "sources": [
     {
-      "label": "TWSE 2026-04-27 大盤與個股收盤",
-      "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20260427&type=ALLBUT0999",
-      "note": "官方收盤、類股與成交資料；本版仍採 2026-04-27 收盤。"
+      "label": "TWSE 2026-04-28 大盤與個股收盤",
+      "url": "https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date=20260428&type=ALLBUT0999",
+      "note": "官方收盤、類股與成交資料。"
     },
     {
-      "label": "TWSE 2026-04-27 三大法人 T86",
-      "url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=20260427&selectType=ALLBUT0999",
+      "label": "TWSE 2026-04-28 三大法人 T86",
+      "url": "https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date=20260428&selectType=ALLBUT0999",
       "note": "上市個股外資、投信、自營商股數。"
     },
     {
-      "label": "TWSE 2026-04-27 三大法人買賣金額 BFI82U",
-      "url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&dayDate=20260427&type=day",
+      "label": "TWSE 2026-04-28 三大法人買賣金額 BFI82U",
+      "url": "https://www.twse.com.tw/rwd/zh/fund/BFI82U?response=json&dayDate=20260428&type=day",
       "note": "外資與投信買賣金額。"
     },
     {
-      "label": "TWSE 2026-04-27 本益比 / 殖利率 / 股價淨值比",
-      "url": "https://www.twse.com.tw/rwd/zh/afterTrading/BWIBBU_d?date=20260427&response=json&selectType=ALL",
+      "label": "TWSE 2026-04-28 本益比 / 殖利率 / 股價淨值比",
+      "url": "https://www.twse.com.tw/rwd/zh/afterTrading/BWIBBU_d?date=20260428&response=json&selectType=ALL",
       "note": "上市個股 PE / PB 官方口徑。"
     },
     {
-      "label": "TPEX 2026-04-27 日行情",
-      "url": "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date=2026/04/27&response=json",
+      "label": "TPEX 2026-04-28 日行情",
+      "url": "https://www.tpex.org.tw/www/zh-tw/afterTrading/dailyQuotes?date=2026/04/28&response=json",
       "note": "上櫃個股收盤與漲跌。"
     },
     {
-      "label": "TPEX 2026-04-27 三大法人",
-      "url": "https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?date=2026/04/27&type=Daily&response=json",
+      "label": "TPEX 2026-04-28 三大法人",
+      "url": "https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?date=2026/04/28&type=Daily&response=json",
       "note": "上櫃個股法人買賣超。"
     },
     {
@@ -1271,62 +1257,52 @@
     {
       "label": "BLS Employment Situation 2026-04-03",
       "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
-      "note": "2026 年 3 月 nonfarm payrolls +178,000、失業率 4.3%、平均時薪年增 3.5%。"
+      "note": "2026 年 3 月 payrolls +178,000、失業率 4.3%。"
     },
     {
       "label": "Census Retail Sales 2026-04-21",
       "url": "https://www.census.gov/retail/marts/www/marts_current.pdf",
-      "note": "2026 年 3 月 advance retail sales 月增 1.7%，2 月修正為月增 0.7%。"
+      "note": "2026 年 3 月 advance retail sales 月增 1.7%。"
     },
     {
       "label": "BEA Personal Income and Outlays 2026-04-09",
       "url": "https://www.bea.gov/news/2026/personal-income-and-outlays-february-2026",
-      "note": "2026 年 2 月 PCE price index 月增 0.4%、年增 2.8%。"
+      "note": "2026 年 2 月 PCE price index 年增 2.8%。"
     },
     {
       "label": "BEA GDP Third Estimate 2026-04-09",
       "url": "https://www.bea.gov/sites/default/files/2026-04/gdp4q25-3rd.pdf",
-      "note": "2025 年第 4 季實質 GDP 年化季增 0.5%，較 second estimate 0.7% 再下修。"
+      "note": "2025Q4 real GDP third estimate 年化季增 0.5%。"
     },
     {
       "label": "Federal Reserve G.17 2026-04-16",
       "url": "https://www.federalreserve.gov/releases/g17/20260416/",
-      "note": "2026 年 3 月工業生產月減 0.5%，第 1 季年化成長 2.4%。"
+      "note": "2026 年 3 月工業生產月減 0.5%。"
     },
     {
       "label": "ISM Manufacturing PMI March 2026",
       "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/pmi/march/",
-      "note": "3 月製造業 PMI 52.7，高於 2 月 52.4；Prices 78.3。"
+      "note": "2026 年 3 月製造業 PMI 52.7。"
     },
     {
       "label": "ISM Services PMI March 2026",
       "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/services/march/",
-      "note": "3 月服務業 PMI 54.0，低於 2 月 56.1；Prices 70.7。"
+      "note": "2026 年 3 月服務業 PMI 54.0。"
     },
     {
       "label": "Census New Residential Construction current page",
       "url": "https://www.census.gov/construction/nrc/current/index.html",
-      "note": "截至本次 rerun，current page 仍顯示 January 2026 release；沒有比上一版更晚的新 housing-starts / permits 正式值。"
-    },
-    {
-      "label": "White House 2026-04-02 金屬與電網設備關稅",
-      "url": "https://www.whitehouse.gov/fact-sheets/2026/04/fact-sheet-president-donald-j-trump-strengthens-tariffs-on-steel-aluminum-and-copper-imports/",
-      "note": "鋼、鋁、銅與部分電網設備關稅延續。"
-    },
-    {
-      "label": "White House 2026-04-20 DPA 電網基礎設施",
-      "url": "https://www.whitehouse.gov/presidential-actions/2026/04/presidential-determination-pursuant-to-section-303-of-the-defense-production-act-of-1950-as-amended-on-grid-infrastructure-equipment-and-supply-chain-capacity/",
-      "note": "點名電網基礎設施與供應鏈能力。"
+      "note": "截至本次 rerun，尚未出現比上一版更晚的新 housing-starts / permits 正式值。"
     },
     {
       "label": "Google Cloud Next 2026 官方頁",
       "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/next-2026/",
-      "note": "2026-04-22 發布 AI cloud / network / TPU 新訊號。"
+      "note": "Virgo Network、AI cloud infra、TPU 與資料中心建設。"
     },
     {
       "label": "Google TPU 8t / 8i 官方文章",
       "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/",
-      "note": "TPU 8t / 8i 與資料中心網路升級。"
+      "note": "TPU 8t / 8i 與 AI 資料中心網路升級。"
     },
     {
       "label": "GUC 2026-04-23 HBM4 官方新聞稿",
@@ -1336,7 +1312,7 @@
     {
       "label": "TSMC 2026 Technology Symposium",
       "url": "https://www.tsmc.com/static/english/campaign/Symposium2026/index.htm",
-      "note": "先進製程 / 先進封裝平台。"
+      "note": "先進製程與先進封裝平台。"
     },
     {
       "label": "Nanya 2026-04-13 Q1 財報",
@@ -1346,32 +1322,22 @@
     {
       "label": "TrendForce 2026-03-31 記憶體價格調查",
       "url": "https://www.trendforce.com/presscenter/news/20260331-12995.html",
-      "note": "2Q26 conventional DRAM 合約價估季增 58-63%，NAND 合約價估季增 70-75%。"
+      "note": "2Q26 DRAM / NAND 合約價大幅上修。"
     },
     {
-      "label": "Panasonic 2026-04-09 CCL 價格調整通知",
-      "url": "https://industrial.panasonic.com/jp/electronic-materials/news/2026-04-09-em-ccl",
-      "note": "日本上游電子回路基板材料調價。"
-    },
-    {
-      "label": "Sumitomo Bakelite 積層板價格調整",
-      "url": "https://www.sumibe.co.jp/topics/2026/hpp/0129_01/index.html",
-      "note": "跨國上游積層板價格調整。"
-    },
-    {
-      "label": "Nittobo PCB Glass Cloth 官方頁",
-      "url": "https://www.nittobo.co.jp/eng/business/electronicmaterials/pcbcloth/index.htm",
-      "note": "CCL / PCB 上游玻纖布角色查核。"
-    },
-    {
-      "label": "AP 2026-04-27 海員困於波灣 / 霍爾木茲近乎封閉",
+      "label": "AP 2026-04-27 霍爾木茲 / 海員更新",
       "url": "https://apnews.com/article/b1b22b26312c7ea2b70b3f542f235e77",
-      "note": "地緣、航運與保險風險延續。"
+      "note": "海員仍滯留高風險區，霍爾木茲對商船仍近乎封閉。"
     },
     {
-      "label": "AP 2026-04-27 伊朗提出條件式重開霍爾木茲",
+      "label": "AP 2026-04-27 伊朗條件式重開霍爾木茲",
       "url": "https://apnews.com/article/374d81d1aac6d8f19c21e1d1e10ab103",
       "note": "航道恢復仍取決於政治談判。"
+    },
+    {
+      "label": "IMO 霍爾木茲安全更新",
+      "url": "https://www.imo.org/en/mediacentre/pressbriefings/pages/fragmented-responses-are-no-longer-sufficient-imo-sg-strait-of-hormuz.aspx",
+      "note": "官方航運安全風險更新。"
     },
     {
       "label": "GOV.UK 2026-04-22 霍爾木茲軍事規劃會議",
@@ -1394,25 +1360,30 @@
       "note": "公開外資評等 / 目標價歷史頁。"
     },
     {
-      "label": "鉅亨外資評等 2344 華邦電",
-      "url": "https://www.cnyes.com/twstock/foreignrating.aspx?code=2344",
+      "label": "鉅亨外資評等 2337 旺宏",
+      "url": "https://www.cnyes.com/twstock/foreignrating.aspx?code=2337",
       "note": "公開外資評等 / 目標價歷史頁。"
     },
     {
-      "label": "鉅亨外資評等 8299 群聯",
-      "url": "https://www.cnyes.com/twstock/foreignrating.aspx?code=8299",
+      "label": "鉅亨外資評等 2345 智邦",
+      "url": "https://www.cnyes.com/twstock/foreignrating.aspx?code=2345",
       "note": "公開外資評等 / 目標價歷史頁。"
     },
     {
-      "label": "鉅亨 / FactSet 台光電 2383",
-      "url": "https://news.cnyes.com/news/id/6393755",
-      "note": "公開可歸因賣方共識聚合頁。"
+      "label": "鉅亨外資評等 2308 台達電",
+      "url": "https://www.cnyes.com/twstock/foreignrating.aspx?code=2308",
+      "note": "公開外資評等 / 目標價歷史頁。"
     },
     {
-      "label": "鉅亨 / FactSet 勤誠 8210",
-      "url": "https://gfemobile.cnyes.com/news/id/6420939",
-      "note": "公開可歸因賣方共識聚合頁。"
+      "label": "鉅亨外資評等 6442 光聖",
+      "url": "https://www.cnyes.com/twstock/foreignrating.aspx?code=6442",
+      "note": "公開外資評等 / 目標價歷史頁。"
+    },
+    {
+      "label": "鉅亨外資評等 3443 創意",
+      "url": "https://www.cnyes.com/twstock/foreignrating.aspx?code=3443",
+      "note": "公開外資評等 / 目標價歷史頁。"
     }
   ],
-  "footnote": "本報告不是投資建議；本版是 2026-04-28 台股開盤前版本，價格、法人、PE/PB 仍以 2026-04-27 官方可得資料為準。TPEX 個股 PE/PB 若無法由 TWSE BWIBBU 或 TPEX 官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次仍區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；董監 / 內部人持股若沒有較上一版更新的官方披露，會直接標示未驗證到新增變動。"
+  "footnote": "本報告不是投資建議；本版是 2026-04-29 台股開盤前版本，價格、法人、PE/PB 以 2026-04-28 官方可得資料為準。TPEX 個股 PE/PB 若無法由 TWSE BWIBBU 或 TPEX 官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次已區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；如果只有公開評等頁存在而沒有完整原文，會直接標示 evidence level 2。"
 }
