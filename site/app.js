@@ -8,6 +8,7 @@ import { initReadingMode } from "./reading-mode.js";
 
 const app = document.getElementById("app");
 const newsNavLink = document.getElementById("news-nav-link");
+const quickNav = document.querySelector(".quick-nav");
 
 const heatToneMap = {
   偏熱: "heat-hot",
@@ -35,27 +36,102 @@ async function loadReport() {
 
 function render(report) {
   const discoveries = getNewDiscoveries(report);
+  const tradeThemes = Array.isArray(report.themes) ? report.themes : [];
+  const tradePicks = Array.isArray(report.topPicks) ? report.topPicks : [];
+  const observationThemes = Array.isArray(report.observationThemes) ? report.observationThemes : [];
+  const observationStocks = Array.isArray(report.observationStocks) ? report.observationStocks : [];
+  const weekRangeLabel = formatWeekRange(report.weekRange);
   const foreignFlowDisplay = formatSignedAmount(report.marketSnapshot.foreignFlowTwdBn);
   const foreignFlowTone = flowTone(foreignFlowDisplay);
-  const themeCards = report.themes
+  const themeCards = tradeThemes
     .map((theme, index) => renderTheme(theme, index === 0))
     .join("");
 
-  const focusCards = report.topPicks
+  const focusCards = tradePicks
     .map(
       (pick, index) => `
         <article class="focus-card animate-rise delay-${Math.min(index, 3)}">
-          <p class="card-kicker">跨題材先看</p>
+          <p class="card-kicker">交易池先看</p>
           <div class="focus-title">
             <h3>${pick.rank}. ${pick.name}</h3>
             <span class="ticker">${pick.ticker}</span>
             <span class="chip">${pick.theme}</span>
           </div>
+          <div class="badge-row compact-row">
+            ${renderStateBadge(pick.state)}
+            ${renderScoreBadge(pick.stockScore, "股票分數")}
+            ${renderGateBadge(pick.gateStatus)}
+          </div>
           <p class="focus-note">${pick.reason}</p>
+          ${pick.alternativeRejected ? `<p class="focus-subnote">勝過替代：${pick.alternativeRejected}</p>` : ""}
         </article>
       `
     )
     .join("");
+
+  const observationThemeCards = observationThemes.length
+    ? observationThemes
+        .map(
+          (theme, index) => `
+            <article class="observation-card animate-rise delay-${Math.min(index, 3)}">
+              <p class="card-kicker">觀察池題材</p>
+              <div class="observation-head">
+                <h3>${theme.rank ? `${theme.rank}. ` : ""}${theme.name || "未命名題材"}</h3>
+                <div class="badge-row compact-row">
+                  ${renderStateBadge(theme.state)}
+                  ${renderScoreBadge(theme.themeScore, "題材分數")}
+                  ${renderGateBadge(theme.gateStatus)}
+                </div>
+              </div>
+              <p class="body-copy">${theme.observationReason || theme.summary || theme.stance || "這個題材已有證據，但還沒進到交易池。"}</p>
+              <div class="observation-meta">
+                <div class="info-block compact-card">
+                  <p class="info-label">下一個升級條件</p>
+                  <p class="info-text">${theme.nextTrigger || formatGateStatus(theme.gateStatus) || "等待更多 tape、法人或事件確認。"}</p>
+                </div>
+                <div class="info-block compact-card">
+                  <p class="info-label">廣度與覆蓋</p>
+                  <p class="info-text">${formatBreadthStats(theme.breadthStats) || "目前沒有額外的廣度統計欄位。"}</p>
+                </div>
+              </div>
+            </article>
+          `
+        )
+        .join("")
+    : renderObservationEmpty("題材", "目前這版資料還沒有輸出觀察池題材；下次晨報重跑後會在這裡顯示 seed / late 題材。");
+
+  const observationStockCards = observationStocks.length
+    ? observationStocks
+        .map(
+          (stock, index) => `
+            <article class="observation-card animate-rise delay-${Math.min(index, 3)}">
+              <p class="card-kicker">觀察池股票</p>
+              <div class="observation-head">
+                <h3>${stock.rank ? `${stock.rank}. ` : ""}${stock.name || "未命名股票"}</h3>
+                <div class="badge-row compact-row">
+                  <span class="ticker">${stock.ticker || "N/A"}</span>
+                  <span class="chip">${stock.theme || "未分類題材"}</span>
+                  ${renderStateBadge(stock.state)}
+                  ${renderScoreBadge(stock.stockScore, "股票分數")}
+                  ${renderGateBadge(stock.gateStatus)}
+                </div>
+              </div>
+              <p class="body-copy">${stock.reason || stock.observationReason || "這檔股票已有題材或事件訊號，但還沒進到交易池名單。"}</p>
+              <div class="observation-meta">
+                <div class="info-block compact-card">
+                  <p class="info-label">升級條件</p>
+                  <p class="info-text">${stock.nextTrigger || "等待二階催化、量價確認或更多法人承接。"}</p>
+                </div>
+                <div class="info-block compact-card">
+                  <p class="info-label">替代比較</p>
+                  <p class="info-text">${stock.alternativeRejected || "目前沒有提供最近的替代選項比較。"}</p>
+                </div>
+              </div>
+            </article>
+          `
+        )
+        .join("")
+    : renderObservationEmpty("股票", "目前這版資料還沒有輸出觀察池股票；之後會在這裡放 seed、late 或 near-miss 個股。");
 
   const macroCards = report.macroDrivers
     .map(
@@ -139,8 +215,10 @@ function render(report) {
           </div>
           <div class="badge-row">
             <span class="pill">報告日 ${report.reportDate}</span>
-            <span class="pill">操作週 ${report.weekRange.from} 至 ${report.weekRange.to}</span>
+            <span class="pill">操作週 ${weekRangeLabel}</span>
             <span class="pill">股價基準 ${report.priceDate}</span>
+            <span class="pill">交易池 ${tradeThemes.length} 題材 / ${tradePicks.length} 檔</span>
+            <span class="pill">觀察池 ${observationThemes.length} 題材 / ${observationStocks.length} 檔</span>
           </div>
         </div>
 
@@ -189,23 +267,45 @@ function render(report) {
     <section class="panel animate-rise delay-1" id="focus">
       <div class="section-header">
         <div>
-          <p class="section-kicker">今天先看</p>
-          <h2>跨題材最值得先追蹤的名單</h2>
-          <p>這裡先放網站首頁最值得看的幾檔，方便在手機上先掃一輪。</p>
+          <p class="section-kicker">交易池</p>
+          <h2>跨題材最值得先追蹤的交易池名單</h2>
+          <p>這裡只放已經通過題材與個股 gate 的交易池 top picks，方便先掃可執行名單。</p>
         </div>
       </div>
       <div class="focus-grid">${focusCards}</div>
     </section>
 
+    <section class="panel animate-rise delay-2" id="observation-stocks">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">觀察池股票</p>
+          <h2>有證據、但還沒完全通過交易 gate 的候選股</h2>
+          <p>這裡保留提早卡位線索，但不把它們直接混進交易池 top picks。</p>
+        </div>
+      </div>
+      <div class="observation-grid">${observationStockCards}</div>
+    </section>
+
     <section class="panel animate-rise delay-2" id="themes">
       <div class="section-header">
         <div>
-          <p class="section-kicker">五大題材</p>
-          <h2>按本週可操作性排序</h2>
-          <p>每個題材都會先說熱度、技術、原料、政策與溢價空間，再往下拆五檔個股。</p>
+          <p class="section-kicker">交易池題材</p>
+          <h2>按本週可操作性排序的交易池 top 5</h2>
+          <p>只有通過題材 gate，且 lifecycle 屬於 confirmation / expansion 的題材，才會出現在這一段。</p>
         </div>
       </div>
       <div class="theme-accordion">${themeCards}</div>
+    </section>
+
+    <section class="panel animate-rise delay-3" id="observation-themes">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">觀察池題材</p>
+          <h2>還在 seed / late 階段、或只差一項 gate 的題材</h2>
+          <p>這裡用來提早追蹤可能升級成主流的子題材，也保留需要降權的 late 題材。</p>
+        </div>
+      </div>
+      <div class="observation-grid">${observationThemeCards}</div>
     </section>
 
     <section class="panel animate-rise delay-3" id="changes">
@@ -252,11 +352,15 @@ function render(report) {
   } else {
     newsNavLink?.classList.add("is-hidden");
   }
+
+  syncQuickNav();
 }
 
 function renderTheme(theme, open) {
-  const stockCards = theme.stocks.map((stock) => renderStock(theme, stock)).join("");
-  const whyNow = theme.whyNow
+  const stocks = Array.isArray(theme.stocks) ? theme.stocks : [];
+  const whyNowItems = Array.isArray(theme.whyNow) ? theme.whyNow : [];
+  const stockCards = stocks.map((stock) => renderStock(theme, stock)).join("");
+  const whyNow = whyNowItems
     .map(
       (item) => `
         <article class="info-block">
@@ -267,7 +371,11 @@ function renderTheme(theme, open) {
     )
     .join("");
 
-  const themeRisks = theme.downsideEvents.map((risk) => `<li>${risk}</li>`).join("");
+  const themeRisks = (Array.isArray(theme.downsideEvents) ? theme.downsideEvents : [])
+    .map((risk) => `<li>${risk}</li>`)
+    .join("");
+  const gateSummary = formatGateStatus(theme.gateStatus);
+  const breadthSummary = formatBreadthStats(theme.breadthStats);
 
   return `
     <article class="theme-card">
@@ -282,7 +390,10 @@ function renderTheme(theme, open) {
               </div>
             </div>
             <div class="badge-row">
-              <span class="heat-badge ${heatToneMap[theme.heat] || "heat-cool"}">${theme.heat}</span>
+              ${theme.heat ? `<span class="heat-badge ${heatToneMap[theme.heat] || "heat-cool"}">${theme.heat}</span>` : ""}
+              ${renderStateBadge(theme.state)}
+              ${renderScoreBadge(theme.themeScore, "題材分數")}
+              ${renderGateBadge(theme.gateStatus)}
               <span class="pill">${theme.stance}</span>
             </div>
           </div>
@@ -296,6 +407,16 @@ function renderTheme(theme, open) {
             <div class="info-block">
               <p class="info-label">政策與技術主軸</p>
               <p class="info-text">${theme.policyView}</p>
+            </div>
+          </div>
+          <div class="theme-meta">
+            <div class="info-block">
+              <p class="info-label">Lifecycle 與 gate</p>
+              <p class="info-text">${gateSummary || "這版資料沒有額外的 gate 摘要。"}</p>
+            </div>
+            <div class="info-block">
+              <p class="info-label">廣度統計</p>
+              <p class="info-text">${breadthSummary || "這版資料沒有額外的 breadth 統計。"}</p>
             </div>
           </div>
           <div class="theme-meta">${whyNow}</div>
@@ -325,6 +446,9 @@ function renderStock(theme, stock) {
             <h4>${stock.rank}. ${stock.name}</h4>
             <span class="ticker">${stock.ticker}</span>
             <span class="chip">${theme.name}</span>
+            ${renderStateBadge(stock.state)}
+            ${renderScoreBadge(stock.stockScore, "股票分數")}
+            ${renderGateBadge(stock.gateStatus)}
           </div>
           <p class="stock-role">${stock.role}</p>
         </div>
@@ -376,22 +500,166 @@ function renderStock(theme, stock) {
         </div>
         <div class="info-block">
           <p class="info-label">近期催化</p>
-          <ul class="checklist">${stock.catalysts.map((item) => `<li>${item}</li>`).join("")}</ul>
+          <ul class="checklist">${(Array.isArray(stock.catalysts) ? stock.catalysts : []).map((item) => `<li>${item}</li>`).join("")}</ul>
         </div>
       </div>
 
       <div class="split-copy">
         <div class="info-block">
           <p class="info-label">下跌風險</p>
-          <ul class="risk-list">${stock.downside.map((item) => `<li>${item}</li>`).join("")}</ul>
+          <ul class="risk-list">${(Array.isArray(stock.downside) ? stock.downside : []).map((item) => `<li>${item}</li>`).join("")}</ul>
         </div>
         <div class="info-block">
           <p class="info-label">消息依據</p>
-          <ul class="inline-list">${stock.sourceRefs.map((item) => `<li>${item}</li>`).join("")}</ul>
+          <ul class="inline-list">${(Array.isArray(stock.sourceRefs) ? stock.sourceRefs : []).map((item) => `<li>${item}</li>`).join("")}</ul>
         </div>
       </div>
+
+      ${stock.alternativeRejected ? `
+        <div class="info-block stock-alt">
+          <p class="info-label">為何勝過最近替代選項</p>
+          <p class="info-text">${stock.alternativeRejected}</p>
+        </div>
+      ` : ""}
     </article>
   `;
+}
+
+function renderObservationEmpty(type, text) {
+  return `
+    <article class="observation-card observation-empty">
+      <p class="card-kicker">觀察池${type}</p>
+      <h3>目前沒有可顯示資料</h3>
+      <p class="body-copy">${text}</p>
+    </article>
+  `;
+}
+
+function syncQuickNav() {
+  if (!quickNav) return;
+
+  renameQuickNavLink("#focus", "交易池股票");
+  renameQuickNavLink("#themes", "交易池題材");
+  ensureQuickNavLink("#observation-stocks", "觀察池股票", "#focus");
+  ensureQuickNavLink("#observation-themes", "觀察池題材", "#themes");
+}
+
+function renameQuickNavLink(href, label) {
+  const link = quickNav?.querySelector(`a[href="${href}"]`);
+  if (link) {
+    link.textContent = label;
+  }
+}
+
+function ensureQuickNavLink(href, label, afterHref) {
+  if (!quickNav || quickNav.querySelector(`a[href="${href}"]`)) return;
+
+  const link = document.createElement("a");
+  link.href = href;
+  link.textContent = label;
+
+  const after = quickNav.querySelector(`a[href="${afterHref}"]`);
+  if (after?.nextSibling) {
+    quickNav.insertBefore(link, after.nextSibling);
+    return;
+  }
+
+  if (after) {
+    quickNav.appendChild(link);
+    return;
+  }
+
+  quickNav.appendChild(link);
+}
+
+function formatWeekRange(weekRange = {}) {
+  const start = weekRange.start || weekRange.from || "未提供";
+  const end = weekRange.end || weekRange.to || "未提供";
+  return `${start} 至 ${end}`;
+}
+
+function renderStateBadge(state) {
+  if (!state) return "";
+
+  return `<span class="state-badge state-${escapeHtml(String(state).toLowerCase())}">${formatStateLabel(state)}</span>`;
+}
+
+function renderScoreBadge(score, label) {
+  if (score === undefined || score === null || score === "") return "";
+
+  const normalized = Number(score);
+  const display = Number.isFinite(normalized) ? `${normalized.toFixed(0)} / 100` : String(score);
+  return `<span class="score-badge" title="${label}">${display}</span>`;
+}
+
+function renderGateBadge(gateStatus) {
+  const summary = formatGateStatus(gateStatus);
+  if (!summary) return "";
+
+  return `<span class="gate-badge">${summary}</span>`;
+}
+
+function formatStateLabel(state) {
+  const normalized = String(state).toLowerCase();
+  const map = {
+    seed: "Seed",
+    confirmation: "Confirmation",
+    expansion: "Expansion",
+    late: "Late",
+    breakdown: "Breakdown",
+  };
+  return map[normalized] || String(state);
+}
+
+function formatGateStatus(gateStatus) {
+  if (!gateStatus) return "";
+  if (typeof gateStatus === "string") return gateStatus;
+
+  if (typeof gateStatus === "object") {
+    if (gateStatus.summary) return gateStatus.summary;
+
+    const parts = [];
+    const passedCount = countGateItems(gateStatus.passed, gateStatus.passedCount);
+    const nearMissCount = countGateItems(gateStatus.nearMiss, gateStatus.nearMissCount);
+    const failedCount = countGateItems(gateStatus.failed, gateStatus.failedCount);
+
+    if (passedCount !== null) parts.push(`通過 ${passedCount}`);
+    if (nearMissCount !== null) parts.push(`差一項 ${nearMissCount}`);
+    if (failedCount !== null) parts.push(`失敗 ${failedCount}`);
+
+    return parts.join(" / ");
+  }
+
+  return String(gateStatus);
+}
+
+function countGateItems(items, fallbackCount) {
+  if (Array.isArray(items)) return items.length;
+  if (Number.isFinite(fallbackCount)) return fallbackCount;
+  return null;
+}
+
+function formatBreadthStats(stats) {
+  if (!stats) return "";
+  if (typeof stats === "string") return stats;
+  if (typeof stats !== "object") return String(stats);
+
+  const parts = [];
+  if (Number.isFinite(stats.checkedStocks)) parts.push(`受檢 ${stats.checkedStocks} 檔`);
+  if (Number.isFinite(stats.outperformCount)) {
+    const ratio = Number.isFinite(stats.outperformRatio)
+      ? ` (${Math.round(stats.outperformRatio * 100)}%)`
+      : "";
+    parts.push(`跑贏 ${stats.outperformCount} 檔${ratio}`);
+  }
+  if (Number.isFinite(stats.institutionPositiveCount)) {
+    parts.push(`法人正向 ${stats.institutionPositiveCount} 檔`);
+  }
+  if (Number.isFinite(stats.newCatalystCount)) {
+    parts.push(`新催化 ${stats.newCatalystCount} 檔`);
+  }
+
+  return parts.join(" / ");
 }
 
 function toneClass(tone) {
