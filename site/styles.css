@@ -293,6 +293,12 @@ h1 {
   color: var(--muted);
 }
 
+.regime-summary {
+  margin: 10px 0 0;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
 .summary-points,
 .checklist,
 .risk-list,
@@ -532,6 +538,19 @@ h1 {
 
 .focus-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.regime-card {
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(255, 248, 240, 0.86)),
+    rgba(255, 255, 255, 0.4);
+}
+
+.regime-banner {
+  border-color: rgba(181, 107, 23, 0.2);
+  background:
+    linear-gradient(180deg, rgba(255, 252, 247, 0.98), rgba(255, 245, 235, 0.9)),
+    rgba(255, 255, 255, 0.44);
 }
 
 .focus-card {

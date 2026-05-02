@@ -22,6 +22,26 @@
     "strongestGroup": {
       "name": "油電燃氣類指數",
       "change": "+3.65%"
+    },
+    "marketRegime": {
+      "score": 65,
+      "stance": "偏多",
+      "mode": "normal",
+      "summary": "題材健康度與跨題材廣度仍偏強，但指數單日轉弱且外資賣超偏大，做法應集中在已確認主線，不適合全面擴張。",
+      "scoreBreakdown": {
+        "tapeBreadth": 10,
+        "flow": 10,
+        "themeHealth": 20,
+        "macro": 15,
+        "eventRisk": 10
+      },
+      "drivers": [
+        "最新交易池題材平均分數高於 80，且 major candidates 只有 1 個 breakdown，題材健康度明顯撐住總分。",
+        "4/30 TAIEX 單日收黑且外資現貨賣超 53.56 億，代表整體市場不是無差別 risk-on。",
+        "高階 CCL、互連線、光模組、HBM4、電源等主線仍有多股 confirmation / expansion，市場沒有全面瓦解。",
+        "最近官方 macro 以 GDP、ISM、claims 為主的成長面仍可支撐 risk-on，但通膨與地緣風險沒有完全消失。"
+      ],
+      "effectOnSelection": "本版暫維持正常模式的 5 個交易池題材與 6 檔交易池股票上限；若後續指數、外資與 theme breadth 同步轉弱，下一級會切到 selective 並縮到 4 / 4。"
     }
   },
   "macroDrivers": [
@@ -296,7 +316,7 @@
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 5,
-        "outperformRatio": 1.0,
+        "outperformRatio": 1,
         "institutionPositiveCount": 5,
         "newCatalystCount": 4
       }
@@ -766,7 +786,7 @@
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 5,
-        "outperformRatio": 1.0,
+        "outperformRatio": 1,
         "institutionPositiveCount": 4,
         "newCatalystCount": 3
       }
@@ -1606,7 +1626,7 @@
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 0,
-        "outperformRatio": 0.0,
+        "outperformRatio": 0,
         "institutionPositiveCount": 0,
         "newCatalystCount": 2
       },

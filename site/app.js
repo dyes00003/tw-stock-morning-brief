@@ -43,6 +43,11 @@ function render(report) {
   const weekRangeLabel = formatWeekRange(report.weekRange);
   const foreignFlowDisplay = formatSignedAmount(report.marketSnapshot.foreignFlowTwdBn);
   const foreignFlowTone = flowTone(foreignFlowDisplay);
+  const marketRegime = normalizeMarketRegime(report.marketSnapshot?.marketRegime);
+  const tradingPoolLimits = getTradingPoolLimits(marketRegime.mode);
+  const tradeThemeHeading = `交易池題材（${tradeThemes.length} / ${tradingPoolLimits.themeLabel}）`;
+  const tradeStockHeading = `交易池股票（${tradePicks.length} / ${tradingPoolLimits.stockLabel}）`;
+  const regimeBanner = renderRegimeBanner(marketRegime, tradingPoolLimits);
   const themeCards = tradeThemes
     .map((theme, index) => renderTheme(theme, index === 0))
     .join("");
@@ -217,7 +222,8 @@ function render(report) {
             <span class="pill">報告日 ${report.reportDate}</span>
             <span class="pill">操作週 ${weekRangeLabel}</span>
             <span class="pill">股價基準 ${report.priceDate}</span>
-            <span class="pill">交易池 ${tradeThemes.length} 題材 / ${tradePicks.length} 檔</span>
+            <span class="pill">交易池 ${tradeThemes.length} / ${tradingPoolLimits.themeLabel} 題材</span>
+            <span class="pill">交易池 ${tradePicks.length} / ${tradingPoolLimits.stockLabel} 檔</span>
             <span class="pill">觀察池 ${observationThemes.length} 題材 / ${observationStocks.length} 檔</span>
           </div>
         </div>
@@ -238,10 +244,11 @@ function render(report) {
             <p class="metric-value">${escapeHtml(report.marketSnapshot.strongestGroup.name)}</p>
             <p class="metric-note">${report.marketSnapshot.strongestGroup.change}</p>
           </article>
-          <article class="metric-card">
-            <p class="metric-label">閱讀模式</p>
-            <p class="metric-value">手機優先</p>
-            <p class="metric-note">短段落、單層條列、少用寬表格</p>
+          <article class="metric-card regime-card">
+            <p class="metric-label">市場 Regime</p>
+            <p class="metric-value ${marketRegimeTone(marketRegime.score)}">${marketRegime.score} / 100</p>
+            <p class="metric-note">${marketRegime.stance} / ${marketRegime.mode}</p>
+            <p class="regime-summary">${marketRegime.summary}</p>
           </article>
         </div>
 
@@ -264,12 +271,14 @@ function render(report) {
 
     ${discoverySection}
 
+    ${regimeBanner}
+
     <section class="panel animate-rise delay-1" id="focus">
       <div class="section-header">
         <div>
-          <p class="section-kicker">交易池</p>
-          <h2>跨題材最值得先追蹤的交易池名單</h2>
-          <p>這裡只放已經通過題材與個股 gate 的交易池 top picks，方便先掃可執行名單。</p>
+          <p class="section-kicker">交易池股票</p>
+          <h2>${tradeStockHeading}</h2>
+          <p>這裡只放已經通過題材與個股 gate 的交易池 top picks；市場 regime 會直接限制這一段的輸出上限。</p>
         </div>
       </div>
       <div class="focus-grid">${focusCards}</div>
@@ -290,8 +299,8 @@ function render(report) {
       <div class="section-header">
         <div>
           <p class="section-kicker">交易池題材</p>
-          <h2>按本週可操作性排序的交易池 top 5</h2>
-          <p>只有通過題材 gate，且 lifecycle 屬於 confirmation / expansion 的題材，才會出現在這一段。</p>
+          <h2>${tradeThemeHeading}</h2>
+          <p>只有通過題材 gate，且 lifecycle 屬於 confirmation / expansion 的題材，才會出現在這一段；市場 regime 偏弱時會直接壓縮上限。</p>
         </div>
       </div>
       <div class="theme-accordion">${themeCards}</div>
@@ -683,6 +692,65 @@ function formatSignedAmount(value) {
   if (number > 0) return `+${number.toFixed(2)}`;
   if (number < 0) return number.toFixed(2);
   return "0.00";
+}
+
+function normalizeMarketRegime(regime) {
+  const fallback = {
+    score: "未提供",
+    stance: "未提供",
+    mode: "normal",
+    summary: "這版資料還沒有 market regime 判斷。",
+    scoreBreakdown: {},
+    drivers: [],
+    effectOnSelection: "",
+  };
+
+  if (!regime || typeof regime !== "object") {
+    return fallback;
+  }
+
+  return {
+    ...fallback,
+    ...regime,
+  };
+}
+
+function getTradingPoolLimits(mode) {
+  const map = {
+    risk_on: { themeMax: 5, themeLabel: "5", stockMax: 6, stockLabel: "6" },
+    normal: { themeMax: 5, themeLabel: "5", stockMax: 6, stockLabel: "6" },
+    selective: { themeMax: 4, themeLabel: "4", stockMax: 4, stockLabel: "4" },
+    defensive: { themeMax: 3, themeLabel: "3", stockMax: 4, stockLabel: "4" },
+    capital_preservation: { themeMax: 2, themeLabel: "2", stockMax: 2, stockLabel: "2" },
+  };
+
+  return map[mode] || map.normal;
+}
+
+function marketRegimeTone(score) {
+  const numericScore = Number(score);
+  if (!Number.isFinite(numericScore)) return "tone-flat";
+  if (numericScore >= 65) return "tone-up";
+  if (numericScore >= 45) return "tone-flat";
+  return "tone-down";
+}
+
+function renderRegimeBanner(regime, limits) {
+  if (!["defensive", "capital_preservation"].includes(regime.mode)) {
+    return "";
+  }
+
+  return `
+    <section class="panel regime-banner animate-rise delay-1" id="market-regime">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">市場 Regime 提示</p>
+          <h2>${regime.stance}：交易池已縮到 ${limits.themeLabel} 個題材 / ${limits.stockLabel} 檔股票</h2>
+          <p>${regime.effectOnSelection || regime.summary}</p>
+        </div>
+      </div>
+    </section>
+  `;
 }
 
 initReadingMode();
