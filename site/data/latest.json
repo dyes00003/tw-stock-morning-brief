@@ -1,19 +1,19 @@
 {
-  "reportDate": "2026-05-01",
-  "priceDate": "2026-04-30（週四；TWSE / TPEX 官方收盤、T86、BFI82U 與 TPEX 日行情資料；2026-05-01 為勞動節休市，採最近一個交易日 2026-04-30 收盤）",
+  "reportDate": "2026-05-02",
+  "priceDate": "2026-04-30（週四；TWSE / TPEX 官方收盤、T86、BFI82U 與 TPEX 日行情資料；2026-05-01 為勞動節休市，2026-05-02 為週六非交易日，採最近一個交易日 2026-04-30 收盤）",
   "weekRange": {
     "start": "2026-04-27",
     "end": "2026-05-01"
   },
-  "headline": "5/1 勞動節雙軌版：4/30 官方收盤不改前五，交易池維持 CCL / 互連 / 光通訊 / HBM4 / 電源，記憶體與 AI 交換器轉觀察池。",
-  "deck": "這次是 2026-05-01 的第二次強制重跑，仍採 2026-04-30 官方收盤。自 22:39 首版之後，沒有更晚的官方 U.S. macro 或足以改寫題材排序的地緣新事件；這版的重點是把交易池 / 觀察池、gate、score、lifecycle 直接落到網站資料，讓題材與選股不再只是敘事式排序。",
+  "headline": "5/2 週末重跑版：4/30 官方收盤前五不變，新增 OFAC 霍爾木茲通行制裁警示與 IMO 商船攻擊決議，交易池仍維持 CCL / 互連 / 光通訊 / HBM4 / 電源。",
+  "deck": "這次是 2026-05-02 的強制重跑，價格基準仍採 2026-04-30 官方收盤。自 2026-05-01 23:33 版以來，沒有更晚的官方 U.S. macro release，也沒有足以改寫台股排序的新台灣 tape；但新增了 OFAC 2026-05-01 霍爾木茲通行費制裁警示與 IMO 2026-05-01 商船攻擊決議，所以這版把地緣 / 航運風險重新寫回背景風險欄，市場 regime 維持 65 分偏多 / normal。",
   "executiveSummary": [
-    "今天是 2026-05-01（週五）勞動節休市版，股價、法人與估值基準仍採 2026-04-30 官方收盤。",
-    "自 2026-05-01 22:39 首版以來，沒有更晚的官方 U.S. macro release；本版沿用 DOL 189,000、BEA 1Q26 GDP +2.0%、3 月 PCE 3.5% YoY、BLS ECI +0.9%、ISM 製造業 PMI 52.7。",
-    "交易池前五題材維持：高階 CCL / AI PCB / 高層數板、AI 高速互連線 / 大電流電源線、光模組 / 矽光子、HBM4 / AI ASIC IP / 台積電 3DFabric、生產伺服器電源 / BBU。",
-    "這次正式把雙軌輸出寫進資料：交易池只保留已通過 gate 且屬於 confirmation / expansion 的題材；seed、late 與 near-miss 題材改放觀察池。",
-    "記憶體被明確標成 breakdown，因為 4/30 受檢核心成員股 0/5 跑贏 TAIEX，且全族群與前一日主流敘事明顯衝突。",
-    "AI 交換器、AI 高速材料 upstream、CoWoS 設備、重電 / 電網本版都留在觀察池，等待更多 tape、法人或二階催化確認。"
+    "今天是 2026-05-02（週六）週末重跑版；台股沒有新交易日，股價、法人與估值基準仍採 2026-04-30 官方收盤。",
+    "自 2026-05-01 23:33 版以來，沒有更晚的官方 U.S. macro release；仍沿用 DOL 189,000、BEA 1Q26 GDP +2.0%、3 月 PCE 3.5% YoY、BLS ECI +0.9%、ISM 製造業 PMI 52.7。",
+    "交易池前五題材維持不變：高階 CCL / AI PCB / 高層數板、AI 高速互連線 / 大電流電源線、光模組 / 矽光子、HBM4 / AI ASIC IP / 台積電 3DFabric、伺服器電源 / BBU。",
+    "OFAC 於 2026-05-01 正式發布「霍爾木茲通行費制裁風險」警示，IMO 於 2026-05-01 也採納譴責霍爾木茲商船攻擊的決議；這兩條都是新的官方風險訊號，但目前仍屬背景變數，還沒有改寫 4/30 台股主線。",
+    "市場 regime 維持 65 分、偏多 / normal；題材健康度與交易池平均分數仍夠高，但指數單日轉弱與外資大賣超，使這裡更適合集中做已確認主線，不適合擴張到次級敘事。",
+    "觀察池結構不變：AI 交換器、AI 高速材料 upstream、CoWoS 設備、重電 / 電網仍在等待更明確的台股廣度與二階催化；記憶體仍維持 breakdown。"
   ],
   "marketSnapshot": {
     "indexClose": 38926.63,
@@ -27,7 +27,7 @@
       "score": 65,
       "stance": "偏多",
       "mode": "normal",
-      "summary": "題材健康度與跨題材廣度仍偏強，但指數單日轉弱且外資賣超偏大，做法應集中在已確認主線，不適合全面擴張。",
+      "summary": "題材健康度與跨題材廣度仍偏強，但指數單日轉弱、外資賣超偏大，且 OFAC / IMO 新增霍爾木茲風險訊號，做法應集中在已確認主線。",
       "scoreBreakdown": {
         "tapeBreadth": 10,
         "flow": 10,
@@ -36,53 +36,68 @@
         "eventRisk": 10
       },
       "drivers": [
-        "最新交易池題材平均分數高於 80，且 major candidates 只有 1 個 breakdown，題材健康度明顯撐住總分。",
+        "最新交易池題材平均分數仍高於 80，且 major candidates 只有 1 個 breakdown，題材健康度持續撐住總分。",
         "4/30 TAIEX 單日收黑且外資現貨賣超 53.56 億，代表整體市場不是無差別 risk-on。",
         "高階 CCL、互連線、光模組、HBM4、電源等主線仍有多股 confirmation / expansion，市場沒有全面瓦解。",
-        "最近官方 macro 以 GDP、ISM、claims 為主的成長面仍可支撐 risk-on，但通膨與地緣風險沒有完全消失。"
+        "OFAC 2026-05-01 與 IMO 2026-05-01 都提高霍爾木茲與航運通道風險的官方可歸因程度，但目前還沒有形成新的能源 / 運價 shock 去把 regime 壓到 selective。"
       ],
-      "effectOnSelection": "本版暫維持正常模式的 5 個交易池題材與 6 檔交易池股票上限；若後續指數、外資與 theme breadth 同步轉弱，下一級會切到 selective 並縮到 4 / 4。"
+      "effectOnSelection": "本版維持 normal 模式的 5 個交易池題材與 6 檔交易池股票上限；沒有任何已通過 gate 的題材或股票因 regime cap 被壓回觀察池。"
     }
   },
   "macroDrivers": [
     {
       "label": "初請失業金",
       "value": "189,000（截至 2026-04-25 當週）",
-      "detail": "自 2026-05-01 22:39 首版以來沒有更晚的 DOL 官方 weekly claims。最新仍是 2026-04-30 公布：截至 2026-04-25 當週 initial claims 189,000，前週修正為 215,000；continuing claims 1,785,000，前週修正為 1,808,000。",
+      "detail": "自 2026-05-01 23:33 版以來沒有更晚的 DOL 官方 weekly claims。最新仍是 2026-04-30 公布：截至 2026-04-25 當週 initial claims 189,000，前週修正為 215,000；continuing claims 1,785,000，前週修正為 1,808,000。",
       "tone": "up"
     },
     {
       "label": "GDP / 季度通膨",
       "value": "1Q26 GDP +2.0%；GDP 內 PCE 4.5%",
-      "detail": "自 2026-05-01 22:39 首版以來沒有更晚的 BEA GDP release。最新仍是 2026-04-30 advance estimate：2026Q1 real GDP 年化 +2.0%，高於 2025Q4 third estimate 的 +0.5%；同份報告裡季度 PCE price index 4.5%，core PCE 4.3%。",
+      "detail": "自 2026-05-01 23:33 版以來沒有更晚的 BEA GDP release。最新仍是 2026-04-30 advance estimate：2026Q1 real GDP 年化 +2.0%，高於 2025Q4 third estimate 的 +0.5%；同份報告裡季度 PCE price index 4.5%，core PCE 4.3%。",
       "tone": "down"
     },
     {
       "label": "3 月 PCE / 消費",
       "value": "PCE 3.5% YoY；core 3.2%；spending +0.9%",
-      "detail": "自 2026-05-01 22:39 首版以來沒有更晚的 BEA personal income and outlays release。最新仍是 2026-04-30：3 月 personal income +0.6% MoM、PCE spending +0.9%，PCE price index 年增 3.5%，core PCE 年增 3.2%。",
+      "detail": "自 2026-05-01 23:33 版以來沒有更晚的 BEA personal income and outlays release。最新仍是 2026-04-30：3 月 personal income +0.6% MoM、PCE spending +0.9%，PCE price index 年增 3.5%，core PCE 年增 3.2%。",
       "tone": "down"
     },
     {
       "label": "ECI 薪資成本",
       "value": "Q1 compensation +0.9% QoQ；+3.4% YoY",
-      "detail": "自 2026-05-01 22:39 首版以來沒有更晚的 BLS ECI release。最新仍是 2026-04-30：2026Q1 civilian compensation costs 季增 0.9%、年增 3.4%。",
+      "detail": "自 2026-05-01 23:33 版以來沒有更晚的 BLS ECI release。最新仍是 2026-04-30：2026Q1 civilian compensation costs 季增 0.9%、年增 3.4%。",
       "tone": "down"
     },
     {
       "label": "ISM 製造 / 原料壓力",
       "value": "PMI 52.7；Prices 84.6；Supplier Deliveries 60.6",
-      "detail": "自 2026-05-01 22:39 首版以來沒有更晚的 ISM manufacturing release。最新仍是 2026-05-01：PMI 52.7、Prices 84.6、Supplier Deliveries 60.6，並直接點名 copper、wire and cable、polyethylene resins、memory components 漲價。",
+      "detail": "自 2026-05-01 23:33 版以來沒有更晚的 ISM manufacturing release。最新仍是 2026-05-01：PMI 52.7、Prices 84.6、Supplier Deliveries 60.6，並直接點名 copper、wire and cable、polyethylene resins、memory components 漲價。",
       "tone": "mixed"
     },
     {
       "label": "地緣政治 / 能源 / 航運",
-      "value": "霍爾木茲風險延續，仍屬背景風險",
-      "detail": "自 2026-05-01 22:39 首版以來，沒有比 AP 2026-04-30、IMO 與 GOV.UK 鏈更晚且足以改寫台股主線的 verified 新事件；霍爾木茲與運價風險仍是背景變數，不是 4/30 台股直接主線。",
+      "value": "OFAC 與 IMO 新增霍爾木茲風險警示，仍屬背景變數",
+      "detail": "這次新增兩條官方風險訊號：OFAC 2026-05-01 發布「Sanctions Risks of Iranian Demands for Strait of Hormuz Passage」並於 FAQ 1249 明言通行費付款不被授權；IMO 2026-05-01 也正式譴責霍爾木茲商船攻擊並警告海洋污染風險。它們提高了制裁與航運背景風險，但目前仍沒有改寫 4/30 台股主線。",
       "tone": "down"
     }
   ],
-  "newDiscoveries": [],
+  "newDiscoveries": [
+    {
+      "id": "2026-05-02-ofac-hormuz-alert",
+      "scope": "地緣 / 航運 / 制裁",
+      "title": "OFAC 5/1 正式發布霍爾木茲通行費制裁風險警示",
+      "detail": "美國財政部 OFAC 於 2026-05-01 公布 Iran-related alert，並在 FAQ 1249 明言：支付伊朗政府或 IRGC 的霍爾木茲安全通行費不被授權，非美國人也可能有制裁曝險。",
+      "whyItMatters": "這把霍爾木茲風險從戰事 / 保費問題，推進到金融制裁與結算風險，對航運、油氣、塑化原料與整體風險偏好屬背景利空。"
+    },
+    {
+      "id": "2026-05-02-imo-hormuz-resolution",
+      "scope": "地緣 / 航運 / 官方組織",
+      "title": "IMO 5/1 採納決議譴責霍爾木茲商船攻擊",
+      "detail": "IMO MEPC 84 於 2026-05-01 採納決議，譴責霍爾木茲地區對商業航運的攻擊，並警告油污、危險物質與爆炸殘留造成的大規模海洋污染風險。",
+      "whyItMatters": "這代表國際海運官方機構把霍爾木茲風險正式寫進決議，航運、保險與能源供應鏈短期不太可能快速去風險化。"
+    }
+  ],
   "themes": [
     {
       "rank": 1,
@@ -1343,28 +1358,28 @@
     }
   ],
   "changesComparedToPrevious": {
-    "comparedTo": "2026-05-01 22:39 首版（同樣採 2026-04-30 週四官方收盤）",
-    "summary": "交易池前五題材與首頁主選股沒有改變，但這次正式把雙軌輸出、lifecycle、gate 與 score 寫進網站資料；記憶體被明確降為 breakdown 觀察題材，AI 交換器、upstream 材料、CoWoS 設備與重電則留在觀察池等待升級條件。",
+    "comparedTo": "2026-05-01 23:33 版（同樣採 2026-04-30 週四官方收盤）",
+    "summary": "交易池前五題材與首頁主選股沒有改變；這次新增的是 OFAC 與 IMO 的霍爾木茲官方風險訊號，因此 newDiscoveries 重新出現 2 條，市場 regime 維持 65 分偏多 / normal。",
     "items": [
       {
-        "title": "交易池前五不變",
-        "reason": "自 2026-05-01 22:39 首版以來，沒有更晚的官方 U.S. macro 或足以改寫台股主線的地緣新事件；4/30 官方 tape 也沒有改變。"
+        "title": "交易池前五與首頁主選股不變",
+        "reason": "自 2026-05-01 23:33 版以來，沒有更晚的官方 U.S. macro release，也沒有新的台灣官方價格與法人資料去改寫 4/30 的 tape。"
       },
       {
-        "title": "記憶體正式標成 breakdown",
-        "reason": "4/30 受檢核心成員股 0/5 跑贏 TAIEX，且 2408、2337、2344、2451、8299 同步轉弱，符合 contradiction gate 失敗條件。"
+        "title": "newDiscoveries 重新出現 2 條",
+        "reason": "這次新抓到 OFAC 2026-05-01 霍爾木茲通行費制裁警示，以及 IMO 2026-05-01 商船攻擊決議；兩條都屬於新的官方外部訊號。"
       },
       {
-        "title": "AI 交換器與上游材料保留在觀察池",
-        "reason": "兩條線都還有外部催化，但 stock-news alignment 與台灣端廣度還沒有強到足以擠進交易池前五。"
+        "title": "市場 regime 維持 65 分、偏多 / normal",
+        "reason": "題材健康度仍夠高，且 major candidate breakdown 數量沒有擴大；OFAC / IMO 提高的是背景風險，不足以單獨把 regime 壓到 selective。"
       },
       {
-        "title": "CoWoS 設備 / 廠務與重電保留結構多頭、但不是短線前排",
-        "reason": "這兩條線的長邏輯都沒有壞，但接下來 3 到 10 個交易日的催化清晰度仍弱於 CCL、互連、光通訊與 HBM4。"
+        "title": "沒有題材或股票因 regime cap 被壓出交易池",
+        "reason": "目前 mode 仍是 normal，所以交易池上限維持 5 個題材與 6 檔股票；觀察池結構也沒有新的升降級。"
       },
       {
-        "title": "本次沒有新的外部消息進 newDiscoveries",
-        "reason": "這次強制重跑的重點是把新的 gate / score / lifecycle framework 寫進輸出；自首版以來沒有新增尚未反映的外部新聞或官方事件。"
+        "title": "宏觀欄改成明確寫出「無更新」",
+        "reason": "這次重跑後，DOL、BEA、BLS、ISM 都明確標示自上一版以來沒有更晚的官方 release，避免沿用舊值卻沒交代。"
       }
     ]
   },
@@ -1538,9 +1553,29 @@
       "label": "Jin10 即時快訊首頁",
       "url": "https://www.jin10.com/",
       "note": "宏觀與地緣即時訊號的輔助來源；高影響事件仍以官方或 AP / 政府頁確認。"
+    },
+    {
+      "label": "OFAC 2026-05-01 Iran-related recent actions",
+      "url": "https://ofac.treasury.gov/recent-actions/20260501",
+      "note": "官方列出新的 Iran-related alert，主題為霍爾木茲通行費的制裁風險。"
+    },
+    {
+      "label": "OFAC FAQ 1249",
+      "url": "https://ofac.treasury.gov/faqs/1249",
+      "note": "官方明言支付伊朗或 IRGC 的霍爾木茲通行費不被授權，且非美國人也可能有制裁曝險。"
+    },
+    {
+      "label": "IMO 2026-05-01 MEPC 84 summary",
+      "url": "https://www.imo.org/en/mediacentre/pressbriefings/pages/imo-progresses-work-on-ship-emissions-pollution-and-ocean-protection.aspx",
+      "note": "官方採納譴責霍爾木茲商船攻擊的決議，並警告海洋污染風險。"
+    },
+    {
+      "label": "AP 2026-05-02 Hormuz toll sanctions context",
+      "url": "https://apnews.com/article/9317c11e51ba8dfa527b424f931fe04b",
+      "note": "作為 OFAC 警示的新聞背景與市場解讀輔助來源。"
     }
   ],
-  "footnote": "本報告不是投資建議；本版是 2026-05-01 勞動節休市版本，價格與法人流向以 2026-04-30 官方可得資料為準。上市個股 PE 本次優先採 TWSE MI_INDEX 每日收盤行情欄位；若 BWIBBU_d 當下無資料，不沿用舊值。TPEX 個股 PE / PB 若無法由官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次仍區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；如果只有公開評等頁存在而沒有完整原文，會明確標示。 本版另外把交易池 / 觀察池雙軌、theme lifecycle、gateStatus、themeScore、stockScore 與 observation pool 寫入 JSON；如果 observationThemes 或 observationStocks 為空，代表本次沒有足夠證據形成可展示的觀察池。",
+  "footnote": "本報告不是投資建議；本版是 2026-05-02 週末重跑版本，價格與法人流向以 2026-04-30 官方可得資料為準。上市個股 PE 本次優先採 TWSE MI_INDEX 每日收盤行情欄位；若 BWIBBU_d 當下無資料，不沿用舊值。TPEX 個股 PE / PB 若無法由官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次仍區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；如果只有公開評等頁存在而沒有完整原文，會明確標示。 本版維持交易池 / 觀察池雙軌、theme lifecycle、gateStatus、themeScore、stockScore、marketRegime 與 observation pool；如果 observationThemes 或 observationStocks 為空，代表本次沒有足夠證據形成可展示的觀察池。",
   "observationThemes": [
     {
       "rank": 1,
