@@ -90,7 +90,7 @@
       "heat": "5/4 由 3443、2330、6531、3661 帶動半導體類指數成為盤面最強主線之一。",
       "stance": "優先做 3443 / 2330 這類最直接承接 HBM4、3DFabric 與 AI ASIC 擴張、且兼具流動性的核心股。",
       "summary": "Broader family：semiconductor manufacturing。Exact subtheme：HBM4 / AI ASIC IP / 台積電 3DFabric 生態系；nearest comparable：CoWoS / 先進封裝設備；不合併因這條線賺的是 IP / 設計服務與 AI platform 估值擴張，不是設備裝機節奏。",
-      "pricingView": "上游是 HBM memory、EDA、IP、advanced packaging technologies；中游是 ASIC design service、N3 / N2 logic 與 CoWoS / 3DFabric 整合；下游是 hyperscaler 自研 ASIC 與 AI server 平台。4/30 bottleneck 在高頻寬記憶體與 advanced package integration。",
+      "pricingView": "上游是 HBM memory、EDA、IP、advanced packaging technologies；中游是 ASIC design service、N3 / N2 logic 與 CoWoS / 3DFabric 整合；下游是 hyperscaler 自研 ASIC 與 AI server 平台。目前 bottleneck 在高頻寬記憶體與 advanced package integration。",
       "policyView": "沒有直接台灣政策加分，主要靠 TSMC、GUC 與 hyperscaler 自研 ASIC 需求。",
       "premiumSpace": "5/4 3443、2330、6531 同步強攻，市場重新把 AI ASIC / HBM4 / 先進封裝價值鏈拉回盤面最前排。",
       "whyNow": [
@@ -108,13 +108,13 @@
         },
         {
           "label": "why selected over next best",
-          "text": "比 CoWoS 設備更值得排進前五，因為近 7 日官方 stock-level catalyst 更明確，且 4/30 股價反應更乾淨。"
+          "text": "比 CoWoS 設備更值得排進前五，因為近 7 日官方 stock-level catalyst 更明確，且現階段股價反應更乾淨。"
         }
       ],
       "downsideEvents": [
         "若 2026-05-08 美國 2026 年 4 月就業報告明顯高於預期，長天期利率與高 beta 科技估值都會受壓。",
         "若霍爾木茲與中東能源 / 航運風險再升級，油價、運費與原物料成本會壓縮科技供應鏈評價。",
-        "若 4/30 的族群輪動只是單日資金切換，最先回吐的會是 4/30 漲幅最大的第二圈股票。",
+        "若這波族群輪動只是單日資金切換，最先回吐的會是近期漲幅最大的第二圈股票。",
         "若接下來 3 至 5 個交易日沒有更多可歸因法說、營收或客戶驗證消息，題材容易回到高檔震盪。"
       ],
       "stocks": [
@@ -132,9 +132,9 @@
           "pb": "43.48",
           "foreignFlow": "-407,586 股",
           "institutionFlow": "-399,814 股",
-          "coreReason": "4/23 GUC HBM4 官方事件仍新，4/30 創意率先回到 AI ASIC / HBM4 族群前排。",
-          "notPricedIn": "4/23 官方 HBM4 事件到 4/30 只出現第一波回補，若 AI ASIC family 持續轉強，創意仍有二階段空間。",
-          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 4/30 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
+          "coreReason": "4/23 GUC HBM4 官方事件仍新，到 5/4 創意已回到 AI ASIC / HBM4 族群前排。",
+          "notPricedIn": "4/23 官方 HBM4 事件到 5/4 仍只出現第一波回補，若 AI ASIC family 持續轉強，創意仍有二階段空間。",
+          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 5/4 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
           "catalysts": [
             "2026-05-04 收 4685 元，單日 +9.98%。",
             "2026-05-04 外資 -407,586 股，三大法人合計 -399,814 股。",
@@ -171,9 +171,9 @@
           "pb": "10.60",
           "foreignFlow": "+9,111,968 股",
           "institutionFlow": "+10,298,708 股",
-          "coreReason": "台積電本身 4/30 偏弱，但它仍是 HBM4 / 3DFabric 生態系不可跳過的基準股。",
+          "coreReason": "台積電在 4/30 曾偏弱，但它仍是 HBM4 / 3DFabric 生態系不可跳過的基準股。",
           "notPricedIn": "4/28 的回檔更像資金短線切換，而不是 Google / ASIC / 3DFabric 平台價值被否定。",
-          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 4/30 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
+          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 5/4 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
           "catalysts": [
             "2026-05-04 收 2275 元，單日 +6.56%。",
             "2026-05-04 外資 +9,111,968 股，三大法人合計 +10,298,708 股。",
@@ -211,9 +211,9 @@
           "pb": "7.97",
           "foreignFlow": "-179,145 股",
           "institutionFlow": "-5,501 股",
-          "coreReason": "世芯-KY 4/30 回到 AI ASIC / 自研晶片主線前排，是 HBM4 / ASIC 題材的高 beta 表達。",
+          "coreReason": "世芯-KY 到 5/4 已回到 AI ASIC / 自研晶片主線前排，是 HBM4 / ASIC 題材的高 beta 表達。",
           "notPricedIn": "相對台積與創意，它的回檔更大，若 AI ASIC 主線再度回流，反而是彈性更高的補漲標的。",
-          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 4/30 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
+          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 5/4 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
           "catalysts": [
             "2026-05-04 收 4250 元，單日 +2.78%。",
             "2026-05-04 外資 -179,145 股，三大法人合計 -5,501 股。",
@@ -249,9 +249,9 @@
           "pb": "3.52",
           "foreignFlow": "-238,017 股",
           "institutionFlow": "-345,039 股",
-          "coreReason": "智原 4/30 跌幅收斂，屬於 HBM4 / IP 主線裡尚未 fully priced 的補漲名單。",
+          "coreReason": "智原近期跌幅收斂，屬於 HBM4 / IP 主線裡尚未 fully priced 的補漲名單。",
           "notPricedIn": "因為 4/24-4/28 的走勢比創意更弱，若資金重新回到 ASIC 設計鏈，它的時間差最大。",
-          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 4/30 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
+          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 5/4 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
           "catalysts": [
             "2026-05-04 收 169 元，單日 +0.60%。",
             "2026-05-04 外資 -238,017 股，三大法人合計 -345,039 股。",
@@ -285,9 +285,9 @@
           "pb": "10.63",
           "foreignFlow": "-65,149 股",
           "institutionFlow": "-64,329 股",
-          "coreReason": "愛普* 4/30 續強，讓 HBM / specialty memory spillover 題材不只停留在單一 IP 股。",
+          "coreReason": "愛普* 近期續強，讓 HBM / specialty memory spillover 題材不只停留在單一 IP 股。",
           "notPricedIn": "因為這波資金更明顯去追記憶體與網通，愛普* 反而沒有 fully reflect HBM spillover。",
-          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 4/30 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
+          "targetLogic": "目標價以 4/23 GUC 官方 HBM4 事件和 5/4 家族重啟後的補漲空間估算，前提是 2330 以外的 IP / ASIC 名單持續領先。",
           "catalysts": [
             "2026-05-04 收 924 元，單日 +10.00%。",
             "2026-05-04 外資 -65,149 股，三大法人合計 -64,329 股。",
@@ -327,7 +327,7 @@
       "heat": "5/4 由 4908、3163、3450、4979、6442 組成最整齊的光模組 / 矽光子強攻主線。",
       "stance": "優先做具流動性、且還沒完全反映同族群噴出幅度的光模組核心股。",
       "summary": "Broader family：AI infrastructure。Exact subtheme：光模組 / 矽光子；nearest comparable：AI 交換器 / 資料中心網通設備；不合併因光模組與 CPO / ELSFP 賺的是光學內容值與客戶認證，不是 switch box 組裝。",
-      "pricingView": "上游是 DSP、laser、FAU、光纖與光學封裝；中游是 optical module、CPO 子系統與外接雷射模組；下游是 hyperscaler、AI cluster、800G / 1.6T 網路。4/30 bottleneck 在客戶 qualification 與產能爬坡。",
+      "pricingView": "上游是 DSP、laser、FAU、光纖與光學封裝；中游是 optical module、CPO 子系統與外接雷射模組；下游是 hyperscaler、AI cluster、800G / 1.6T 網路。目前 bottleneck 在客戶 qualification 與產能爬坡。",
       "policyView": "沒有直接台灣政策紅利，主要由 AI cluster 網路升級推動。",
       "premiumSpace": "5/4 光通訊鏈從 4908、3163、3450、4979 到 6442 全面擴散，代表市場在做第二階段光模組 / 矽光子重估。",
       "whyNow": [
@@ -345,13 +345,13 @@
         },
         {
           "label": "why selected over next best",
-          "text": "雖然近 7 日 stock-level 新聞沒有 CCL 那麼密，但 4/30 的族群廣度明顯勝過 AI 交換器與記憶體。"
+          "text": "雖然近 7 日 stock-level 新聞沒有 CCL 那麼密，但 5/4 的族群廣度明顯勝過 AI 交換器與記憶體。"
         }
       ],
       "downsideEvents": [
         "若 2026-05-08 美國 2026 年 4 月就業報告明顯高於預期，長天期利率與高 beta 科技估值都會受壓。",
         "若霍爾木茲與中東能源 / 航運風險再升級，油價、運費與原物料成本會壓縮科技供應鏈評價。",
-        "若 4/30 的族群輪動只是單日資金切換，最先回吐的會是 4/30 漲幅最大的第二圈股票。",
+        "若這波族群輪動只是單日資金切換，最先回吐的會是近期漲幅最大的第二圈股票。",
         "若接下來 3 至 5 個交易日沒有更多可歸因法說、營收或客戶驗證消息，題材容易回到高檔震盪。"
       ],
       "stocks": [
@@ -369,9 +369,9 @@
           "pb": "21.67",
           "foreignFlow": "-269,118 股",
           "institutionFlow": "-434,752 股",
-          "coreReason": "4/30 optics 家族最具辨識度的 leader 之一，與 4908 / 3163 / 4979 形成完整族群共振。",
-          "notPricedIn": "4/30 optics 家族強勢，但 stock-level 可歸因消息仍不算飽和，代表資金還在追認領先股。",
-          "targetLogic": "目標價以 4/30 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
+          "coreReason": "5/4 仍是 optics 家族最具辨識度的 leader 之一，與 4908 / 3163 / 4979 形成完整族群共振。",
+          "notPricedIn": "5/4 optics 家族仍強勢，但 stock-level 可歸因消息仍不算飽和，代表資金還在追認領先股。",
+          "targetLogic": "目標價以 5/4 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
           "catalysts": [
             "2026-05-04 收 2085 元，單日 +1.21%。",
             "2026-05-04 外資 -269,118 股，三大法人合計 -434,752 股。",
@@ -408,9 +408,9 @@
           "pb": "目前未驗證",
           "foreignFlow": "+8,950 股",
           "institutionFlow": "-28,050 股",
-          "coreReason": "前鼎 4/17 法說的 CPO ELSFP 進度，在 4/30 股價與族群強度上被重新擴大解讀。",
+          "coreReason": "前鼎 4/17 法說的 CPO ELSFP 進度，在 5/4 股價與族群強度上被重新擴大解讀。",
           "notPricedIn": "它更像市場對光模組主題的放大器，若通信網路和資料中心互連熱度延續，還沒完全反映。",
-          "targetLogic": "目標價以 4/30 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
+          "targetLogic": "目標價以 5/4 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
           "catalysts": [
             "2026-05-04 收 235 元，單日 +9.81%。",
             "2026-05-04 外資 +8,950 股，三大法人合計 -28,050 股。",
@@ -444,9 +444,9 @@
           "pb": "目前未驗證",
           "foreignFlow": "-742,619 股",
           "institutionFlow": "-651,294 股",
-          "coreReason": "波若威 4/30 強攻，代表市場把 CPO / 配線盒與光纖陣列量產路徑重新提前定價。",
+          "coreReason": "波若威 5/4 再度強攻，代表市場把 CPO / 配線盒與光纖陣列量產路徑重新提前定價。",
           "notPricedIn": "相較 4908 和 6442，波若威漲幅較節制，保留後續補漲空間。",
-          "targetLogic": "目標價以 4/30 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
+          "targetLogic": "目標價以 5/4 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
           "catalysts": [
             "2026-05-04 收 1255 元，單日 +9.61%。",
             "2026-05-04 外資 -742,619 股，三大法人合計 -651,294 股。",
@@ -482,7 +482,7 @@
           "institutionFlow": "+3,486,201 股",
           "coreReason": "聯鈞 4/28 雖只漲 1.33%，但作為大型 liquid name，能承接更大資金。",
           "notPricedIn": "比起高 beta TPEX 光模組股，聯鈞更像還沒 fully reflect 的中大型表達。",
-          "targetLogic": "目標價以 4/30 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
+          "targetLogic": "目標價以 5/4 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
           "catalysts": [
             "2026-05-04 收 332 元，單日 +9.93%。",
             "2026-05-04 外資 +2,561,956 股，三大法人合計 +3,486,201 股。",
@@ -517,9 +517,9 @@
           "pb": "目前未驗證",
           "foreignFlow": "-240,013 股",
           "institutionFlow": "-220,201 股",
-          "coreReason": "華星光 4/30 跟上 optics 主線，屬於光模組題材的第二圈擴散受惠股。",
+          "coreReason": "華星光 5/4 跟上 optics 主線，屬於光模組題材的第二圈擴散受惠股。",
           "notPricedIn": "相較前排龍頭，它仍屬跟漲但未爆量的第二梯隊。",
-          "targetLogic": "目標價以 4/30 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
+          "targetLogic": "目標價以 5/4 optics family 強勢延續 1 到 2 個交易週估算，核心假設是 800G / 1.6T / CPO 仍是市場最想追的 AI 網路節點。",
           "catalysts": [
             "2026-05-04 收 669 元，單日 +9.85%。",
             "2026-05-04 外資 -240,013 股，三大法人合計 -220,201 股。",
@@ -580,13 +580,13 @@
         },
         {
           "label": "why selected over next best",
-          "text": "比 AI 交換器更值得留下，因為近 7 日有更明確的 stock-level catalyst，不只是 4/30 的股價反彈。"
+          "text": "比 AI 交換器更值得留下，因為近 7 日有更明確的 stock-level catalyst，不只是單日股價反彈。"
         }
       ],
       "downsideEvents": [
         "若 2026-05-08 美國 2026 年 4 月就業報告明顯高於預期，長天期利率與高 beta 科技估值都會受壓。",
         "若霍爾木茲與中東能源 / 航運風險再升級，油價、運費與原物料成本會壓縮科技供應鏈評價。",
-        "若 4/30 的族群輪動只是單日資金切換，最先回吐的會是 4/30 漲幅最大的第二圈股票。",
+        "若這波族群輪動只是單日資金切換，最先回吐的會是近期漲幅最大的第二圈股票。",
         "若接下來 3 至 5 個交易日沒有更多可歸因法說、營收或客戶驗證消息，題材容易回到高檔震盪。"
       ],
       "stocks": [
@@ -604,9 +604,9 @@
           "pb": "5.02",
           "foreignFlow": "+973,900 股",
           "institutionFlow": "+1,128,050 股",
-          "coreReason": "4/28 法說把 ORV3 / 800G / 1.6T 路線講清楚，4/30 股價仍守高，是互連主線裡最乾淨的一檔。",
+          "coreReason": "4/28 法說把 ORV3 / 800G / 1.6T 路線講清楚，到 5/4 股價仍守高，是互連主線裡最乾淨的一檔。",
           "notPricedIn": "4/28 法說後兩個交易日內，市場對 ORV3 / 1.6T 的時間表仍屬部分反映。",
-          "targetLogic": "目標價以 4/28 法說與 4/30 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
+          "targetLogic": "目標價以 4/28 法說與 5/4 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
           "catalysts": [
             "2026-05-04 收 228.5 元，單日 +9.86%。",
             "2026-05-04 外資 +973,900 股，三大法人合計 +1,128,050 股。",
@@ -644,7 +644,7 @@
           "institutionFlow": "+655,734 股",
           "coreReason": "貿聯是這條主線裡最 liquid 的大型表達：4/29 漲 5.70%，而市場還在把 AI cable 與電源 whip 的內容值重估往上疊。",
           "notPricedIn": "2026-04-29 的漲幅大，但從 4/28 到 4/29 仍主要是價格與量能反映，公開可見的完整外資原文並不多，代表市場資訊擴散還沒結束。",
-          "targetLogic": "目標價以 4/28 法說與 4/30 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
+          "targetLogic": "目標價以 4/28 法說與 5/4 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
           "catalysts": [
             "2026-05-04 收 2940 元，單日 +6.14%。",
             "2026-05-04 外資 +672,293 股，三大法人合計 +655,734 股。",
@@ -682,7 +682,7 @@
           "institutionFlow": "+19,163 股",
           "coreReason": "川湖不是線纜本體，但它是同一個 physical interconnect family 裡最核心的機構節點；4/29 +4.52% 代表市場正在追「能真正吃到伺服器內容值」的零件。",
           "notPricedIn": "它比 6197 / 3665 更偏結構件，所以漲速通常較慢；4/29 的上漲更像第一段 re-rate，而不是最後一棒。",
-          "targetLogic": "目標價以 4/28 法說與 4/30 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
+          "targetLogic": "目標價以 4/28 法說與 5/4 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
           "catalysts": [
             "2026-05-04 收 4055 元，單日 +3.71%。",
             "2026-05-04 外資 +201 股，三大法人合計 +19,163 股。",
@@ -718,7 +718,7 @@
           "institutionFlow": "-22,942 股",
           "coreReason": "嘉澤 4/29 小跌，但這種 laggard 反而提供較好的主線補漲入口；它是 AI 板端高速連接最乾淨的 listed node。",
           "notPricedIn": "4/29 連接器主線裡，資金先追線束與 power cable，嘉澤只小幅回檔，代表它還沒有完整反映這波 physical interconnect 交易。",
-          "targetLogic": "目標價以 4/28 法說與 4/30 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
+          "targetLogic": "目標價以 4/28 法說與 5/4 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
           "catalysts": [
             "2026-05-04 收 2610 元，單日 +0.19%。",
             "2026-05-04 外資 +261,196 股，三大法人合計 -22,942 股。",
@@ -754,7 +754,7 @@
           "institutionFlow": "-3,504,527 股",
           "coreReason": "4/24 / 4/30 的高速連接器與線材新聞把宏致從 second line 變成互連主線擴散受惠股。",
           "notPricedIn": "宏致雖已明顯轉強，但相對 6197 / 3665，市場對其高速線材與 AI 占比提升仍未完全定價。",
-          "targetLogic": "目標價以 4/28 法說與 4/30 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
+          "targetLogic": "目標價以 4/28 法說與 5/4 tape 後仍可能發生的第二階段資訊擴散估算，若 6197 / 3605 再獲賣方與媒體確認，主線還有上修空間。",
           "catalysts": [
             "2026-05-04 收 85.8 元，單日 +1.54%。",
             "2026-05-04 外資 -3,529,700 股，三大法人合計 -3,504,527 股。",
@@ -796,8 +796,8 @@
       "name": "高階 CCL / AI PCB / 高層數板",
       "heat": "5/4 台光電、金像電、臻鼎-KY、台燿、騰輝電子-KY 全面收紅，AI board / material 主線續強。",
       "stance": "優先做可直接承接高階板材與高多層板獲利轉嫁的 liquid leaders。",
-      "summary": "Broader family：electronic materials and board。Exact subtheme：高階 CCL / AI PCB / 高層數板；nearest comparable：AI 高速材料 / 樹脂 / 玻纖布 upstream；不合併因 4/30 真正被市場追的是 downstream CCL / PCB 成品與高層數板，而不是 upstream 化學品本身。",
-      "pricingView": "上游要看玻纖布、樹脂、銅箔與日系高頻材料；中游是高階 CCL、AI server PCB 與交換器板；下游是 AI server、800G / 1.6T switch、CSP 與 ODM。4/30 的 bottleneck 在低損耗材料與高層數板良率，而不是原料取得本身。",
+      "summary": "Broader family：electronic materials and board。Exact subtheme：高階 CCL / AI PCB / 高層數板；nearest comparable：AI 高速材料 / 樹脂 / 玻纖布 upstream；不合併因 5/4 市場真正追的是 downstream CCL / PCB 成品與高層數板，而不是 upstream 化學品本身。",
+      "pricingView": "上游要看玻纖布、樹脂、銅箔與日系高頻材料；中游是高階 CCL、AI server PCB 與交換器板；下游是 AI server、800G / 1.6T switch、CSP 與 ODM。目前 bottleneck 在低損耗材料與高層數板良率，而不是原料取得本身。",
       "policyView": "沒有直接台灣政策紅利，主要靠 AI 資料中心升級與國際材料漲價 / 緊平衡訊號推動。",
       "premiumSpace": "5/4 台燿接近漲停、台光電與金像電續強，代表 downstream CCL / PCB 的獲利彈性仍在擴散。",
       "whyNow": [
@@ -815,13 +815,13 @@
         },
         {
           "label": "why selected over next best",
-          "text": "比單純 upstream 材料更值得排前面，因為 4/30 市場實際追的是可直接把漲價與規格升級轉成獲利的 downstream CCL / PCB。"
+          "text": "比單純 upstream 材料更值得排前面，因為 5/4 市場實際追的是可直接把漲價與規格升級轉成獲利的 downstream CCL / PCB。"
         }
       ],
       "downsideEvents": [
         "若 2026-05-08 美國 2026 年 4 月就業報告明顯高於預期，長天期利率與高 beta 科技估值都會受壓。",
         "若霍爾木茲與中東能源 / 航運風險再升級，油價、運費與原物料成本會壓縮科技供應鏈評價。",
-        "若 4/30 的族群輪動只是單日資金切換，最先回吐的會是 4/30 漲幅最大的第二圈股票。",
+        "若這波族群輪動只是單日資金切換，最先回吐的會是近期漲幅最大的第二圈股票。",
         "若接下來 3 至 5 個交易日沒有更多可歸因法說、營收或客戶驗證消息，題材容易回到高檔震盪。"
       ],
       "stocks": [
@@ -839,9 +839,9 @@
           "pb": "33.59",
           "foreignFlow": "+49,273 股",
           "institutionFlow": "+242,062 股",
-          "coreReason": "4/29 CCL 漲價訊號加上 4/30 家族續強，台光電是最 liquid 的高階 CCL leader。",
-          "notPricedIn": "4/30 雖然已經上漲，但市場對 downstream CCL / PCB 的 price pass-through 還沒完全擴散到全部 beneficiary。",
-          "targetLogic": "目標價以 4/30 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
+          "coreReason": "4/29 CCL 漲價訊號加上 5/4 家族續強，台光電是最 liquid 的高階 CCL leader。",
+          "notPricedIn": "5/4 雖然已經上漲，但市場對 downstream CCL / PCB 的 price pass-through 還沒完全擴散到全部 beneficiary。",
+          "targetLogic": "目標價以 5/4 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
           "catalysts": [
             "2026-05-04 收 4755 元，單日 +4.62%。",
             "2026-05-04 外資 +49,273 股，三大法人合計 +242,062 股。",
@@ -879,9 +879,9 @@
           "pb": "21.43",
           "foreignFlow": "+435,070 股",
           "institutionFlow": "+612,939 股",
-          "coreReason": "4/30 金像電與 2383 / 4958 / 6274 同步走強，顯示 AI PCB 與高層數板仍在主升段。",
+          "coreReason": "5/4 金像電與 2383 / 4958 / 6274 同步走強，顯示 AI PCB 與高層數板仍在主升段。",
           "notPricedIn": "股價已反映不少熱度，但還沒看到高位爆量轉弱；在台光電續強的前提下，金像電還屬跟隨強勢股。",
-          "targetLogic": "目標價以 4/30 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
+          "targetLogic": "目標價以 5/4 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
           "catalysts": [
             "2026-05-04 收 1440 元，單日 +3.60%。",
             "2026-05-04 外資 +435,070 股，三大法人合計 +612,939 股。",
@@ -916,9 +916,9 @@
           "pb": "3.09",
           "foreignFlow": "-6,995,358 股",
           "institutionFlow": "-6,562,876 股",
-          "coreReason": "4/30 臻鼎-KY 漲停附近，說明 AI server / switch 板需求正在回到高階 PCB 龍頭。",
+          "coreReason": "5/4 臻鼎-KY 強勢上攻，說明 AI server / switch 板需求正在回到高階 PCB 龍頭。",
           "notPricedIn": "外資賣超下仍能上漲，表示價格行為比法人籌碼更強，題材還在延續期。",
-          "targetLogic": "目標價以 4/30 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
+          "targetLogic": "目標價以 5/4 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
           "catalysts": [
             "2026-05-04 收 432.5 元，單日 +2.73%。",
             "2026-05-04 外資 -6,995,358 股，三大法人合計 -6,562,876 股。",
@@ -952,9 +952,9 @@
           "pb": "目前未驗證",
           "foreignFlow": "+842,002 股",
           "institutionFlow": "+670,312 股",
-          "coreReason": "台燿 4/30 續強且法人同步買超，屬於 CCL 題材裡風險報酬比較均衡的第二核心。",
+          "coreReason": "台燿 5/4 續強且法人同步買超，屬於 CCL 題材裡風險報酬比較均衡的第二核心。",
           "notPricedIn": "2026-04-24 的強勢已先反映熱度，4/27 的回檔是在龍頭沒轉弱前重新給進場機會。",
-          "targetLogic": "目標價以 4/30 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
+          "targetLogic": "目標價以 5/4 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
           "catalysts": [
             "2026-05-04 收 1110 元，單日 +9.90%。",
             "2026-05-04 外資 +842,002 股，三大法人合計 +670,312 股。",
@@ -989,9 +989,9 @@
           "pb": "4.15",
           "foreignFlow": "-1,311,800 股",
           "institutionFlow": "-1,233,677 股",
-          "coreReason": "騰輝電子-KY 4/30 續強，代表高階板材與小型高毛利材料股一起被市場重估。",
+          "coreReason": "騰輝電子-KY 5/4 續強，代表高階板材與小型高毛利材料股一起被市場重估。",
           "notPricedIn": "族群龍頭沒有轉弱前，第二梯隊的回檔通常是消化而非結束。",
-          "targetLogic": "目標價以 4/30 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
+          "targetLogic": "目標價以 5/4 收盤上方約 8% 到 10% 的 3 至 10 個交易日 re-rate 估算，前提是 downstream CCL / PCB 家族維持領先且價格轉嫁敘事繼續擴散。",
           "catalysts": [
             "2026-05-04 收 223 元，單日 +1.83%。",
             "2026-05-04 外資 -1,311,800 股，三大法人合計 -1,233,677 股。",
@@ -1034,7 +1034,7 @@
       "heat": "5/4 台達電、康舒、群電延續 power-rack 升級交易，但整體相對強度略弱於光通訊與 ASIC。",
       "stance": "優先做 power-rack 與備援供電節奏最清楚、且相對沒那麼擁擠的電源股。",
       "summary": "Broader family：AI infrastructure。Exact subtheme：伺服器電源 / BBU；nearest comparable：AI 高速互連線 / 大電流電源線；不合併因這條線賺的是 PSU、power shelf、BBU 與 rack-level power 升級，不是 cable 內容值。",
-      "pricingView": "上游是 power semiconductors、magnetics、batteries、supercapacitors 與 thermal parts；中游是 PSU、power shelf、HVDC、BBU；下游是 AI server rack、CSP 資料中心與模組化算力中心。4/30 bottleneck 在高瓦數平台切換與 BBU adoption。",
+      "pricingView": "上游是 power semiconductors、magnetics、batteries、supercapacitors 與 thermal parts；中游是 PSU、power shelf、HVDC、BBU；下游是 AI server rack、CSP 資料中心與模組化算力中心。目前 bottleneck 在高瓦數平台切換與 BBU adoption。",
       "policyView": "沒有直接台灣政策紅利，需求主線仍來自 hyperscaler 與 AI rack power density 升級。",
       "premiumSpace": "5/4 群電漲停、康舒與台達電續強，代表 server power / BBU 還是有資金承接，但優先度略低於光通訊與 ASIC。",
       "whyNow": [
@@ -1058,7 +1058,7 @@
       "downsideEvents": [
         "若 2026-05-08 美國 2026 年 4 月就業報告明顯高於預期，長天期利率與高 beta 科技估值都會受壓。",
         "若霍爾木茲與中東能源 / 航運風險再升級，油價、運費與原物料成本會壓縮科技供應鏈評價。",
-        "若 4/30 的族群輪動只是單日資金切換，最先回吐的會是 4/30 漲幅最大的第二圈股票。",
+        "若這波族群輪動只是單日資金切換，最先回吐的會是近期漲幅最大的第二圈股票。",
         "若接下來 3 至 5 個交易日沒有更多可歸因法說、營收或客戶驗證消息，題材容易回到高檔震盪。"
       ],
       "stocks": [
@@ -1076,7 +1076,7 @@
           "pb": "20.59",
           "foreignFlow": "-369,699 股",
           "institutionFlow": "-53,591 股",
-          "coreReason": "台達電是 power family 最穩的基準股，但 4/30 資金更偏向先追第二圈 power name。",
+          "coreReason": "台達電是 power family 最穩的基準股，但 5/4 資金更偏向先追第二圈 power name。",
           "notPricedIn": "4/28 的大漲反映資金開始交易 power bottleneck，但它不像小型 BBU 股那麼擁擠，仍有續航空間。",
           "targetLogic": "目標價以 AI rack power 升級與 BBU / PSU 題材持續擴散估算，假設市場資金會從高擁擠光通訊回流部分到電源。",
           "catalysts": [
@@ -1114,7 +1114,7 @@
           "pb": "1.81",
           "foreignFlow": "+5,044,032 股",
           "institutionFlow": "+5,266,583 股",
-          "coreReason": "康舒題材正確但 4/30 tape 落後，偏向 power family 的第二圈觀察名單。",
+          "coreReason": "康舒題材正確但 5/4 tape 仍落後，偏向 power family 的第二圈觀察名單。",
           "notPricedIn": "它還沒有像台達那樣先被市場完全定價，但供應鏈位置相對純。",
           "targetLogic": "目標價以 AI rack power 升級與 BBU / PSU 題材持續擴散估算，假設市場資金會從高擁擠光通訊回流部分到電源。",
           "catalysts": [
@@ -1150,7 +1150,7 @@
           "pb": "3.14",
           "foreignFlow": "+198,000 股",
           "institutionFlow": "+44,008 股",
-          "coreReason": "鈺邦是 BBU / supercap 節點，但 4/30 反應慢，仍需更多實際接單與導入證據。",
+          "coreReason": "鈺邦是 BBU / supercap 節點，但 5/4 反應仍慢，仍需更多實際接單與導入證據。",
           "notPricedIn": "相較台達，鈺邦更像 BBU 滲透率提高時的高彈性零件股，短線仍有空間。",
           "targetLogic": "目標價以 AI rack power 升級與 BBU / PSU 題材持續擴散估算，假設市場資金會從高擁擠光通訊回流部分到電源。",
           "catalysts": [
