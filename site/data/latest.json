@@ -10,15 +10,15 @@
     "label": "未來 20 個交易日",
     "style": "swing_month"
   },
-  "headline": "5/5 收盤資料套用月內排序引擎 v2：月內 Regime 72 分 / normal、短線 Regime 67 分 / normal；前五主線不變，但排名現在由 20 日催化、二階證據與 5 / 10 / 20 日持續性主導。",
-  "deck": "這次不是新的市場 rerun，而是把 2026-05-05 收盤版 public brief 升級到月內排序引擎 v2。市場基準、前五題材與首頁主選股維持不變，但 themeScore / stockScore 已改成短線衝力加月內續航的雙分數模型，月內 Regime 也改成主看 5 / 10 / 20 日 persistence。",
+  "headline": "5/5 收盤強制全量重跑版（v2）：月內 Regime 72 分 / normal、短線 Regime 67 分 / normal；用新排序引擎從零重算後，前五主線與首頁主選股維持不變。",
+  "deck": "這次是用月內排序引擎 v2 對 2026-05-05 官方收盤與既有可驗證外部事件做一次完整重跑。重新檢查 TWSE / TPEX、5/5 BLS JOLTS、OFAC 2026-05-01 與 AP 2026-05-05 Hormuz 後，沒有更晚的有效輸入可以改寫排序，因此記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL 仍是最適合未來 20 個台股交易日交易的五條主線。",
   "executiveSummary": [
-    "這版 public brief 已切換到月內排序引擎 v2，主控排序邏輯不再只是近端 tape，而是 20 日催化、二階證據與 5 / 10 / 20 日持續性。",
-    "themeScore 與 stockScore 仍保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore。",
-    "marketSnapshot.marketRegime 現在是月內主分數；marketSnapshot.shortTermRegime 只提示近端追價與事件風險。",
-    "前五題材與首頁主選股沒有變，代表 5/5 這組資料在新模型下仍由記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL 主導。",
-    "觀察池現在會明確區分「短線強，但月內不足」與「月內可追，但短線過擠」，避免把兩種降級理由混成同一類。",
-    "這次沒有新增比前一版更晚的外部事件或官方 macro，因此 newDiscoveries 維持空陣列。"
+    "這版是以 2026-05-05 官方收盤為基準，按月內排序引擎 v2 重新從零評估 candidate themes、observation pool、trading pool 與雙 Regime。",
+    "重新核對後，台股最新官方基準仍是 2026-05-05 TWSE / TPEX 收盤、T86、BFI82U 與上櫃法人資料；沒有更新的價格日可替換。",
+    "官方 U.S. macro 自上一版後沒有更晚 release；目前最新仍是 BLS 2026-05-05 的 2026 年 3 月 JOLTS。",
+    "Iran / Hormuz 也沒有比 AP 2026-05-05 與 OFAC 2026-05-01 更晚、足以改寫市場主線的 verified 新事件，所以 eventRisk 沒有再下修或上修。",
+    "在 v2 模型下，月內 Regime 維持 72 / normal、短線 Regime 維持 67 / normal；兩者都支持選擇性偏多，但不支持無差別擴散追價。",
+    "完整重跑後，交易池前五與首頁主選股都不變，代表現有主線不只是近端強勢，而是也通過了 20 日催化、二階證據與 5 / 10 / 20 日持續性檢查。"
   ],
   "marketSnapshot": {
     "indexClose": 40769.29,
@@ -1918,28 +1918,28 @@
     }
   ],
   "changesComparedToPrevious": {
-    "comparedTo": "2026-05-05 23:21 版（強制全量重跑版）",
-    "summary": "這次不是新市場資料 rerun，而是把 5/5 收盤版全面遷移到月內排序引擎 v2。市場基準與排名維持不變，但分數引擎、Regime 解釋與觀察池降級理由都已改成新模型。",
+    "comparedTo": "2026-05-05 23:44 版（月內排序引擎 v2 schema 遷移版）",
+    "summary": "這次是第一次用月內排序引擎 v2 對 5/5 官方資料做完整重跑。重跑後，前五題材、首頁主選股、月內 Regime 與短線 Regime 都維持不變，代表 schema 遷移時的分數沒有偏離實際 rerun 結果。",
     "items": [
       {
-        "title": "月內排序引擎 v2 已上線",
-        "reason": "themeScore / stockScore 保留總分，但底層改成 shortImpulseScore + monthContinuationScore，並新增 calendarScore、second-leg evidence 與 persistence。"
+        "title": "完成第一次 v2 規則全量重跑",
+        "reason": "這次不只是補 schema，而是重新用 20 日催化、二階證據與 persistence 規則跑一次完整排序。"
       },
       {
-        "title": "月內 Regime 改成主看 5 / 10 / 20 日 persistence",
-        "reason": "marketRegime 現在主要反映月內續航，不再被 1 / 3 / 5 日短線 tape 主導；shortTermRegime 則保留近端風險提示用途。"
+        "title": "5/5 官方市場基準重新確認不變",
+        "reason": "TWSE / TPEX 重新核對後，最新仍是 2026-05-05 收盤、T86、BFI82U 與上櫃法人資料，沒有更晚的台股價格日可以替換。"
       },
       {
-        "title": "觀察池新增兩種降級類型",
-        "reason": "現在會明確區分「短線強，但月內不足」與「月內可追，但短線過擠」，讓使用者知道是月內邏輯失敗還是近端節奏過擠。"
+        "title": "官方 macro 與 Hormuz 風險檢查後沒有更晚輸入",
+        "reason": "BLS 最新仍是 2026-05-05 JOLTS，Hormuz 最新仍是 AP 2026-05-05 與 OFAC 2026-05-01，因此 Regime 分數與風險桶不變。"
       },
       {
         "title": "前五題材與首頁主選股維持不變",
-        "reason": "這代表 5/5 的既有主線在新模型下也能補出 20 日催化、二階證據與 5 / 10 / 20 日持續性，不是只靠短線衝高。"
+        "reason": "記憶體、光模組、互連線、HBM4 / AI ASIC、高階 CCL 仍是最完整的月內主線；首頁主選股也都通過二階證據與 persistence 檢查。"
       },
       {
         "title": "newDiscoveries 維持空陣列",
-        "reason": "這次是排序引擎與 schema 遷移，不是新的市場資料 rerun；沒有新增更晚的官方 macro 或外部事件。"
+        "reason": "這次 full rerun 沒有新增比前一版更晚的外部消息，所以不重複列示已反映的 JOLTS 與 Hormuz 事件。"
       }
     ]
   },
@@ -2020,7 +2020,7 @@
       "note": "HBM4 / ASIC 官方一手產品節點。"
     }
   ],
-  "footnote": "本報告不是投資建議；本版 public brief 已升級到月內排序引擎 v2。價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準，selectionHorizon 維持未來 20 個台股交易日。themeScore / stockScore 現在保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore，並新增 calendarScore、secondLegEvidenceScore、5 / 10 / 20 日 persistence 欄位。marketRegime 是月內主分數，shortTermRegime 是近端提示分數；兩者分歧時，月內分數優先決定交易池上限。",
+  "footnote": "本報告不是投資建議；本版是 2026-05-05 收盤資料依月內排序引擎 v2 做的強制全量重跑版。價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準，selectionHorizon 維持未來 20 個台股交易日。themeScore / stockScore 保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore，並在本次完整重跑中實際用於排名。marketRegime 是月內主分數，shortTermRegime 是近端提示分數；兩者分歧時，月內分數優先決定交易池上限。",
   "observationThemes": [
     {
       "rank": 1,
