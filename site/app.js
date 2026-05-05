@@ -40,14 +40,16 @@ function render(report) {
   const tradePicks = Array.isArray(report.topPicks) ? report.topPicks : [];
   const observationThemes = Array.isArray(report.observationThemes) ? report.observationThemes : [];
   const observationStocks = Array.isArray(report.observationStocks) ? report.observationStocks : [];
+  const selectionHorizon = normalizeSelectionHorizon(report.selectionHorizon);
   const weekRangeLabel = formatWeekRange(report.weekRange);
   const foreignFlowDisplay = formatSignedAmount(report.marketSnapshot.foreignFlowTwdBn);
   const foreignFlowTone = flowTone(foreignFlowDisplay);
-  const marketRegime = normalizeMarketRegime(report.marketSnapshot?.marketRegime);
-  const tradingPoolLimits = getTradingPoolLimits(marketRegime.mode);
-  const tradeThemeHeading = `交易池題材（${tradeThemes.length} / ${tradingPoolLimits.themeLabel}）`;
-  const tradeStockHeading = `交易池股票（${tradePicks.length} / ${tradingPoolLimits.stockLabel}）`;
-  const regimeBanner = renderRegimeBanner(marketRegime, tradingPoolLimits);
+  const monthlyRegime = normalizeMarketRegime(report.marketSnapshot?.marketRegime);
+  const shortTermRegime = normalizeMarketRegime(report.marketSnapshot?.shortTermRegime);
+  const tradingPoolLimits = getTradingPoolLimits(monthlyRegime.mode);
+  const tradeThemeHeading = `月內交易池題材（${tradeThemes.length} / ${tradingPoolLimits.themeLabel}）`;
+  const tradeStockHeading = `月內交易池股票（${tradePicks.length} / ${tradingPoolLimits.stockLabel}）`;
+  const regimeBanner = renderRegimeBanner(monthlyRegime, tradingPoolLimits);
   const themeCards = tradeThemes
     .map((theme, index) => renderTheme(theme, index === 0))
     .join("");
@@ -56,7 +58,7 @@ function render(report) {
     .map(
       (pick, index) => `
         <article class="focus-card animate-rise delay-${Math.min(index, 3)}">
-          <p class="card-kicker">交易池先看</p>
+          <p class="card-kicker">月內交易池先看</p>
           <div class="focus-title">
             <h3>${pick.rank}. ${pick.name}</h3>
             <span class="ticker">${pick.ticker}</span>
@@ -79,7 +81,7 @@ function render(report) {
         .map(
           (theme, index) => `
             <article class="observation-card animate-rise delay-${Math.min(index, 3)}">
-              <p class="card-kicker">觀察池題材</p>
+              <p class="card-kicker">月內觀察題材</p>
               <div class="observation-head">
                 <h3>${theme.rank ? `${theme.rank}. ` : ""}${theme.name || "未命名題材"}</h3>
                 <div class="badge-row compact-row">
@@ -88,7 +90,7 @@ function render(report) {
                   ${renderGateBadge(theme.gateStatus)}
                 </div>
               </div>
-              <p class="body-copy">${theme.observationReason || theme.summary || theme.stance || "這個題材已有證據，但還沒進到交易池。"}</p>
+              <p class="body-copy">${theme.observationReason || theme.summary || theme.stance || "這個題材已有證據，但還沒進到月內交易池。"}</p>
               <div class="observation-meta">
                 <div class="info-block compact-card">
                   <p class="info-label">下一個升級條件</p>
@@ -103,14 +105,14 @@ function render(report) {
           `
         )
         .join("")
-    : renderObservationEmpty("題材", "目前這版資料還沒有輸出觀察池題材；下次晨報重跑後會在這裡顯示 seed / late 題材。");
+    : renderObservationEmpty("題材", "目前這版資料還沒有輸出月內觀察題材；下次晨報重跑後會在這裡顯示 seed / late 題材。");
 
   const observationStockCards = observationStocks.length
     ? observationStocks
         .map(
           (stock, index) => `
             <article class="observation-card animate-rise delay-${Math.min(index, 3)}">
-              <p class="card-kicker">觀察池股票</p>
+              <p class="card-kicker">月內觀察股票</p>
               <div class="observation-head">
                 <h3>${stock.rank ? `${stock.rank}. ` : ""}${stock.name || "未命名股票"}</h3>
                 <div class="badge-row compact-row">
@@ -121,7 +123,7 @@ function render(report) {
                   ${renderGateBadge(stock.gateStatus)}
                 </div>
               </div>
-              <p class="body-copy">${stock.reason || stock.observationReason || "這檔股票已有題材或事件訊號，但還沒進到交易池名單。"}</p>
+              <p class="body-copy">${stock.reason || stock.observationReason || "這檔股票已有題材或事件訊號，但還沒進到月內交易池名單。"}</p>
               <div class="observation-meta">
                 <div class="info-block compact-card">
                   <p class="info-label">升級條件</p>
@@ -136,7 +138,7 @@ function render(report) {
           `
         )
         .join("")
-    : renderObservationEmpty("股票", "目前這版資料還沒有輸出觀察池股票；之後會在這裡放 seed、late 或 near-miss 個股。");
+    : renderObservationEmpty("股票", "目前這版資料還沒有輸出月內觀察股票；之後會在這裡放 seed、late 或 near-miss 個股。");
 
   const macroCards = report.macroDrivers
     .map(
@@ -220,11 +222,12 @@ function render(report) {
           </div>
           <div class="badge-row">
             <span class="pill">報告日 ${report.reportDate}</span>
-            <span class="pill">操作週 ${weekRangeLabel}</span>
+            <span class="pill">報告週 ${weekRangeLabel}</span>
+            <span class="pill">持有視角 ${selectionHorizon.label}</span>
             <span class="pill">股價基準 ${report.priceDate}</span>
-            <span class="pill">交易池 ${tradeThemes.length} / ${tradingPoolLimits.themeLabel} 題材</span>
-            <span class="pill">交易池 ${tradePicks.length} / ${tradingPoolLimits.stockLabel} 檔</span>
-            <span class="pill">觀察池 ${observationThemes.length} 題材 / ${observationStocks.length} 檔</span>
+            <span class="pill">月內交易池 ${tradeThemes.length} / ${tradingPoolLimits.themeLabel} 題材</span>
+            <span class="pill">月內交易池 ${tradePicks.length} / ${tradingPoolLimits.stockLabel} 檔</span>
+            <span class="pill">月內觀察池 ${observationThemes.length} 題材 / ${observationStocks.length} 檔</span>
           </div>
         </div>
 
@@ -245,10 +248,16 @@ function render(report) {
             <p class="metric-note">${report.marketSnapshot.strongestGroup.change}</p>
           </article>
           <article class="metric-card regime-card">
-            <p class="metric-label">市場 Regime</p>
-            <p class="metric-value ${marketRegimeTone(marketRegime.score)}">${marketRegime.score} / 100</p>
-            <p class="metric-note">${marketRegime.stance} / ${marketRegime.mode}</p>
-            <p class="regime-summary">${marketRegime.summary}</p>
+            <p class="metric-label">月內 Regime</p>
+            <p class="metric-value ${marketRegimeTone(monthlyRegime.score)}">${monthlyRegime.score} / 100</p>
+            <p class="metric-note">${monthlyRegime.stance} / ${monthlyRegime.mode}</p>
+            <p class="regime-summary">${monthlyRegime.summary}</p>
+          </article>
+          <article class="metric-card regime-card">
+            <p class="metric-label">短線 Regime</p>
+            <p class="metric-value ${marketRegimeTone(shortTermRegime.score)}">${shortTermRegime.score} / 100</p>
+            <p class="metric-note">${shortTermRegime.stance} / ${shortTermRegime.mode}</p>
+            <p class="regime-summary">${shortTermRegime.summary}</p>
           </article>
         </div>
 
@@ -276,9 +285,9 @@ function render(report) {
     <section class="panel animate-rise delay-1" id="focus">
       <div class="section-header">
         <div>
-          <p class="section-kicker">交易池股票</p>
+          <p class="section-kicker">月內交易池股票</p>
           <h2>${tradeStockHeading}</h2>
-          <p>這裡只放已經通過題材與個股 gate 的交易池 top picks；市場 regime 會直接限制這一段的輸出上限。</p>
+          <p>這裡只放已經通過題材與個股 gate 的月內交易池 top picks；主控的是月內 Regime，短線 Regime 只提供近端風險提示。</p>
         </div>
       </div>
       <div class="focus-grid">${focusCards}</div>
@@ -287,9 +296,9 @@ function render(report) {
     <section class="panel animate-rise delay-2" id="observation-stocks">
       <div class="section-header">
         <div>
-          <p class="section-kicker">觀察池股票</p>
-          <h2>有證據、但還沒完全通過交易 gate 的候選股</h2>
-          <p>這裡保留提早卡位線索，但不把它們直接混進交易池 top picks。</p>
+          <p class="section-kicker">月內觀察股票</p>
+          <h2>有證據、但還沒完全通過月內交易 gate 的候選股</h2>
+          <p>這裡保留提早卡位線索，但不把它們直接混進月內交易池 top picks。</p>
         </div>
       </div>
       <div class="observation-grid">${observationStockCards}</div>
@@ -298,9 +307,9 @@ function render(report) {
     <section class="panel animate-rise delay-2" id="themes">
       <div class="section-header">
         <div>
-          <p class="section-kicker">交易池題材</p>
+          <p class="section-kicker">月內交易池題材</p>
           <h2>${tradeThemeHeading}</h2>
-          <p>只有通過題材 gate，且 lifecycle 屬於 confirmation / expansion 的題材，才會出現在這一段；市場 regime 偏弱時會直接壓縮上限。</p>
+          <p>只有通過題材 gate，且 lifecycle 屬於 confirmation / expansion 的題材，才會出現在這一段；主控的是月內 Regime，短線 Regime 只負責提醒近端過熱或事件風險。</p>
         </div>
       </div>
       <div class="theme-accordion">${themeCards}</div>
@@ -309,9 +318,9 @@ function render(report) {
     <section class="panel animate-rise delay-3" id="observation-themes">
       <div class="section-header">
         <div>
-          <p class="section-kicker">觀察池題材</p>
+          <p class="section-kicker">月內觀察題材</p>
           <h2>還在 seed / late 階段、或只差一項 gate 的題材</h2>
-          <p>這裡用來提早追蹤可能升級成主流的子題材，也保留需要降權的 late 題材。</p>
+          <p>這裡用來提早追蹤可能升級成月內主流的子題材，也保留需要降權的 late 題材。</p>
         </div>
       </div>
       <div class="observation-grid">${observationThemeCards}</div>
@@ -537,7 +546,7 @@ function renderStock(theme, stock) {
 function renderObservationEmpty(type, text) {
   return `
     <article class="observation-card observation-empty">
-      <p class="card-kicker">觀察池${type}</p>
+      <p class="card-kicker">月內觀察池${type}</p>
       <h3>目前沒有可顯示資料</h3>
       <p class="body-copy">${text}</p>
     </article>
@@ -547,10 +556,10 @@ function renderObservationEmpty(type, text) {
 function syncQuickNav() {
   if (!quickNav) return;
 
-  renameQuickNavLink("#focus", "交易池股票");
-  renameQuickNavLink("#themes", "交易池題材");
-  ensureQuickNavLink("#observation-stocks", "觀察池股票", "#focus");
-  ensureQuickNavLink("#observation-themes", "觀察池題材", "#themes");
+  renameQuickNavLink("#focus", "月內交易池股票");
+  renameQuickNavLink("#themes", "月內交易池題材");
+  ensureQuickNavLink("#observation-stocks", "月內觀察股票", "#focus");
+  ensureQuickNavLink("#observation-themes", "月內觀察題材", "#themes");
 }
 
 function renameQuickNavLink(href, label) {
@@ -585,6 +594,23 @@ function formatWeekRange(weekRange = {}) {
   const start = weekRange.start || weekRange.from || "未提供";
   const end = weekRange.end || weekRange.to || "未提供";
   return `${start} 至 ${end}`;
+}
+
+function normalizeSelectionHorizon(horizon) {
+  const fallback = {
+    basis: "20_trading_days",
+    label: "未來 20 個交易日",
+    style: "swing_month",
+  };
+
+  if (!horizon || typeof horizon !== "object") {
+    return fallback;
+  }
+
+  return {
+    ...fallback,
+    ...horizon,
+  };
 }
 
 function renderStateBadge(state) {
@@ -744,8 +770,8 @@ function renderRegimeBanner(regime, limits) {
     <section class="panel regime-banner animate-rise delay-1" id="market-regime">
       <div class="section-header">
         <div>
-          <p class="section-kicker">市場 Regime 提示</p>
-          <h2>${regime.stance}：交易池已縮到 ${limits.themeLabel} 個題材 / ${limits.stockLabel} 檔股票</h2>
+          <p class="section-kicker">月內 Regime 提示</p>
+          <h2>${regime.stance}：月內交易池已縮到 ${limits.themeLabel} 個題材 / ${limits.stockLabel} 檔股票</h2>
           <p>${regime.effectOnSelection || regime.summary}</p>
         </div>
       </div>
