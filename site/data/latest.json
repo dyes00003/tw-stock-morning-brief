@@ -10,15 +10,15 @@
     "label": "未來 20 個交易日",
     "style": "swing_month"
   },
-  "headline": "5/5 收盤強制重跑版：月內 Regime 74 分 / normal、短線 Regime 70 分 / normal；目前沒有比 5/5 JOLTS 與 AP Hormuz 更新更晚、足以改寫主線的官方或可歸因新事件，前五主線不變。",
-  "deck": "這次是 2026-05-05 收盤版的強制全量重跑，價格基準仍是 2026-05-05 官方收盤。重新檢查後，沒有比 BLS 2026-05-05 JOLTS 與 AP 2026-05-05 Hormuz 更新更晚、足以改寫主線的官方 macro 或可歸因外部事件；因此月內 Regime 維持 74 / normal、短線 Regime 維持 70 / normal，記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL 仍是最適合月內交易的五條主線。",
+  "headline": "5/5 收盤資料套用月內排序引擎 v2：月內 Regime 72 分 / normal、短線 Regime 67 分 / normal；前五主線不變，但排名現在由 20 日催化、二階證據與 5 / 10 / 20 日持續性主導。",
+  "deck": "這次不是新的市場 rerun，而是把 2026-05-05 收盤版 public brief 升級到月內排序引擎 v2。市場基準、前五題材與首頁主選股維持不變，但 themeScore / stockScore 已改成短線衝力加月內續航的雙分數模型，月內 Regime 也改成主看 5 / 10 / 20 日 persistence。",
   "executiveSummary": [
-    "2026-05-05 台股收盤版已按現行月內視角與雙 Regime 規則強制全量重跑。",
-    "本次重跑重新確認 2026-05-05 TWSE / TPEX 官方收盤、T86、BFI82U 與上櫃法人資料，價格基準不變。",
-    "自前一版以來，沒有更晚的官方 U.S. macro release；目前最新仍是 BLS 2026-05-05 的 2026 年 3 月 JOLTS。",
-    "自前一版以來，也沒有比 AP 2026-05-05 與 OFAC 2026-05-01 更晚、足以改寫台股主線的 Iran / Hormuz verified 新事件。",
-    "月內 Regime 維持 74 / normal，短線 Regime 維持 70 / normal；兩者都不支持把 5/5 的 tape 擴張解讀成全面 risk-on。",
-    "月內交易池前五維持：記憶體 / DRAM / NAND 價格重估、光模組 / 矽光子、AI 高速互連線 / 大電流電源線、HBM4 / AI ASIC IP / 台積電 3DFabric 生態系、高階 CCL / AI PCB / 高層數板。"
+    "這版 public brief 已切換到月內排序引擎 v2，主控排序邏輯不再只是近端 tape，而是 20 日催化、二階證據與 5 / 10 / 20 日持續性。",
+    "themeScore 與 stockScore 仍保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore。",
+    "marketSnapshot.marketRegime 現在是月內主分數；marketSnapshot.shortTermRegime 只提示近端追價與事件風險。",
+    "前五題材與首頁主選股沒有變，代表 5/5 這組資料在新模型下仍由記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL 主導。",
+    "觀察池現在會明確區分「短線強，但月內不足」與「月內可追，但短線過擠」，避免把兩種降級理由混成同一類。",
+    "這次沒有新增比前一版更晚的外部事件或官方 macro，因此 newDiscoveries 維持空陣列。"
   ],
   "marketSnapshot": {
     "indexClose": 40769.29,
@@ -29,46 +29,47 @@
       "change": "+9.55%"
     },
     "marketRegime": {
-      "score": 74,
+      "score": 72,
       "stance": "偏多",
       "mode": "normal",
-      "summary": "未來 20 個交易日仍適合偏多交易，但資金與事件風險不支持把 5/5 的強勢外推成全面 risk-on。",
+      "summary": "未來 20 個交易日仍適合偏多配置，但主控分數已改由 20 日催化、二階證據與 5 / 10 / 20 日持續性主導，不能再只看近端衝高。",
       "scoreBreakdown": {
-        "tapeBreadth": 18,
+        "tapeBreadth": 15,
         "flow": 14,
         "themeHealth": 20,
         "macro": 8,
-        "eventRisk": 14
+        "eventRisk": 15
       },
       "drivers": [
-        "5/5 後的主題廣度仍集中在記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL，這些主線都有機會延續到未來 20 個交易日，所以 tapeBreadth 與 themeHealth 仍偏高。",
-        "外資現貨買超已從 5/4 的強攻降到 +NT$3.99bn，flow 還是正向，但月內配置只能集中在已確認的主線，不能無差別擴散。",
-        "BLS 2026-05-05 JOLTS 沒有打掉科技需求，且近期官方 macro 仍支持 AI capex 與電子主線延續，所以 monthly macro 給高於短線的分數。",
-        "AP 2026-05-05 Hormuz 停火脆弱與 OFAC 2026-05-01 passage sanctions 仍讓 geopolitical / Hormuz 與 policy bucket 持續扣分，eventRisk 仍是月內 Regime 的主要壓制項。",
-        "月內 Regime 比短線 Regime 略高，是因為主題生命週期與產業催化仍足以支撐一個月內的交易延續；但這不代表可以忽略近端地緣與追價風險。"
+        "月內主分數現在主看 5 / 10 / 20 日持續性，記憶體、光模組、互連線與 AI ASIC 仍有足夠 breadth persistence 支撐未來 20 個交易日。",
+        "5/5 外資現貨只有 +NT$3.99bn，flow 仍偏正向，但不足以支撐所有二線題材一起升格。",
+        "主題健康度維持高檔，因為前五主線都能補出 20 日催化節點與二階證據，不再只是近端 tape。",
+        "BLS 2026-05-05 JOLTS 與已知官方 macro 仍未打掉 AI capex 與電子主線的月內延續性。",
+        "AP 2026-05-05 Hormuz 與 OFAC 2026-05-01 passage sanctions 仍讓 geopolitical / policy 風險桶持續扣分，eventRisk 仍是月內 Regime 的主要壓制項。"
       ],
-      "effectOnSelection": "月內 Regime 仍允許 5 個題材與 6 檔股票的交易池上限，但只應集中在能延續 20 個交易日的主線；只靠 1 至 3 天衝高的題材與個股，應留在觀察池。"
+      "effectOnSelection": "月內 Regime 仍允許 5 個題材與 6 檔股票，但交易池現在只保留有 20 日催化、二階證據與 persistence 的主線；只靠 1 至 3 天衝高的題材應降到觀察池。"
     },
     "shortTermRegime": {
-      "score": 70,
+      "score": 67,
       "stance": "偏多",
       "mode": "normal",
-      "summary": "未來幾個交易日仍可選擇性偏多，但 5/5 外資降溫與 Hormuz 風險讓追價空間受限。",
+      "summary": "未來幾個交易日仍可選擇性偏多，但 1 / 3 / 5 日追價擁擠與 Hormuz 近端風險讓短線節奏要明顯保守。",
       "scoreBreakdown": {
-        "tapeBreadth": 20,
-        "flow": 15,
-        "themeHealth": 20,
+        "tapeBreadth": 18,
+        "flow": 14,
+        "themeHealth": 18,
         "macro": 5,
-        "eventRisk": 10
+        "eventRisk": 12
       },
       "drivers": [
-        "5/5 官方收盤仍維持多條科技主線同步跑贏大盤，所以短線 tapeBreadth 沒有轉空。",
-        "外資現貨買超縮到 +NT$3.99bn，說明近端資金強度低於 5/4，短線不適合全面追價。",
-        "記憶體、光模組與互連線仍是短線最強的三條主線，但二線擴散已開始分化，短線只適合挑領先股。",
-        "AP 2026-05-05 Hormuz 停火脆弱與 OFAC 2026-05-01 仍讓 eventRisk 只保留 10 / 30，近端風險折價不能忽略。"
+        "1 / 3 / 5 日的記憶體、光模組與互連線仍是盤面主導，但短線擴散已明顯分化。",
+        "外資買超降溫，短線 flow 不再支持全面追價。",
+        "短線主線仍在，但不少股票已進入需要二階證據才能續漲的區域。",
+        "Hormuz 與 OFAC passage sanctions 對未來幾個交易日的風險折價比對月內視角更直接。"
       ],
-      "effectOnSelection": "短線 Regime 不改變月內交易池上限，只提醒未來幾個交易日要優先選已領先、仍有法人承接的股票，而不是去追缺乏第二段催化的二線擴散。"
-    }
+      "effectOnSelection": "短線 Regime 不改變月內交易池上限，只提醒近端要優先選已通過二階證據且 1 / 3 / 5 日仍有承接的領先股。"
+    },
+    "regimeDivergenceSummary": "月內 Regime 高於短線 Regime，因為記憶體、光模組與互連線在 5 / 10 / 20 日仍具延續性，但 1 / 3 / 5 日的追價擁擠與 Hormuz 近端風險壓低了短線分數。"
   },
   "macroDrivers": [
     {
@@ -180,7 +181,24 @@
             "TrendForce 2026-03-31 記憶體價格調查",
             "鉅亨外資評等 2408 南亞科",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 92,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 94,
+            "monthContinuationScore": 91,
+            "calendarScore": 25,
+            "secondLegEvidenceScore": 18,
+            "relativeStrength5d": 10.2,
+            "relativeStrength10d": 14.4,
+            "relativeStrength20d": 12.1
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 2,
@@ -216,7 +234,24 @@
             "TrendForce 2026-03-31 記憶體價格調查",
             "鉅亨外資評等 8299 群聯",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 83,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 80,
+            "monthContinuationScore": 85,
+            "calendarScore": 20,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 6.4,
+            "relativeStrength10d": 11.5,
+            "relativeStrength20d": 10.9
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 3,
@@ -253,7 +288,24 @@
             "TrendForce 2026-03-31 記憶體價格調查",
             "鉅亨外資評等 2337 旺宏",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 85,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 86,
+            "monthContinuationScore": 85,
+            "calendarScore": 25,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 7,
+            "relativeStrength10d": 11.4,
+            "relativeStrength20d": 10
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 4,
@@ -290,7 +342,24 @@
             "TrendForce 2026-03-31 記憶體價格調查",
             "鉅亨外資評等 2344 華邦電",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 83,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 83,
+            "monthContinuationScore": 83,
+            "calendarScore": 23,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 6.2,
+            "relativeStrength10d": 10.5,
+            "relativeStrength20d": 9.3
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 5,
@@ -325,20 +394,49 @@
             "TPEX 2026-05-05 三大法人",
             "TrendForce 2026-03-31 記憶體價格調查",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 81,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 80,
+            "monthContinuationScore": 81,
+            "calendarScore": 23,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 5.4,
+            "relativeStrength10d": 9.6,
+            "relativeStrength20d": 8.6
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         }
       ],
       "state": "expansion",
       "themeScore": 90,
       "gateStatus": {
-        "summary": "交易池題材 gate 全通過；5 檔核心股全數跑贏大盤"
+        "summary": "交易池題材 gate 全通過；5 檔核心股全數跑贏大盤",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 5,
         "outperformRatio": 1,
         "institutionPositiveCount": 4,
-        "newCatalystCount": 2
+        "newCatalystCount": 2,
+        "relativeStrength5d": 8.6,
+        "relativeStrength10d": 13.2,
+        "relativeStrength20d": 11.4
+      },
+      "scoreBreakdown": {
+        "shortImpulseScore": 92,
+        "monthContinuationScore": 89,
+        "calendarScore": 25,
+        "secondLegEvidenceScore": 18,
+        "persistenceScore": 14
       }
     },
     {
@@ -410,7 +508,24 @@
             "TWSE 2026-05-05 本益比欄位",
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 90,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 93,
+            "monthContinuationScore": 88,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 9.8,
+            "relativeStrength10d": 12.6,
+            "relativeStrength20d": 10.7
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 2,
@@ -446,7 +561,24 @@
             "TPEX 2026-05-05 三大法人",
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 85,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 90,
+            "monthContinuationScore": 82,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 16,
+            "relativeStrength5d": 6.6,
+            "relativeStrength10d": 10.2,
+            "relativeStrength20d": 9.1
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 3,
@@ -482,7 +614,24 @@
             "TPEX 2026-05-05 三大法人",
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 83,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 87,
+            "monthContinuationScore": 80,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 15,
+            "relativeStrength5d": 5.8,
+            "relativeStrength10d": 9.3,
+            "relativeStrength20d": 8.4
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 4,
@@ -521,7 +670,24 @@
             "Google TPU 8t / 8i 官方文章",
             "鉅亨外資評等 6442 光聖",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 80,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 84,
+            "monthContinuationScore": 78,
+            "calendarScore": 16,
+            "secondLegEvidenceScore": 15,
+            "relativeStrength5d": 5,
+            "relativeStrength10d": 8.4,
+            "relativeStrength20d": 7.7
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 5,
@@ -557,20 +723,49 @@
             "TPEX 2026-05-05 三大法人",
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 78,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "shortImpulseScore": 81,
+            "monthContinuationScore": 76,
+            "calendarScore": 16,
+            "secondLegEvidenceScore": 15,
+            "relativeStrength5d": 4.2,
+            "relativeStrength10d": 7.5,
+            "relativeStrength20d": 7
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         }
       ],
       "state": "expansion",
       "themeScore": 87,
       "gateStatus": {
-        "summary": "交易池題材 gate 通過；領先股與二線股仍同步續強"
+        "summary": "交易池題材 gate 通過；領先股與二線股仍同步續強",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 3,
         "outperformRatio": 0.6,
         "institutionPositiveCount": 2,
-        "newCatalystCount": 2
+        "newCatalystCount": 2,
+        "relativeStrength5d": 7.4,
+        "relativeStrength10d": 11.1,
+        "relativeStrength20d": 9.8
+      },
+      "scoreBreakdown": {
+        "shortImpulseScore": 93,
+        "monthContinuationScore": 84,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 16,
+        "persistenceScore": 12
       }
     },
     {
@@ -643,7 +838,24 @@
             "MoneyDJ 2026-04-28 佳必琪法說摘要",
             "鉅亨外資評等 6197 佳必琪",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 88,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 90,
+            "monthContinuationScore": 87,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 16,
+            "relativeStrength5d": 8.3,
+            "relativeStrength10d": 10.1,
+            "relativeStrength20d": 8.8
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 2,
@@ -679,7 +891,24 @@
             "TWSE 2026-05-05 三大法人 T86",
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 82,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 85,
+            "monthContinuationScore": 80,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 15,
+            "relativeStrength5d": 5.4,
+            "relativeStrength10d": 8.5,
+            "relativeStrength20d": 7.4
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 3,
@@ -715,7 +944,24 @@
             "TWSE 2026-05-05 三大法人 T86",
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 80,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 82,
+            "monthContinuationScore": 78,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 14,
+            "relativeStrength5d": 4.6,
+            "relativeStrength10d": 7.6,
+            "relativeStrength20d": 6.7
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "差一項",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 4,
@@ -753,7 +999,24 @@
             "鉅亨外資評等 3665 貿聯-KY",
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 77,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 79,
+            "monthContinuationScore": 76,
+            "calendarScore": 16,
+            "secondLegEvidenceScore": 14,
+            "relativeStrength5d": 3.8,
+            "relativeStrength10d": 6.7,
+            "relativeStrength20d": 6
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "差一項",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 5,
@@ -789,20 +1052,49 @@
             "TWSE 2026-05-05 三大法人 T86",
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 75,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 76,
+            "monthContinuationScore": 74,
+            "calendarScore": 16,
+            "secondLegEvidenceScore": 14,
+            "relativeStrength5d": 3,
+            "relativeStrength10d": 5.8,
+            "relativeStrength20d": 5.3
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "差一項",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         }
       ],
       "state": "confirmation",
       "themeScore": 84,
       "gateStatus": {
-        "summary": "交易池題材 gate 通過；價格與法人支持度仍高於多數候選主題"
+        "summary": "交易池題材 gate 通過；價格與法人支持度仍高於多數候選主題",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 3,
         "outperformRatio": 0.6,
         "institutionPositiveCount": 4,
-        "newCatalystCount": 2
+        "newCatalystCount": 2,
+        "relativeStrength5d": 6.2,
+        "relativeStrength10d": 9.4,
+        "relativeStrength20d": 8.1
+      },
+      "scoreBreakdown": {
+        "shortImpulseScore": 88,
+        "monthContinuationScore": 82,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 15,
+        "persistenceScore": 13
       }
     },
     {
@@ -873,7 +1165,24 @@
             "TWSE 2026-05-05 三大法人 T86",
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 84,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 81,
+            "monthContinuationScore": 86,
+            "calendarScore": 20,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 5.1,
+            "relativeStrength10d": 8.4,
+            "relativeStrength20d": 10.2
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 2,
@@ -912,7 +1221,24 @@
             "TSMC 2026 Technology Symposium",
             "鉅亨外資評等 3443 創意",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 80,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 76,
+            "monthContinuationScore": 82,
+            "calendarScore": 20,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 4,
+            "relativeStrength10d": 7,
+            "relativeStrength20d": 9.8
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 3,
@@ -948,7 +1274,24 @@
             "TWSE 2026-05-05 三大法人 T86",
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 77,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 73,
+            "monthContinuationScore": 80,
+            "calendarScore": 20,
+            "secondLegEvidenceScore": 16,
+            "relativeStrength5d": 3.2,
+            "relativeStrength10d": 6.1,
+            "relativeStrength20d": 9.1
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 4,
@@ -988,7 +1331,24 @@
             "TSMC 2026 Technology Symposium",
             "UBS 台積電 2330 open-access / compliance 頁",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 75,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 70,
+            "monthContinuationScore": 78,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 16,
+            "relativeStrength5d": 2.4,
+            "relativeStrength10d": 5.2,
+            "relativeStrength20d": 8.4
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 5,
@@ -1026,20 +1386,49 @@
             "Google Cloud Next 2026 官方頁",
             "TSMC 2026 Technology Symposium",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 72,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 67,
+            "monthContinuationScore": 76,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 16,
+            "relativeStrength5d": 1.6,
+            "relativeStrength10d": 4.3,
+            "relativeStrength20d": 7.7
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         }
       ],
       "state": "confirmation",
       "themeScore": 82,
       "gateStatus": {
-        "summary": "交易池題材 gate 通過；但 5/5 已出現高位分化"
+        "summary": "交易池題材 gate 通過；但 5/5 已出現高位分化",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 3,
         "outperformRatio": 0.6,
         "institutionPositiveCount": 2,
-        "newCatalystCount": 1
+        "newCatalystCount": 1,
+        "relativeStrength5d": 4.8,
+        "relativeStrength10d": 7.9,
+        "relativeStrength20d": 10.5
+      },
+      "scoreBreakdown": {
+        "shortImpulseScore": 79,
+        "monthContinuationScore": 84,
+        "calendarScore": 20,
+        "secondLegEvidenceScore": 17,
+        "persistenceScore": 11
       }
     },
     {
@@ -1112,7 +1501,24 @@
             "Sumitomo Bakelite 2026-01-29 積層板價格調整",
             "Nittobo PCB Glass Cloth 官方頁",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 82,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 85,
+            "monthContinuationScore": 80,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 15,
+            "relativeStrength5d": 7.9,
+            "relativeStrength10d": 8.2,
+            "relativeStrength20d": 7.3
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 2,
@@ -1149,7 +1555,24 @@
             "TWSE 2026-05-05 本益比欄位",
             "Panasonic 2026-04-09 CCL 價格調整通知",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 78,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 82,
+            "monthContinuationScore": 75,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 14,
+            "relativeStrength5d": 5.1,
+            "relativeStrength10d": 5.9,
+            "relativeStrength20d": 6.5
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "差一項",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 3,
@@ -1189,7 +1612,24 @@
             "Nittobo PCB Glass Cloth 官方頁",
             "鉅亨 / FactSet 台光電 2383",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 75,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 79,
+            "monthContinuationScore": 73,
+            "calendarScore": 18,
+            "secondLegEvidenceScore": 13,
+            "relativeStrength5d": 4.3,
+            "relativeStrength10d": 5,
+            "relativeStrength20d": 5.8
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "差一項",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 4,
@@ -1226,7 +1666,24 @@
             "TWSE 2026-05-05 本益比欄位",
             "Panasonic 2026-04-09 CCL 價格調整通知",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 73,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 76,
+            "monthContinuationScore": 71,
+            "calendarScore": 16,
+            "secondLegEvidenceScore": 13,
+            "relativeStrength5d": 3.5,
+            "relativeStrength10d": 4.1,
+            "relativeStrength20d": 5.1
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "差一項",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         },
         {
           "rank": 5,
@@ -1262,20 +1719,49 @@
             "TWSE 2026-05-05 三大法人 T86",
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
-          ]
+          ],
+          "stockScore": 71,
+          "state": "confirmation",
+          "scoreBreakdown": {
+            "shortImpulseScore": 73,
+            "monthContinuationScore": 69,
+            "calendarScore": 16,
+            "secondLegEvidenceScore": 13,
+            "relativeStrength5d": 2.7,
+            "relativeStrength10d": 3.2,
+            "relativeStrength20d": 4.4
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "差一項",
+            "persistence": "通過"
+          },
+          "invalidationType": "month_continuation_failure"
         }
       ],
       "state": "confirmation",
       "themeScore": 80,
       "gateStatus": {
-        "summary": "交易池題材 gate 通過；但 5/5 已有明顯領先股 / 跟隨股分化"
+        "summary": "交易池題材 gate 通過；但 5/5 已有明顯領先股 / 跟隨股分化",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 2,
         "outperformRatio": 0.4,
         "institutionPositiveCount": 3,
-        "newCatalystCount": 1
+        "newCatalystCount": 1,
+        "relativeStrength5d": 5.9,
+        "relativeStrength10d": 6.8,
+        "relativeStrength20d": 7.2
+      },
+      "scoreBreakdown": {
+        "shortImpulseScore": 85,
+        "monthContinuationScore": 77,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 14,
+        "persistenceScore": 10
       }
     }
   ],
@@ -1289,9 +1775,21 @@
       "state": "expansion",
       "stockScore": 92,
       "gateStatus": {
-        "summary": "交易池股票 gate 通過"
+        "summary": "交易池股票 gate 通過",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
-      "alternativeRejected": "比 2337 / 2344 更具流動性，也比 3260 更直接反映 DRAM 重估。"
+      "alternativeRejected": "比 2337 / 2344 更具流動性，也比 3260 更直接反映 DRAM 重估。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 94,
+        "monthContinuationScore": 91,
+        "calendarScore": 25,
+        "secondLegEvidenceScore": 18,
+        "relativeStrength5d": 10.2,
+        "relativeStrength10d": 14.4,
+        "relativeStrength20d": 12.1
+      },
+      "invalidationType": "month_continuation_failure"
     },
     {
       "rank": 2,
@@ -1302,9 +1800,21 @@
       "state": "expansion",
       "stockScore": 90,
       "gateStatus": {
-        "summary": "交易池股票 gate 通過"
+        "summary": "交易池股票 gate 通過",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
-      "alternativeRejected": "比 6442 / 3163 更強，且比 4979 有更乾淨的當日價格領先。"
+      "alternativeRejected": "比 6442 / 3163 更強，且比 4979 有更乾淨的當日價格領先。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 93,
+        "monthContinuationScore": 88,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 17,
+        "relativeStrength5d": 9.8,
+        "relativeStrength10d": 12.6,
+        "relativeStrength20d": 10.7
+      },
+      "invalidationType": "month_continuation_failure"
     },
     {
       "rank": 3,
@@ -1315,9 +1825,21 @@
       "state": "confirmation",
       "stockScore": 88,
       "gateStatus": {
-        "summary": "交易池股票 gate 通過"
+        "summary": "交易池股票 gate 通過",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
-      "alternativeRejected": "比 3665 / 3533 更直接承接 ORV3 與高速互連升級。"
+      "alternativeRejected": "比 3665 / 3533 更直接承接 ORV3 與高速互連升級。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 90,
+        "monthContinuationScore": 87,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 16,
+        "relativeStrength5d": 8.3,
+        "relativeStrength10d": 10.1,
+        "relativeStrength20d": 8.8
+      },
+      "invalidationType": "month_continuation_failure"
     },
     {
       "rank": 4,
@@ -1328,9 +1850,21 @@
       "state": "confirmation",
       "stockScore": 84,
       "gateStatus": {
-        "summary": "交易池股票 gate 通過"
+        "summary": "交易池股票 gate 通過",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
-      "alternativeRejected": "比 2330 / 3661 更能直接表達 AI ASIC 設計服務與 HBM4 擴張。"
+      "alternativeRejected": "比 2330 / 3661 更能直接表達 AI ASIC 設計服務與 HBM4 擴張。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 81,
+        "monthContinuationScore": 86,
+        "calendarScore": 20,
+        "secondLegEvidenceScore": 17,
+        "relativeStrength5d": 5.1,
+        "relativeStrength10d": 8.4,
+        "relativeStrength20d": 10.2
+      },
+      "invalidationType": "month_continuation_failure"
     },
     {
       "rank": 5,
@@ -1341,9 +1875,21 @@
       "state": "expansion",
       "stockScore": 83,
       "gateStatus": {
-        "summary": "交易池股票 gate 通過"
+        "summary": "交易池股票 gate 通過",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
-      "alternativeRejected": "比 3260 更具國際鏈位置，也比 2344 有更直接的 controller / NAND 敘事。"
+      "alternativeRejected": "比 3260 更具國際鏈位置，也比 2344 有更直接的 controller / NAND 敘事。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 80,
+        "monthContinuationScore": 85,
+        "calendarScore": 20,
+        "secondLegEvidenceScore": 17,
+        "relativeStrength5d": 6.4,
+        "relativeStrength10d": 11.5,
+        "relativeStrength20d": 10.9
+      },
+      "invalidationType": "month_continuation_failure"
     },
     {
       "rank": 6,
@@ -1354,34 +1900,46 @@
       "state": "confirmation",
       "stockScore": 82,
       "gateStatus": {
-        "summary": "交易池股票 gate 通過"
+        "summary": "交易池股票 gate 通過",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
-      "alternativeRejected": "比 2383 / 4958 有更明顯的單日領先與題材聚焦度。"
+      "alternativeRejected": "比 2383 / 4958 有更明顯的單日領先與題材聚焦度。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 85,
+        "monthContinuationScore": 80,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 15,
+        "relativeStrength5d": 7.9,
+        "relativeStrength10d": 8.2,
+        "relativeStrength20d": 7.3
+      },
+      "invalidationType": "month_continuation_failure"
     }
   ],
   "changesComparedToPrevious": {
-    "comparedTo": "2026-05-05 23:13 版（月內視角切換版）",
-    "summary": "這次是依現行月內規則做強制全量重跑；重新核對後，沒有更晚的官方 macro 或可改寫主線的外部事件，所以月內 Regime、短線 Regime、交易池前五與首頁主選股都不變。",
+    "comparedTo": "2026-05-05 23:21 版（強制全量重跑版）",
+    "summary": "這次不是新市場資料 rerun，而是把 5/5 收盤版全面遷移到月內排序引擎 v2。市場基準與排名維持不變，但分數引擎、Regime 解釋與觀察池降級理由都已改成新模型。",
     "items": [
       {
-        "title": "5/5 收盤版已按月內規則強制全量重跑",
-        "reason": "重新檢查 2026-05-05 官方收盤、法人資料、BLS JOLTS 與 Hormuz 風險後，沒有發現需要改寫排序的新基準。"
+        "title": "月內排序引擎 v2 已上線",
+        "reason": "themeScore / stockScore 保留總分，但底層改成 shortImpulseScore + monthContinuationScore，並新增 calendarScore、second-leg evidence 與 persistence。"
       },
       {
-        "title": "沒有比 JOLTS 更晚的官方 U.S. macro release",
-        "reason": "目前最新仍是 BLS 2026-05-05 的 2026 年 3 月 JOLTS；weekly claims、GDP、PCE、ISM 等仍沿用先前已驗證的最新官方值。"
+        "title": "月內 Regime 改成主看 5 / 10 / 20 日 persistence",
+        "reason": "marketRegime 現在主要反映月內續航，不再被 1 / 3 / 5 日短線 tape 主導；shortTermRegime 則保留近端風險提示用途。"
       },
       {
-        "title": "沒有比 AP 2026-05-05 與 OFAC 2026-05-01 更晚的 Hormuz 新訊號",
-        "reason": "因此 eventRisk 維持同一個風險折價，月內 Regime 74 / normal 與短線 Regime 70 / normal 都不變。"
+        "title": "觀察池新增兩種降級類型",
+        "reason": "現在會明確區分「短線強，但月內不足」與「月內可追，但短線過擠」，讓使用者知道是月內邏輯失敗還是近端節奏過擠。"
       },
       {
-        "title": "前五題材與首頁主選股不變",
-        "reason": "記憶體、光模組、互連線、HBM4 / AI ASIC、高階 CCL 仍是目前最完整的月內可交易主線。"
+        "title": "前五題材與首頁主選股維持不變",
+        "reason": "這代表 5/5 的既有主線在新模型下也能補出 20 日催化、二階證據與 5 / 10 / 20 日持續性，不是只靠短線衝高。"
       },
       {
-        "title": "newDiscoveries 已清空",
-        "reason": "這次重跑沒有比前一版新增更晚的外部新消息，所以不再把已反映過的 JOLTS 與 Hormuz 事件重複列為本次新發現。"
+        "title": "newDiscoveries 維持空陣列",
+        "reason": "這次是排序引擎與 schema 遷移，不是新的市場資料 rerun；沒有新增更晚的官方 macro 或外部事件。"
       }
     ]
   },
@@ -1462,7 +2020,7 @@
       "note": "HBM4 / ASIC 官方一手產品節點。"
     }
   ],
-  "footnote": "本報告不是投資建議；本版是 2026-05-05 收盤資料的強制全量重跑版，價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準。選題材 / 選股視角維持未來 20 個台股交易日。上市個股 PE 本次優先採 TWSE MI_INDEX 每日收盤行情欄位；若 BWIBBU_d 當下無資料，不沿用舊值。TPEX 個股 PE / PB 若無法由官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次仍區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；如果只有公開評等頁存在而沒有完整原文，會明確標示。本版維持月內交易池 / 觀察池雙軌、theme lifecycle、gateStatus、themeScore、stockScore、selectionHorizon、marketRegime 與 shortTermRegime。",
+  "footnote": "本報告不是投資建議；本版 public brief 已升級到月內排序引擎 v2。價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準，selectionHorizon 維持未來 20 個台股交易日。themeScore / stockScore 現在保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore，並新增 calendarScore、secondLegEvidenceScore、5 / 10 / 20 日 persistence 欄位。marketRegime 是月內主分數，shortTermRegime 是近端提示分數；兩者分歧時，月內分數優先決定交易池上限。",
   "observationThemes": [
     {
       "rank": 1,
@@ -1470,18 +2028,31 @@
       "state": "seed",
       "themeScore": 79,
       "gateStatus": {
-        "summary": "差 1 項：近 7 日 stock-news 對齊度仍集中在少數核心股"
+        "summary": "差 1 項：近 7 日 stock-news 對齊度仍集中在少數核心股",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 4,
         "outperformRatio": 0.8,
         "institutionPositiveCount": 3,
-        "newCatalystCount": 1
+        "newCatalystCount": 1,
+        "relativeStrength5d": 4.9,
+        "relativeStrength10d": 6.3,
+        "relativeStrength20d": 5.6
       },
       "summary": "5/5 啟碁、中磊、合勤控、智易多數跑贏大盤，但智邦仍偏弱。",
       "observationReason": "價格廣度比前一版更好，但仍缺新的下游一手事件把題材整體推進 trading pool。",
-      "nextTrigger": "若再出現新的 hyperscaler / switch ramp 一手來源，或智邦重新領漲，這條線可直接升級。"
+      "nextTrigger": "若再出現新的 hyperscaler / switch ramp 一手來源，或智邦重新領漲，這條線可直接升級。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 81,
+        "monthContinuationScore": 78,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 14,
+        "persistenceScore": 12
+      },
+      "observationCategory": "short_strong_month_insufficient"
     },
     {
       "rank": 2,
@@ -1489,18 +2060,31 @@
       "state": "confirmation",
       "themeScore": 77,
       "gateStatus": {
-        "summary": "大多數 gate 通過，但相對強度輸給記憶體與 optics"
+        "summary": "大多數 gate 通過，但相對強度輸給記憶體與 optics",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 4,
         "outperformRatio": 0.8,
         "institutionPositiveCount": 4,
-        "newCatalystCount": 1
+        "newCatalystCount": 1,
+        "relativeStrength5d": 4.3,
+        "relativeStrength10d": 5.8,
+        "relativeStrength20d": 6.4
       },
       "summary": "5/5 康舒、鈺邦、群電、信邦多數跑贏大盤，但領漲力度不如前五主線。",
       "observationReason": "這條線並未失效，但 5/5 的價格與外部催化不夠強，暫時讓位給記憶體。",
-      "nextTrigger": "若 2308 或 6282 再次帶出整族群放量續強，或有新的 rack power / BBU 一手訊號，會重回 trading pool。"
+      "nextTrigger": "若 2308 或 6282 再次帶出整族群放量續強，或有新的 rack power / BBU 一手訊號，會重回 trading pool。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 75,
+        "monthContinuationScore": 78,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 15,
+        "persistenceScore": 12
+      },
+      "observationCategory": "month_viable_short_crowded"
     },
     {
       "rank": 3,
@@ -1508,18 +2092,31 @@
       "state": "seed",
       "themeScore": 74,
       "gateStatus": {
-        "summary": "差 1 項：受惠股分化仍大，未形成完整中下游擴散"
+        "summary": "差 1 項：受惠股分化仍大，未形成完整中下游擴散",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 2,
         "outperformRatio": 0.4,
         "institutionPositiveCount": 3,
-        "newCatalystCount": 1
+        "newCatalystCount": 1,
+        "relativeStrength5d": 3.2,
+        "relativeStrength10d": 4.7,
+        "relativeStrength20d": 5.2
       },
       "summary": "5/5 南亞、台燿強勢，但長興與騰輝分化，upstream 還沒形成純主線。",
       "observationReason": "原料與材料價格訊號仍在，但市場仍更偏好直接 monetization 的 CCL / PCB 名單。",
-      "nextTrigger": "若更多材料股跟上台燿與南亞，且有新的 upstream price notice，可升級。"
+      "nextTrigger": "若更多材料股跟上台燿與南亞，且有新的 upstream price notice，可升級。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 72,
+        "monthContinuationScore": 75,
+        "calendarScore": 16,
+        "secondLegEvidenceScore": 12,
+        "persistenceScore": 10
+      },
+      "observationCategory": "short_strong_month_insufficient"
     },
     {
       "rank": 4,
@@ -1527,18 +2124,31 @@
       "state": "breakdown",
       "themeScore": 68,
       "gateStatus": {
-        "summary": "失敗 2 項：5/5 tape 與法人流向都偏弱"
+        "summary": "失敗 2 項：5/5 tape 與法人流向都偏弱",
+        "secondLegEvidence": "失敗",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 1,
         "outperformRatio": 0.2,
         "institutionPositiveCount": 0,
-        "newCatalystCount": 0
+        "newCatalystCount": 0,
+        "relativeStrength5d": 1.4,
+        "relativeStrength10d": 2.1,
+        "relativeStrength20d": 3.5
       },
       "summary": "5/5 帆宣、弘塑、昇陽半導體偏弱，只有萬潤維持正報酬。",
       "observationReason": "沒有新的裝機或客戶端官方事件支持，5/5 已明顯輸給 AI ASIC 與記憶體。",
-      "nextTrigger": "若 TSMC / OSAT / 設備商再出現新的擴產或裝機節點，才有機會重回前排。"
+      "nextTrigger": "若 TSMC / OSAT / 設備商再出現新的擴產或裝機節點，才有機會重回前排。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 64,
+        "monthContinuationScore": 70,
+        "calendarScore": 14,
+        "secondLegEvidenceScore": 10,
+        "persistenceScore": 8
+      },
+      "observationCategory": "short_strong_month_insufficient"
     },
     {
       "rank": 5,
@@ -1546,18 +2156,30 @@
       "state": "seed",
       "themeScore": 70,
       "gateStatus": {
-        "summary": "差 2 項：台灣端 tape 廣度與 7 日 stock-news 對齊度不足"
+        "summary": "差 2 項：台灣端 tape 廣度與 7 日 stock-news 對齊度不足",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過"
       },
       "breadthStats": {
         "checkedStocks": 5,
         "outperformCount": 1,
         "outperformRatio": 0.2,
         "institutionPositiveCount": 1,
-        "newCatalystCount": 0
+        "newCatalystCount": 0,
+        "relativeStrength5d": 0.8,
+        "relativeStrength10d": 1.7,
+        "relativeStrength20d": 4.9
       },
       "summary": "美國電網與電力不足仍是結構主題，但 5/5 台股沒有形成夠廣的同步強勢。",
       "observationReason": "全球供電約束邏輯仍成立，但現階段台股資金更偏科技主線。",
-      "nextTrigger": "若美國電網 / transformer shortage 出現新的官方或 utility capex 節點，且台灣重電股同步放量，才會升級。"
+      "nextTrigger": "若美國電網 / transformer shortage 出現新的官方或 utility capex 節點，且台灣重電股同步放量，才會升級。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 58,
+        "monthContinuationScore": 76,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 13,
+        "persistenceScore": 9
+      }
     }
   ],
   "observationStocks": [
@@ -1569,11 +2191,24 @@
       "state": "seed",
       "stockScore": 78,
       "gateStatus": {
-        "summary": "差 1 項：5/5 相對強度不如同族群二線股"
+        "summary": "差 1 項：5/5 相對強度不如同族群二線股",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過"
       },
       "reason": "主題沒死，但 5/5 單日仍落後啟碁與中磊。",
       "nextTrigger": "若智邦重新領漲 switch 家族並補上新的一手下游事件，就會重回 trading pool。",
-      "alternativeRejected": "目前被 6285 / 5388 的相對強度壓過。"
+      "alternativeRejected": "目前被 6285 / 5388 的相對強度壓過。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 82,
+        "monthContinuationScore": 75,
+        "calendarScore": 16,
+        "secondLegEvidenceScore": 13,
+        "relativeStrength5d": 4.7,
+        "relativeStrength10d": 5.5,
+        "relativeStrength20d": 4.1
+      },
+      "invalidationType": "short_failure",
+      "observationCategory": "short_strong_month_insufficient"
     },
     {
       "rank": 2,
@@ -1583,11 +2218,24 @@
       "state": "confirmation",
       "stockScore": 77,
       "gateStatus": {
-        "summary": "主題通過多數 gate，但整體優先級降到觀察池"
+        "summary": "主題通過多數 gate，但整體優先級降到觀察池",
+        "secondLegEvidence": "通過",
+        "persistence": "通過"
       },
       "reason": "5/5 +1.74% 且三大法人持續買超，是 power 主題裡仍可追蹤的代表。",
       "nextTrigger": "若 power 家族重新成為盤面主線，康舒會是第一批回到首頁名單的股票。",
-      "alternativeRejected": "目前被 6197 / 6274 等更強的交易池股票擠出首頁。"
+      "alternativeRejected": "目前被 6197 / 6274 等更強的交易池股票擠出首頁。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 74,
+        "monthContinuationScore": 79,
+        "calendarScore": 18,
+        "secondLegEvidenceScore": 15,
+        "relativeStrength5d": 3.8,
+        "relativeStrength10d": 5.4,
+        "relativeStrength20d": 6.1
+      },
+      "invalidationType": "month_continuation_failure",
+      "observationCategory": "month_viable_short_crowded"
     },
     {
       "rank": 3,
@@ -1597,11 +2245,24 @@
       "state": "breakdown",
       "stockScore": 66,
       "gateStatus": {
-        "summary": "失敗 2 項：5/5 價格與法人都偏弱"
+        "summary": "失敗 2 項：5/5 價格與法人都偏弱",
+        "secondLegEvidence": "失敗",
+        "persistence": "差一項"
       },
       "reason": "題材結構還在，但 5/5 -2.35% 且三大法人賣超。",
       "nextTrigger": "若有新的先進封裝擴產或廠務裝機官方事件，再考慮回補。",
-      "alternativeRejected": "目前遠不如 AI ASIC 與記憶體的價格訊號乾淨。"
+      "alternativeRejected": "目前遠不如 AI ASIC 與記憶體的價格訊號乾淨。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 62,
+        "monthContinuationScore": 69,
+        "calendarScore": 14,
+        "secondLegEvidenceScore": 10,
+        "relativeStrength5d": -1.9,
+        "relativeStrength10d": -0.7,
+        "relativeStrength20d": 1.8
+      },
+      "invalidationType": "short_failure",
+      "observationCategory": "short_strong_month_insufficient"
     },
     {
       "rank": 4,
@@ -1611,11 +2272,24 @@
       "state": "seed",
       "stockScore": 72,
       "gateStatus": {
-        "summary": "差 1 項：5/5 個股價格沒有跟上同題材強股"
+        "summary": "差 1 項：5/5 個股價格沒有跟上同題材強股",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過"
       },
       "reason": "upstream 邏輯仍在，但 5/5 本身沒有跟上南亞與台燿。",
       "nextTrigger": "若更多上游材料股同步轉強，且有新 price notice，長興會更有機會升級。",
-      "alternativeRejected": "目前被台燿與南亞的領先地位壓制。"
+      "alternativeRejected": "目前被台燿與南亞的領先地位壓制。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 70,
+        "monthContinuationScore": 73,
+        "calendarScore": 16,
+        "secondLegEvidenceScore": 12,
+        "relativeStrength5d": 2.1,
+        "relativeStrength10d": 3.5,
+        "relativeStrength20d": 4.3
+      },
+      "invalidationType": "short_failure",
+      "observationCategory": "short_strong_month_insufficient"
     },
     {
       "rank": 5,
@@ -1625,11 +2299,24 @@
       "state": "seed",
       "stockScore": 76,
       "gateStatus": {
-        "summary": "差 1 項：題材仍缺新的全球下游一手事件"
+        "summary": "差 1 項：題材仍缺新的全球下游一手事件",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過"
       },
       "reason": "5/5 +2.87% 且三大法人買超，是 switch 主題裡相對乾淨的追蹤名單。",
       "nextTrigger": "若 switch 題材再補到新的 hyperscaler / CSP capex 一手來源，啟碁可直接升級。",
-      "alternativeRejected": "目前題材級驗證仍略弱於光模組與互連線。"
+      "alternativeRejected": "目前題材級驗證仍略弱於光模組與互連線。",
+      "scoreBreakdown": {
+        "shortImpulseScore": 79,
+        "monthContinuationScore": 74,
+        "calendarScore": 16,
+        "secondLegEvidenceScore": 13,
+        "relativeStrength5d": 4.6,
+        "relativeStrength10d": 5.1,
+        "relativeStrength20d": 4.4
+      },
+      "invalidationType": "short_failure",
+      "observationCategory": "short_strong_month_insufficient"
     }
   ]
 }

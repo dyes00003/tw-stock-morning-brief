@@ -46,6 +46,7 @@ function render(report) {
   const foreignFlowTone = flowTone(foreignFlowDisplay);
   const monthlyRegime = normalizeMarketRegime(report.marketSnapshot?.marketRegime);
   const shortTermRegime = normalizeMarketRegime(report.marketSnapshot?.shortTermRegime);
+  const regimeDivergenceSummary = report.marketSnapshot?.regimeDivergenceSummary || "";
   const tradingPoolLimits = getTradingPoolLimits(monthlyRegime.mode);
   const tradeThemeHeading = `月內交易池題材（${tradeThemes.length} / ${tradingPoolLimits.themeLabel}）`;
   const tradeStockHeading = `月內交易池股票（${tradePicks.length} / ${tradingPoolLimits.stockLabel}）`;
@@ -70,6 +71,8 @@ function render(report) {
             ${renderGateBadge(pick.gateStatus)}
           </div>
           <p class="focus-note">${pick.reason}</p>
+          <p class="focus-subnote">${formatSplitScoreLine(pick.scoreBreakdown, "stock")}</p>
+          <p class="focus-subnote">${formatStockSignalLine(pick.scoreBreakdown)}</p>
           ${pick.alternativeRejected ? `<p class="focus-subnote">勝過替代：${pick.alternativeRejected}</p>` : ""}
         </article>
       `
@@ -88,9 +91,11 @@ function render(report) {
                   ${renderStateBadge(theme.state)}
                   ${renderScoreBadge(theme.themeScore, "題材分數")}
                   ${renderGateBadge(theme.gateStatus)}
+                  ${renderObservationCategoryBadge(theme.observationCategory)}
                 </div>
               </div>
               <p class="body-copy">${theme.observationReason || theme.summary || theme.stance || "這個題材已有證據，但還沒進到月內交易池。"}</p>
+              <p class="focus-subnote">${formatSplitScoreLine(theme.scoreBreakdown, "theme")}</p>
               <div class="observation-meta">
                 <div class="info-block compact-card">
                   <p class="info-label">下一個升級條件</p>
@@ -121,9 +126,12 @@ function render(report) {
                   ${renderStateBadge(stock.state)}
                   ${renderScoreBadge(stock.stockScore, "股票分數")}
                   ${renderGateBadge(stock.gateStatus)}
+                  ${renderObservationCategoryBadge(stock.observationCategory)}
                 </div>
               </div>
               <p class="body-copy">${stock.reason || stock.observationReason || "這檔股票已有題材或事件訊號，但還沒進到月內交易池名單。"}</p>
+              <p class="focus-subnote">${formatSplitScoreLine(stock.scoreBreakdown, "stock")}</p>
+              <p class="focus-subnote">${formatStockSignalLine(stock.scoreBreakdown)}</p>
               <div class="observation-meta">
                 <div class="info-block compact-card">
                   <p class="info-label">升級條件</p>
@@ -260,6 +268,7 @@ function render(report) {
             <p class="regime-summary">${shortTermRegime.summary}</p>
           </article>
         </div>
+        ${regimeDivergenceSummary ? `<p class="meta-note">${regimeDivergenceSummary}</p>` : ""}
 
         <div class="changes-layout">
           <section class="panel-grid">
@@ -394,6 +403,8 @@ function renderTheme(theme, open) {
     .join("");
   const gateSummary = formatGateStatus(theme.gateStatus);
   const breadthSummary = formatBreadthStats(theme.breadthStats);
+  const splitScoreLine = formatSplitScoreLine(theme.scoreBreakdown, "theme");
+  const themeSignalLine = formatThemeSignalLine(theme.scoreBreakdown, theme.breadthStats);
 
   return `
     <article class="theme-card">
@@ -412,6 +423,7 @@ function renderTheme(theme, open) {
               ${renderStateBadge(theme.state)}
               ${renderScoreBadge(theme.themeScore, "題材分數")}
               ${renderGateBadge(theme.gateStatus)}
+              ${renderObservationCategoryBadge(theme.observationCategory)}
               <span class="pill">${theme.stance}</span>
             </div>
           </div>
@@ -435,6 +447,16 @@ function renderTheme(theme, open) {
             <div class="info-block">
               <p class="info-label">廣度統計</p>
               <p class="info-text">${breadthSummary || "這版資料沒有額外的 breadth 統計。"}</p>
+            </div>
+          </div>
+          <div class="theme-meta">
+            <div class="info-block">
+              <p class="info-label">月內續航 / 短線衝力</p>
+              <p class="info-text">${splitScoreLine || "目前沒有 split score 欄位。"}</p>
+            </div>
+            <div class="info-block">
+              <p class="info-label">20 日催化 / 二階證據 / 5-10-20 日強弱</p>
+              <p class="info-text">${themeSignalLine || "目前沒有 20 日催化與 persistence 欄位。"}</p>
             </div>
           </div>
           <div class="theme-meta">${whyNow}</div>
@@ -467,6 +489,7 @@ function renderStock(theme, stock) {
             ${renderStateBadge(stock.state)}
             ${renderScoreBadge(stock.stockScore, "股票分數")}
             ${renderGateBadge(stock.gateStatus)}
+            ${renderObservationCategoryBadge(stock.observationCategory)}
           </div>
           <p class="stock-role">${stock.role}</p>
         </div>
@@ -508,6 +531,17 @@ function renderStock(theme, stock) {
         <div class="info-block">
           <p class="info-label">為何還沒反映完</p>
           <p class="info-text">${stock.notPricedIn}</p>
+        </div>
+      </div>
+
+      <div class="split-copy">
+        <div class="info-block">
+          <p class="info-label">月內續航 / 短線衝力</p>
+          <p class="info-text">${formatSplitScoreLine(stock.scoreBreakdown, "stock") || "目前沒有 split score 欄位。"}</p>
+        </div>
+        <div class="info-block">
+          <p class="info-label">20 日催化 / 二階證據 / 5-10-20 日強弱</p>
+          <p class="info-text">${formatStockSignalLine(stock.scoreBreakdown) || "目前沒有 20 日催化與 persistence 欄位。"}</p>
         </div>
       </div>
 
@@ -619,6 +653,17 @@ function renderStateBadge(state) {
   return `<span class="state-badge state-${escapeHtml(String(state).toLowerCase())}">${formatStateLabel(state)}</span>`;
 }
 
+function renderObservationCategoryBadge(category) {
+  if (!category) return "";
+
+  const labelMap = {
+    short_strong_month_insufficient: "短線強，但月內不足",
+    month_viable_short_crowded: "月內可追，但短線過擠",
+  };
+
+  return `<span class="pill">${labelMap[category] || String(category)}</span>`;
+}
+
 function renderScoreBadge(score, label) {
   if (score === undefined || score === null || score === "") return "";
 
@@ -693,8 +738,73 @@ function formatBreadthStats(stats) {
   if (Number.isFinite(stats.newCatalystCount)) {
     parts.push(`新催化 ${stats.newCatalystCount} 檔`);
   }
+  if (Number.isFinite(stats.relativeStrength5d) || Number.isFinite(stats.relativeStrength10d) || Number.isFinite(stats.relativeStrength20d)) {
+    parts.push(formatRelativeStrengthTriplet(stats));
+  }
 
   return parts.join(" / ");
+}
+
+function formatSplitScoreLine(scoreBreakdown, type) {
+  if (!scoreBreakdown || typeof scoreBreakdown !== "object") return "";
+
+  const monthScore = scoreBreakdown.monthContinuationScore;
+  const shortScore = scoreBreakdown.shortImpulseScore;
+  if (!Number.isFinite(monthScore) && !Number.isFinite(shortScore)) return "";
+
+  const monthLabel = type === "theme" ? "月內續航" : "月內續航";
+  const shortLabel = type === "theme" ? "短線衝力" : "短線衝力";
+  const parts = [];
+  if (Number.isFinite(monthScore)) parts.push(`${monthLabel} ${Math.round(monthScore)}`);
+  if (Number.isFinite(shortScore)) parts.push(`${shortLabel} ${Math.round(shortScore)}`);
+  return parts.join(" / ");
+}
+
+function formatThemeSignalLine(scoreBreakdown, breadthStats) {
+  if ((!scoreBreakdown || typeof scoreBreakdown !== "object") && (!breadthStats || typeof breadthStats !== "object")) {
+    return "";
+  }
+
+  const parts = [];
+  if (Number.isFinite(scoreBreakdown?.calendarScore)) parts.push(`20 日催化 ${Math.round(scoreBreakdown.calendarScore)}`);
+  if (Number.isFinite(scoreBreakdown?.secondLegEvidenceScore)) parts.push(`二階證據 ${Math.round(scoreBreakdown.secondLegEvidenceScore)}`);
+  if (Number.isFinite(scoreBreakdown?.persistenceScore)) parts.push(`持續性 ${Math.round(scoreBreakdown.persistenceScore)}`);
+  const rsTriplet = formatRelativeStrengthTriplet(breadthStats || scoreBreakdown);
+  if (rsTriplet) parts.push(rsTriplet);
+  return parts.join(" / ");
+}
+
+function formatStockSignalLine(scoreBreakdown) {
+  if (!scoreBreakdown || typeof scoreBreakdown !== "object") return "";
+
+  const parts = [];
+  if (Number.isFinite(scoreBreakdown.calendarScore)) parts.push(`20 日催化 ${Math.round(scoreBreakdown.calendarScore)}`);
+  if (Number.isFinite(scoreBreakdown.secondLegEvidenceScore)) parts.push(`二階證據 ${Math.round(scoreBreakdown.secondLegEvidenceScore)}`);
+  const rsTriplet = formatRelativeStrengthTriplet(scoreBreakdown);
+  if (rsTriplet) parts.push(rsTriplet);
+  return parts.join(" / ");
+}
+
+function formatRelativeStrengthTriplet(source) {
+  if (!source || typeof source !== "object") return "";
+
+  const values = [
+    ["5D", source.relativeStrength5d],
+    ["10D", source.relativeStrength10d],
+    ["20D", source.relativeStrength20d],
+  ]
+    .filter(([, value]) => Number.isFinite(value))
+    .map(([label, value]) => `${label} ${formatSignedNumeric(value)}`);
+
+  return values.length ? values.join(" / ") : "";
+}
+
+function formatSignedNumeric(value) {
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric)) return String(value);
+  if (numeric > 0) return `+${numeric.toFixed(1)}%`;
+  if (numeric < 0) return `${numeric.toFixed(1)}%`;
+  return "0.0%";
 }
 
 function toneClass(tone) {
