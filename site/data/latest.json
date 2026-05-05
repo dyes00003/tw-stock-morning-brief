@@ -1,19 +1,19 @@
 {
-  "reportDate": "2026-05-04",
+  "reportDate": "2026-05-05",
   "priceDate": "2026-05-04（週一；TWSE / TPEX 官方收盤、T86、BFI82U 與 TPEX 日行情 / 法人資料）",
   "weekRange": {
     "start": "2026-05-04",
     "end": "2026-05-08"
   },
-  "headline": "5/4 收盤版：台股大漲 4.57%、外資買超 669.76 億，市場 regime 升至強偏多；交易池改由 HBM4 / 光模組 / 互連 / CCL / 電源領銜。",
-  "deck": "這次改用 2026-05-04 官方收盤重跑，修正上一版誤用 2026-04-30 收盤的問題。5/4 TAIEX 收 40,705.14、單日 +4.57%，外資現貨買超 669.76 億，盤面主線由半導體、光通訊、互連與高階材料同步領漲；沒有更晚的官方 U.S. macro release，所以宏觀數字不變，但市場 regime 從 65 分偏多 / normal 上修到 90 分強偏多 / risk_on。",
+  "headline": "5/5 晨報重跑版：沿用 5/4 官方收盤，前五題材維持 HBM4 / 光模組 / 互連 / CCL / 電源；補進 Iran / Hormuz 最新風險後，market regime 降至 85 分但仍屬 risk-on。",
+  "deck": "今天是 2026-05-05 台股交易日晨報重跑，股價基準仍採 2026-05-04 官方收盤。5/4 TAIEX 收 40,705.14、單日 +4.57%，外資現貨買超 669.76 億，主線仍是半導體、光通訊、互連、高階材料與電源；自上一版以來沒有更晚的官方 U.S. macro release，但本次補進 AP 2026-05-04 的 UAE 遭襲 / Hormuz 護航進展與 OFAC 2026-05-01 passage sanctions alert，market regime 因 eventRisk 從 90 下修到 85。",
   "executiveSummary": [
-    "2026-05-04 的台股官方收盤資料已出，這版已改用 2026-05-04 收盤、T86、BFI82U 與 TPEX 官方行情重跑；上一版沿用 2026-04-30 是錯的，這次已修正。",
-    "5/4 TAIEX 收 40,705.14、單日 +4.57%，外資及陸資現貨買超 669.76 億；半導體類指數 +6.75%，是盤面最強官方 sector signal。",
-    "交易池前五改排為：HBM4 / AI ASIC IP / 台積電 3DFabric 生態系、光模組 / 矽光子、AI 高速互連線 / 大電流電源線、高階 CCL / AI PCB / 高層數板、伺服器電源 / BBU。",
-    "AI 交換器 / 資料中心網通設備在 5/4 official tape 明顯修復，但近 7 日 stock-news 對齊度仍不如前五，所以暫時保留在觀察池第一名。",
-    "自 2026-05-04 開盤前版以來，沒有更晚的官方 U.S. macro release；最近仍是 DOL 189,000、BEA 1Q26 GDP +2.0%、3 月 PCE 3.5% YoY、BLS ECI +0.9%、ISM 製造業 PMI 52.7。",
-    "市場 regime 升到 90 分、強偏多 / risk_on；這裡不用縮交易池，反而應優先做已經通過廣度、法人與 tape 驗證的主線。"
+    "2026-05-05 台股交易日晨報重跑仍使用 2026-05-04 TWSE / TPEX 官方收盤、T86、BFI82U 與上櫃法人資料；目前沒有 2026-05-05 官方收盤可用。",
+    "5/4 TAIEX 收 40,705.14、單日 +4.57%，外資及陸資現貨買超 669.76 億；半導體類指數 +6.75%，仍是盤面最強官方 sector signal。",
+    "交易池前五維持：HBM4 / AI ASIC IP / 台積電 3DFabric 生態系、光模組 / 矽光子、AI 高速互連線 / 大電流電源線、高階 CCL / AI PCB / 高層數板、伺服器電源 / BBU。",
+    "自上一版以來沒有更晚的官方 U.S. macro release；最近仍是 DOL 189,000、BEA 1Q26 GDP +2.0%、3 月 PCE 3.5% YoY、BLS ECI +0.9%、ISM 製造業 PMI 52.7。下一個官方節點是 BLS 2026-05-05 10:00 ET 的 JOLTS，台灣時間為 2026-05-05 22:00。",
+    "這次新增整合的地緣訊號是 AP 2026-05-04 對 UAE 遭襲、停火承壓與 Hormuz 護航恢復的同步報導，以及 OFAC 2026-05-01 對 Strait of Hormuz passage 的 sanctions alert。",
+    "市場 regime 從 90 下修到 85，但仍維持 強偏多 / risk_on；交易池上限不變，只是 eventRisk 不能再沿用前一版的較樂觀設定。"
   ],
   "marketSnapshot": {
     "indexClose": 40705.14,
@@ -24,65 +24,81 @@
       "change": "+6.75%"
     },
     "marketRegime": {
-      "score": 90,
+      "score": 85,
       "stance": "強偏多",
       "mode": "risk_on",
-      "summary": "5/4 指數大漲、外資大買、半導體與 AI 主線全面同步，整體市場已從 selective / normal 轉成明確 risk-on。",
+      "summary": "5/4 的 tape、外資與主線廣度仍明確偏多，但最近 72 小時 Iran / Hormuz verified 事件與 OFAC passage alert 讓 eventRisk 不能維持前一版的樂觀水位。",
       "scoreBreakdown": {
         "tapeBreadth": 30,
         "flow": 20,
         "themeHealth": 20,
         "macro": 10,
-        "eventRisk": 10
+        "eventRisk": 5
       },
       "drivers": [
-        "2026-05-04 TAIEX +4.57% and sector breadth turned decisively positive.",
-        "Foreign cash flow swung to +NT$66.98bn.",
-        "Semiconductor, optics, interconnect, CCL, and power all retained multiple confirmation / expansion names.",
-        "Hormuz / sanctions risk remained active, so eventRisk did not return to a full 15."
+        "2026-05-04 TAIEX +4.57% and sector breadth remained decisively positive.",
+        "Foreign cash flow stayed strongly positive at +NT$66.98bn.",
+        "HBM4 / optics / interconnect / CCL / power all kept multiple confirmation or expansion names.",
+        "AP 2026-05-04 showed UAE attacks and ceasefire strain even as the U.S. guided ships through Hormuz.",
+        "OFAC 2026-05-01 Strait passage sanctions alert kept policy risk unresolved."
       ],
-      "effectOnSelection": "本版採 risk_on 模式，交易池維持完整 5 個題材與 6 檔股票上限；沒有任何已通過 gate 的題材或股票因 regime cap 被壓回觀察池。"
+      "effectOnSelection": "本版仍採 risk_on 模式，交易池維持完整 5 個題材與 6 檔股票上限；沒有任何已通過 gate 的題材或股票因 regime cap 被壓回觀察池，但也不再把 observation pool 主題硬升格。"
     }
   },
   "macroDrivers": [
     {
       "label": "初請失業金",
       "value": "189,000（截至 2026-04-25 當週）",
-      "detail": "自 2026-05-04 開盤前版以來沒有更晚的 DOL 官方 weekly claims。最新仍是 2026-04-30 公布：截至 2026-04-25 當週 initial claims 189,000，前週修正為 215,000；continuing claims 1,785,000，前週修正為 1,808,000。",
+      "detail": "自上一版以來沒有更晚的 DOL 官方 weekly claims。最新仍是 2026-04-30 公布：截至 2026-04-25 當週 initial claims 189,000，前週修正為 215,000；continuing claims 1,785,000，前週修正為 1,808,000。",
       "tone": "up"
     },
     {
       "label": "GDP / 季度通膨",
       "value": "1Q26 GDP +2.0%；GDP 內 PCE 4.5%",
-      "detail": "自 2026-05-04 開盤前版以來沒有更晚的 BEA GDP release。最新仍是 2026-04-30 advance estimate：2026Q1 real GDP 年化 +2.0%，高於 2025Q4 third estimate 的 +0.5%；同份報告裡季度 PCE price index 4.5%，core PCE 4.3%。",
+      "detail": "自上一版以來沒有更晚的 BEA GDP release。最新仍是 2026-04-30 advance estimate：2026Q1 real GDP 年化 +2.0%，高於 2025Q4 third estimate 的 +0.5%；同份報告裡季度 PCE price index 4.5%，core PCE 4.3%。",
       "tone": "down"
     },
     {
       "label": "3 月 PCE / 消費",
       "value": "PCE 3.5% YoY；core 3.2%；spending +0.9%",
-      "detail": "自 2026-05-04 開盤前版以來沒有更晚的 BEA personal income and outlays release。最新仍是 2026-04-30：3 月 personal income +0.6% MoM、PCE spending +0.9%，PCE price index 年增 3.5%，core PCE 年增 3.2%。",
+      "detail": "自上一版以來沒有更晚的 BEA personal income and outlays release。最新仍是 2026-04-30：3 月 personal income +0.6% MoM、PCE spending +0.9%，PCE price index 年增 3.5%，core PCE 年增 3.2%。",
       "tone": "down"
     },
     {
       "label": "ECI 薪資成本",
       "value": "Q1 compensation +0.9% QoQ；+3.4% YoY",
-      "detail": "自 2026-05-04 開盤前版以來沒有更晚的 BLS ECI release。最新仍是 2026-04-30：2026Q1 civilian compensation costs 季增 0.9%、年增 3.4%。",
+      "detail": "自上一版以來沒有更晚的 BLS ECI release。最新仍是 2026-04-30：2026Q1 civilian compensation costs 季增 0.9%、年增 3.4%。",
       "tone": "down"
     },
     {
       "label": "ISM 製造 / 原料壓力",
       "value": "PMI 52.7；Prices 84.6；Supplier Deliveries 60.6",
-      "detail": "自 2026-05-04 開盤前版以來沒有更晚的 ISM manufacturing release。最新仍是 2026-05-01：PMI 52.7、Prices 84.6、Supplier Deliveries 60.6，並直接點名 copper、wire and cable、polyethylene resins、memory components 漲價。",
+      "detail": "自上一版以來沒有更晚的 ISM manufacturing release。最新仍是 2026-05-01：PMI 52.7、Prices 84.6、Supplier Deliveries 60.6，並直接點名 copper、wire and cable、polyethylene resins、memory components 漲價。",
       "tone": "mixed"
     },
     {
       "label": "地緣政治 / 能源 / 航運",
-      "value": "OPEC+ 6 月調整 18.8 萬桶 / 日；Hormuz 局部恢復通行；背景風險仍在",
-      "detail": "自 2026-05-04 開盤前版以來，沒有更晚且足以改寫台股主線的官方地緣新事件。最新仍是 AP 2026-05-04 引述美軍稱兩艘美旗商船已成功通過 Hormuz，以及 OPEC+ 2026-05-03 官方宣布 2026-06 起調整 18.8 萬桶 / 日。這對能源 shock 是緩衝，不是新的台股主線。",
+      "value": "UAE 遭襲、Hormuz 護航恢復但停火承壓；OFAC passage sanctions alert 仍在",
+      "detail": "自上一版以來沒有更新的官方台股收盤資料，但最近 72 小時新增且本次正式併入 regime 的可歸因訊號包括：AP 2026-05-04 指出美軍開始引導航運通過 Hormuz、同時 UAE 遭襲且停火承壓；OFAC 2026-05-01 也明確提示 Iranian demands for Strait passage 的 sanctions risks。這代表通道局部恢復不等於風險解除，因此這次 eventRisk 由 10 / 15 下修到 5 / 15。",
       "tone": "mixed"
     }
   ],
-  "newDiscoveries": [],
+  "newDiscoveries": [
+    {
+      "id": "iran-hormuz-ap-2026-05-04",
+      "title": "AP 2026-05-04：UAE 遭襲、停火承壓，Hormuz 護航恢復與升級風險並存",
+      "scope": "地緣 / 航運 / 能源",
+      "detail": "AP 2026-05-04 指出美軍開始引導航運通過 Hormuz，但同時 UAE 遭襲、停火承壓，代表通道恢復與衝突升級是同時存在的訊號。",
+      "whyItMatters": "這條訊號不一定改變前五題材，但它直接壓低 marketRegime 的 eventRisk，避免把 5/4 的 risk-on tape 解讀得過度樂觀。"
+    },
+    {
+      "id": "ofac-hormuz-alert-2026-05-01",
+      "title": "OFAC 2026-05-01：Strait of Hormuz passage sanctions alert",
+      "scope": "政策 / 制裁 / 航運",
+      "detail": "OFAC 2026-05-01 明確提示 Iranian demands for Strait of Hormuz passage 的 sanctions risks，代表問題不只在油價與運費，也包含支付與合規風險。",
+      "whyItMatters": "這提供了 policy shock 的官方依據，所以即使 OPEC+ 增產與局部通行恢復，eventRisk 也不能回到接近滿分。"
+    }
+  ],
   "themes": [
     {
       "rank": 1,
@@ -1343,28 +1359,28 @@
     }
   ],
   "changesComparedToPrevious": {
-    "comparedTo": "2026-05-04 23:40 版（誤用 2026-04-30 週四收盤）",
-    "summary": "這次最大的變化不是外部新聞，而是正式改用 2026-05-04 官方收盤重跑。TAIEX +4.57%、外資買超 669.76 億，市場 regime 從 65 分偏多 / normal 上修到 90 分強偏多 / risk_on，交易池排名也同步重排。",
+    "comparedTo": "2026-05-04 23:50 版（5/4 收盤版）",
+    "summary": "這次重跑沒有改變 5/4 收盤後形成的前五題材與首頁主選股，但把最近 72 小時的 Iran / Hormuz verified 新訊號正式壓進 newDiscoveries 與 marketRegime。結果是 eventRisk 從 10 降到 5，總分由 90 下修到 85。",
     "items": [
       {
-        "title": "價格基準日改正為 2026-05-04 官方收盤",
-        "reason": "上一版沿用 2026-04-30 是錯的；這次已改用 2026-05-04 TWSE / TPEX 官方收盤、T86、BFI82U 與上櫃法人資料。"
+        "title": "報告日切到 2026-05-05，股價基準仍是 2026-05-04 官方收盤",
+        "reason": "今天是 2026-05-05 台股交易日晨報重跑；目前沒有 2026-05-05 官方收盤可用，所以價格、法人與估值基準仍採 2026-05-04。"
       },
       {
-        "title": "市場 regime 從 65 分升到 90 分",
-        "reason": "5/4 TAIEX +4.57%，外資現貨買超 669.76 億，半導體類指數 +6.75%，整體市場明確轉成 risk-on。"
+        "title": "沒有更晚的官方 U.S. macro release",
+        "reason": "自上一版以來沒有新的 DOL、BEA、BLS、Fed 或 ISM 官方數據；下一個明確節點是 BLS 2026-05-05 10:00 ET 的 JOLTS。"
       },
       {
-        "title": "交易池前五重排為 HBM4 / 光模組 / 互連 / CCL / 電源",
-        "reason": "5/4 tape 最強的是半導體與光通訊，其次是互連與高階板材；AI 交換器雖然修復，但近 7 日個股新聞對齊度仍略弱。"
+        "title": "Iran / Hormuz 最新訊號正式進 newDiscoveries 與首頁風險欄",
+        "reason": "本次新增整合 AP 2026-05-04 的 UAE 遭襲 / 停火承壓 / Hormuz 護航恢復，以及 OFAC 2026-05-01 的 passage sanctions alert。"
       },
       {
-        "title": "AI 交換器回到觀察池第一名，記憶體由 breakdown 修回 seed",
-        "reason": "5/4 official tape 已經明顯改善，但 AI 交換器仍差最後一個 stock-news alignment gate；記憶體則因 2408 / 2344 / 8299 轉強而從 breakdown 修復。"
+        "title": "市場 regime 從 90 下修到 85",
+        "reason": "5/4 的台股 tape 與外資動能仍很強，但最近 72 小時 verified 的 Hormuz / sanctions 風險讓 eventRisk 不能沿用前一版的 10 / 15。"
       },
       {
-        "title": "newDiscoveries 清空",
-        "reason": "這次重跑沒有找到比上一版更新、且未被上一版反映的新外部消息；5/4 的真正新增是台股官方收盤與法人資料，不屬於 newDiscoveries。"
+        "title": "交易池前五與首頁主選股不變",
+        "reason": "沒有新的台灣端 stock-level 事件足以推翻 5/4 收盤後形成的主線，因此 HBM4、光模組、互連、CCL、電源的排序維持。"
       }
     ]
   },
@@ -1443,6 +1459,16 @@
       "label": "GUC HBM4 2026-04-23",
       "url": "https://www.guc-asic.com/en/news/all/PR_20260423",
       "note": "HBM4 / ASIC 官方一手產品節點。"
+    },
+    {
+      "label": "AP 2026-05-04 Hormuz / UAE live update",
+      "url": "https://apnews.com/article/856953e60b1d9d2cb6a6352f6f66ea18",
+      "note": "美軍嘗試恢復 Hormuz 商業航運，同時 UAE 遭襲、停火承壓。"
+    },
+    {
+      "label": "OFAC 2026-05-01 Iran-related recent actions",
+      "url": "https://ofac.treasury.gov/recent-actions/20260501",
+      "note": "包含 Strait of Hormuz passage 的 sanctions risk alert。"
     }
   ],
   "footnote": "本報告不是投資建議；本版是 2026-05-04 收盤重跑版本，價格與法人流向以 2026-05-04 TWSE / TPEX 官方可得資料為準。上市個股 PE 本次優先採 TWSE MI_INDEX 每日收盤行情欄位；若 BWIBBU_d 當下無資料，不沿用舊值。TPEX 個股 PE / PB 若無法由官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次仍區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；如果只有公開評等頁存在而沒有完整原文，會明確標示。本版維持交易池 / 觀察池雙軌、theme lifecycle、gateStatus、themeScore、stockScore、marketRegime 與 observation pool；如果 observationThemes 或 observationStocks 為空，代表本次沒有足夠證據形成可展示的觀察池。",
