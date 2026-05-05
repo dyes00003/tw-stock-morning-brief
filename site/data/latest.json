@@ -10,15 +10,15 @@
     "label": "未來 20 個交易日",
     "style": "swing_month"
   },
-  "headline": "5/5 收盤版：改成未來 20 個交易日視角後，月內 Regime 74 分 / normal、短線 Regime 70 分 / normal；記憶體、光模組與互連線仍是月內前三條主線。",
-  "deck": "今天維持 2026-05-05 台股收盤版資料，股價基準仍是 2026-05-05 官方收盤；這次改的是持有視角，不是重刷價格。整份晨報改成用未來 20 個台股交易日選題材與選股，並新增雙 Regime：月內 Regime 作為主控分數，短線 Regime 只提醒近端風險。以 5/5 收盤來看，月內 Regime 為 74 / normal，短線 Regime 為 70 / normal；記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL 仍是最適合月內交易的五條主線。",
+  "headline": "5/5 收盤強制重跑版：月內 Regime 74 分 / normal、短線 Regime 70 分 / normal；目前沒有比 5/5 JOLTS 與 AP Hormuz 更新更晚、足以改寫主線的官方或可歸因新事件，前五主線不變。",
+  "deck": "這次是 2026-05-05 收盤版的強制全量重跑，價格基準仍是 2026-05-05 官方收盤。重新檢查後，沒有比 BLS 2026-05-05 JOLTS 與 AP 2026-05-05 Hormuz 更新更晚、足以改寫主線的官方 macro 或可歸因外部事件；因此月內 Regime 維持 74 / normal、短線 Regime 維持 70 / normal，記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL 仍是最適合月內交易的五條主線。",
   "executiveSummary": [
-    "2026-05-05 台股收盤版仍以 2026-05-05 TWSE / TPEX 官方收盤、T86、BFI82U 與上櫃法人資料為基準。",
-    "這次把選題材 / 選股視角從短線版改成未來 20 個台股交易日，並新增 selectionHorizon 供網站與 JSON 明確標示。",
-    "marketSnapshot.marketRegime 現在代表月內 Regime，會直接控制月內交易池上限；marketSnapshot.shortTermRegime 則只提示未來幾個交易日的近端風險。",
-    "月內交易池前五仍是：記憶體 / DRAM / NAND 價格重估、光模組 / 矽光子、AI 高速互連線 / 大電流電源線、HBM4 / AI ASIC IP / 台積電 3DFabric 生態系、高階 CCL / AI PCB / 高層數板。",
-    "BLS 2026-05-05 22:00 台灣時間公布 2026 年 3 月 JOLTS：job openings 持平 6.9 million、hires 升至 5.6 million、total separations 5.4 million，沒有推翻科技需求與月內延續性。",
-    "AP 2026-05-05 顯示 Hormuz 停火仍脆弱，所以月內 Regime 只維持 74 / normal，短線 Regime 也只維持 70 / normal；兩者都不支持把 5/5 的 tape 解讀成全面追價行情。"
+    "2026-05-05 台股收盤版已按現行月內視角與雙 Regime 規則強制全量重跑。",
+    "本次重跑重新確認 2026-05-05 TWSE / TPEX 官方收盤、T86、BFI82U 與上櫃法人資料，價格基準不變。",
+    "自前一版以來，沒有更晚的官方 U.S. macro release；目前最新仍是 BLS 2026-05-05 的 2026 年 3 月 JOLTS。",
+    "自前一版以來，也沒有比 AP 2026-05-05 與 OFAC 2026-05-01 更晚、足以改寫台股主線的 Iran / Hormuz verified 新事件。",
+    "月內 Regime 維持 74 / normal，短線 Regime 維持 70 / normal；兩者都不支持把 5/5 的 tape 擴張解讀成全面 risk-on。",
+    "月內交易池前五維持：記憶體 / DRAM / NAND 價格重估、光模組 / 矽光子、AI 高速互連線 / 大電流電源線、HBM4 / AI ASIC IP / 台積電 3DFabric 生態系、高階 CCL / AI PCB / 高層數板。"
   ],
   "marketSnapshot": {
     "indexClose": 40769.29,
@@ -108,22 +108,7 @@
       "tone": "mixed"
     }
   ],
-  "newDiscoveries": [
-    {
-      "id": "bls-jolts-2026-05-05",
-      "title": "BLS 2026-05-05：2026 年 3 月 JOLTS 顯示 job openings 持平 690 萬、hires 升至 560 萬",
-      "scope": "美國宏觀 / 勞動",
-      "detail": "BLS 2026-05-05 10:00 ET 公布 2026 年 3 月 JOLTS：job openings unchanged at 6.9 million，hires increased to 5.6 million，total separations changed little at 5.4 million。",
-      "whyItMatters": "這代表美國勞動需求沒有突然轉弱，支撐台股科技題材在未來 20 個交易日內仍可交易，但也沒有帶來足夠的降息式 risk-on。"
-    },
-    {
-      "id": "ap-hormuz-2026-05-05",
-      "title": "AP 2026-05-05：Hormuz 停火仍脆弱，UAE 遭襲與航道風險並存",
-      "scope": "地緣 / 航運 / 能源",
-      "detail": "AP 2026-05-05 指出美國嘗試重新打開 Hormuz 後，停火仍很脆弱；UAE 表示遭伊朗飛彈與無人機攻擊，航道通行恢復與衝突升級訊號同時存在。",
-      "whyItMatters": "這讓月內 Regime 難以回到全面 risk-on，也讓短線 Regime 必須保留風險折價；即使主線不變，交易節奏也不能過度樂觀。"
-    }
-  ],
+  "newDiscoveries": [],
   "themes": [
     {
       "rank": 1,
@@ -1375,28 +1360,28 @@
     }
   ],
   "changesComparedToPrevious": {
-    "comparedTo": "2026-05-05 22:43 版（5/5 收盤短線版）",
-    "summary": "這次不改市場基準，而是把整份 public brief 的持有視角切到未來 20 個交易日；月內 Regime 定位為 74 / normal，短線 Regime 70 / normal，前五主線不變但敘事改成月內延續。",
+    "comparedTo": "2026-05-05 23:13 版（月內視角切換版）",
+    "summary": "這次是依現行月內規則做強制全量重跑；重新核對後，沒有更晚的官方 macro 或可改寫主線的外部事件，所以月內 Regime、短線 Regime、交易池前五與首頁主選股都不變。",
     "items": [
       {
-        "title": "持有視角正式改成未來 20 個交易日",
-        "reason": "selectionHorizon 已新增為 top-level 欄位，weekRange 只保留報告週次，不再拿來暗示持有期。"
+        "title": "5/5 收盤版已按月內規則強制全量重跑",
+        "reason": "重新檢查 2026-05-05 官方收盤、法人資料、BLS JOLTS 與 Hormuz 風險後，沒有發現需要改寫排序的新基準。"
       },
       {
-        "title": "marketRegime 升格為月內 Regime，shortTermRegime 新增為近端提示",
-        "reason": "月內 Regime 現在主控交易池題材與股票上限；短線 Regime 只用來說明未來幾個交易日是否過熱、是否有近端事件風險。"
+        "title": "沒有比 JOLTS 更晚的官方 U.S. macro release",
+        "reason": "目前最新仍是 BLS 2026-05-05 的 2026 年 3 月 JOLTS；weekly claims、GDP、PCE、ISM 等仍沿用先前已驗證的最新官方值。"
       },
       {
-        "title": "前五主線維持 5/5 收盤排序，但評估口徑從短線爆發改成月內延續",
-        "reason": "記憶體、光模組、互連線、HBM4 / AI ASIC 與高階 CCL 仍是最適合在未來 20 個交易日交易的五條主線。"
+        "title": "沒有比 AP 2026-05-05 與 OFAC 2026-05-01 更晚的 Hormuz 新訊號",
+        "reason": "因此 eventRisk 維持同一個風險折價，月內 Regime 74 / normal 與短線 Regime 70 / normal 都不變。"
       },
       {
-        "title": "月內 Regime 74 / normal，高於短線 Regime 70 / normal",
-        "reason": "月內視角仍看見主題生命週期與產業催化的延續性；短線視角則更直接受到 5/5 外資降溫與 Hormuz 風險壓制。"
+        "title": "前五題材與首頁主選股不變",
+        "reason": "記憶體、光模組、互連線、HBM4 / AI ASIC、高階 CCL 仍是目前最完整的月內可交易主線。"
       },
       {
-        "title": "targetLogic / downside / invalidation 全部改寫成月內口徑",
-        "reason": "這次保留原本 entry / target / stop 的數值 heuristic，但把理由、失效條件與風險敘事統一改成未來 20 個交易日視角。"
+        "title": "newDiscoveries 已清空",
+        "reason": "這次重跑沒有比前一版新增更晚的外部新消息，所以不再把已反映過的 JOLTS 與 Hormuz 事件重複列為本次新發現。"
       }
     ]
   },
@@ -1477,7 +1462,7 @@
       "note": "HBM4 / ASIC 官方一手產品節點。"
     }
   ],
-  "footnote": "本報告不是投資建議；本版沿用 2026-05-05 TWSE / TPEX 官方可得價格與法人流向資料，但把選題材 / 選股視角改成未來 20 個台股交易日。上市個股 PE 本次優先採 TWSE MI_INDEX 每日收盤行情欄位；若 BWIBBU_d 當下無資料，不沿用舊值。TPEX 個股 PE / PB 若無法由官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次仍區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；如果只有公開評等頁存在而沒有完整原文，會明確標示。本版維持月內交易池 / 觀察池雙軌、theme lifecycle、gateStatus、themeScore、stockScore、selectionHorizon、marketRegime 與 shortTermRegime。",
+  "footnote": "本報告不是投資建議；本版是 2026-05-05 收盤資料的強制全量重跑版，價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準。選題材 / 選股視角維持未來 20 個台股交易日。上市個股 PE 本次優先採 TWSE MI_INDEX 每日收盤行情欄位；若 BWIBBU_d 當下無資料，不沿用舊值。TPEX 個股 PE / PB 若無法由官方一致驗證，欄位會保留並明確標示。外資評級 / 賣方研報本次仍區分為原始 broker 頁、公開評等 / 目標價歷史頁、媒體或二手摘要三種證據層級；如果只有公開評等頁存在而沒有完整原文，會明確標示。本版維持月內交易池 / 觀察池雙軌、theme lifecycle、gateStatus、themeScore、stockScore、selectionHorizon、marketRegime 與 shortTermRegime。",
   "observationThemes": [
     {
       "rank": 1,
