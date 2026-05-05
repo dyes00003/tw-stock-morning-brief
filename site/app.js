@@ -551,6 +551,13 @@ function renderStock(theme, stock) {
           <p class="info-text">${stock.targetLogic}</p>
         </div>
         <div class="info-block">
+          <p class="info-label">失效條件</p>
+          <p class="info-text">${stock.invalidationTrigger || formatInvalidationType(stock.invalidationType) || "目前沒有額外的失效條件說明。"}</p>
+        </div>
+      </div>
+
+      <div class="split-copy">
+        <div class="info-block">
           <p class="info-label">近期催化</p>
           <ul class="checklist">${(Array.isArray(stock.catalysts) ? stock.catalysts : []).map((item) => `<li>${item}</li>`).join("")}</ul>
         </div>
@@ -689,6 +696,14 @@ function formatStateLabel(state) {
     breakdown: "Breakdown",
   };
   return map[normalized] || String(state);
+}
+
+function formatInvalidationType(type) {
+  const map = {
+    short_failure: "近端量價或事件延續失敗，先視為短線 setup 破壞。",
+    month_continuation_failure: "20 日催化、二階證據或 5 / 10 / 20 日持續性被破壞，視為月內續航失效。",
+  };
+  return map[type] || "";
 }
 
 function formatGateStatus(gateStatus) {

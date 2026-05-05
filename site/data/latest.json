@@ -152,16 +152,16 @@
           "role": "DRAM 原廠，位於中游製造；上游連到成熟製程設備、化學品與 wafer input，下游對接 PC、server、工控與私募導入的四大策略客戶。",
           "priceDate": "2026-05-05",
           "close": "256.5",
-          "entry": "248.81-256.5",
-          "target": "282.15",
-          "stop": "241.11",
+          "entry": "245.5-256.5",
+          "target": "310",
+          "stop": "242",
           "pe": "120.42",
           "pb": "4.32",
           "foreignFlow": "+24,933,738 股",
           "institutionFlow": "+34,706,838 股",
           "coreReason": "5/5 記憶體核心股全面跑贏大盤，南亞科 是 mature memory 重估最直接的台股表達之一。",
           "notPricedIn": "這波不是單一龍頭獨強，而是記憶體族群同步擴散；只要報價與供需重估沒有被推翻，南亞科 仍有二階段空間。",
-          "targetLogic": "目標價以記憶體重估主線在未來 20 個交易日內延續估算，前提是族群廣度、報價與法人正向流向不被破壞。",
+          "targetLogic": "20 日價位模型：monthContinuation 91、shortImpulse 94、calendar 25、second-leg 18、5D / 10D / 20D 相對強弱 +10.2% / +14.4% / +12.1%。因此進場帶抓回檔約 4.1%，目標空間抓約 20.8%，停損帶抓約 5.5%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 256.5 元，單日 +8.23%。",
             "2026-05-05 外資 +24,933,738 股，三大法人合計 +34,706,838 股。",
@@ -198,7 +198,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.1,
+            "targetPct": 20.8,
+            "stopPct": 5.5
+          }
         },
         {
           "rank": 2,
@@ -207,16 +214,16 @@
           "role": "NAND controller / enterprise SSD controller 供應商，位於上游設計；上游承接 NAND 原廠，下游對接 enterprise SSD、模組與品牌客戶。",
           "priceDate": "2026-05-05",
           "close": "2115",
-          "entry": "2051.55-2115",
-          "target": "2326.5",
-          "stop": "1988.1",
+          "entry": "2020-2115",
+          "target": "2495",
+          "stop": "1990",
           "pe": "目前未驗證",
           "pb": "目前未驗證",
           "foreignFlow": "+194,667 股",
           "institutionFlow": "+471,058 股",
           "coreReason": "5/5 記憶體核心股全面跑贏大盤，群聯 是 mature memory 重估最直接的台股表達之一。",
           "notPricedIn": "這波不是單一龍頭獨強，而是記憶體族群同步擴散；只要報價與供需重估沒有被推翻，群聯 仍有二階段空間。",
-          "targetLogic": "目標價以記憶體重估主線在未來 20 個交易日內延續估算，前提是族群廣度、報價與法人正向流向不被破壞。",
+          "targetLogic": "20 日價位模型：monthContinuation 85、shortImpulse 80、calendar 20、second-leg 17、5D / 10D / 20D 相對強弱 +6.4% / +11.5% / +10.9%。因此進場帶抓回檔約 4.3%，目標空間抓約 17.8%，停損帶抓約 5.9%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 2115 元，單日 +5.22%。",
             "2026-05-05 外資 +194,667 股，三大法人合計 +471,058 股。",
@@ -251,7 +258,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.3,
+            "targetPct": 17.8,
+            "stopPct": 5.9
+          }
         },
         {
           "rank": 3,
@@ -260,16 +274,16 @@
           "role": "NOR / NAND 記憶體製造商，位於中游製造；下游連工業、車用、消費與嵌入式儲存需求。",
           "priceDate": "2026-05-05",
           "close": "160.5",
-          "entry": "155.69-160.5",
-          "target": "176.55",
-          "stop": "150.87",
+          "entry": "153-160.5",
+          "target": "191.5",
+          "stop": "150.5",
           "pe": "0.00",
           "pb": "6.72",
           "foreignFlow": "+11,775,911 股",
           "institutionFlow": "+11,965,478 股",
           "coreReason": "5/5 記憶體核心股全面跑贏大盤，旺宏 是 mature memory 重估最直接的台股表達之一。",
           "notPricedIn": "這波不是單一龍頭獨強，而是記憶體族群同步擴散；只要報價與供需重估沒有被推翻，旺宏 仍有二階段空間。",
-          "targetLogic": "目標價以記憶體重估主線在未來 20 個交易日內延續估算，前提是族群廣度、報價與法人正向流向不被破壞。",
+          "targetLogic": "20 日價位模型：monthContinuation 85、shortImpulse 86、calendar 25、second-leg 17、5D / 10D / 20D 相對強弱 +7.0% / +11.4% / +10.0%。因此進場帶抓回檔約 4.4%，目標空間抓約 19.2%，停損帶抓約 6.0%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 160.5 元，單日 +3.88%。",
             "2026-05-05 外資 +11,775,911 股，三大法人合計 +11,965,478 股。",
@@ -305,7 +319,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.4,
+            "targetPct": 19.2,
+            "stopPct": 6
+          }
         },
         {
           "rank": 4,
@@ -314,16 +335,16 @@
           "role": "利基型記憶體 IDM，涵蓋 NOR Flash、DRAM 與 embedded memory；位於中游製造。",
           "priceDate": "2026-05-05",
           "close": "98.8",
-          "entry": "95.84-98.8",
-          "target": "108.68",
-          "stop": "92.87",
+          "entry": "94.3-98.8",
+          "target": "117",
+          "stop": "92.7",
           "pe": "29.32",
           "pb": "3.98",
           "foreignFlow": "+621,994 股",
           "institutionFlow": "+3,931,993 股",
           "coreReason": "5/5 記憶體核心股全面跑贏大盤，華邦電 是 mature memory 重估最直接的台股表達之一。",
           "notPricedIn": "這波不是單一龍頭獨強，而是記憶體族群同步擴散；只要報價與供需重估沒有被推翻，華邦電 仍有二階段空間。",
-          "targetLogic": "目標價以記憶體重估主線在未來 20 個交易日內延續估算，前提是族群廣度、報價與法人正向流向不被破壞。",
+          "targetLogic": "20 日價位模型：monthContinuation 83、shortImpulse 83、calendar 23、second-leg 17、5D / 10D / 20D 相對強弱 +6.2% / +10.5% / +9.3%。因此進場帶抓回檔約 4.5%，目標空間抓約 18.1%，停損帶抓約 6.1%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 98.8 元，單日 +3.56%。",
             "2026-05-05 外資 +621,994 股，三大法人合計 +3,931,993 股。",
@@ -359,7 +380,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.5,
+            "targetPct": 18.1,
+            "stopPct": 6.1
+          }
         },
         {
           "rank": 5,
@@ -368,16 +396,16 @@
           "role": "記憶體模組 / SSD 業者，位於中游模組；上游承接 DRAM / NAND 與 controller，下游對接通路與企業客戶。",
           "priceDate": "2026-05-05",
           "close": "448",
-          "entry": "434.56-448",
-          "target": "492.8",
-          "stop": "421.12",
+          "entry": "427-448",
+          "target": "528",
+          "stop": "419.5",
           "pe": "目前未驗證",
           "pb": "目前未驗證",
           "foreignFlow": "+2,884,923 股",
           "institutionFlow": "-4,842,908 股",
           "coreReason": "5/5 記憶體核心股全面跑贏大盤，威剛 是 mature memory 重估最直接的台股表達之一。",
           "notPricedIn": "這波不是單一龍頭獨強，而是記憶體族群同步擴散；只要報價與供需重估沒有被推翻，威剛 仍有二階段空間。",
-          "targetLogic": "目標價以記憶體重估主線在未來 20 個交易日內延續估算，前提是族群廣度、報價與法人正向流向不被破壞。",
+          "targetLogic": "20 日價位模型：monthContinuation 81、shortImpulse 80、calendar 23、second-leg 17、5D / 10D / 20D 相對強弱 +5.4% / +9.6% / +8.6%。因此進場帶抓回檔約 4.6%，目標空間抓約 17.7%，停損帶抓約 6.3%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 448 元，單日 +1.59%。",
             "2026-05-05 外資 +2,884,923 股，三大法人合計 -4,842,908 股。",
@@ -411,7 +439,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.6,
+            "targetPct": 17.7,
+            "stopPct": 6.3
+          }
         }
       ],
       "state": "expansion",
@@ -480,16 +515,16 @@
           "role": "光模組 / 矽光子 / 射頻鏈中的中游零件商；上游連射頻與光學元件，下游連高速光通訊模組。",
           "priceDate": "2026-05-05",
           "close": "365",
-          "entry": "354.05-365",
-          "target": "401.5",
-          "stop": "343.1",
+          "entry": "348.5-365",
+          "target": "430",
+          "stop": "343.5",
           "pe": "72.85",
           "pb": "8.79",
           "foreignFlow": "-884,661 股",
           "institutionFlow": "+2,472,549 股",
           "coreReason": "5/5 光模組家族仍有多檔續強，聯鈞 仍位在 optics / 矽光子主線的有效表達。",
           "notPricedIn": "雖然 5/5 已有明顯漲幅，但 optics 並非只剩單點噴發，聯鈞 仍受益於族群擴散。",
-          "targetLogic": "目標價以 optics / CPO / 800G-1.6T 主線在未來 20 個交易日內持續交易估算，前提是核心領先股不轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 88、shortImpulse 93、calendar 18、second-leg 17、5D / 10D / 20D 相對強弱 +9.8% / +12.6% / +10.7%。因此進場帶抓回檔約 4.5%，目標空間抓約 17.7%，停損帶抓約 5.9%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 365 元，單日 +9.94%。",
             "2026-05-05 外資 -884,661 股，三大法人合計 +2,472,549 股。",
@@ -525,7 +560,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.5,
+            "targetPct": 17.7,
+            "stopPct": 5.9
+          }
         },
         {
           "rank": 2,
@@ -534,16 +576,16 @@
           "role": "光模組 / 光通訊零件業者，位於中游光互連；下游客戶偏資料中心與電信傳輸。",
           "priceDate": "2026-05-05",
           "close": "250",
-          "entry": "242.5-250",
-          "target": "275",
-          "stop": "235",
+          "entry": "237-250",
+          "target": "291",
+          "stop": "233.5",
           "pe": "上櫃官方最新 PE 無法一致驗證",
           "pb": "目前未驗證",
           "foreignFlow": "+101,000 股",
           "institutionFlow": "+120,644 股",
           "coreReason": "5/5 光模組家族仍有多檔續強，前鼎 仍位在 optics / 矽光子主線的有效表達。",
           "notPricedIn": "雖然 5/5 已有明顯漲幅，但 optics 並非只剩單點噴發，前鼎 仍受益於族群擴散。",
-          "targetLogic": "目標價以 optics / CPO / 800G-1.6T 主線在未來 20 個交易日內持續交易估算，前提是核心領先股不轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 82、shortImpulse 90、calendar 18、second-leg 16、5D / 10D / 20D 相對強弱 +6.6% / +10.2% / +9.1%。因此進場帶抓回檔約 5.0%，目標空間抓約 16.2%，停損帶抓約 6.6%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 250 元，單日 +6.38%。",
             "2026-05-05 外資 +101,000 股，三大法人合計 +120,644 股。",
@@ -578,7 +620,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5,
+            "targetPct": 16.2,
+            "stopPct": 6.6
+          }
         },
         {
           "rank": 3,
@@ -587,16 +636,16 @@
           "role": "光通訊 / 模組零件供應商，位於中游；受資料中心與高速互連週期帶動。",
           "priceDate": "2026-05-05",
           "close": "718",
-          "entry": "696.46-718",
-          "target": "789.8",
-          "stop": "674.92",
+          "entry": "681-718",
+          "target": "830",
+          "stop": "669",
           "pe": "上櫃官方最新 PE 無法一致驗證",
           "pb": "目前未驗證",
           "foreignFlow": "-92,499 股",
           "institutionFlow": "-135,099 股",
           "coreReason": "5/5 光模組家族仍有多檔續強，華星光 仍位在 optics / 矽光子主線的有效表達。",
           "notPricedIn": "雖然 5/5 已有明顯漲幅，但 optics 並非只剩單點噴發，華星光 仍受益於族群擴散。",
-          "targetLogic": "目標價以 optics / CPO / 800G-1.6T 主線在未來 20 個交易日內持續交易估算，前提是核心領先股不轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 80、shortImpulse 87、calendar 18、second-leg 15、5D / 10D / 20D 相對強弱 +5.8% / +9.3% / +8.4%。因此進場帶抓回檔約 5.1%，目標空間抓約 15.6%，停損帶抓約 6.7%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 718 元，單日 +7.32%。",
             "2026-05-05 外資 -92,499 股，三大法人合計 -135,099 股。",
@@ -631,7 +680,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.1,
+            "targetPct": 15.6,
+            "stopPct": 6.7
+          }
         },
         {
           "rank": 4,
@@ -640,16 +696,16 @@
           "role": "光模組 / 矽光子 / 射頻供應商，位於中游光互連零件；上游依賴 DSP、laser、optical engine 與先進封裝，下游對接資料中心與高速互連客戶。",
           "priceDate": "2026-05-05",
           "close": "2060",
-          "entry": "1998.2-2060",
-          "target": "2266",
-          "stop": "1936.4",
+          "entry": "1950-2060",
+          "target": "2360",
+          "stop": "1915",
           "pe": "90.15",
           "pb": "21.67",
           "foreignFlow": "+15,076 股",
           "institutionFlow": "-20,149 股",
           "coreReason": "5/5 光模組家族仍有多檔續強，光聖 仍位在 optics / 矽光子主線的有效表達。",
           "notPricedIn": "雖然 5/5 已有明顯漲幅，但 optics 並非只剩單點噴發，光聖 仍受益於族群擴散。",
-          "targetLogic": "目標價以 optics / CPO / 800G-1.6T 主線在未來 20 個交易日內持續交易估算，前提是核心領先股不轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 78、shortImpulse 84、calendar 16、second-leg 15、5D / 10D / 20D 相對強弱 +5.0% / +8.4% / +7.7%。因此進場帶抓回檔約 5.2%，目標空間抓約 14.5%，停損帶抓約 6.9%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 2060 元，單日 -1.20%。",
             "2026-05-05 外資 +15,076 股，三大法人合計 -20,149 股。",
@@ -687,7 +743,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.2,
+            "targetPct": 14.5,
+            "stopPct": 6.9
+          }
         },
         {
           "rank": 5,
@@ -696,16 +759,16 @@
           "role": "光模組 / 矽光子供應商，位於中游零件層；受高速資料傳輸與光互連需求帶動。",
           "priceDate": "2026-05-05",
           "close": "1220",
-          "entry": "1183.4-1220",
-          "target": "1342",
-          "stop": "1146.8",
+          "entry": "1155-1220",
+          "target": "1395",
+          "stop": "1130",
           "pe": "上櫃官方最新 PE 無法一致驗證",
           "pb": "目前未驗證",
           "foreignFlow": "-184,452 股",
           "institutionFlow": "-167,755 股",
           "coreReason": "5/5 光模組家族仍有多檔續強，波若威 仍位在 optics / 矽光子主線的有效表達。",
           "notPricedIn": "雖然 5/5 已有明顯漲幅，但 optics 並非只剩單點噴發，波若威 仍受益於族群擴散。",
-          "targetLogic": "目標價以 optics / CPO / 800G-1.6T 主線在未來 20 個交易日內持續交易估算，前提是核心領先股不轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 76、shortImpulse 81、calendar 16、second-leg 15、5D / 10D / 20D 相對強弱 +4.2% / +7.5% / +7.0%。因此進場帶抓回檔約 5.3%，目標空間抓約 14.0%，停損帶抓約 7.0%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 1220 元，單日 -2.79%。",
             "2026-05-05 外資 -184,452 股，三大法人合計 -167,755 股。",
@@ -740,7 +803,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.3,
+            "targetPct": 14,
+            "stopPct": 7
+          }
         }
       ],
       "state": "expansion",
@@ -809,16 +879,16 @@
           "role": "AI 伺服器 ORV3 大電流電源線、800G / AEC 高速連接線供應商；上游是銅材、端子、連接器與線材，下游連到北美 CSP、ODM 與 ASIC 伺服器平台。",
           "priceDate": "2026-05-05",
           "close": "243.5",
-          "entry": "236.19-243.5",
-          "target": "265.42",
-          "stop": "228.89",
+          "entry": "232.5-243.5",
+          "target": "285.5",
+          "stop": "228.5",
           "pe": "28.09",
           "pb": "5.02",
           "foreignFlow": "+2,550,200 股",
           "institutionFlow": "+2,206,560 股",
           "coreReason": "5/5 互連線家族仍有多檔跑贏大盤，佳必琪 兼具 rack-level power 與高速線材敘事。",
           "notPricedIn": "族群並未只剩單一龍頭，佳必琪 仍在 physical interconnect 主線的延續區間。",
-          "targetLogic": "目標價以 AI rack power 升級、ORV3 與 800G / 1.6T 線材滲透持續發酵估算。",
+          "targetLogic": "20 日價位模型：monthContinuation 87、shortImpulse 90、calendar 18、second-leg 16、5D / 10D / 20D 相對強弱 +8.3% / +10.1% / +8.8%。因此進場帶抓回檔約 4.4%，目標空間抓約 17.1%，停損帶抓約 6.1%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 243.5 元，單日 +6.56%。",
             "2026-05-05 外資 +2,550,200 股，三大法人合計 +2,206,560 股。",
@@ -855,7 +925,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.4,
+            "targetPct": 17.1,
+            "stopPct": 6.1
+          }
         },
         {
           "rank": 2,
@@ -864,16 +941,16 @@
           "role": "伺服器滑軌、機構件與 blind-mate 連接節點供應商；上游是精密金屬與機構加工，下游是機櫃、伺服器與 ODM。",
           "priceDate": "2026-05-05",
           "close": "4140",
-          "entry": "4015.8-4140",
-          "target": "4512.6",
-          "stop": "3891.6",
+          "entry": "3930-4140",
+          "target": "4780",
+          "stop": "3860",
           "pe": "40.10",
           "pb": "14.15",
           "foreignFlow": "+45,630 股",
           "institutionFlow": "+141,115 股",
           "coreReason": "5/5 互連線家族仍有多檔跑贏大盤，川湖 兼具 rack-level power 與高速線材敘事。",
           "notPricedIn": "族群並未只剩單一龍頭，川湖 仍在 physical interconnect 主線的延續區間。",
-          "targetLogic": "目標價以 AI rack power 升級、ORV3 與 800G / 1.6T 線材滲透持續發酵估算。",
+          "targetLogic": "20 日價位模型：monthContinuation 80、shortImpulse 85、calendar 18、second-leg 15、5D / 10D / 20D 相對強弱 +5.4% / +8.5% / +7.4%。因此進場帶抓回檔約 5.0%，目標空間抓約 15.4%，停損帶抓約 6.7%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 4140 元，單日 +2.10%。",
             "2026-05-05 外資 +45,630 股，三大法人合計 +141,115 股。",
@@ -908,7 +985,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5,
+            "targetPct": 15.4,
+            "stopPct": 6.7
+          }
         },
         {
           "rank": 3,
@@ -917,16 +1001,16 @@
           "role": "高頻連接器與 cable 組件供應商；上游是銅材、端子與塑膠材料，下游是 server、PC 與網通設備。",
           "priceDate": "2026-05-05",
           "close": "91.2",
-          "entry": "88.46-91.2",
-          "target": "99.41",
-          "stop": "85.73",
+          "entry": "86.5-91.2",
+          "target": "105",
+          "stop": "84.9",
           "pe": "22.57",
           "pb": "1.70",
           "foreignFlow": "-499,900 股",
           "institutionFlow": "-19,183 股",
           "coreReason": "5/5 互連線家族仍有多檔跑贏大盤，宏致 兼具 rack-level power 與高速線材敘事。",
           "notPricedIn": "族群並未只剩單一龍頭，宏致 仍在 physical interconnect 主線的延續區間。",
-          "targetLogic": "目標價以 AI rack power 升級、ORV3 與 800G / 1.6T 線材滲透持續發酵估算。",
+          "targetLogic": "20 日價位模型：monthContinuation 78、shortImpulse 82、calendar 18、second-leg 14、5D / 10D / 20D 相對強弱 +4.6% / +7.6% / +6.7%。因此進場帶抓回檔約 5.1%，目標空間抓約 14.7%，停損帶抓約 6.8%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 91.2 元，單日 +6.29%。",
             "2026-05-05 外資 -499,900 股，三大法人合計 -19,183 股。",
@@ -961,7 +1045,14 @@
             "secondLegEvidence": "差一項",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.1,
+            "targetPct": 14.7,
+            "stopPct": 6.8
+          }
         },
         {
           "rank": 4,
@@ -970,16 +1061,16 @@
           "role": "高速 cable assembly / power whip / 線束整合供應商；上游是銅材、線材、端子與連接器，下游連到資料中心、半導體設備與工控客戶。",
           "priceDate": "2026-05-05",
           "close": "2875",
-          "entry": "2788.75-2875",
-          "target": "3133.75",
-          "stop": "2702.5",
+          "entry": "2725-2875",
+          "target": "3270",
+          "stop": "2670",
           "pe": "62.26",
           "pb": "11.62",
           "foreignFlow": "+282,224 股",
           "institutionFlow": "+367,382 股",
           "coreReason": "5/5 互連線家族仍有多檔跑贏大盤，貿聯-KY 兼具 rack-level power 與高速線材敘事。",
           "notPricedIn": "族群並未只剩單一龍頭，貿聯-KY 仍在 physical interconnect 主線的延續區間。",
-          "targetLogic": "目標價以 AI rack power 升級、ORV3 與 800G / 1.6T 線材滲透持續發酵估算。",
+          "targetLogic": "20 日價位模型：monthContinuation 76、shortImpulse 79、calendar 16、second-leg 14、5D / 10D / 20D 相對強弱 +3.8% / +6.7% / +6.0%。因此進場帶抓回檔約 5.2%，目標空間抓約 13.7%，停損帶抓約 7.0%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 2875 元，單日 -2.21%。",
             "2026-05-05 外資 +282,224 股，三大法人合計 +367,382 股。",
@@ -1016,7 +1107,14 @@
             "secondLegEvidence": "差一項",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.2,
+            "targetPct": 13.7,
+            "stopPct": 7
+          }
         },
         {
           "rank": 5,
@@ -1025,16 +1123,16 @@
           "role": "CPU socket、board-to-board connector 與高速連接器供應商；上游是端子與精密沖壓，下游是主機板、伺服器板與平台廠。",
           "priceDate": "2026-05-05",
           "close": "2490",
-          "entry": "2415.3-2490",
-          "target": "2714.1",
-          "stop": "2340.6",
+          "entry": "2355-2490",
+          "target": "2820",
+          "stop": "2310",
           "pe": "35.43",
           "pb": "7.72",
           "foreignFlow": "+613,579 股",
           "institutionFlow": "+575,003 股",
           "coreReason": "5/5 互連線家族仍有多檔跑贏大盤，嘉澤 兼具 rack-level power 與高速線材敘事。",
           "notPricedIn": "族群並未只剩單一龍頭，嘉澤 仍在 physical interconnect 主線的延續區間。",
-          "targetLogic": "目標價以 AI rack power 升級、ORV3 與 800G / 1.6T 線材滲透持續發酵估算。",
+          "targetLogic": "20 日價位模型：monthContinuation 74、shortImpulse 76、calendar 16、second-leg 14、5D / 10D / 20D 相對強弱 +3.0% / +5.8% / +5.3%。因此進場帶抓回檔約 5.2%，目標空間抓約 13.2%，停損帶抓約 7.1%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 2490 元，單日 -4.60%。",
             "2026-05-05 外資 +613,579 股，三大法人合計 +575,003 股。",
@@ -1069,7 +1167,14 @@
             "secondLegEvidence": "差一項",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.2,
+            "targetPct": 13.2,
+            "stopPct": 7.1
+          }
         }
       ],
       "state": "confirmation",
@@ -1138,16 +1243,16 @@
           "role": "ASIC / SoC 設計服務與 IP 整合商，位於上游設計。",
           "priceDate": "2026-05-05",
           "close": "177",
-          "entry": "171.69-177",
-          "target": "191.16",
-          "stop": "166.38",
+          "entry": "169-177",
+          "target": "209",
+          "stop": "166",
           "pe": "62.99",
           "pb": "3.52",
           "foreignFlow": "+250,948 股",
           "institutionFlow": "+480,423 股",
           "coreReason": "5/5 AI ASIC / HBM4 家族分化中仍有強勢股續領先，智原 仍是乾淨的台積 3DFabric 受惠表達。",
           "notPricedIn": "只要 AI ASIC / HBM4 敘事還能維持，智原 仍可能承接第二波資金回補。",
-          "targetLogic": "目標價以 AI ASIC / HBM4 / 3DFabric 主線延續估算，前提是 2330 以外的受惠名單仍有領先股維持強勢。",
+          "targetLogic": "20 日價位模型：monthContinuation 86、shortImpulse 81、calendar 20、second-leg 17、5D / 10D / 20D 相對強弱 +5.1% / +8.4% / +10.2%。因此進場帶抓回檔約 4.3%，目標空間抓約 17.9%，停損帶抓約 6.2%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 177 元，單日 +4.73%。",
             "2026-05-05 外資 +250,948 股，三大法人合計 +480,423 股。",
@@ -1182,7 +1287,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.3,
+            "targetPct": 17.9,
+            "stopPct": 6.2
+          }
         },
         {
           "rank": 2,
@@ -1191,16 +1303,16 @@
           "role": "台積生態系 ASIC / HBM4 IP / NRE 整合服務商，位於上游設計；上游連 EDA / HBM IP，下游連客製 ASIC 客戶與台積先進封裝。",
           "priceDate": "2026-05-05",
           "close": "4835",
-          "entry": "4689.95-4835",
-          "target": "5221.8",
-          "stop": "4544.9",
+          "entry": "4615-4835",
+          "target": "5670",
+          "stop": "4520",
           "pe": "145.46",
           "pb": "43.48",
           "foreignFlow": "-861,282 股",
           "institutionFlow": "-546,941 股",
           "coreReason": "5/5 AI ASIC / HBM4 家族分化中仍有強勢股續領先，創意 仍是乾淨的台積 3DFabric 受惠表達。",
           "notPricedIn": "只要 AI ASIC / HBM4 敘事還能維持，創意 仍可能承接第二波資金回補。",
-          "targetLogic": "目標價以 AI ASIC / HBM4 / 3DFabric 主線延續估算，前提是 2330 以外的受惠名單仍有領先股維持強勢。",
+          "targetLogic": "20 日價位模型：monthContinuation 82、shortImpulse 76、calendar 20、second-leg 17、5D / 10D / 20D 相對強弱 +4.0% / +7.0% / +9.8%。因此進場帶抓回檔約 4.5%，目標空間抓約 17.1%，停損帶抓約 6.5%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 4835 元，單日 +3.20%。",
             "2026-05-05 外資 -861,282 股，三大法人合計 -546,941 股。",
@@ -1238,7 +1350,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.5,
+            "targetPct": 17.1,
+            "stopPct": 6.5
+          }
         },
         {
           "rank": 3,
@@ -1247,16 +1366,16 @@
           "role": "記憶體 / IP 與 AI 介面晶片供應鏈成員，位於中游整合層。",
           "priceDate": "2026-05-05",
           "close": "935",
-          "entry": "906.95-935",
-          "target": "1009.8",
-          "stop": "878.9",
+          "entry": "891-935",
+          "target": "1090",
+          "stop": "872",
           "pe": "120.96",
           "pb": "10.63",
           "foreignFlow": "-31,465 股",
           "institutionFlow": "+50,623 股",
           "coreReason": "5/5 AI ASIC / HBM4 家族分化中仍有強勢股續領先，愛普* 仍是乾淨的台積 3DFabric 受惠表達。",
           "notPricedIn": "只要 AI ASIC / HBM4 敘事還能維持，愛普* 仍可能承接第二波資金回補。",
-          "targetLogic": "目標價以 AI ASIC / HBM4 / 3DFabric 主線延續估算，前提是 2330 以外的受惠名單仍有領先股維持強勢。",
+          "targetLogic": "20 日價位模型：monthContinuation 80、shortImpulse 73、calendar 20、second-leg 16、5D / 10D / 20D 相對強弱 +3.2% / +6.1% / +9.1%。因此進場帶抓回檔約 4.7%，目標空間抓約 16.5%，停損帶抓約 6.7%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 935 元，單日 +1.19%。",
             "2026-05-05 外資 -31,465 股，三大法人合計 +50,623 股。",
@@ -1291,7 +1410,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.7,
+            "targetPct": 16.5,
+            "stopPct": 6.7
+          }
         },
         {
           "rank": 4,
@@ -1300,16 +1426,16 @@
           "role": "全球先進晶圓代工與 3DFabric / CoWoS 平台核心，位於中游製造與先進封裝樞紐。",
           "priceDate": "2026-05-05",
           "close": "2250",
-          "entry": "2182.5-2250",
-          "target": "2430",
-          "stop": "2115",
+          "entry": "2140-2250",
+          "target": "2600",
+          "stop": "2095",
           "pe": "33.97",
           "pb": "10.60",
           "foreignFlow": "-8,580,984 股",
           "institutionFlow": "-7,280,403 股",
           "coreReason": "5/5 AI ASIC / HBM4 家族分化中仍有強勢股續領先，台積電 仍是乾淨的台積 3DFabric 受惠表達。",
           "notPricedIn": "只要 AI ASIC / HBM4 敘事還能維持，台積電 仍可能承接第二波資金回補。",
-          "targetLogic": "目標價以 AI ASIC / HBM4 / 3DFabric 主線延續估算，前提是 2330 以外的受惠名單仍有領先股維持強勢。",
+          "targetLogic": "20 日價位模型：monthContinuation 78、shortImpulse 70、calendar 18、second-leg 16、5D / 10D / 20D 相對強弱 +2.4% / +5.2% / +8.4%。因此進場帶抓回檔約 4.8%，目標空間抓約 15.4%，停損帶抓約 6.9%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 2250 元，單日 -1.10%。",
             "2026-05-05 外資 -8,580,984 股，三大法人合計 -7,280,403 股。",
@@ -1348,7 +1474,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.8,
+            "targetPct": 15.4,
+            "stopPct": 6.9
+          }
         },
         {
           "rank": 5,
@@ -1357,16 +1490,16 @@
           "role": "高階 ASIC 客製晶片設計服務商，位於上游設計，連到台積先進製程與封裝。",
           "priceDate": "2026-05-05",
           "close": "4150",
-          "entry": "4025.5-4150",
-          "target": "4482",
-          "stop": "3901",
+          "entry": "3940-4150",
+          "target": "4770",
+          "stop": "3855",
           "pe": "60.26",
           "pb": "7.97",
           "foreignFlow": "+165,173 股",
           "institutionFlow": "-387,549 股",
           "coreReason": "5/5 AI ASIC / HBM4 家族分化中仍有強勢股續領先，世芯-KY 仍是乾淨的台積 3DFabric 受惠表達。",
           "notPricedIn": "只要 AI ASIC / HBM4 敘事還能維持，世芯-KY 仍可能承接第二波資金回補。",
-          "targetLogic": "目標價以 AI ASIC / HBM4 / 3DFabric 主線延續估算，前提是 2330 以外的受惠名單仍有領先股維持強勢。",
+          "targetLogic": "20 日價位模型：monthContinuation 76、shortImpulse 67、calendar 18、second-leg 16、5D / 10D / 20D 相對強弱 +1.6% / +4.3% / +7.7%。因此進場帶抓回檔約 4.9%，目標空間抓約 14.9%，停損帶抓約 7.1%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 4150 元，單日 -2.35%。",
             "2026-05-05 外資 +165,173 股，三大法人合計 -387,549 股。",
@@ -1403,7 +1536,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.9,
+            "targetPct": 14.9,
+            "stopPct": 7.1
+          }
         }
       ],
       "state": "confirmation",
@@ -1472,16 +1612,16 @@
           "role": "高速 CCL / 特殊材料供應商，位於上游材料；下游連高多層 PCB 與高頻高速板。",
           "priceDate": "2026-05-05",
           "close": "1220",
-          "entry": "1183.4-1220",
-          "target": "1329.8",
-          "stop": "1146.8",
+          "entry": "1155-1220",
+          "target": "1410",
+          "stop": "1135",
           "pe": "上櫃官方最新 PE 無法一致驗證",
           "pb": "目前未驗證",
           "foreignFlow": "-1,750,675 股",
           "institutionFlow": "-709,365 股",
           "coreReason": "5/5 高階 CCL / PCB 主線雖有分化，但 台燿 仍位在 AI 高速材料鏈的重要節點。",
           "notPricedIn": "只要材料漲價與 AI PCB 層數升級的敘事持續，台燿 仍有補漲或續強空間。",
-          "targetLogic": "目標價以高階材料 / AI PCB 主線在未來 20 個交易日內延續估算，前提是族群沒有全面轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 80、shortImpulse 85、calendar 18、second-leg 15、5D / 10D / 20D 相對強弱 +7.9% / +8.2% / +7.3%。因此進場帶抓回檔約 5.0%，目標空間抓約 15.4%，停損帶抓約 6.7%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 1220 元，單日 +9.91%。",
             "2026-05-05 外資 -1,750,675 股，三大法人合計 -709,365 股。",
@@ -1518,7 +1658,14 @@
             "secondLegEvidence": "通過",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5,
+            "targetPct": 15.4,
+            "stopPct": 6.7
+          }
         },
         {
           "rank": 2,
@@ -1527,16 +1674,16 @@
           "role": "AI 伺服器與網通高多層 PCB 廠，位於中游零件製造；上游吃 CCL / 銅箔，下游連白牌伺服器與交換器客戶。",
           "priceDate": "2026-05-05",
           "close": "1480",
-          "entry": "1435.6-1480",
-          "target": "1613.2",
-          "stop": "1391.2",
+          "entry": "1395-1480",
+          "target": "1690",
+          "stop": "1370",
           "pe": "77.85",
           "pb": "21.43",
           "foreignFlow": "+170,769 股",
           "institutionFlow": "+502,787 股",
           "coreReason": "5/5 高階 CCL / PCB 主線雖有分化，但 金像電 仍位在 AI 高速材料鏈的重要節點。",
           "notPricedIn": "只要材料漲價與 AI PCB 層數升級的敘事持續，金像電 仍有補漲或續強空間。",
-          "targetLogic": "目標價以高階材料 / AI PCB 主線在未來 20 個交易日內延續估算，前提是族群沒有全面轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 75、shortImpulse 82、calendar 18、second-leg 14、5D / 10D / 20D 相對強弱 +5.1% / +5.9% / +6.5%。因此進場帶抓回檔約 5.5%，目標空間抓約 14.2%，停損帶抓約 7.3%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 1480 元，單日 +2.78%。",
             "2026-05-05 外資 +170,769 股，三大法人合計 +502,787 股。",
@@ -1572,7 +1719,14 @@
             "secondLegEvidence": "差一項",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.5,
+            "targetPct": 14.2,
+            "stopPct": 7.3
+          }
         },
         {
           "rank": 3,
@@ -1581,16 +1735,16 @@
           "role": "高階高速 CCL 龍頭，位於上中游材料層；上游連玻纖布、樹脂、銅箔，下游連 AI 伺服器板、交換器板與高多層 PCB 廠。",
           "priceDate": "2026-05-05",
           "close": "4730",
-          "entry": "4588.1-4730",
-          "target": "5155.7",
-          "stop": "4446.2",
+          "entry": "4465-4730",
+          "target": "5370",
+          "stop": "4375",
           "pe": "102.60",
           "pb": "33.59",
           "foreignFlow": "+61,633 股",
           "institutionFlow": "+150,953 股",
           "coreReason": "5/5 高階 CCL / PCB 主線雖有分化，但 台光電 仍位在 AI 高速材料鏈的重要節點。",
           "notPricedIn": "只要材料漲價與 AI PCB 層數升級的敘事持續，台光電 仍有補漲或續強空間。",
-          "targetLogic": "目標價以高階材料 / AI PCB 主線在未來 20 個交易日內延續估算，前提是族群沒有全面轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 73、shortImpulse 79、calendar 18、second-leg 13、5D / 10D / 20D 相對強弱 +4.3% / +5.0% / +5.8%。因此進場帶抓回檔約 5.5%，目標空間抓約 13.5%，停損帶抓約 7.4%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 4730 元，單日 -0.53%。",
             "2026-05-05 外資 +61,633 股，三大法人合計 +150,953 股。",
@@ -1629,7 +1783,14 @@
             "secondLegEvidence": "差一項",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.5,
+            "targetPct": 13.5,
+            "stopPct": 7.4
+          }
         },
         {
           "rank": 4,
@@ -1638,16 +1799,16 @@
           "role": "特殊 CCL 與高速板材供應商，位於上游材料層；下游連網通與工規板廠。",
           "priceDate": "2026-05-05",
           "close": "220.5",
-          "entry": "213.88-220.5",
-          "target": "240.35",
-          "stop": "207.27",
+          "entry": "208-220.5",
+          "target": "248",
+          "stop": "203.5",
           "pe": "45.46",
           "pb": "4.15",
           "foreignFlow": "+540,150 股",
           "institutionFlow": "+517,828 股",
           "coreReason": "5/5 高階 CCL / PCB 主線雖有分化，但 騰輝電子-KY 仍位在 AI 高速材料鏈的重要節點。",
           "notPricedIn": "只要材料漲價與 AI PCB 層數升級的敘事持續，騰輝電子-KY 仍有補漲或續強空間。",
-          "targetLogic": "目標價以高階材料 / AI PCB 主線在未來 20 個交易日內延續估算，前提是族群沒有全面轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 71、shortImpulse 76、calendar 16、second-leg 13、5D / 10D / 20D 相對強弱 +3.5% / +4.1% / +5.1%。因此進場帶抓回檔約 5.6%，目標空間抓約 12.4%，停損帶抓約 7.6%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 220.5 元，單日 -1.12%。",
             "2026-05-05 外資 +540,150 股，三大法人合計 +517,828 股。",
@@ -1683,7 +1844,14 @@
             "secondLegEvidence": "差一項",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.6,
+            "targetPct": 12.4,
+            "stopPct": 7.6
+          }
         },
         {
           "rank": 5,
@@ -1692,16 +1860,16 @@
           "role": "高階 PCB 與系統板整合製造商，位於中游板件製造；上游連 CCL，下游連伺服器、手機與多種終端。",
           "priceDate": "2026-05-05",
           "close": "426.5",
-          "entry": "413.7-426.5",
-          "target": "464.89",
-          "stop": "400.91",
+          "entry": "402-426.5",
+          "target": "478",
+          "stop": "393.5",
           "pe": "67.17",
           "pb": "3.09",
           "foreignFlow": "-7,044,401 股",
           "institutionFlow": "-7,271,314 股",
           "coreReason": "5/5 高階 CCL / PCB 主線雖有分化，但 臻鼎-KY 仍位在 AI 高速材料鏈的重要節點。",
           "notPricedIn": "只要材料漲價與 AI PCB 層數升級的敘事持續，臻鼎-KY 仍有補漲或續強空間。",
-          "targetLogic": "目標價以高階材料 / AI PCB 主線在未來 20 個交易日內延續估算，前提是族群沒有全面轉弱。",
+          "targetLogic": "20 日價位模型：monthContinuation 69、shortImpulse 73、calendar 16、second-leg 13、5D / 10D / 20D 相對強弱 +2.7% / +3.2% / +4.4%。因此進場帶抓回檔約 5.7%，目標空間抓約 12.0%，停損帶抓約 7.7%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
           "catalysts": [
             "2026-05-05 收 426.5 元，單日 -1.39%。",
             "2026-05-05 外資 -7,044,401 股，三大法人合計 -7,271,314 股。",
@@ -1736,7 +1904,14 @@
             "secondLegEvidence": "差一項",
             "persistence": "通過"
           },
-          "invalidationType": "month_continuation_failure"
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 5.7,
+            "targetPct": 12,
+            "stopPct": 7.7
+          }
         }
       ],
       "state": "confirmation",
@@ -1919,8 +2094,12 @@
   ],
   "changesComparedToPrevious": {
     "comparedTo": "2026-05-05 23:44 版（月內排序引擎 v2 schema 遷移版）",
-    "summary": "這次是第一次用月內排序引擎 v2 對 5/5 官方資料做完整重跑。重跑後，前五題材、首頁主選股、月內 Regime 與短線 Regime 都維持不變，代表 schema 遷移時的分數沒有偏離實際 rerun 結果。",
+    "summary": "這次不是新的市場資料 rerun，而是把個股價位欄位從舊 heuristic 全面切換到 20 交易日續航模型；題材、主選股與 Regime 不變，但 entry / target / stop 已全部重算。",
     "items": [
+      {
+        "title": "個股 entry / target / stop 已切換到月內價位模型",
+        "reason": "現在每檔題材股的價位帶都由 monthContinuation、shortImpulse、calendar、second-leg 與 5 / 10 / 20 日強弱共同決定，不再沿用舊的短波段估法。"
+      },
       {
         "title": "完成第一次 v2 規則全量重跑",
         "reason": "這次不只是補 schema，而是重新用 20 日催化、二階證據與 persistence 規則跑一次完整排序。"
@@ -2020,7 +2199,7 @@
       "note": "HBM4 / ASIC 官方一手產品節點。"
     }
   ],
-  "footnote": "本報告不是投資建議；本版是 2026-05-05 收盤資料依月內排序引擎 v2 做的強制全量重跑版。價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準，selectionHorizon 維持未來 20 個台股交易日。themeScore / stockScore 保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore，並在本次完整重跑中實際用於排名。marketRegime 是月內主分數，shortTermRegime 是近端提示分數；兩者分歧時，月內分數優先決定交易池上限。",
+  "footnote": "本報告不是投資建議；本版是 2026-05-05 收盤資料依月內排序引擎 v2 做的強制全量重跑版。價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準，selectionHorizon 維持未來 20 個台股交易日。themeScore / stockScore 保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore，並在本次完整重跑中實際用於排名。marketRegime 是月內主分數，shortTermRegime 是近端提示分數；兩者分歧時，月內分數優先決定交易池上限。 本版另外把 theme stock 的 entry / target / stop 全面切換到 20 交易日續航價位模型，targetLogic 與 invalidationTrigger 也同步改成月內失效條件。",
   "observationThemes": [
     {
       "rank": 1,
@@ -2318,5 +2497,11 @@
       "invalidationType": "short_failure",
       "observationCategory": "short_strong_month_insufficient"
     }
-  ]
+  ],
+  "priceModel": {
+    "version": "20d_continuation_v1",
+    "label": "20 交易日續航價位模型",
+    "basis": "monthContinuationScore + shortImpulseScore + calendarScore + secondLegEvidenceScore + relativeStrength5d/10d/20d",
+    "summary": "entry / target / stop 現在使用月內續航價位模型，不再沿用舊的短波段 heuristic。"
+  }
 }
