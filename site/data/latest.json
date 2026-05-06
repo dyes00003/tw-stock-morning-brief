@@ -182,9 +182,10 @@
             "鉅亨外資評等 2408 南亞科",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 92,
+          "stockScore": 63,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 94,
             "monthContinuationScore": 91,
             "calendarScore": 25,
@@ -196,7 +197,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -205,70 +207,13 @@
             "entryPullbackPct": 4.1,
             "targetPct": 20.8,
             "stopPct": 5.5
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 2,
-          "ticker": "8299",
-          "name": "群聯",
-          "role": "NAND controller / enterprise SSD controller 供應商，位於上游設計；上游承接 NAND 原廠，下游對接 enterprise SSD、模組與品牌客戶。",
-          "priceDate": "2026-05-05",
-          "close": "2115",
-          "entry": "2020-2115",
-          "target": "2495",
-          "stop": "1990",
-          "pe": "目前未驗證",
-          "pb": "目前未驗證",
-          "foreignFlow": "+194,667 股",
-          "institutionFlow": "+471,058 股",
-          "coreReason": "5/5 記憶體核心股全面跑贏大盤，群聯 是 mature memory 重估最直接的台股表達之一。",
-          "notPricedIn": "這波不是單一龍頭獨強，而是記憶體族群同步擴散；只要報價與供需重估沒有被推翻，群聯 仍有二階段空間。",
-          "targetLogic": "20 日價位模型：monthContinuation 85、shortImpulse 80、calendar 20、second-leg 17、5D / 10D / 20D 相對強弱 +6.4% / +11.5% / +10.9%。因此進場帶抓回檔約 4.3%，目標空間抓約 17.8%，停損帶抓約 5.9%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
-          "catalysts": [
-            "2026-05-05 收 2115 元，單日 +5.22%。",
-            "2026-05-05 外資 +194,667 股，三大法人合計 +471,058 股。",
-            "已檢查 2026-05-05 BLS JOLTS、TrendForce 與記憶體供需訊號；成熟記憶體重估沒有被新官方數據否定。",
-            "董監 / 內部人持股檢查：本次未驗證到比上一版更新的官方新增變動。"
-          ],
-          "downside": [
-            "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
-            "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
-            "若 4/28 啟動後沒有新的報價、營收或法人承接，月內第二段行情就會失效。"
-          ],
-          "sourceRefs": [
-            "TPEX 2026-05-05 日行情",
-            "TPEX 2026-05-05 三大法人",
-            "TrendForce 2026-03-31 記憶體價格調查",
-            "鉅亨外資評等 8299 群聯",
-            "tw_stock_supply_chain_tags.json"
-          ],
-          "stockScore": 83,
-          "state": "expansion",
-          "scoreBreakdown": {
-            "shortImpulseScore": 80,
-            "monthContinuationScore": 85,
-            "calendarScore": 20,
-            "secondLegEvidenceScore": 17,
-            "relativeStrength5d": 6.4,
-            "relativeStrength10d": 11.5,
-            "relativeStrength20d": 10.9
-          },
-          "gateStatus": {
-            "summary": "月內股票 gate 已依 v2 規則重算",
-            "secondLegEvidence": "通過",
-            "persistence": "通過"
-          },
-          "invalidationType": "month_continuation_failure",
-          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
-          "priceModel": {
-            "version": "20d_continuation_v1",
-            "entryPullbackPct": 4.3,
-            "targetPct": 17.8,
-            "stopPct": 5.9
-          }
-        },
-        {
-          "rank": 3,
           "ticker": "2337",
           "name": "旺宏",
           "role": "NOR / NAND 記憶體製造商，位於中游製造；下游連工業、車用、消費與嵌入式儲存需求。",
@@ -303,9 +248,10 @@
             "鉅亨外資評等 2337 旺宏",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 85,
+          "stockScore": 59,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 86,
             "monthContinuationScore": 85,
             "calendarScore": 25,
@@ -317,7 +263,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -326,7 +273,75 @@
             "entryPullbackPct": 4.4,
             "targetPct": 19.2,
             "stopPct": 6
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
+        },
+        {
+          "rank": 3,
+          "ticker": "8299",
+          "name": "群聯",
+          "role": "NAND controller / enterprise SSD controller 供應商，位於上游設計；上游承接 NAND 原廠，下游對接 enterprise SSD、模組與品牌客戶。",
+          "priceDate": "2026-05-05",
+          "close": "2115",
+          "entry": "2020-2115",
+          "target": "2495",
+          "stop": "1990",
+          "pe": "目前未驗證",
+          "pb": "目前未驗證",
+          "foreignFlow": "+194,667 股",
+          "institutionFlow": "+471,058 股",
+          "coreReason": "5/5 記憶體核心股全面跑贏大盤，群聯 是 mature memory 重估最直接的台股表達之一。",
+          "notPricedIn": "這波不是單一龍頭獨強，而是記憶體族群同步擴散；只要報價與供需重估沒有被推翻，群聯 仍有二階段空間。",
+          "targetLogic": "20 日價位模型：monthContinuation 85、shortImpulse 80、calendar 20、second-leg 17、5D / 10D / 20D 相對強弱 +6.4% / +11.5% / +10.9%。因此進場帶抓回檔約 4.3%，目標空間抓約 17.8%，停損帶抓約 5.9%；這版已不再沿用舊的短波段 heuristic，而是用月內續航、二階證據與 5 / 10 / 20 日 persistence 決定價位。",
+          "catalysts": [
+            "2026-05-05 收 2115 元，單日 +5.22%。",
+            "2026-05-05 外資 +194,667 股，三大法人合計 +471,058 股。",
+            "已檢查 2026-05-05 BLS JOLTS、TrendForce 與記憶體供需訊號；成熟記憶體重估沒有被新官方數據否定。",
+            "董監 / 內部人持股檢查：本次未驗證到比上一版更新的官方新增變動。"
+          ],
+          "downside": [
+            "若 DRAM / NAND 合約價續漲不如 TrendForce 預估，最先回吐的會是漲幅最大的一圈記憶體股。",
+            "若 AI server 與 enterprise SSD 拉貨沒有延續，控制 IC 與模組股彈性會明顯收斂。",
+            "若 4/28 啟動後沒有新的報價、營收或法人承接，月內第二段行情就會失效。"
+          ],
+          "sourceRefs": [
+            "TPEX 2026-05-05 日行情",
+            "TPEX 2026-05-05 三大法人",
+            "TrendForce 2026-03-31 記憶體價格調查",
+            "鉅亨外資評等 8299 群聯",
+            "tw_stock_supply_chain_tags.json"
+          ],
+          "stockScore": 58,
+          "state": "expansion",
+          "scoreBreakdown": {
+            "mops3dScore": 20,
+            "shortImpulseScore": 80,
+            "monthContinuationScore": 85,
+            "calendarScore": 20,
+            "secondLegEvidenceScore": 17,
+            "relativeStrength5d": 6.4,
+            "relativeStrength10d": 11.5,
+            "relativeStrength20d": 10.9
+          },
+          "gateStatus": {
+            "summary": "月內股票 gate 已依 v2 規則重算",
+            "secondLegEvidence": "通過",
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
+          },
+          "invalidationType": "month_continuation_failure",
+          "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
+          "priceModel": {
+            "version": "20d_continuation_v1",
+            "entryPullbackPct": 4.3,
+            "targetPct": 17.8,
+            "stopPct": 5.9
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 4,
@@ -364,9 +379,10 @@
             "鉅亨外資評等 2344 華邦電",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 83,
+          "stockScore": 58,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 83,
             "monthContinuationScore": 83,
             "calendarScore": 23,
@@ -378,7 +394,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -387,7 +404,10 @@
             "entryPullbackPct": 4.5,
             "targetPct": 18.1,
             "stopPct": 6.1
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 5,
@@ -423,9 +443,10 @@
             "TrendForce 2026-03-31 記憶體價格調查",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 81,
+          "stockScore": 56,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 80,
             "monthContinuationScore": 81,
             "calendarScore": 23,
@@ -437,7 +458,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -446,15 +468,19 @@
             "entryPullbackPct": 4.6,
             "targetPct": 17.7,
             "stopPct": 6.3
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         }
       ],
       "state": "expansion",
-      "themeScore": 90,
+      "themeScore": 63,
       "gateStatus": {
         "summary": "交易池題材 gate 全通過；5 檔核心股全數跑贏大盤",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -467,11 +493,21 @@
         "relativeStrength20d": 11.4
       },
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 92,
         "monthContinuationScore": 89,
         "calendarScore": 25,
         "secondLegEvidenceScore": 18,
         "persistenceScore": 14
+      },
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
       }
     },
     {
@@ -544,9 +580,10 @@
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 90,
+          "stockScore": 62,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 93,
             "monthContinuationScore": 88,
             "calendarScore": 18,
@@ -558,7 +595,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -567,7 +605,10 @@
             "entryPullbackPct": 4.5,
             "targetPct": 17.7,
             "stopPct": 5.9
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 2,
@@ -604,9 +645,10 @@
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 85,
+          "stockScore": 59,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 90,
             "monthContinuationScore": 82,
             "calendarScore": 18,
@@ -618,7 +660,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -627,7 +670,10 @@
             "entryPullbackPct": 5,
             "targetPct": 16.2,
             "stopPct": 6.6
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 3,
@@ -664,9 +710,10 @@
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 83,
+          "stockScore": 58,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 87,
             "monthContinuationScore": 80,
             "calendarScore": 18,
@@ -678,7 +725,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -687,7 +735,10 @@
             "entryPullbackPct": 5.1,
             "targetPct": 15.6,
             "stopPct": 6.7
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 4,
@@ -727,9 +778,10 @@
             "鉅亨外資評等 6442 光聖",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 80,
+          "stockScore": 56,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 84,
             "monthContinuationScore": 78,
             "calendarScore": 16,
@@ -741,7 +793,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -750,7 +803,10 @@
             "entryPullbackPct": 5.2,
             "targetPct": 14.5,
             "stopPct": 6.9
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 5,
@@ -787,9 +843,10 @@
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 78,
+          "stockScore": 55,
           "state": "expansion",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 81,
             "monthContinuationScore": 76,
             "calendarScore": 16,
@@ -801,7 +858,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -810,15 +868,19 @@
             "entryPullbackPct": 5.3,
             "targetPct": 14,
             "stopPct": 7
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         }
       ],
       "state": "expansion",
-      "themeScore": 87,
+      "themeScore": 62,
       "gateStatus": {
         "summary": "交易池題材 gate 通過；領先股與二線股仍同步續強",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -831,11 +893,21 @@
         "relativeStrength20d": 9.8
       },
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 93,
         "monthContinuationScore": 84,
         "calendarScore": 18,
         "secondLegEvidenceScore": 16,
         "persistenceScore": 12
+      },
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
       }
     },
     {
@@ -909,9 +981,10 @@
             "鉅亨外資評等 6197 佳必琪",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 88,
+          "stockScore": 61,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 90,
             "monthContinuationScore": 87,
             "calendarScore": 18,
@@ -923,7 +996,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -932,7 +1006,10 @@
             "entryPullbackPct": 4.4,
             "targetPct": 17.1,
             "stopPct": 6.1
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 2,
@@ -969,9 +1046,10 @@
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 82,
+          "stockScore": 57,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 85,
             "monthContinuationScore": 80,
             "calendarScore": 18,
@@ -983,7 +1061,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -992,7 +1071,10 @@
             "entryPullbackPct": 5,
             "targetPct": 15.4,
             "stopPct": 6.7
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 3,
@@ -1029,9 +1111,10 @@
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 80,
+          "stockScore": 56,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 82,
             "monthContinuationScore": 78,
             "calendarScore": 18,
@@ -1043,7 +1126,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "差一項",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1052,7 +1136,10 @@
             "entryPullbackPct": 5.1,
             "targetPct": 14.7,
             "stopPct": 6.8
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 4,
@@ -1091,9 +1178,10 @@
             "Google Cloud Next 2026 官方頁",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 77,
+          "stockScore": 54,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 79,
             "monthContinuationScore": 76,
             "calendarScore": 16,
@@ -1105,7 +1193,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "差一項",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1114,7 +1203,10 @@
             "entryPullbackPct": 5.2,
             "targetPct": 13.7,
             "stopPct": 7
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 5,
@@ -1151,9 +1243,10 @@
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 75,
+          "stockScore": 53,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 76,
             "monthContinuationScore": 74,
             "calendarScore": 16,
@@ -1165,7 +1258,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "差一項",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1174,15 +1268,19 @@
             "entryPullbackPct": 5.2,
             "targetPct": 13.2,
             "stopPct": 7.1
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         }
       ],
       "state": "confirmation",
-      "themeScore": 84,
+      "themeScore": 60,
       "gateStatus": {
         "summary": "交易池題材 gate 通過；價格與法人支持度仍高於多數候選主題",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -1195,11 +1293,21 @@
         "relativeStrength20d": 8.1
       },
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 88,
         "monthContinuationScore": 82,
         "calendarScore": 18,
         "secondLegEvidenceScore": 15,
         "persistenceScore": 13
+      },
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
       }
     },
     {
@@ -1271,9 +1379,10 @@
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 84,
+          "stockScore": 58,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 81,
             "monthContinuationScore": 86,
             "calendarScore": 20,
@@ -1285,7 +1394,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1294,7 +1404,10 @@
             "entryPullbackPct": 4.3,
             "targetPct": 17.9,
             "stopPct": 6.2
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 2,
@@ -1334,9 +1447,10 @@
             "鉅亨外資評等 3443 創意",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 80,
+          "stockScore": 56,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 76,
             "monthContinuationScore": 82,
             "calendarScore": 20,
@@ -1348,7 +1462,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1357,7 +1472,10 @@
             "entryPullbackPct": 4.5,
             "targetPct": 17.1,
             "stopPct": 6.5
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 3,
@@ -1394,9 +1512,10 @@
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 77,
+          "stockScore": 54,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 73,
             "monthContinuationScore": 80,
             "calendarScore": 20,
@@ -1408,7 +1527,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1417,7 +1537,10 @@
             "entryPullbackPct": 4.7,
             "targetPct": 16.5,
             "stopPct": 6.7
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 4,
@@ -1458,9 +1581,10 @@
             "UBS 台積電 2330 open-access / compliance 頁",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 75,
+          "stockScore": 53,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 70,
             "monthContinuationScore": 78,
             "calendarScore": 18,
@@ -1472,7 +1596,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1481,7 +1606,10 @@
             "entryPullbackPct": 4.8,
             "targetPct": 15.4,
             "stopPct": 6.9
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 5,
@@ -1520,9 +1648,10 @@
             "TSMC 2026 Technology Symposium",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 72,
+          "stockScore": 51,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 67,
             "monthContinuationScore": 76,
             "calendarScore": 18,
@@ -1534,7 +1663,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1543,15 +1673,19 @@
             "entryPullbackPct": 4.9,
             "targetPct": 14.9,
             "stopPct": 7.1
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         }
       ],
       "state": "confirmation",
-      "themeScore": 82,
+      "themeScore": 58,
       "gateStatus": {
         "summary": "交易池題材 gate 通過；但 5/5 已出現高位分化",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -1564,11 +1698,21 @@
         "relativeStrength20d": 10.5
       },
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 79,
         "monthContinuationScore": 84,
         "calendarScore": 20,
         "secondLegEvidenceScore": 17,
         "persistenceScore": 11
+      },
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
       }
     },
     {
@@ -1642,9 +1786,10 @@
             "Nittobo PCB Glass Cloth 官方頁",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 82,
+          "stockScore": 57,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 85,
             "monthContinuationScore": 80,
             "calendarScore": 18,
@@ -1656,7 +1801,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "通過",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1665,7 +1811,10 @@
             "entryPullbackPct": 5,
             "targetPct": 15.4,
             "stopPct": 6.7
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 2,
@@ -1703,9 +1852,10 @@
             "Panasonic 2026-04-09 CCL 價格調整通知",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 78,
+          "stockScore": 55,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 82,
             "monthContinuationScore": 75,
             "calendarScore": 18,
@@ -1717,7 +1867,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "差一項",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1726,7 +1877,10 @@
             "entryPullbackPct": 5.5,
             "targetPct": 14.2,
             "stopPct": 7.3
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 3,
@@ -1767,9 +1921,10 @@
             "鉅亨 / FactSet 台光電 2383",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 75,
+          "stockScore": 53,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 79,
             "monthContinuationScore": 73,
             "calendarScore": 18,
@@ -1781,7 +1936,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "差一項",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1790,7 +1946,10 @@
             "entryPullbackPct": 5.5,
             "targetPct": 13.5,
             "stopPct": 7.4
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 4,
@@ -1828,9 +1987,10 @@
             "Panasonic 2026-04-09 CCL 價格調整通知",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 73,
+          "stockScore": 52,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 76,
             "monthContinuationScore": 71,
             "calendarScore": 16,
@@ -1842,7 +2002,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "差一項",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1851,7 +2012,10 @@
             "entryPullbackPct": 5.6,
             "targetPct": 12.4,
             "stopPct": 7.6
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         },
         {
           "rank": 5,
@@ -1888,9 +2052,10 @@
             "TWSE 2026-05-05 本益比欄位",
             "tw_stock_supply_chain_tags.json"
           ],
-          "stockScore": 71,
+          "stockScore": 50,
           "state": "confirmation",
           "scoreBreakdown": {
+            "mops3dScore": 20,
             "shortImpulseScore": 73,
             "monthContinuationScore": 69,
             "calendarScore": 16,
@@ -1902,7 +2067,8 @@
           "gateStatus": {
             "summary": "月內股票 gate 已依 v2 規則重算",
             "secondLegEvidence": "差一項",
-            "persistence": "通過"
+            "persistence": "通過",
+            "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
           },
           "invalidationType": "month_continuation_failure",
           "invalidationTrigger": "若未來 20 個交易日內沒有補到下一個催化節點，且 10D / 20D 相對強弱轉弱，這筆月內續航 setup 視為失效。",
@@ -1911,15 +2077,19 @@
             "entryPullbackPct": 5.7,
             "targetPct": 12,
             "stopPct": 7.7
-          }
+          },
+          "mops3dSignal": "provisional_baseline_20_unverified",
+          "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+          "mops3dItems": []
         }
       ],
       "state": "confirmation",
-      "themeScore": 80,
+      "themeScore": 57,
       "gateStatus": {
         "summary": "交易池題材 gate 通過；但 5/5 已有明顯領先股 / 跟隨股分化",
         "secondLegEvidence": "差一項",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -1932,11 +2102,21 @@
         "relativeStrength20d": 7.2
       },
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 85,
         "monthContinuationScore": 77,
         "calendarScore": 18,
         "secondLegEvidenceScore": 14,
         "persistenceScore": 10
+      },
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
       }
     }
   ],
@@ -1948,14 +2128,16 @@
       "theme": "記憶體 / DRAM / NAND 價格重估",
       "reason": "5/5 外資買超 2,493 萬股、單日 +8.23%，是記憶體重估最乾淨的主交易標的。",
       "state": "expansion",
-      "stockScore": 92,
+      "stockScore": 63,
       "gateStatus": {
         "summary": "交易池股票 gate 通過",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "alternativeRejected": "比 2337 / 2344 更具流動性，也比 3260 更直接反映 DRAM 重估。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 94,
         "monthContinuationScore": 91,
         "calendarScore": 25,
@@ -1964,7 +2146,10 @@
         "relativeStrength10d": 14.4,
         "relativeStrength20d": 12.1
       },
-      "invalidationType": "month_continuation_failure"
+      "invalidationType": "month_continuation_failure",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     },
     {
       "rank": 2,
@@ -1973,14 +2158,16 @@
       "theme": "光模組 / 矽光子",
       "reason": "5/5 +9.94% 且三大法人買超 247 萬股，optics 主線的價格領先最明確。",
       "state": "expansion",
-      "stockScore": 90,
+      "stockScore": 62,
       "gateStatus": {
         "summary": "交易池股票 gate 通過",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "alternativeRejected": "比 6442 / 3163 更強，且比 4979 有更乾淨的當日價格領先。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 93,
         "monthContinuationScore": 88,
         "calendarScore": 18,
@@ -1989,7 +2176,10 @@
         "relativeStrength10d": 12.6,
         "relativeStrength20d": 10.7
       },
-      "invalidationType": "month_continuation_failure"
+      "invalidationType": "month_continuation_failure",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     },
     {
       "rank": 3,
@@ -1998,14 +2188,16 @@
       "theme": "AI 高速互連線 / 大電流電源線",
       "reason": "5/5 +6.56% 且外資買超 255 萬股，physical interconnect 主線續強。",
       "state": "confirmation",
-      "stockScore": 88,
+      "stockScore": 61,
       "gateStatus": {
         "summary": "交易池股票 gate 通過",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "alternativeRejected": "比 3665 / 3533 更直接承接 ORV3 與高速互連升級。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 90,
         "monthContinuationScore": 87,
         "calendarScore": 18,
@@ -2014,7 +2206,10 @@
         "relativeStrength10d": 10.1,
         "relativeStrength20d": 8.8
       },
-      "invalidationType": "month_continuation_failure"
+      "invalidationType": "month_continuation_failure",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     },
     {
       "rank": 4,
@@ -2023,14 +2218,16 @@
       "theme": "HBM4 / AI ASIC IP / 台積電 3DFabric 生態系",
       "reason": "5/5 +4.73% 且外資轉買，AI ASIC / HBM4 分化中仍屬較乾淨的領先名單。",
       "state": "confirmation",
-      "stockScore": 84,
+      "stockScore": 58,
       "gateStatus": {
         "summary": "交易池股票 gate 通過",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "alternativeRejected": "比 2330 / 3661 更能直接表達 AI ASIC 設計服務與 HBM4 擴張。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 81,
         "monthContinuationScore": 86,
         "calendarScore": 20,
@@ -2039,7 +2236,10 @@
         "relativeStrength10d": 8.4,
         "relativeStrength20d": 10.2
       },
-      "invalidationType": "month_continuation_failure"
+      "invalidationType": "month_continuation_failure",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     },
     {
       "rank": 5,
@@ -2048,14 +2248,16 @@
       "theme": "記憶體 / DRAM / NAND 價格重估",
       "reason": "5/5 +5.22%，兼具 controller / NAND exposure，是記憶體主線的第二個高品質表達。",
       "state": "expansion",
-      "stockScore": 83,
+      "stockScore": 58,
       "gateStatus": {
         "summary": "交易池股票 gate 通過",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "alternativeRejected": "比 3260 更具國際鏈位置，也比 2344 有更直接的 controller / NAND 敘事。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 80,
         "monthContinuationScore": 85,
         "calendarScore": 20,
@@ -2064,7 +2266,10 @@
         "relativeStrength10d": 11.5,
         "relativeStrength20d": 10.9
       },
-      "invalidationType": "month_continuation_failure"
+      "invalidationType": "month_continuation_failure",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     },
     {
       "rank": 6,
@@ -2073,14 +2278,16 @@
       "theme": "高階 CCL / AI PCB / 高層數板",
       "reason": "5/5 +9.91%，把高階 CCL / 材料主線重新拉回盤面前段。",
       "state": "confirmation",
-      "stockScore": 82,
+      "stockScore": 57,
       "gateStatus": {
         "summary": "交易池股票 gate 通過",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "alternativeRejected": "比 2383 / 4958 有更明顯的單日領先與題材聚焦度。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 85,
         "monthContinuationScore": 80,
         "calendarScore": 18,
@@ -2089,13 +2296,20 @@
         "relativeStrength10d": 8.2,
         "relativeStrength20d": 7.3
       },
-      "invalidationType": "month_continuation_failure"
+      "invalidationType": "month_continuation_failure",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     }
   ],
   "changesComparedToPrevious": {
     "comparedTo": "2026-05-05 23:44 版（月內排序引擎 v2 schema 遷移版）",
-    "summary": "這次不是新的市場資料 rerun，而是把個股價位欄位從舊 heuristic 全面切換到 20 交易日續航模型；題材、主選股與 Regime 不變，但 entry / target / stop 已全部重算。",
+    "summary": "這次不是新的市場資料 rerun，而是把個股價位欄位從舊 heuristic 全面切換到 20 交易日續航模型；題材、主選股與 Regime 不變，但 entry / target / stop 已全部重算。 另外，本版已接入 MOPS 最近三日重大訊息最高權重欄位；因官方查詢受限，先以 provisional baseline 顯示。",
     "items": [
+      {
+        "title": "MOPS 三日重大訊息最高權重欄位已接入",
+        "reason": "題材與個股分數已新增 mops3dScore，並成為最高權重分項；但官方近三日查詢頁在目前環境未能直接驗證，所以這版公開資料先用 provisional baseline 顯示，待下一次可驗證晨報覆蓋。"
+      },
       {
         "title": "個股 entry / target / stop 已切換到月內價位模型",
         "reason": "現在每檔題材股的價位帶都由 monthContinuation、shortImpulse、calendar、second-leg 與 5 / 10 / 20 日強弱共同決定，不再沿用舊的短波段估法。"
@@ -2197,19 +2411,25 @@
       "label": "GUC HBM4 2026-04-23",
       "url": "https://www.guc-asic.com/en/news/all/PR_20260423",
       "note": "HBM4 / ASIC 官方一手產品節點。"
+    },
+    {
+      "label": "MOPS 官方重大訊息查詢",
+      "url": "https://mops.twse.com.tw/mops/web/index",
+      "note": "本次已把 MOPS 最近三日重大訊息列為最高權重分項；但官方近三日查詢頁在目前環境未能直接驗證，公開欄位暫以 provisional baseline 呈現。"
     }
   ],
-  "footnote": "本報告不是投資建議；本版是 2026-05-05 收盤資料依月內排序引擎 v2 做的強制全量重跑版。價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準，selectionHorizon 維持未來 20 個台股交易日。themeScore / stockScore 保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore，並在本次完整重跑中實際用於排名。marketRegime 是月內主分數，shortTermRegime 是近端提示分數；兩者分歧時，月內分數優先決定交易池上限。 本版另外把 theme stock 的 entry / target / stop 全面切換到 20 交易日續航價位模型，targetLogic 與 invalidationTrigger 也同步改成月內失效條件。",
+  "footnote": "本報告不是投資建議；本版是 2026-05-05 收盤資料依月內排序引擎 v2 做的強制全量重跑版。價格與法人流向仍以 2026-05-05 TWSE / TPEX 官方可得資料為準，selectionHorizon 維持未來 20 個台股交易日。themeScore / stockScore 保留單一總分，但底層已拆成 shortImpulseScore 與 monthContinuationScore，並在本次完整重跑中實際用於排名。marketRegime 是月內主分數，shortTermRegime 是近端提示分數；兩者分歧時，月內分數優先決定交易池上限。 本版另外把 theme stock 的 entry / target / stop 全面切換到 20 交易日續航價位模型，targetLogic 與 invalidationTrigger 也同步改成月內失效條件。 本版另外已把 MOPS 最近三日重大訊息納入題材與個股的最高權重分項；但官方近三日查詢頁在目前環境未能直接驗證，所以當前網站先用 provisional baseline 顯示，待下一次可驗證晨報覆蓋。",
   "observationThemes": [
     {
       "rank": 1,
       "name": "AI 交換器 / 資料中心網通設備",
       "state": "seed",
-      "themeScore": 79,
+      "themeScore": 57,
       "gateStatus": {
         "summary": "差 1 項：近 7 日 stock-news 對齊度仍集中在少數核心股",
         "secondLegEvidence": "差一項",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -2225,23 +2445,34 @@
       "observationReason": "價格廣度比前一版更好，但仍缺新的下游一手事件把題材整體推進 trading pool。",
       "nextTrigger": "若再出現新的 hyperscaler / switch ramp 一手來源，或智邦重新領漲，這條線可直接升級。",
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 81,
         "monthContinuationScore": 78,
         "calendarScore": 18,
         "secondLegEvidenceScore": 14,
         "persistenceScore": 12
       },
-      "observationCategory": "short_strong_month_insufficient"
+      "observationCategory": "short_strong_month_insufficient",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
+      }
     },
     {
       "rank": 2,
       "name": "伺服器電源 / BBU",
       "state": "confirmation",
-      "themeScore": 77,
+      "themeScore": 55,
       "gateStatus": {
         "summary": "大多數 gate 通過，但相對強度輸給記憶體與 optics",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -2257,23 +2488,34 @@
       "observationReason": "這條線並未失效，但 5/5 的價格與外部催化不夠強，暫時讓位給記憶體。",
       "nextTrigger": "若 2308 或 6282 再次帶出整族群放量續強，或有新的 rack power / BBU 一手訊號，會重回 trading pool。",
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 75,
         "monthContinuationScore": 78,
         "calendarScore": 18,
         "secondLegEvidenceScore": 15,
         "persistenceScore": 12
       },
-      "observationCategory": "month_viable_short_crowded"
+      "observationCategory": "month_viable_short_crowded",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
+      }
     },
     {
       "rank": 3,
       "name": "AI 高速材料 / 樹脂 / 玻纖布 upstream",
       "state": "seed",
-      "themeScore": 74,
+      "themeScore": 53,
       "gateStatus": {
         "summary": "差 1 項：受惠股分化仍大，未形成完整中下游擴散",
         "secondLegEvidence": "差一項",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -2289,23 +2531,34 @@
       "observationReason": "原料與材料價格訊號仍在，但市場仍更偏好直接 monetization 的 CCL / PCB 名單。",
       "nextTrigger": "若更多材料股跟上台燿與南亞，且有新的 upstream price notice，可升級。",
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 72,
         "monthContinuationScore": 75,
         "calendarScore": 16,
         "secondLegEvidenceScore": 12,
         "persistenceScore": 10
       },
-      "observationCategory": "short_strong_month_insufficient"
+      "observationCategory": "short_strong_month_insufficient",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
+      }
     },
     {
       "rank": 4,
       "name": "CoWoS / 先進封裝設備 / 廠務",
       "state": "breakdown",
-      "themeScore": 68,
+      "themeScore": 50,
       "gateStatus": {
         "summary": "失敗 2 項：5/5 tape 與法人流向都偏弱",
         "secondLegEvidence": "失敗",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -2321,23 +2574,34 @@
       "observationReason": "沒有新的裝機或客戶端官方事件支持，5/5 已明顯輸給 AI ASIC 與記憶體。",
       "nextTrigger": "若 TSMC / OSAT / 設備商再出現新的擴產或裝機節點，才有機會重回前排。",
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 64,
         "monthContinuationScore": 70,
         "calendarScore": 14,
         "secondLegEvidenceScore": 10,
         "persistenceScore": 8
       },
-      "observationCategory": "short_strong_month_insufficient"
+      "observationCategory": "short_strong_month_insufficient",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
+      }
     },
     {
       "rank": 5,
       "name": "重電 / 電網 / 變壓器",
       "state": "seed",
-      "themeScore": 70,
+      "themeScore": 50,
       "gateStatus": {
         "summary": "差 2 項：台灣端 tape 廣度與 7 日 stock-news 對齊度不足",
         "secondLegEvidence": "差一項",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "breadthStats": {
         "checkedStocks": 5,
@@ -2353,12 +2617,23 @@
       "observationReason": "全球供電約束邏輯仍成立，但現階段台股資金更偏科技主線。",
       "nextTrigger": "若美國電網 / transformer shortage 出現新的官方或 utility capex 節點，且台灣重電股同步放量，才會升級。",
       "scoreBreakdown": {
+        "mops3dScore": 23,
         "shortImpulseScore": 58,
         "monthContinuationScore": 76,
         "calendarScore": 18,
         "secondLegEvidenceScore": 13,
         "persistenceScore": 9
-      }
+      },
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本題材先以 provisional MOPS baseline 併入，待下次可驗證抓取後再依廣度重排。",
+      "mops3dBreadth": {
+        "positiveStockCount": 0,
+        "negativeStockCount": 0,
+        "windowDates": [
+          "最近3日曆日：2026-05-03 / 2026-05-04 / 2026-05-05",
+          "補齊最近3交易日：2026-04-30 / 2026-05-04 / 2026-05-05"
+        ]
+      },
+      "observationCategory": "mops_insufficient_month_watch"
     }
   ],
   "observationStocks": [
@@ -2368,16 +2643,18 @@
       "name": "智邦",
       "theme": "AI 交換器 / 資料中心網通設備",
       "state": "seed",
-      "stockScore": 78,
+      "stockScore": 55,
       "gateStatus": {
         "summary": "差 1 項：5/5 相對強度不如同族群二線股",
         "secondLegEvidence": "差一項",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "reason": "主題沒死，但 5/5 單日仍落後啟碁與中磊。",
       "nextTrigger": "若智邦重新領漲 switch 家族並補上新的一手下游事件，就會重回 trading pool。",
       "alternativeRejected": "目前被 6285 / 5388 的相對強度壓過。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 82,
         "monthContinuationScore": 75,
         "calendarScore": 16,
@@ -2387,7 +2664,10 @@
         "relativeStrength20d": 4.1
       },
       "invalidationType": "short_failure",
-      "observationCategory": "short_strong_month_insufficient"
+      "observationCategory": "short_strong_month_insufficient",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     },
     {
       "rank": 2,
@@ -2395,16 +2675,18 @@
       "name": "康舒",
       "theme": "伺服器電源 / BBU",
       "state": "confirmation",
-      "stockScore": 77,
+      "stockScore": 54,
       "gateStatus": {
         "summary": "主題通過多數 gate，但整體優先級降到觀察池",
         "secondLegEvidence": "通過",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "reason": "5/5 +1.74% 且三大法人持續買超，是 power 主題裡仍可追蹤的代表。",
       "nextTrigger": "若 power 家族重新成為盤面主線，康舒會是第一批回到首頁名單的股票。",
       "alternativeRejected": "目前被 6197 / 6274 等更強的交易池股票擠出首頁。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 74,
         "monthContinuationScore": 79,
         "calendarScore": 18,
@@ -2414,78 +2696,29 @@
         "relativeStrength20d": 6.1
       },
       "invalidationType": "month_continuation_failure",
-      "observationCategory": "month_viable_short_crowded"
+      "observationCategory": "month_viable_short_crowded",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     },
     {
       "rank": 3,
-      "ticker": "6196",
-      "name": "帆宣",
-      "theme": "CoWoS / 先進封裝設備 / 廠務",
-      "state": "breakdown",
-      "stockScore": 66,
-      "gateStatus": {
-        "summary": "失敗 2 項：5/5 價格與法人都偏弱",
-        "secondLegEvidence": "失敗",
-        "persistence": "差一項"
-      },
-      "reason": "題材結構還在，但 5/5 -2.35% 且三大法人賣超。",
-      "nextTrigger": "若有新的先進封裝擴產或廠務裝機官方事件，再考慮回補。",
-      "alternativeRejected": "目前遠不如 AI ASIC 與記憶體的價格訊號乾淨。",
-      "scoreBreakdown": {
-        "shortImpulseScore": 62,
-        "monthContinuationScore": 69,
-        "calendarScore": 14,
-        "secondLegEvidenceScore": 10,
-        "relativeStrength5d": -1.9,
-        "relativeStrength10d": -0.7,
-        "relativeStrength20d": 1.8
-      },
-      "invalidationType": "short_failure",
-      "observationCategory": "short_strong_month_insufficient"
-    },
-    {
-      "rank": 4,
-      "ticker": "1717",
-      "name": "長興",
-      "theme": "AI 高速材料 / 樹脂 / 玻纖布 upstream",
-      "state": "seed",
-      "stockScore": 72,
-      "gateStatus": {
-        "summary": "差 1 項：5/5 個股價格沒有跟上同題材強股",
-        "secondLegEvidence": "差一項",
-        "persistence": "通過"
-      },
-      "reason": "upstream 邏輯仍在，但 5/5 本身沒有跟上南亞與台燿。",
-      "nextTrigger": "若更多上游材料股同步轉強，且有新 price notice，長興會更有機會升級。",
-      "alternativeRejected": "目前被台燿與南亞的領先地位壓制。",
-      "scoreBreakdown": {
-        "shortImpulseScore": 70,
-        "monthContinuationScore": 73,
-        "calendarScore": 16,
-        "secondLegEvidenceScore": 12,
-        "relativeStrength5d": 2.1,
-        "relativeStrength10d": 3.5,
-        "relativeStrength20d": 4.3
-      },
-      "invalidationType": "short_failure",
-      "observationCategory": "short_strong_month_insufficient"
-    },
-    {
-      "rank": 5,
       "ticker": "6285",
       "name": "啟碁",
       "theme": "AI 交換器 / 資料中心網通設備",
       "state": "seed",
-      "stockScore": 76,
+      "stockScore": 54,
       "gateStatus": {
         "summary": "差 1 項：題材仍缺新的全球下游一手事件",
         "secondLegEvidence": "差一項",
-        "persistence": "通過"
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
       },
       "reason": "5/5 +2.87% 且三大法人買超，是 switch 主題裡相對乾淨的追蹤名單。",
       "nextTrigger": "若 switch 題材再補到新的 hyperscaler / CSP capex 一手來源，啟碁可直接升級。",
       "alternativeRejected": "目前題材級驗證仍略弱於光模組與互連線。",
       "scoreBreakdown": {
+        "mops3dScore": 20,
         "shortImpulseScore": 79,
         "monthContinuationScore": 74,
         "calendarScore": 16,
@@ -2495,7 +2728,74 @@
         "relativeStrength20d": 4.4
       },
       "invalidationType": "short_failure",
-      "observationCategory": "short_strong_month_insufficient"
+      "observationCategory": "short_strong_month_insufficient",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
+    },
+    {
+      "rank": 4,
+      "ticker": "1717",
+      "name": "長興",
+      "theme": "AI 高速材料 / 樹脂 / 玻纖布 upstream",
+      "state": "seed",
+      "stockScore": 51,
+      "gateStatus": {
+        "summary": "差 1 項：5/5 個股價格沒有跟上同題材強股",
+        "secondLegEvidence": "差一項",
+        "persistence": "通過",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
+      },
+      "reason": "upstream 邏輯仍在，但 5/5 本身沒有跟上南亞與台燿。",
+      "nextTrigger": "若更多上游材料股同步轉強，且有新 price notice，長興會更有機會升級。",
+      "alternativeRejected": "目前被台燿與南亞的領先地位壓制。",
+      "scoreBreakdown": {
+        "mops3dScore": 20,
+        "shortImpulseScore": 70,
+        "monthContinuationScore": 73,
+        "calendarScore": 16,
+        "secondLegEvidenceScore": 12,
+        "relativeStrength5d": 2.1,
+        "relativeStrength10d": 3.5,
+        "relativeStrength20d": 4.3
+      },
+      "invalidationType": "short_failure",
+      "observationCategory": "short_strong_month_insufficient",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
+    },
+    {
+      "rank": 5,
+      "ticker": "6196",
+      "name": "帆宣",
+      "theme": "CoWoS / 先進封裝設備 / 廠務",
+      "state": "breakdown",
+      "stockScore": 48,
+      "gateStatus": {
+        "summary": "失敗 2 項：5/5 價格與法人都偏弱",
+        "secondLegEvidence": "失敗",
+        "persistence": "差一項",
+        "mops3d": "官方 MOPS 近三日重大訊息查詢未能直接驗證；暫以 provisional baseline 併入。"
+      },
+      "reason": "題材結構還在，但 5/5 -2.35% 且三大法人賣超。",
+      "nextTrigger": "若有新的先進封裝擴產或廠務裝機官方事件，再考慮回補。",
+      "alternativeRejected": "目前遠不如 AI ASIC 與記憶體的價格訊號乾淨。",
+      "scoreBreakdown": {
+        "mops3dScore": 20,
+        "shortImpulseScore": 62,
+        "monthContinuationScore": 69,
+        "calendarScore": 14,
+        "secondLegEvidenceScore": 10,
+        "relativeStrength5d": -1.9,
+        "relativeStrength10d": -0.7,
+        "relativeStrength20d": 1.8
+      },
+      "invalidationType": "short_failure",
+      "observationCategory": "short_strong_month_insufficient",
+      "mops3dSignal": "provisional_baseline_20_unverified",
+      "mops3dSummary": "官方 MOPS 最近三日重大訊息查詢在目前環境未能直接驗證；本版先以 baseline 20 分併入，待下次可驗證晨報覆蓋。",
+      "mops3dItems": []
     }
   ],
   "priceModel": {

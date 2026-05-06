@@ -72,6 +72,7 @@ function render(report) {
           </div>
           <p class="focus-note">${pick.reason}</p>
           <p class="focus-subnote">${formatSplitScoreLine(pick.scoreBreakdown, "stock")}</p>
+          ${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal) ? `<p class="focus-subnote">${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal)}</p>` : ""}
           <p class="focus-subnote">${formatStockSignalLine(pick.scoreBreakdown)}</p>
           ${pick.alternativeRejected ? `<p class="focus-subnote">勝過替代：${pick.alternativeRejected}</p>` : ""}
         </article>
@@ -96,6 +97,7 @@ function render(report) {
               </div>
               <p class="body-copy">${theme.observationReason || theme.summary || theme.stance || "這個題材已有證據，但還沒進到月內交易池。"}</p>
               <p class="focus-subnote">${formatSplitScoreLine(theme.scoreBreakdown, "theme")}</p>
+              ${formatMopsSummary(theme.mops3dSummary) ? `<p class="focus-subnote">${formatMopsSummary(theme.mops3dSummary)}</p>` : ""}
               <div class="observation-meta">
                 <div class="info-block compact-card">
                   <p class="info-label">下一個升級條件</p>
@@ -131,6 +133,7 @@ function render(report) {
               </div>
               <p class="body-copy">${stock.reason || stock.observationReason || "這檔股票已有題材或事件訊號，但還沒進到月內交易池名單。"}</p>
               <p class="focus-subnote">${formatSplitScoreLine(stock.scoreBreakdown, "stock")}</p>
+              ${formatMopsSummary(stock.mops3dSummary, stock.mops3dSignal) ? `<p class="focus-subnote">${formatMopsSummary(stock.mops3dSummary, stock.mops3dSignal)}</p>` : ""}
               <p class="focus-subnote">${formatStockSignalLine(stock.scoreBreakdown)}</p>
               <div class="observation-meta">
                 <div class="info-block compact-card">
@@ -451,7 +454,7 @@ function renderTheme(theme, open) {
           </div>
           <div class="theme-meta">
             <div class="info-block">
-              <p class="info-label">月內續航 / 短線衝力</p>
+              <p class="info-label">MOPS 3日 / 月內續航 / 短線衝力</p>
               <p class="info-text">${splitScoreLine || "目前沒有 split score 欄位。"}</p>
             </div>
             <div class="info-block">
@@ -459,6 +462,18 @@ function renderTheme(theme, open) {
               <p class="info-text">${themeSignalLine || "目前沒有 20 日催化與 persistence 欄位。"}</p>
             </div>
           </div>
+          ${formatMopsSummary(theme.mops3dSummary) ? `
+            <div class="theme-meta">
+              <div class="info-block">
+                <p class="info-label">MOPS 3日摘要</p>
+                <p class="info-text">${formatMopsSummary(theme.mops3dSummary)}</p>
+              </div>
+              <div class="info-block">
+                <p class="info-label">MOPS 3日廣度</p>
+                <p class="info-text">${formatMopsBreadth(theme.mops3dBreadth) || "目前沒有額外的 MOPS 廣度統計。"}</p>
+              </div>
+            </div>
+          ` : ""}
           <div class="theme-meta">${whyNow}</div>
           <div class="split-copy">
             <div class="info-block">
@@ -536,7 +551,7 @@ function renderStock(theme, stock) {
 
       <div class="split-copy">
         <div class="info-block">
-          <p class="info-label">月內續航 / 短線衝力</p>
+          <p class="info-label">MOPS 3日 / 月內續航 / 短線衝力</p>
           <p class="info-text">${formatSplitScoreLine(stock.scoreBreakdown, "stock") || "目前沒有 split score 欄位。"}</p>
         </div>
         <div class="info-block">
@@ -544,6 +559,18 @@ function renderStock(theme, stock) {
           <p class="info-text">${formatStockSignalLine(stock.scoreBreakdown) || "目前沒有 20 日催化與 persistence 欄位。"}</p>
         </div>
       </div>
+      ${formatMopsSummary(stock.mops3dSummary, stock.mops3dSignal) ? `
+        <div class="split-copy">
+          <div class="info-block">
+            <p class="info-label">MOPS 3日摘要</p>
+            <p class="info-text">${formatMopsSummary(stock.mops3dSummary, stock.mops3dSignal)}</p>
+          </div>
+          <div class="info-block">
+            <p class="info-label">MOPS 3日明細</p>
+            <p class="info-text">${formatMopsItems(stock.mops3dItems)}</p>
+          </div>
+        </div>
+      ` : ""}
 
       <div class="split-copy">
         <div class="info-block">
@@ -666,6 +693,8 @@ function renderObservationCategoryBadge(category) {
   const labelMap = {
     short_strong_month_insufficient: "短線強，但月內不足",
     month_viable_short_crowded: "月內可追，但短線過擠",
+    mops_insufficient_month_watch: "MOPS不足，月內續航仍可觀察",
+    mops_negative_pressure: "MOPS負面壓制",
   };
 
   return `<span class="pill">${labelMap[category] || String(category)}</span>`;
@@ -763,16 +792,52 @@ function formatBreadthStats(stats) {
 function formatSplitScoreLine(scoreBreakdown, type) {
   if (!scoreBreakdown || typeof scoreBreakdown !== "object") return "";
 
+  const mopsScore = scoreBreakdown.mops3dScore;
   const monthScore = scoreBreakdown.monthContinuationScore;
   const shortScore = scoreBreakdown.shortImpulseScore;
-  if (!Number.isFinite(monthScore) && !Number.isFinite(shortScore)) return "";
+  if (!Number.isFinite(mopsScore) && !Number.isFinite(monthScore) && !Number.isFinite(shortScore)) return "";
 
-  const monthLabel = type === "theme" ? "月內續航" : "月內續航";
-  const shortLabel = type === "theme" ? "短線衝力" : "短線衝力";
   const parts = [];
+  if (Number.isFinite(mopsScore)) parts.push(`MOPS 3日 ${Math.round(mopsScore)}`);
   if (Number.isFinite(monthScore)) parts.push(`${monthLabel} ${Math.round(monthScore)}`);
   if (Number.isFinite(shortScore)) parts.push(`${shortLabel} ${Math.round(shortScore)}`);
   return parts.join(" / ");
+}
+
+const monthLabel = "月內續航";
+const shortLabel = "短線衝力";
+
+function formatMopsSummary(summary, signal = "") {
+  if (summary) return summary;
+  if (signal) return `MOPS 3日訊號：${signal}`;
+  return "";
+}
+
+function formatMopsBreadth(breadth) {
+  if (!breadth || typeof breadth !== "object") return "";
+
+  const parts = [];
+  if (Number.isFinite(breadth.positiveStockCount)) parts.push(`正向 ${breadth.positiveStockCount} 檔`);
+  if (Number.isFinite(breadth.negativeStockCount)) parts.push(`負向 ${breadth.negativeStockCount} 檔`);
+  if (Array.isArray(breadth.windowDates) && breadth.windowDates.length) {
+    parts.push(`視窗 ${breadth.windowDates.join(" / ")}`);
+  }
+  return parts.join(" / ");
+}
+
+function formatMopsItems(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return "目前沒有可顯示的 MOPS 重大訊息明細。";
+  }
+
+  return items
+    .map((item) => {
+      const date = item?.date || "未提供日期";
+      const title = item?.title || "未提供標題";
+      const direction = item?.direction ? ` / ${item.direction}` : "";
+      return `${date} ${title}${direction}`;
+    })
+    .join("；");
 }
 
 function formatThemeSignalLine(scoreBreakdown, breadthStats) {
