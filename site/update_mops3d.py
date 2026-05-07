@@ -204,6 +204,179 @@ DIRECTION_RANK = {
     "high_negative": 0,
 }
 
+MATERIAL_EVENT_PATTERNS = [
+    r"重大合作",
+    r"合作",
+    r"獨家代理",
+    r"授權",
+    r"接獲",
+    r"得標",
+    r"訂購機器設備",
+    r"購置機器設備",
+    r"資本支出",
+    r"擴廠",
+    r"擴產",
+    r"新增投資",
+    r"現金增資.*子公司",
+    r"增資.*子公司",
+    r"取得.*設備",
+    r"取得.*廠房",
+    r"取得.*土地",
+]
+
+PROCEDURAL_MOPS_PATTERNS = [
+    r"董事會召開日期",
+    r"股東常會",
+    r"股東會",
+    r"法人說明會",
+    r"法說會",
+    r"受邀參加",
+    r"注意交易資訊",
+    r"公告相關訊息，以利投資人區別",
+    r"背書保證",
+    r"資金貸與",
+    r"發言人",
+    r"代理發言人",
+    r"公司治理主管",
+    r"現金股利",
+    r"股利分派",
+    r"庫藏股",
+    r"董事異動",
+    r"獨立董事",
+    r"自然人董事",
+    r"法人董事",
+    r"經理人",
+    r"總經理異動",
+    r"辭任",
+    r"改派",
+    r"解任",
+    r"新任",
+    r"澄清",
+    r"媒體報導",
+    r"傳播媒體名稱",
+]
+
+FINANCIAL_STRONG_PATTERNS = [
+    r"通過.*合併財務報告",
+    r"合併財務報告",
+    r"月營業收入",
+    r"合併營收",
+    r"營業收入",
+    r"營業毛利",
+    r"營業利益",
+    r"稅前淨利",
+    r"本期淨利",
+    r"每股盈餘",
+    r"EPS",
+    r"創高",
+    r"年增",
+    r"季增",
+    r"轉盈",
+    r"毛利率",
+]
+
+FINANCIAL_WEAK_PATTERNS = [
+    r"財務報告董事會召開日期",
+    r"董事會召開日期",
+    r"預計提報董事會",
+]
+
+FINANCIAL_NEGATIVE_PATTERNS = [
+    r"虧損",
+    r"轉虧",
+    r"年減",
+    r"季減",
+    r"衰退",
+    r"下滑",
+]
+
+ORDER_QUAL_PATTERNS = [
+    r"接單",
+    r"接獲",
+    r"得標",
+    r"客戶",
+    r"認證",
+    r"qualification",
+    r"驗證",
+    r"導入",
+    r"量產",
+    r"試產",
+    r"ramp",
+    r"供貨",
+]
+
+NEGATIVE_ORDER_PATTERNS = [
+    r"終止",
+    r"取消",
+    r"遞延",
+    r"延後",
+    r"流失",
+]
+
+PRICE_SHORTAGE_PATTERNS = [
+    r"漲價",
+    r"調漲",
+    r"報價",
+    r"價格",
+    r"缺貨",
+    r"allocation",
+    r"shortage",
+    r"lead time",
+    r"交期",
+    r"瓶頸",
+]
+
+CAPEX_DEPLOYMENT_PATTERNS = [
+    r"資本支出",
+    r"capex",
+    r"設備",
+    r"擴產",
+    r"擴廠",
+    r"量產",
+    r"deployment",
+    r"導入",
+    r"建廠",
+    r"投資",
+]
+
+ATTENTION_PATTERNS = [
+    r"外資評等",
+    r"鉅亨外資評等",
+    r"券商",
+    r"法說會",
+    r"法人說明會",
+    r"受邀參加",
+    r"目標價",
+    r"roadshow",
+]
+
+EXCLUDE_MATERIAL_EVENT_PATTERNS = [
+    r"董事異動",
+    r"獨立董事",
+    r"自然人董事",
+    r"法人董事",
+    r"經理人",
+    r"總經理異動",
+    r"辭任",
+    r"改派",
+    r"解任",
+    r"新任",
+    r"澄清",
+    r"媒體報導",
+    r"傳播媒體名稱",
+    r"注意交易資訊",
+    r"資金貸與",
+    r"背書保證",
+    r"股東常會",
+    r"股東會",
+    r"董事會召開日期",
+    r"受邀參加.*法說",
+    r"法人說明會",
+    r"轉換公司債",
+    r"贖回權",
+    r"終止櫃檯買賣",
+]
+
 
 def classify_mops_item(title: str, detail_text: str) -> tuple[str, str]:
     blob = f"{title} {detail_text}"
@@ -219,6 +392,376 @@ def classify_mops_item(title: str, detail_text: str) -> tuple[str, str]:
         if any(re.search(pat, blob) for pat in patterns):
             return direction, direction
     return "unclear", "unclear"
+
+
+def parse_roc_date(text: str) -> date | None:
+    raw = clean_text(text)
+    if not raw:
+        return None
+    raw = raw.replace("-", "/")
+    try:
+        if "/" in raw:
+            year_str, month_str, day_str = raw.split("/")
+            return date(int(year_str) + 1911, int(month_str), int(day_str))
+        if len(raw) == 7:
+            return date(int(raw[:3]) + 1911, int(raw[3:5]), int(raw[5:7]))
+    except ValueError:
+        return None
+    return None
+
+
+def event_blob(title: str, detail_text: str) -> str:
+    return clean_text(f"{title} {detail_text}")
+
+
+def match_any(patterns: list[str], text: str) -> bool:
+    return any(re.search(pattern, text) for pattern in patterns)
+
+
+def item_tags(item: MopsItem) -> set[str]:
+    blob = event_blob(item.title, item.detail_text)
+    tags: set[str] = set()
+    if match_any(MATERIAL_EVENT_PATTERNS, blob):
+        tags.add("material")
+    if match_any(PROCEDURAL_MOPS_PATTERNS, blob):
+        tags.add("procedural")
+    if match_any(FINANCIAL_STRONG_PATTERNS + FINANCIAL_WEAK_PATTERNS, blob):
+        tags.add("financial")
+    if match_any(ORDER_QUAL_PATTERNS, blob):
+        tags.add("order_qualification")
+    if match_any(PRICE_SHORTAGE_PATTERNS, blob):
+        tags.add("price_shortage")
+    if match_any(CAPEX_DEPLOYMENT_PATTERNS, blob):
+        tags.add("capex_deployment")
+    if match_any(ATTENTION_PATTERNS, blob):
+        tags.add("attention")
+    return tags
+
+
+def recent_days_bonus(item_date: str, anchor: date, within_days: int) -> bool:
+    parsed = parse_roc_date(item_date)
+    if not parsed:
+        return False
+    delta = (anchor - parsed).days
+    return 0 <= delta <= within_days
+
+
+def aggregate_stock_text(stock: dict[str, Any], items30: list[MopsItem]) -> str:
+    parts: list[str] = [
+        stock.get("coreReason", ""),
+        stock.get("notPricedIn", ""),
+        stock.get("targetLogic", ""),
+        stock.get("role", ""),
+        stock.get("mops3dSummary", ""),
+    ]
+    parts.extend(stock.get("catalysts") or [])
+    parts.extend(stock.get("sourceRefs") or [])
+    parts.extend(item.title for item in items30)
+    parts.extend(item.detail_text for item in items30 if item.detail_text)
+    return clean_text(" ".join(parts))
+
+
+def scale_persistence(relative_strengths: list[float]) -> int:
+    positives = [value for value in relative_strengths if value > 0]
+    positive_count = len(positives)
+    avg_positive = sum(positives) / positive_count if positive_count else 0.0
+    return clamp(positive_count * 25 + avg_positive * 2.5, 0, 100)
+
+
+def rank_primary(items: list[MopsItem]) -> MopsItem:
+    return max(items, key=lambda item: (DIRECTION_RANK[item.direction], item.date, item.time, item.title))
+
+
+def summarize_items(prefix: str, items: list[MopsItem], primary: MopsItem | None) -> str:
+    if not items:
+        return prefix
+    if primary is None:
+        primary = rank_primary(items)
+    summary = f"{prefix} 最近 30 日共 {len(items)} 則；核心訊號為「{primary.title}」"
+    if primary.summary:
+        summary += f"，內文重點：{primary.summary}"
+    return summary + "。"
+
+
+def score_material_company_events_30d(items30: list[MopsItem], anchor: date) -> tuple[int, str, str]:
+    material_items = [
+        item
+        for item in items30
+        if (
+            ("material" in item_tags(item) or "capex_deployment" in item_tags(item))
+            and not match_any(EXCLUDE_MATERIAL_EVENT_PATTERNS, event_blob(item.title, item.detail_text))
+        )
+    ]
+    if not material_items:
+        return 20, "no_material_company_event_30d", "最近 30 日未查到可驗證的 material company event。"
+
+    primary = rank_primary(material_items)
+    base_map = {
+        "high_positive": 85,
+        "medium_positive": 70,
+        "neutral": 45,
+        "unclear": 35,
+        "medium_negative": 15,
+        "high_negative": 0,
+    }
+    score = base_map[primary.direction]
+    positive_count = sum(item.direction in {"high_positive", "medium_positive"} for item in material_items)
+    negative_count = sum(item.direction in {"medium_negative", "high_negative"} for item in material_items)
+    if recent_days_bonus(primary.date, anchor, 7):
+        score += 10
+    if positive_count >= 2:
+        score += 10
+    if positive_count and negative_count:
+        score -= 15
+    return clamp(score, 0, 100), primary.direction, summarize_items("30 日公司事件", material_items, primary)
+
+
+def score_procedural_mops_30d(items30: list[MopsItem], anchor: date) -> tuple[int, str, str]:
+    procedural_items = [
+        item
+        for item in items30
+        if "procedural" in item_tags(item) and "material" not in item_tags(item) and "capex_deployment" not in item_tags(item)
+    ]
+    if not procedural_items:
+        return 20, "no_procedural_mops_30d", "最近 30 日沒有額外程序性 MOPS。"
+
+    primary = rank_primary(procedural_items)
+    base_map = {
+        "high_positive": 55,
+        "medium_positive": 45,
+        "neutral": 35,
+        "unclear": 25,
+        "medium_negative": 15,
+        "high_negative": 0,
+    }
+    score = base_map[primary.direction]
+    if recent_days_bonus(primary.date, anchor, 7):
+        score += 5
+    positive_count = sum(item.direction in {"high_positive", "medium_positive"} for item in procedural_items)
+    negative_count = sum(item.direction in {"medium_negative", "high_negative"} for item in procedural_items)
+    if positive_count >= 2:
+        score += 5
+    if positive_count and negative_count:
+        score -= 10
+    return clamp(score, 0, 100), primary.direction, summarize_items("30 日程序性 MOPS", procedural_items, primary)
+
+
+def score_revenue_earnings_acceleration(stock: dict[str, Any], items30: list[MopsItem], anchor: date) -> tuple[int, str]:
+    text_blob = aggregate_stock_text(stock, items30)
+    financial_items = [item for item in items30 if "financial" in item_tags(item)]
+    strong_items = [item for item in financial_items if match_any(FINANCIAL_STRONG_PATTERNS, event_blob(item.title, item.detail_text))]
+    weak_items = [item for item in financial_items if match_any(FINANCIAL_WEAK_PATTERNS, event_blob(item.title, item.detail_text))]
+    negative_hits = len(re.findall("|".join(FINANCIAL_NEGATIVE_PATTERNS), text_blob)) if FINANCIAL_NEGATIVE_PATTERNS else 0
+    positive_hits = len(re.findall("|".join(FINANCIAL_STRONG_PATTERNS), text_blob)) if FINANCIAL_STRONG_PATTERNS else 0
+
+    if strong_items:
+        primary = rank_primary(strong_items)
+        score = 80
+        if recent_days_bonus(primary.date, anchor, 10):
+            score += 10
+        if len(strong_items) >= 2 or positive_hits >= 2:
+            score += 10
+        if negative_hits:
+            score -= 20
+        summary = summarize_items("30 日營收 / 財報加速", strong_items, primary)
+        return clamp(score, 0, 100), summary
+
+    if weak_items or positive_hits:
+        primary = rank_primary(weak_items) if weak_items else None
+        score = 45 + min(20, positive_hits * 5)
+        if primary and recent_days_bonus(primary.date, anchor, 10):
+            score += 5
+        if negative_hits:
+            score -= 10
+        summary = summarize_items("30 日營收 / 財報訊號偏弱", weak_items, primary) if weak_items else "最近 30 日有營收 / 財報相關文字訊號，但強度有限。"
+        return clamp(score, 0, 100), summary
+
+    if negative_hits:
+        return 15, "最近 30 日營收 / 財報文字訊號偏弱或帶負面字樣。"
+    return 20, "最近 30 日未查到足以支撐營收 / 財報加速分數的可驗證訊號。"
+
+
+def score_order_qualification(stock: dict[str, Any], items30: list[MopsItem], anchor: date) -> tuple[int, str]:
+    text_blob = aggregate_stock_text(stock, items30)
+    order_items = [item for item in items30 if "order_qualification" in item_tags(item)]
+    negative_hits = len(re.findall("|".join(NEGATIVE_ORDER_PATTERNS), text_blob)) if NEGATIVE_ORDER_PATTERNS else 0
+    text_hits = len(re.findall("|".join(ORDER_QUAL_PATTERNS), text_blob, flags=re.IGNORECASE)) if ORDER_QUAL_PATTERNS else 0
+
+    if order_items:
+        primary = rank_primary(order_items)
+        score = 75 if primary.direction in {"high_positive", "medium_positive"} else 50
+        if recent_days_bonus(primary.date, anchor, 10):
+            score += 10
+        if len(order_items) >= 2 or text_hits >= 3:
+            score += 10
+        if negative_hits:
+            score -= 20
+        return clamp(score, 0, 100), summarize_items("30 日訂單 / 客戶 / 認證", order_items, primary)
+
+    if text_hits >= 2:
+        score = 55 + min(15, (text_hits - 2) * 5)
+        if negative_hits:
+            score -= 15
+        return clamp(score, 0, 100), "最近 30 日文字訊號顯示有訂單 / 客戶 / 認證 / 量產節點，但官方公司層事件不夠集中。"
+
+    if negative_hits:
+        return 20, "最近 30 日訂單 / 客戶 / 認證訊號不足，且有延後或終止字樣。"
+    return 20, "最近 30 日未查到足以支撐訂單 / 客戶 / 認證分數的集中訊號。"
+
+
+def score_attention(stock: dict[str, Any], items30: list[MopsItem]) -> tuple[int, str]:
+    text_blob = aggregate_stock_text(stock, items30)
+    hits = len(re.findall("|".join(ATTENTION_PATTERNS), text_blob, flags=re.IGNORECASE)) if ATTENTION_PATTERNS else 0
+    broker_hits = sum("外資評等" in ref or "鉅亨外資評等" in ref or "目標價" in ref for ref in stock.get("sourceRefs") or [])
+    if broker_hits >= 2:
+        return 80, "最近資料中可見多個券商 / 外資評等或目標價注意力來源。"
+    if broker_hits == 1:
+        return 70, "最近資料中可見至少一個券商 / 外資評等來源。"
+    if hits >= 3:
+        return 60, "最近文字訊號顯示市場注意力正在上升。"
+    if hits:
+        return 45, "最近有法說 / 媒體 / 關注度訊號，但不是核心驅動。"
+    return 20, "最近沒有額外的券商或市場注意力加分。"
+
+
+def derive_speculation_flag(stock: dict[str, Any], scores: dict[str, int]) -> str:
+    if (
+        scores["attentionScore"] >= 70
+        and scores["materialCompanyEvent30dScore"] < 35
+        and scores["revenueEarningsAccelerationScore"] < 35
+        and scores["orderQualificationScore"] < 35
+    ):
+        return "attention_without_company_evidence"
+    if (
+        scores["shortImpulseScore"] >= 80
+        and scores["monthContinuationScore"] < 70
+        and scores["materialCompanyEvent30dScore"] < 35
+        and scores["revenueEarningsAccelerationScore"] < 35
+    ):
+        return "short_impulse_without_continuation"
+    return ""
+
+
+def rescaled_stock_score(breakdown: dict[str, Any]) -> int:
+    persistence_scaled = breakdown.get("persistenceScaledScore", 0)
+    return clamp(
+        (breakdown.get("materialCompanyEvent30dScore") or 0) * 0.30
+        + (breakdown.get("revenueEarningsAccelerationScore") or 0) * 0.25
+        + (breakdown.get("orderQualificationScore") or 0) * 0.15
+        + (breakdown.get("monthContinuationScore") or 0) * 0.10
+        + persistence_scaled * 0.08
+        + (breakdown.get("shortImpulseScore") or 0) * 0.05
+        + (breakdown.get("attentionScore") or 0) * 0.04
+        + (breakdown.get("proceduralMopsScore") or 0) * 0.03,
+        0,
+        100,
+    )
+
+
+def theme_text_blob(theme: dict[str, Any], stocks: list[dict[str, Any]]) -> str:
+    parts: list[str] = [
+        theme.get("name", ""),
+        theme.get("summary", ""),
+        theme.get("pricingView", ""),
+        theme.get("policyView", ""),
+        theme.get("premiumSpace", ""),
+        theme.get("mops3dSummary", ""),
+    ]
+    for item in theme.get("whyNow") or []:
+        if isinstance(item, dict):
+            parts.append(item.get("label", ""))
+            parts.append(item.get("text", ""))
+        else:
+            parts.append(str(item))
+    for stock in stocks:
+        parts.append(stock.get("coreReason", ""))
+        parts.extend(stock.get("catalysts") or [])
+        parts.append(stock.get("mops3dSummary", ""))
+        parts.append(stock.get("materialCompanyEvent30dSummary", ""))
+    return clean_text(" ".join(parts))
+
+
+def score_company_evidence_spread(stocks: list[dict[str, Any]]) -> int:
+    strong_count = sum(
+        1
+        for stock in stocks
+        if max(
+            (stock.get("scoreBreakdown") or {}).get("materialCompanyEvent30dScore", 0),
+            (stock.get("scoreBreakdown") or {}).get("revenueEarningsAccelerationScore", 0),
+            (stock.get("scoreBreakdown") or {}).get("orderQualificationScore", 0),
+        ) >= 65
+    )
+    negative_count = sum(
+        1 for stock in stocks if (stock.get("scoreBreakdown") or {}).get("mops3dScore", 20) <= 15
+    )
+    if strong_count >= 3 and negative_count == 0:
+        return 90
+    if strong_count == 2 and negative_count <= 1:
+        return 75
+    if strong_count == 1 and negative_count == 0:
+        return 55
+    if negative_count >= 2:
+        return 20
+    return 35
+
+
+def score_external_demand_deployment(theme: dict[str, Any], stocks: list[dict[str, Any]]) -> int:
+    text_blob = theme_text_blob(theme, stocks)
+    base_scores = sorted(
+        max(
+            (stock.get("scoreBreakdown") or {}).get("materialCompanyEvent30dScore", 0),
+            (stock.get("scoreBreakdown") or {}).get("orderQualificationScore", 0),
+        )
+        for stock in stocks
+    )
+    top = base_scores[-3:] if base_scores else [20]
+    core = sum(top) / len(top)
+    keyword_hits = len(re.findall("|".join(CAPEX_DEPLOYMENT_PATTERNS + ORDER_QUAL_PATTERNS), text_blob, flags=re.IGNORECASE))
+    breadth = sum(
+        1
+        for stock in stocks
+        if max(
+            (stock.get("scoreBreakdown") or {}).get("materialCompanyEvent30dScore", 0),
+            (stock.get("scoreBreakdown") or {}).get("orderQualificationScore", 0),
+        ) >= 65
+    )
+    tail = min(100, breadth * 20 + keyword_hits * 4)
+    return clamp(core * 0.7 + tail * 0.3, 0, 100)
+
+
+def score_price_shortage_leadtime(theme: dict[str, Any], stocks: list[dict[str, Any]]) -> int:
+    text_blob = theme_text_blob(theme, stocks)
+    keyword_hits = len(re.findall("|".join(PRICE_SHORTAGE_PATTERNS), text_blob, flags=re.IGNORECASE)) if PRICE_SHORTAGE_PATTERNS else 0
+    stock_hits = sum(
+        1
+        for stock in stocks
+        if match_any(PRICE_SHORTAGE_PATTERNS, aggregate_stock_text(stock, []))
+        or "價格重估" in stock.get("coreReason", "")
+    )
+    if keyword_hits >= 4 or stock_hits >= 3:
+        return 85
+    if keyword_hits >= 2 or stock_hits >= 2:
+        return 70
+    if keyword_hits or stock_hits:
+        return 50
+    return 25
+
+
+def scale_theme_calendar_second_leg(score_breakdown: dict[str, Any]) -> int:
+    calendar_component = ((score_breakdown.get("calendarScore") or 0) / 25) * 55
+    second_leg_component = ((score_breakdown.get("secondLegEvidenceScore") or 0) / 20) * 45
+    return clamp(calendar_component + second_leg_component, 0, 100)
+
+
+def scale_theme_persistence(theme: dict[str, Any]) -> int:
+    raw = (theme.get("scoreBreakdown") or {}).get("persistenceScore", 0)
+    return clamp(raw * (100 / 15), 0, 100)
+
+
+def score_theme_attention(theme: dict[str, Any], stocks: list[dict[str, Any]]) -> int:
+    avg_attention = sum((stock.get("scoreBreakdown") or {}).get("attentionScore", 20) for stock in stocks) / max(len(stocks), 1)
+    heat_bonus = 10 if theme.get("heat") in {"偏熱", "中偏熱", "溫熱"} else 0
+    return clamp(avg_attention * 0.8 + heat_bonus, 0, 100)
 
 
 def build_mops_item(detail_json: dict[str, Any], row: list[Any], api_name: str, params: dict[str, Any]) -> MopsItem:
@@ -282,7 +825,7 @@ def stock_mops_score(items: list[MopsItem], window_dates: list[date]) -> tuple[i
     if not items:
         return 20, "no_recent_mops_material_info_verified", "最近三日未查到官方 MOPS 重大訊息。"
 
-    latest_window_dates = {roc_date_string(window_dates[0])}
+    latest_window_dates = {roc_date_string(window_dates[-1])}
     primary = max(items, key=lambda item: (DIRECTION_RANK[item.direction], item.date, item.time))
     score = DIRECTION_BASE[primary.direction]
 
@@ -352,55 +895,121 @@ def theme_mops_score(items_by_stock: list[dict[str, Any]], second_leg_status: st
 
 def recompute_stock_score(stock: dict[str, Any]) -> int:
     breakdown = stock.get("scoreBreakdown") or {}
-    return round(
-        (breakdown.get("mops3dScore") or 0) * 0.40
-        + (breakdown.get("monthContinuationScore") or 0) * 0.35
-        + (breakdown.get("shortImpulseScore") or 0) * 0.25
-    )
+    return rescaled_stock_score(breakdown)
 
 
 def recompute_theme_score(theme: dict[str, Any]) -> int:
     breakdown = theme.get("scoreBreakdown") or {}
-    return round(
-        (breakdown.get("mops3dScore") or 0) * 0.40
-        + (breakdown.get("monthContinuationScore") or 0) * 0.35
-        + (breakdown.get("shortImpulseScore") or 0) * 0.25
+    return clamp(
+        (breakdown.get("externalDemandDeployment30dScore") or 0) * 0.24
+        + (breakdown.get("priceShortageLeadtime30dScore") or 0) * 0.18
+        + (breakdown.get("companyEvidenceSpreadScore") or 0) * 0.18
+        + (breakdown.get("calendarSecondLegCompositeScore") or 0) * 0.14
+        + (breakdown.get("persistenceScaledScore") or 0) * 0.14
+        + (breakdown.get("shortImpulseScore") or 0) * 0.07
+        + (breakdown.get("attentionScore") or 0) * 0.05,
+        0,
+        100,
     )
 
 
-def build_stock_texts(stock: dict[str, Any], signal: str, summary: str) -> None:
-    if signal == "no_recent_mops_material_info_verified":
-        lead = "最近三日 MOPS 沒有新增重大訊息，月內第二段行情仍主要仰賴既有催化與量價續航。"
-        invalidation = "若接下來月內沒有新的 MOPS / 法說 / 財報節點承接，這筆月內續航 setup 會先失效。"
-    elif signal in {"high_positive", "medium_positive"}:
-        lead = f"最近三日 MOPS 顯示 {summary.rstrip('。')}，支持月內第二段行情延續。"
-        invalidation = "若後續 MOPS / 法說進度無法延續，或最新重訊只剩程序性公告，這筆月內續航 setup 會轉弱。"
-    elif signal in {"medium_negative", "high_negative"}:
-        lead = f"最近三日 MOPS 出現負面壓力：{summary.rstrip('。')}，月內第二段行情需要重新驗證。"
-        invalidation = "若後續沒有新的正面 MOPS 抵消這個負面訊號，這筆月內續航 setup 視為失效。"
-    else:
-        lead = f"最近三日 MOPS 有訊號但方向有限：{summary.rstrip('。')}，仍需後續事件確認。"
-        invalidation = "若後續 MOPS 仍無法明確偏向正面，這筆月內續航 setup 會失去優勢。"
+def strip_model_prefixes(text: str) -> str:
+    out = strip_mops_prefix(text)
+    patterns = [
+        r"^30 日公司事件[^。]*。\s*",
+        r"^30 日營收 / 財報[^。]*。\s*",
+        r"^最近三日 MOPS[^。]*。\s*",
+        r"^這次排序已改成[^。]*。\s*",
+    ]
+    for pattern in patterns:
+        out = re.sub(pattern, "", out)
+    return out.strip()
 
-    stock["notPricedIn"] = lead + " " + strip_mops_prefix(stock.get("notPricedIn", ""))
-    stock["targetLogic"] = lead + " " + strip_mops_prefix(stock.get("targetLogic", ""))
+
+def build_stock_texts(stock: dict[str, Any], info: dict[str, Any]) -> None:
+    material_score = info["material_score"]
+    revenue_score = info["revenue_score"]
+    order_score = info["order_score"]
+    speculation_flag = info["speculation_flag"]
+
+    if material_score >= 70 and revenue_score >= 70:
+        lead = "30 日公司事件與營收 / 財報加速同時成立，月內第二段行情不再只靠近三日 MOPS。"
+        invalidation = "若 30 日公司事件後續沒有延伸、且下一個財報 / 營收節點無法接棒，這筆月內續航 setup 視為失效。"
+    elif material_score >= 70:
+        lead = "30 日 material company events 已成為主要支撐，月內排序現在更看公司層證據而不是近三日公告密度。"
+        invalidation = "若 30 日公司事件無法延伸成訂單、量產或財務加速，這筆月內續航 setup 會轉弱。"
+    elif revenue_score >= 70:
+        lead = "30 日營收 / 財報加速是主要支撐，月內排序現在把基本面加速放在程序性公告之前。"
+        invalidation = "若下一個營收 / 財報節點無法確認加速，這筆月內續航 setup 會失去優勢。"
+    elif order_score >= 70:
+        lead = "30 日訂單 / 客戶 / 認證訊號成立，月內排序現在把這類 company evidence 直接拉進核心分數。"
+        invalidation = "若訂單 / 認證 / 客戶導入沒有進一步落地，這筆月內續航 setup 會回到觀察池。"
+    else:
+        lead = "這檔股票目前缺少高品質 30 日公司層證據，月內排序更多依賴既有續航與相對強弱。"
+        invalidation = "若接下來沒有新的 material company event、營收 / 財報加速或訂單 / 認證節點，這筆月內續航 setup 視為失效。"
+
+    if speculation_flag == "attention_without_company_evidence":
+        lead += " 目前可見市場注意力，但公司層硬證據仍不足。"
+
+    stock["coreReason"] = lead + " " + strip_model_prefixes(stock.get("coreReason", ""))
+    stock["notPricedIn"] = lead + " " + strip_model_prefixes(stock.get("notPricedIn", ""))
+    stock["targetLogic"] = (
+        "這次排序已改成 30 日公司事件 / 營收財報加速 / 月內續航的研究校準版。 "
+        + lead
+        + " "
+        + strip_model_prefixes(stock.get("targetLogic", ""))
+    )
     stock["invalidationTrigger"] = invalidation
 
 
 def update_stock_obj(stock: dict[str, Any], info: dict[str, Any], window_dates: list[date]) -> None:
     breakdown = stock.setdefault("scoreBreakdown", {})
-    breakdown["mops3dScore"] = info["score"]
-    stock["mops3dSignal"] = info["signal"]
-    stock["mops3dSummary"] = info["summary"]
-    stock["mops3dItems"] = info["items"]
-    stock.setdefault("gateStatus", {})["mops3d"] = summarize_gate_mops(info["score"], info["signal"])
+    breakdown["mops3dScore"] = info["mops3d_score"]
+    breakdown["materialCompanyEvent30dScore"] = info["material_score"]
+    breakdown["revenueEarningsAccelerationScore"] = info["revenue_score"]
+    breakdown["orderQualificationScore"] = info["order_score"]
+    breakdown["proceduralMopsScore"] = info["procedural_score"]
+    breakdown["attentionScore"] = info["attention_score"]
+    breakdown["persistenceScaledScore"] = scale_persistence(
+        [
+            float(breakdown.get("relativeStrength5d") or 0),
+            float(breakdown.get("relativeStrength10d") or 0),
+            float(breakdown.get("relativeStrength20d") or 0),
+        ]
+    )
+    stock["mops3dSignal"] = info["mops3d_signal"]
+    stock["mops3dSummary"] = info["mops3d_summary"]
+    stock["mops3dItems"] = info["mops3d_items"]
+    stock["materialCompanyEvent30dSummary"] = info["material_summary"]
+    stock["revenueEarnings30dSummary"] = info["revenue_summary"]
+    stock["orderQualification30dSummary"] = info["order_summary"]
+    stock["speculationFlag"] = info["speculation_flag"]
+    gate_status = stock.setdefault("gateStatus", {})
+    gate_status["mops3d"] = summarize_gate_mops(info["mops3d_score"], info["mops3d_signal"])
+    gate_status["materialCompanyEvents30d"] = info["material_summary"]
+    gate_status["revenueEarnings30d"] = info["revenue_summary"]
+    gate_status["speculation"] = info["speculation_flag"] or "none"
     stock["stockScore"] = recompute_stock_score(stock)
-    build_stock_texts(stock, info["signal"], info["summary"])
+    build_stock_texts(stock, info)
 
 
-def update_theme_obj(theme: dict[str, Any], stock_infos: list[dict[str, Any]], window_dates: list[date]) -> None:
+def update_theme_obj(theme: dict[str, Any], stocks: list[dict[str, Any]], window_dates: list[date]) -> None:
+    stock_infos = [
+        {
+            "ticker": stock["ticker"],
+            "mops3dScore": stock.get("scoreBreakdown", {}).get("mops3dScore", 20),
+        }
+        for stock in stocks
+    ] or [{"ticker": "", "mops3dScore": 20}]
     score, breadth, summary = theme_mops_score(stock_infos, (theme.get("gateStatus") or {}).get("secondLegEvidence", ""))
-    theme.setdefault("scoreBreakdown", {})["mops3dScore"] = score
+    breakdown = theme.setdefault("scoreBreakdown", {})
+    breakdown["mops3dScore"] = score
+    breakdown["externalDemandDeployment30dScore"] = score_external_demand_deployment(theme, stocks)
+    breakdown["priceShortageLeadtime30dScore"] = score_price_shortage_leadtime(theme, stocks)
+    breakdown["companyEvidenceSpreadScore"] = score_company_evidence_spread(stocks)
+    breakdown["calendarSecondLegCompositeScore"] = scale_theme_calendar_second_leg(breakdown)
+    breakdown["persistenceScaledScore"] = scale_theme_persistence(theme)
+    breakdown["attentionScore"] = score_theme_attention(theme, stocks)
     breadth["windowDates"] = [iso_date_string(d) for d in window_dates]
     theme["mops3dBreadth"] = breadth
     theme["mops3dSummary"] = summary
@@ -427,6 +1036,10 @@ def make_top_pick(stock: dict[str, Any], theme_name: str, existing_map: dict[str
         "mops3dSignal": stock.get("mops3dSignal", ""),
         "mops3dSummary": stock.get("mops3dSummary", ""),
         "mops3dItems": deepcopy(stock.get("mops3dItems", [])),
+        "materialCompanyEvent30dSummary": stock.get("materialCompanyEvent30dSummary", ""),
+        "revenueEarnings30dSummary": stock.get("revenueEarnings30dSummary", ""),
+        "orderQualification30dSummary": stock.get("orderQualification30dSummary", ""),
+        "speculationFlag": stock.get("speculationFlag", ""),
     }
 
 
@@ -484,21 +1097,21 @@ def update_report_narrative(before_report: dict[str, Any], after_report: dict[st
     after_report["headline"] = (
         f"{short_date} 收盤 MOPS 驗證重算版：月內 Regime {monthly.get('score', 0)} 分 / {monthly.get('mode', '')}、"
         f"短線 Regime {short_term.get('score', 0)} 分 / {short_term.get('mode', '')}；"
-        f"官方 MOPS 近三日內文已納入最高權重分項，"
+        f"排序核心已改成 30 日公司事件與營收 / 財報加速，"
         f"{'前五主線與首頁主選股已重排' if (theme_changed or pick_changed) else '前五主線與首頁主選股不變'}。"
     )
     after_report["deck"] = (
-        "這次不是新的價格日 rerun，而是把最近三日官方 MOPS 重大訊息從 provisional baseline 改成直接抓取 "
-        "t05st01 / t05st01_detail 內文後重算。"
+        "這次不是新的價格日 rerun，而是把排序邏輯從 MOPS 三日高權重，改成研究校準後的 "
+        "30 日 material company events / 營收財報加速 / 訂單認證 / 月內續航模型。"
         f" 重算後目前月內前五主線是：{'、'.join(after_themes)}。"
     )
     after_report["executiveSummary"] = [
-        f"這版保留 {after_report.get('priceDate')} 的官方收盤與法人基準，但把最近三日官方 MOPS 重大訊息改成直接抓內文驗證。",
+        f"這版保留 {after_report.get('priceDate')} 的官方收盤與法人基準，但把核心排序邏輯改成 30 日公司事件與營收 / 財報加速研究校準版。",
         f"MOPS 內文重算後，月內 Regime 為 {monthly.get('score', 0)} / {monthly.get('mode', '')}，短線 Regime 為 {short_term.get('score', 0)} / {short_term.get('mode', '')}。",
         f"題材排序{'已改變' if theme_changed else '未改變'}；目前前五主線依序為：{'、'.join(after_themes)}。",
         f"首頁主選股{'已改變' if pick_changed else '未改變'}；目前六檔依序為：{'、'.join(after_picks)}。",
-        "這次可見差異不再來自 provisional baseline，而是每檔股票最近三日官方 MOPS 重大訊息本身的方向、廣度與內文內容。",
-        "官方 U.S. macro 與 Hormuz 事件桶本輪沒有新增更晚輸入，所以這次改變主要來自 MOPS 三日權重真正落地。",
+        "這次可見差異不再只來自最近三日 MOPS，而是 30 日公司層硬證據、營收 / 財報加速、訂單 / 認證與月內續航分數的重新定權。",
+        "官方 U.S. macro 與 Hormuz 事件桶本輪沒有新增更晚輸入，所以這次改變主要來自排序引擎研究校準真正落地。",
     ]
 
 
@@ -519,13 +1132,14 @@ def build_new_discoveries(stock_info_map: dict[str, dict[str, Any]], ticker_name
     priority = sorted(
         stock_info_map.items(),
         key=lambda kv: (
-            kv[1]["score"],
-            sum(1 for item in kv[1]["raw_items"] if item.direction in {"high_positive", "medium_positive"}),
+            kv[1]["material_score"],
+            kv[1]["revenue_score"],
+            sum(1 for item in kv[1]["raw_items_30d"] if item.direction in {"high_positive", "medium_positive"}),
         ),
         reverse=True,
     )
     for ticker, info in priority:
-        items = [item for item in info["raw_items"] if item.direction in {"high_positive", "medium_positive"}]
+        items = [item for item in info["raw_items_30d"] if item.direction in {"high_positive", "medium_positive"}]
         if not items:
             continue
         item = items[0]
@@ -534,7 +1148,7 @@ def build_new_discoveries(stock_info_map: dict[str, dict[str, Any]], ticker_name
                 "scope": theme_lookup.get(ticker, "MOPS"),
                 "title": f"{ticker} {ticker_name_map.get(ticker, '')} {item.date} {item.title}",
                 "detail": item.summary or item.title,
-                "whyItMatters": "最近三日官方 MOPS 重大訊息已直接驗證並併入月內排序分數。",
+                "whyItMatters": "最近 30 日公司層事件已直接驗證並併入研究校準後的月內排序分數。",
             }
         )
         if len(discoveries) >= 3:
@@ -546,6 +1160,7 @@ def write_log(
     before_report: dict[str, Any],
     after_report: dict[str, Any],
     window_dates: list[date],
+    window_30d: list[date],
     stock_info_map: dict[str, dict[str, Any]],
 ) -> Path:
     LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -554,18 +1169,19 @@ def write_log(
     before_themes = [theme["name"] for theme in before_report.get("themes") or []]
     after_themes = [theme["name"] for theme in after_report.get("themes") or []]
     lines = [
-        "# MOPS 3-Day Official Verification Run",
+        "# Research-Calibrated Scoring Migration Run",
         "",
         f"- Run timestamp: {now_local().isoformat()}",
         f"- Report date retained: {after_report.get('reportDate')}",
         f"- Price date retained: {after_report.get('priceDate')}",
-        "- Scope: replace provisional MOPS baseline with verified official MOPS history + detail content.",
+        "- Scope: replace MOPS-3d-dominant scoring with research-calibrated 30-day company-event / revenue-earnings / order-qualification logic.",
         "",
         "## Window",
         "",
         "- MOPS 3-day window definition: recent 3 calendar days plus recent 3 Taiwan trading weekdays fallback.",
-        f"- Window dates used: {', '.join(iso_date_string(d) for d in window_dates)}",
-        "- Official endpoints verified:",
+        f"- 3-day hybrid window dates used: {', '.join(iso_date_string(d) for d in window_dates)}",
+        f"- 30-day company-event window used: {iso_date_string(window_30d[-1])} to {iso_date_string(window_30d[0])}",
+        "- Official endpoints used:",
         "  - POST https://mops.twse.com.tw/mops/api/t05st01",
         "  - POST https://mops.twse.com.tw/mops/api/t05st01_detail",
         "",
@@ -574,12 +1190,12 @@ def write_log(
         f"- Before order: {' | '.join(before_themes)}",
         f"- After order: {' | '.join(after_themes)}",
         "",
-        "## Major Stock MOPS Scores",
+        "## Major Stock Score Inputs",
         "",
     ]
     for ticker, info in sorted(stock_info_map.items(), key=lambda kv: kv[1]["score"], reverse=True)[:12]:
         lines.append(
-            f"- {ticker}: mops3dScore {info['score']}, signal {info['signal']}, items {len(info['raw_items'])}; {info['summary']}"
+            f"- {ticker}: mops3d {info['mops3d_score']}, material30d {info['material_score']}, revenue {info['revenue_score']}, order {info['order_score']}, attention {info['attention_score']}; {info['material_summary']}"
         )
     lines.extend(
         [
@@ -598,6 +1214,8 @@ def main() -> None:
     before = deepcopy(report)
     anchor = now_local().date()
     window_dates = hybrid_window(anchor)
+    window_30d = recent_calendar_dates(anchor, 30)
+    hybrid_set = {iso_date_string(d) for d in window_dates}
 
     ticker_name_map: dict[str, str] = {}
     theme_lookup: dict[str, str] = {}
@@ -614,23 +1232,57 @@ def main() -> None:
         unique_stocks.setdefault(stock["ticker"], stock)
 
     stock_info_map: dict[str, dict[str, Any]] = {}
-    for ticker in unique_stocks:
-        raw_items = fetch_stock_mops_items(ticker, window_dates)
-        score, signal, summary = stock_mops_score(raw_items, window_dates)
+    for ticker, stock_obj in unique_stocks.items():
+        raw_items_30d = fetch_stock_mops_items(ticker, window_30d)
+        raw_items_3d = [
+            item for item in raw_items_30d if parse_roc_date(item.date) and iso_date_string(parse_roc_date(item.date)) in hybrid_set
+        ]
+        mops3d_score, mops3d_signal, mops3d_summary = stock_mops_score(raw_items_3d, window_dates)
+        material_score, material_signal, material_summary = score_material_company_events_30d(raw_items_30d, anchor)
+        procedural_score, procedural_signal, procedural_summary = score_procedural_mops_30d(raw_items_30d, anchor)
+        revenue_score, revenue_summary = score_revenue_earnings_acceleration(stock_obj, raw_items_30d, anchor)
+        order_score, order_summary = score_order_qualification(stock_obj, raw_items_30d, anchor)
+        attention_score, attention_summary = score_attention(stock_obj, raw_items_30d)
+        base_breakdown = stock_obj.get("scoreBreakdown") or {}
+        draft_scores = {
+            "materialCompanyEvent30dScore": material_score,
+            "revenueEarningsAccelerationScore": revenue_score,
+            "orderQualificationScore": order_score,
+            "proceduralMopsScore": procedural_score,
+            "attentionScore": attention_score,
+            "shortImpulseScore": base_breakdown.get("shortImpulseScore", 0),
+            "monthContinuationScore": base_breakdown.get("monthContinuationScore", 0),
+        }
+        speculation_flag = derive_speculation_flag(stock_obj, draft_scores)
         stock_info_map[ticker] = {
-            "score": score,
-            "signal": signal,
-            "summary": summary,
-            "items": [
+            "score": mops3d_score,
+            "mops3d_score": mops3d_score,
+            "mops3d_signal": mops3d_signal,
+            "mops3d_summary": mops3d_summary,
+            "mops3d_items": [
                 {
                     "date": item.date,
                     "title": item.title,
                     "direction": item.direction,
                     "url": item.url,
                 }
-                for item in raw_items
+                for item in raw_items_3d
             ],
-            "raw_items": raw_items,
+            "material_score": material_score,
+            "material_signal": material_signal,
+            "material_summary": material_summary,
+            "procedural_score": procedural_score,
+            "procedural_signal": procedural_signal,
+            "procedural_summary": procedural_summary,
+            "revenue_score": revenue_score,
+            "revenue_summary": revenue_summary,
+            "order_score": order_score,
+            "order_summary": order_summary,
+            "attention_score": attention_score,
+            "attention_summary": attention_summary,
+            "speculation_flag": speculation_flag,
+            "raw_items": raw_items_3d,
+            "raw_items_30d": raw_items_30d,
         }
 
     for theme in report.get("themes") or []:
@@ -639,14 +1291,7 @@ def main() -> None:
         theme["stocks"].sort(key=lambda stock: (stock.get("stockScore", 0), stock["ticker"]), reverse=True)
         for idx, stock in enumerate(theme["stocks"], start=1):
             stock["rank"] = idx
-        theme_stock_infos = [
-            {
-                "ticker": stock["ticker"],
-                "mops3dScore": stock.get("scoreBreakdown", {}).get("mops3dScore", 20),
-            }
-            for stock in theme["stocks"]
-        ]
-        update_theme_obj(theme, theme_stock_infos, window_dates)
+        update_theme_obj(theme, theme["stocks"], window_dates)
 
     report["themes"].sort(key=lambda theme: (theme.get("themeScore", 0), theme["name"]), reverse=True)
     for idx, theme in enumerate(report["themes"], start=1):
@@ -657,7 +1302,9 @@ def main() -> None:
     report["observationStocks"].sort(key=lambda stock: (stock.get("stockScore", 0), stock["ticker"]), reverse=True)
     for idx, stock in enumerate(report["observationStocks"], start=1):
         stock["rank"] = idx
-        if stock.get("scoreBreakdown", {}).get("mops3dScore", 20) < 25 and stock.get("observationCategory") != "mops_negative_pressure":
+        if stock.get("speculationFlag") == "attention_without_company_evidence":
+            stock["observationCategory"] = "speculation_only_watch"
+        elif stock.get("scoreBreakdown", {}).get("materialCompanyEvent30dScore", 20) < 25 and stock.get("observationCategory") != "mops_negative_pressure":
             stock["observationCategory"] = "mops_insufficient_month_watch"
         elif stock.get("scoreBreakdown", {}).get("mops3dScore", 20) <= 15:
             stock["observationCategory"] = "mops_negative_pressure"
@@ -667,18 +1314,13 @@ def main() -> None:
         obs_by_theme[stock["theme"]].append(stock)
     for theme in report.get("observationThemes") or []:
         stocks = obs_by_theme.get(theme["name"], [])
-        theme_stock_infos = [
-            {
-                "ticker": stock["ticker"],
-                "mops3dScore": stock.get("scoreBreakdown", {}).get("mops3dScore", 20),
-            }
-            for stock in stocks
-        ] or [{"ticker": "", "mops3dScore": 20}]
-        update_theme_obj(theme, theme_stock_infos, window_dates)
+        update_theme_obj(theme, stocks, window_dates)
     report["observationThemes"].sort(key=lambda theme: (theme.get("themeScore", 0), theme["name"]), reverse=True)
     for idx, theme in enumerate(report["observationThemes"], start=1):
         theme["rank"] = idx
-        if theme.get("scoreBreakdown", {}).get("mops3dScore", 20) < 25 and theme.get("observationCategory") != "mops_negative_pressure":
+        if theme.get("scoreBreakdown", {}).get("companyEvidenceSpreadScore", 20) < 35 and theme.get("scoreBreakdown", {}).get("shortImpulseScore", 0) >= 75:
+            theme["observationCategory"] = "short_strong_month_insufficient"
+        elif theme.get("scoreBreakdown", {}).get("externalDemandDeployment30dScore", 20) < 35 and theme.get("observationCategory") != "mops_negative_pressure":
             theme["observationCategory"] = "mops_insufficient_month_watch"
         elif theme.get("scoreBreakdown", {}).get("mops3dScore", 20) <= 15:
             theme["observationCategory"] = "mops_negative_pressure"
@@ -690,6 +1332,8 @@ def main() -> None:
         for stock in theme.get("stocks") or []:
             signal = stock.get("mops3dSignal", "")
             if signal in {"high_negative", "medium_negative"} and stock.get("scoreBreakdown", {}).get("mops3dScore", 20) <= 15:
+                continue
+            if stock.get("speculationFlag") == "attention_without_company_evidence":
                 continue
             eligible_trade_stocks.append((theme["name"], stock))
     eligible_trade_stocks.sort(key=lambda pair: (pair[1].get("stockScore", 0), pair[1]["ticker"]), reverse=True)
@@ -705,9 +1349,9 @@ def main() -> None:
     sources = [src for src in sources if "MOPS" not in (src.get("label") or "")]
     sources.append(
         {
-            "label": "MOPS 歷史重大訊息 / 明細 API（2026-05-06 驗證）",
+            "label": "MOPS 歷史重大訊息 / 明細 API（30日公司事件校準版）",
             "url": "https://mops.twse.com.tw/mops/#/web/t05st01",
-            "note": "本版已直接用官方 t05st01 / t05st01_detail 近三日重大訊息與內文重算 mops3dScore。",
+            "note": "本版直接用官方 t05st01 / t05st01_detail 抽取近 30 日公司事件與近三日 MOPS，重算研究校準版分數。",
         }
     )
     report["sources"] = sources
@@ -724,23 +1368,24 @@ def main() -> None:
         footnote,
     ).strip()
     report["footnote"] = (
-        footnote + " 本版已以官方 MOPS t05st01 / t05st01_detail 直接驗證最近三日重大訊息與內文，不再使用 provisional baseline。"
+        footnote
+        + " 本版已把排序邏輯改成 30 日 material company events、營收 / 財報加速、訂單 / 認證與月內續航研究校準版；近三日 MOPS 只保留為輔助訊號。"
     ).strip()
 
     cp = report.get("changesComparedToPrevious") or {}
-    cp["summary"] = "這次把 MOPS 最近三日重大訊息從 provisional baseline 改成官方內文驗證，並依新分數重算目前網站上的題材與個股排序。"
+    cp["summary"] = "這次把題材與個股排序從 MOPS 三日高權重，改成研究校準後的 30 日公司事件 / 營收財報加速 / 月內續航模型。"
     cp_items = [
         {
-            "title": "MOPS 三日重大訊息已改用官方內文驗證",
-            "reason": "現在直接用 MOPS t05st01 / t05st01_detail 抓公司近三日重大訊息與內文，不再只顯示 provisional baseline。",
+            "title": "個股主排序改成 30 日公司事件與營收 / 財報加速",
+            "reason": "最高權重不再是單一 mops3dScore，而是 30 日 material company events + 營收 / 財報加速，近三日 MOPS 改成輔助訊號。",
         },
         {
-            "title": "題材與個股 mops3dScore 已改成真實分數",
-            "reason": "每檔股票都以最近三日官方重大訊息重算 mops3dScore，題材則依 constituent breadth 重新計算。",
+            "title": "題材主排序改成外需部署 / 產業價格 / 公司證據擴散",
+            "reason": "題材層不再被單一 MOPS 分數主導，而是以 30 日外需部署證據、價格 / shortage 訊號與台股公司層證據擴散重算。",
         },
         {
-            "title": "首頁主選股與題材排序已按真實 MOPS 權重重排",
-            "reason": "這次不是新的價格日 rerun，但可見排序已按真實 MOPS 權重重算，而不是沿用 baseline 20 / 23 分。",
+            "title": "純注意力 / 程序性公告不再足以推進交易池",
+            "reason": "研究校準後，純法說 / 券商 / 程序性 MOPS 只能做低權重加分；缺少公司層硬證據的名字會被壓回觀察池。",
         },
     ]
     cp["items"] = cp_items
@@ -749,7 +1394,7 @@ def main() -> None:
     update_report_narrative(before, report)
 
     save_json(LATEST_JSON, report)
-    log_path = write_log(before, report, window_dates, stock_info_map)
+    log_path = write_log(before, report, window_dates, window_30d, stock_info_map)
     print(str(log_path))
 
 

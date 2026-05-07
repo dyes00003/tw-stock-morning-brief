@@ -72,6 +72,7 @@ function render(report) {
           </div>
           <p class="focus-note">${pick.reason}</p>
           <p class="focus-subnote">${formatSplitScoreLine(pick.scoreBreakdown, "stock")}</p>
+          ${formatEvidenceSummary(pick.materialCompanyEvent30dSummary, pick.revenueEarnings30dSummary, pick.orderQualification30dSummary) ? `<p class="focus-subnote">${formatEvidenceSummary(pick.materialCompanyEvent30dSummary, pick.revenueEarnings30dSummary, pick.orderQualification30dSummary)}</p>` : ""}
           ${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal) ? `<p class="focus-subnote">${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal)}</p>` : ""}
           <p class="focus-subnote">${formatStockSignalLine(pick.scoreBreakdown)}</p>
           ${pick.alternativeRejected ? `<p class="focus-subnote">勝過替代：${pick.alternativeRejected}</p>` : ""}
@@ -133,6 +134,7 @@ function render(report) {
               </div>
               <p class="body-copy">${stock.reason || stock.observationReason || "這檔股票已有題材或事件訊號，但還沒進到月內交易池名單。"}</p>
               <p class="focus-subnote">${formatSplitScoreLine(stock.scoreBreakdown, "stock")}</p>
+              ${formatEvidenceSummary(stock.materialCompanyEvent30dSummary, stock.revenueEarnings30dSummary, stock.orderQualification30dSummary) ? `<p class="focus-subnote">${formatEvidenceSummary(stock.materialCompanyEvent30dSummary, stock.revenueEarnings30dSummary, stock.orderQualification30dSummary)}</p>` : ""}
               ${formatMopsSummary(stock.mops3dSummary, stock.mops3dSignal) ? `<p class="focus-subnote">${formatMopsSummary(stock.mops3dSummary, stock.mops3dSignal)}</p>` : ""}
               <p class="focus-subnote">${formatStockSignalLine(stock.scoreBreakdown)}</p>
               <div class="observation-meta">
@@ -454,7 +456,7 @@ function renderTheme(theme, open) {
           </div>
           <div class="theme-meta">
             <div class="info-block">
-              <p class="info-label">MOPS 3日 / 月內續航 / 短線衝力</p>
+              <p class="info-label">30日事件 / 證據擴散 / 月內續航 / 短線衝力</p>
               <p class="info-text">${splitScoreLine || "目前沒有 split score 欄位。"}</p>
             </div>
             <div class="info-block">
@@ -551,7 +553,7 @@ function renderStock(theme, stock) {
 
       <div class="split-copy">
         <div class="info-block">
-          <p class="info-label">MOPS 3日 / 月內續航 / 短線衝力</p>
+          <p class="info-label">30日公司事件 / 營收財報 / 月內續航 / 短線衝力</p>
           <p class="info-text">${formatSplitScoreLine(stock.scoreBreakdown, "stock") || "目前沒有 split score 欄位。"}</p>
         </div>
         <div class="info-block">
@@ -559,6 +561,14 @@ function renderStock(theme, stock) {
           <p class="info-text">${formatStockSignalLine(stock.scoreBreakdown) || "目前沒有 20 日催化與 persistence 欄位。"}</p>
         </div>
       </div>
+      ${formatEvidenceSummary(stock.materialCompanyEvent30dSummary, stock.revenueEarnings30dSummary, stock.orderQualification30dSummary) ? `
+        <div class="split-copy">
+          <div class="info-block">
+            <p class="info-label">30日公司層證據摘要</p>
+            <p class="info-text">${formatEvidenceSummary(stock.materialCompanyEvent30dSummary, stock.revenueEarnings30dSummary, stock.orderQualification30dSummary)}</p>
+          </div>
+        </div>
+      ` : ""}
       ${formatMopsSummary(stock.mops3dSummary, stock.mops3dSignal) ? `
         <div class="split-copy">
           <div class="info-block">
@@ -695,6 +705,7 @@ function renderObservationCategoryBadge(category) {
     month_viable_short_crowded: "月內可追，但短線過擠",
     mops_insufficient_month_watch: "MOPS不足，月內續航仍可觀察",
     mops_negative_pressure: "MOPS負面壓制",
+    speculation_only_watch: "純注意力，只留觀察",
   };
 
   return `<span class="pill">${labelMap[category] || String(category)}</span>`;
@@ -792,13 +803,34 @@ function formatBreadthStats(stats) {
 function formatSplitScoreLine(scoreBreakdown, type) {
   if (!scoreBreakdown || typeof scoreBreakdown !== "object") return "";
 
-  const mopsScore = scoreBreakdown.mops3dScore;
   const monthScore = scoreBreakdown.monthContinuationScore;
   const shortScore = scoreBreakdown.shortImpulseScore;
-  if (!Number.isFinite(mopsScore) && !Number.isFinite(monthScore) && !Number.isFinite(shortScore)) return "";
-
   const parts = [];
-  if (Number.isFinite(mopsScore)) parts.push(`MOPS 3日 ${Math.round(mopsScore)}`);
+  if (type === "stock") {
+    if (Number.isFinite(scoreBreakdown.materialCompanyEvent30dScore)) {
+      parts.push(`30日公司事件 ${Math.round(scoreBreakdown.materialCompanyEvent30dScore)}`);
+    } else if (Number.isFinite(scoreBreakdown.mops3dScore)) {
+      parts.push(`MOPS 3日 ${Math.round(scoreBreakdown.mops3dScore)}`);
+    }
+    if (Number.isFinite(scoreBreakdown.revenueEarningsAccelerationScore)) {
+      parts.push(`營收財報 ${Math.round(scoreBreakdown.revenueEarningsAccelerationScore)}`);
+    }
+    if (Number.isFinite(scoreBreakdown.orderQualificationScore)) {
+      parts.push(`訂單認證 ${Math.round(scoreBreakdown.orderQualificationScore)}`);
+    }
+  } else if (type === "theme") {
+    if (Number.isFinite(scoreBreakdown.externalDemandDeployment30dScore)) {
+      parts.push(`外需部署 ${Math.round(scoreBreakdown.externalDemandDeployment30dScore)}`);
+    } else if (Number.isFinite(scoreBreakdown.mops3dScore)) {
+      parts.push(`MOPS 3日 ${Math.round(scoreBreakdown.mops3dScore)}`);
+    }
+    if (Number.isFinite(scoreBreakdown.priceShortageLeadtime30dScore)) {
+      parts.push(`價格/shortage ${Math.round(scoreBreakdown.priceShortageLeadtime30dScore)}`);
+    }
+    if (Number.isFinite(scoreBreakdown.companyEvidenceSpreadScore)) {
+      parts.push(`公司證據擴散 ${Math.round(scoreBreakdown.companyEvidenceSpreadScore)}`);
+    }
+  }
   if (Number.isFinite(monthScore)) parts.push(`${monthLabel} ${Math.round(monthScore)}`);
   if (Number.isFinite(shortScore)) parts.push(`${shortLabel} ${Math.round(shortScore)}`);
   return parts.join(" / ");
@@ -811,6 +843,16 @@ function formatMopsSummary(summary, signal = "") {
   if (summary) return summary;
   if (signal) return `MOPS 3日訊號：${signal}`;
   return "";
+}
+
+function formatEvidenceSummary(materialSummary, revenueSummary, orderSummary) {
+  const parts = [materialSummary, revenueSummary, orderSummary]
+    .filter(Boolean)
+    .map((text) => String(text).trim())
+    .filter((text, index, arr) => text && arr.indexOf(text) === index);
+
+  if (!parts.length) return "";
+  return parts.slice(0, 2).join(" ");
 }
 
 function formatMopsBreadth(breadth) {
