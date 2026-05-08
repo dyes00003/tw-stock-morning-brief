@@ -44,7 +44,7 @@ def post_json(url: str, payload: dict[str, Any]) -> dict[str, Any]:
         },
         method="POST",
     )
-    with urlopen(req, timeout=30) as resp:
+    with urlopen(req, timeout=8) as resp:
         return json.loads(resp.read().decode("utf-8"))
 
 
@@ -645,14 +645,14 @@ def derive_speculation_flag(stock: dict[str, Any], scores: dict[str, int]) -> st
 def rescaled_stock_score(breakdown: dict[str, Any]) -> int:
     persistence_scaled = breakdown.get("persistenceScaledScore", 0)
     return clamp(
-        (breakdown.get("materialCompanyEvent30dScore") or 0) * 0.30
-        + (breakdown.get("revenueEarningsAccelerationScore") or 0) * 0.25
-        + (breakdown.get("orderQualificationScore") or 0) * 0.15
-        + (breakdown.get("monthContinuationScore") or 0) * 0.10
-        + persistence_scaled * 0.08
+        (breakdown.get("materialCompanyEvent30dScore") or 0) * 0.32
+        + (breakdown.get("revenueEarningsAccelerationScore") or 0) * 0.16
+        + (breakdown.get("orderQualificationScore") or 0) * 0.20
+        + (breakdown.get("monthContinuationScore") or 0) * 0.12
+        + persistence_scaled * 0.10
         + (breakdown.get("shortImpulseScore") or 0) * 0.05
         + (breakdown.get("attentionScore") or 0) * 0.04
-        + (breakdown.get("proceduralMopsScore") or 0) * 0.03,
+        + (breakdown.get("proceduralMopsScore") or 0) * 0.01,
         0,
         100,
     )
@@ -794,16 +794,19 @@ def fetch_stock_mops_items(ticker: str, window_dates: list[date]) -> list[MopsIt
     wanted_dates = {roc_date_string(d) for d in window_dates}
     items: list[MopsItem] = []
     for year, month, first_day, last_day in group_window_by_month(window_dates):
-        resp = post_json(
-            f"{MOPS_API_BASE}/t05st01",
-            {
-                "companyId": ticker,
-                "year": year,
-                "month": month,
-                "firstDay": first_day,
-                "lastDay": last_day,
-            },
-        )
+        try:
+            resp = post_json(
+                f"{MOPS_API_BASE}/t05st01",
+                {
+                    "companyId": ticker,
+                    "year": year,
+                    "month": month,
+                    "firstDay": first_day,
+                    "lastDay": last_day,
+                },
+            )
+        except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+            continue
         rows = ((resp.get("result") or {}).get("data") or [])
         for row in rows:
             if len(row) < 6:
@@ -815,7 +818,10 @@ def fetch_stock_mops_items(ticker: str, window_dates: list[date]) -> list[MopsIt
             params = link_info.get("parameters") or {}
             if not api_name or not params:
                 continue
-            detail = post_json(f"{MOPS_API_BASE}/{api_name}", params)
+            try:
+                detail = post_json(f"{MOPS_API_BASE}/{api_name}", params)
+            except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+                continue
             items.append(build_mops_item(detail, row, api_name, params))
     items.sort(key=lambda item: (item.date, item.time, item.title))
     return items
