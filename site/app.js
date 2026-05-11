@@ -75,7 +75,7 @@ function render(report) {
           </div>
           <p class="focus-note">${pick.reason}</p>
           <p class="focus-subnote">所屬題材：${formatThemeName(pick.theme)}</p>
-          <p class="focus-subnote">${formatSplitScoreLine(pick.scoreBreakdown, "stock")}</p>
+          <p class="focus-subnote">打分：${formatScoreSummary(pick.stockScore, pick.scoreBreakdown, "stock")}</p>
           ${formatEvidenceSummary(pick.materialCompanyEvent30dSummary, pick.revenueEarnings30dSummary, pick.orderQualification30dSummary) ? `<p class="focus-subnote">${formatEvidenceSummary(pick.materialCompanyEvent30dSummary, pick.revenueEarnings30dSummary, pick.orderQualification30dSummary)}</p>` : ""}
           ${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal) ? `<p class="focus-subnote">${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal)}</p>` : ""}
           <p class="focus-subnote">${formatStockSignalLine(pick.scoreBreakdown)}</p>
@@ -1123,6 +1123,18 @@ function formatThemeName(theme) {
     return theme.trim();
   }
   return "未分類題材";
+}
+
+function formatScoreSummary(totalScore, scoreBreakdown, type) {
+  const parts = [];
+  if (Number.isFinite(totalScore)) {
+    parts.push(`總分 ${Math.round(totalScore)}`);
+  }
+  const splitLine = formatSplitScoreLine(scoreBreakdown, type);
+  if (splitLine) {
+    parts.push(splitLine);
+  }
+  return parts.join(" / ") || "目前沒有可顯示的分數拆解。";
 }
 
 function normalizeSummaryPoints(summary) {
