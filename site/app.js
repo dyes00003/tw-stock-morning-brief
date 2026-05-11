@@ -36,6 +36,9 @@ async function loadReport() {
 
 function render(report) {
   const discoveries = getNewDiscoveries(report);
+  const activationScan = report.activationScan || {};
+  const activationThemes = Array.isArray(activationScan.themes) ? activationScan.themes : [];
+  const officialSignalPool = Array.isArray(activationScan.officialSignalPool) ? activationScan.officialSignalPool : [];
   const tradeThemes = Array.isArray(report.themes) ? report.themes : [];
   const tradePicks = Array.isArray(report.topPicks) ? report.topPicks : [];
   const observationThemes = Array.isArray(report.observationThemes) ? report.observationThemes : [];
@@ -165,11 +168,11 @@ function render(report) {
     )
     .join("");
 
-  const summaryPoints = report.executiveSummary
+  const summaryPoints = normalizeSummaryPoints(report.executiveSummary)
     .map((point) => `<li>${point}</li>`)
     .join("");
 
-  const changeItems = report.changesComparedToPrevious.items
+  const changeItems = normalizeChangeItems(report.changesComparedToPrevious)
     .map(
       (item) => `
         <article class="change-card">
@@ -220,6 +223,37 @@ function render(report) {
             )
             .join("")}
         </div>
+      </section>
+    `
+    : "";
+
+  const activationSection = activationThemes.length || officialSignalPool.length
+    ? `
+      <section class="panel animate-rise delay-1" id="ignition">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">即將啟動題材</p>
+            <h2>最近官方事件裡，最接近 2-4 週發動條件的 setup</h2>
+            <p>${activationScan.summary || "這一段會用『官方事件 → 題材擴散 → 股價反應 → 籌碼確認』四層篩法，找出最接近發動條件的題材。"}${activationScan.method ? ` 方法：${activationScan.method}。` : ""}</p>
+          </div>
+        </div>
+        ${activationThemes.length ? `
+          <div class="observation-grid">
+            ${activationThemes.map((theme) => renderActivationTheme(theme)).join("")}
+          </div>
+        ` : ""}
+        ${officialSignalPool.length ? `
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">官方新訊號池</p>
+              <h2>最近 ${activationScan.windowDays || 10} 天最值得追蹤的官方正向訊號</h2>
+              <p>只保留最近官方來源已落地、且還有價格與籌碼可追蹤的事件，不把媒體敘事直接算進來。</p>
+            </div>
+          </div>
+          <div class="observation-grid">
+            ${officialSignalPool.slice(0, 6).map((item) => renderOfficialSignalCard(item)).join("")}
+          </div>
+        ` : ""}
       </section>
     `
     : "";
@@ -295,6 +329,8 @@ function render(report) {
     ${discoverySection}
 
     ${regimeBanner}
+
+    ${activationSection}
 
     <section class="panel animate-rise delay-1" id="focus">
       <div class="section-header">
@@ -636,6 +672,7 @@ function syncQuickNav() {
 
   renameQuickNavLink("#focus", "月內交易池股票");
   renameQuickNavLink("#themes", "月內交易池題材");
+  toggleQuickNavLink("#ignition", "即將啟動題材", "#focus", Boolean(document.getElementById("ignition")));
   ensureQuickNavLink("#observation-stocks", "月內觀察股票", "#focus");
   ensureQuickNavLink("#observation-themes", "月內觀察題材", "#themes");
 }
@@ -668,6 +705,21 @@ function ensureQuickNavLink(href, label, afterHref) {
   quickNav.appendChild(link);
 }
 
+function removeQuickNavLink(href) {
+  const link = quickNav?.querySelector(`a[href="${href}"]`);
+  if (link) {
+    link.remove();
+  }
+}
+
+function toggleQuickNavLink(href, label, afterHref, enabled) {
+  if (enabled) {
+    ensureQuickNavLink(href, label, afterHref);
+    return;
+  }
+  removeQuickNavLink(href);
+}
+
 function formatWeekRange(weekRange = {}) {
   const start = weekRange.start || weekRange.from || "未提供";
   const end = weekRange.end || weekRange.to || "未提供";
@@ -691,10 +743,105 @@ function normalizeSelectionHorizon(horizon) {
   };
 }
 
+function renderActivationTheme(theme) {
+  const whyNow = (Array.isArray(theme.whyNow) ? theme.whyNow : [])
+    .map(
+      (item) => `
+        <div class="info-block compact-card">
+          <p class="info-label">${item.label}</p>
+          <p class="info-text">${item.text}</p>
+        </div>
+      `
+    )
+    .join("");
+  const focusStocks = (Array.isArray(theme.focusStocks) ? theme.focusStocks : [])
+    .map(
+      (stock) => `
+        <li>${stock.ticker} ${stock.name}｜${stock.signalDate}｜${stock.signalKind}｜${stock.priceReactionLabel}</li>
+      `
+    )
+    .join("");
+  const risks = (Array.isArray(theme.risks) ? theme.risks : [])
+    .map((risk) => `<li>${risk}</li>`)
+    .join("");
+
+  return `
+    <article class="observation-card">
+      <p class="card-kicker">題材啟動觀察 ${theme.rank || ""}</p>
+      <div class="observation-head">
+        <h3>${theme.name || "未命名題材"}</h3>
+        <div class="badge-row compact-row">
+          ${renderActivationStateBadge(theme.activationState)}
+          ${renderScoreBadge(theme.activationScore, "啟動分數")}
+          ${theme.commonSignalKind ? `<span class="pill">${theme.commonSignalKind}</span>` : ""}
+        </div>
+      </div>
+      <p class="body-copy">${theme.summary || "目前沒有額外摘要。"}</p>
+      <p class="focus-subnote">官方訊號 ${theme.officialSignalCount || 0} 檔 / 細節確認 ${theme.detailSignalCount || 0} 檔 / 價格可做 ${theme.priceSetupCount || 0} 檔 / 第二線補漲 ${theme.secondLineOpportunityCount || 0} 檔 / 籌碼轉正 ${theme.chipPositiveCount || 0} 檔</p>
+      <div class="observation-meta">${whyNow}</div>
+      <div class="split-copy">
+        <div class="info-block compact-card">
+          <p class="info-label">代表股</p>
+          <ul class="inline-list">${focusStocks || "<li>目前沒有代表股明細。</li>"}</ul>
+        </div>
+      </div>
+      <div class="split-copy">
+        <div class="info-block compact-card">
+          <p class="info-label">下一個升級條件</p>
+          <p class="info-text">${theme.nextTrigger || "等待更多細節。"} </p>
+        </div>
+        <div class="info-block compact-card">
+          <p class="info-label">風險提醒</p>
+          <ul class="risk-list">${risks || "<li>目前沒有額外風險描述。</li>"}</ul>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderOfficialSignalCard(item) {
+  return `
+    <article class="observation-card">
+      <p class="card-kicker">${formatSignalThemes(item.themes)}</p>
+      <div class="observation-head">
+        <h3>${item.name || "未命名個股"}</h3>
+        <div class="badge-row compact-row">
+          <span class="ticker">${item.ticker || "N/A"}</span>
+          ${item.signalKind ? `<span class="pill">${item.signalKind}</span>` : ""}
+          ${renderScoreBadge(item.signalScore, "官方訊號分數")}
+        </div>
+      </div>
+      <p class="body-copy">${item.signalDate || "未提供日期"}｜${item.signalTitle || "未提供標題"}</p>
+      <p class="focus-subnote">${item.signalSummary || "目前沒有更詳細的訊號摘要。"}</p>
+      <div class="observation-meta">
+        <div class="info-block compact-card">
+          <p class="info-label">股價位置</p>
+          <p class="info-text">${formatPriceReactionSummary(item.priceReaction)}</p>
+        </div>
+        <div class="info-block compact-card">
+          <p class="info-label">籌碼確認</p>
+          <p class="info-text">${item.chipConfirmation?.label || "目前沒有籌碼摘要。"}</p>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
 function renderStateBadge(state) {
   if (!state) return "";
 
   return `<span class="state-badge state-${escapeHtml(String(state).toLowerCase())}">${formatStateLabel(state)}</span>`;
+}
+
+function renderActivationStateBadge(state) {
+  if (!state) return "";
+
+  const labelMap = {
+    ready: "Ready",
+    watch: "Watch",
+    filtered: "Filtered",
+  };
+  return `<span class="state-badge state-${escapeHtml(String(state).toLowerCase())}">${labelMap[String(state).toLowerCase()] || String(state)}</span>`;
 }
 
 function renderObservationCategoryBadge(category) {
@@ -766,6 +913,24 @@ function formatGateStatus(gateStatus) {
   }
 
   return String(gateStatus);
+}
+
+function formatSignalThemes(themes) {
+  if (!Array.isArray(themes) || !themes.length) return "未分類題材";
+  return themes.slice(0, 2).join(" / ");
+}
+
+function formatPriceReactionSummary(priceReaction) {
+  if (!priceReaction || typeof priceReaction !== "object") {
+    return "目前沒有價格反應資料。";
+  }
+  const postGain = Number.isFinite(priceReaction.postSignalGainPct)
+    ? `訊號後 ${formatSignedNumeric(priceReaction.postSignalGainPct)}`
+    : "訊號後表現未提供";
+  const preRun = Number.isFinite(priceReaction.preSignalRunPct)
+    ? `利多前 ${formatSignedNumeric(priceReaction.preSignalRunPct)}`
+    : "利多前漲幅未提供";
+  return `${priceReaction.label || "未提供判讀"}；${postGain} / ${preRun}`;
 }
 
 function countGateItems(items, fallbackCount) {
@@ -950,6 +1115,26 @@ function formatSignedAmount(value) {
   if (number > 0) return `+${number.toFixed(2)}`;
   if (number < 0) return number.toFixed(2);
   return "0.00";
+}
+
+function normalizeSummaryPoints(summary) {
+  if (Array.isArray(summary)) {
+    return summary.map((item) => String(item).trim()).filter(Boolean);
+  }
+  if (typeof summary === "string" && summary.trim()) {
+    return [summary.trim()];
+  }
+  return ["這版資料沒有提供摘要段落。"];
+}
+
+function normalizeChangeItems(changesComparedToPrevious) {
+  if (Array.isArray(changesComparedToPrevious?.items)) {
+    return changesComparedToPrevious.items;
+  }
+  if (Array.isArray(changesComparedToPrevious)) {
+    return changesComparedToPrevious;
+  }
+  return [];
 }
 
 function normalizeMarketRegime(regime) {
