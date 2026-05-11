@@ -1084,11 +1084,12 @@ def make_top_pick(stock: dict[str, Any], theme_name: str, existing_map: dict[str
     prior = existing_map.get(stock["ticker"], {})
     reason = prior.get("reason") or stock.get("coreReason") or stock.get("notPricedIn") or ""
     alternative = prior.get("alternativeRejected") or ""
+    display_theme = stock.get("primaryTheme") or theme_name
     return {
         "rank": 0,
         "ticker": stock["ticker"],
         "name": stock["name"],
-        "theme": theme_name,
+        "theme": display_theme,
         "reason": reason,
         "state": stock.get("state", ""),
         "stockScore": stock.get("stockScore", 0),
@@ -1398,7 +1399,7 @@ def main() -> None:
                 continue
             if stock.get("speculationFlag") == "attention_without_company_evidence":
                 continue
-            eligible_trade_stocks.append((theme["name"], stock))
+            eligible_trade_stocks.append((stock.get("primaryTheme") or theme["name"], stock))
     eligible_trade_stocks.sort(key=lambda pair: (pair[1].get("stockScore", 0), pair[1]["ticker"]), reverse=True)
     report["topPicks"] = [make_top_pick(stock, theme_name, existing_top_pick_map) for theme_name, stock in eligible_trade_stocks[:top_pick_count]]
     for idx, stock in enumerate(report["topPicks"], start=1):

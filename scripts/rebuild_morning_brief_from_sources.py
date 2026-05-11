@@ -426,15 +426,61 @@ def parse_tpex_market(bundle: dict[str, Any]) -> dict[str, PriceRow]:
 
 
 def parse_twse_t86_flows(bundle: dict[str, Any]) -> dict[str, tuple[float, float]]:
-    fields = bundle["fields"]
+    fields = bundle.get("fields") or []
+    if not fields or not bundle.get("data"):
+        return {}
     idx = {field: i for i, field in enumerate(fields)}
     out: dict[str, tuple[float, float]] = {}
+    def cell(row: list[Any], field_name: str) -> Any:
+        pos = idx.get(field_name)
+        if pos is None or pos >= len(row):
+            return ""
+        return row[pos]
+
+    foreign_net_field = next(
+        (
+            name
+            for name in (
+                "外陸資買賣超股數(不含外資自營商)",
+                "外資及陸資買賣超股數(不含外資自營商)",
+            )
+            if name in idx
+        ),
+        "",
+    )
+    foreign_buy_field = next(
+        (
+            name
+            for name in (
+                "外陸資買進股數(不含外資自營商)",
+                "外資及陸資買進股數(不含外資自營商)",
+            )
+            if name in idx
+        ),
+        "",
+    )
+    foreign_sell_field = next(
+        (
+            name
+            for name in (
+                "外陸資賣出股數(不含外資自營商)",
+                "外資及陸資賣出股數(不含外資自營商)",
+            )
+            if name in idx
+        ),
+        "",
+    )
     for row in bundle["data"]:
-        code = clean_text(row[idx["證券代號"]])
+        code = clean_text(cell(row, "證券代號"))
         if not (code.isdigit() and len(code) == 4):
             continue
-        foreign_net = num(row[idx["外陸資買賣超股數(不含外資自營商)"]])
-        inst_net = num(row[idx["三大法人買賣超股數"]])
+        if foreign_net_field:
+            foreign_net = num(cell(row, foreign_net_field))
+        elif foreign_buy_field and foreign_sell_field:
+            foreign_net = num(cell(row, foreign_buy_field)) - num(cell(row, foreign_sell_field))
+        else:
+            foreign_net = 0.0
+        inst_net = num(cell(row, "三大法人買賣超股數"))
         out[code] = (foreign_net, inst_net)
     return out
 
@@ -974,23 +1020,37 @@ def relative_strength(stock_return: float, index_return: float) -> float:
     return round(stock_return - index_return, 2)
 
 
-def combined_text(meta: dict[str, Any]) -> str:
+def membership_text(meta: dict[str, Any]) -> str:
     parts: list[str] = [
         meta.get("theme", ""),
         meta.get("supplyChainRole", ""),
         meta.get("chainPosition", ""),
         " ".join(meta.get("tags") or []),
         " ".join(meta.get("verifiedThemes") or []),
-        " ".join(meta.get("endMarkets") or []),
-        " ".join(meta.get("upstream") or []),
-        " ".join(meta.get("downstream") or []),
     ]
     return clean_text(" ".join(parts))
 
 
+def theme_match_score(meta: dict[str, Any], theme_def: dict[str, Any]) -> int:
+    fields = [
+        (meta.get("theme", ""), 6),
+        (meta.get("supplyChainRole", ""), 5),
+        (meta.get("chainPosition", ""), 2),
+        (" ".join(meta.get("tags") or []), 4),
+        (" ".join(meta.get("verifiedThemes") or []), 4),
+    ]
+    score = 0
+    for text, weight in fields:
+        blob = clean_text(text).lower()
+        if not blob:
+            continue
+        hits = sum(1 for keyword in theme_def["keywords"] if keyword.lower() in blob)
+        score += hits * weight
+    return score
+
+
 def match_theme(meta: dict[str, Any], theme_def: dict[str, Any]) -> bool:
-    blob = combined_text(meta)
-    return any(keyword.lower() in blob.lower() for keyword in theme_def["keywords"])
+    return theme_match_score(meta, theme_def) > 0
 
 
 def liquidity_bucket(amount_value: float) -> int:
@@ -1685,21 +1745,31 @@ def build_report() -> tuple[dict[str, Any], Path]:
 
     supply_meta = merge_supply_chain_meta()
     theme_candidates: dict[str, list[tuple[float, PriceRow, dict[str, Any]]]] = {theme["name"]: [] for theme in THEME_DEFS}
+    theme_def_map = {theme["name"]: theme for theme in THEME_DEFS}
+    theme_order = {theme["name"]: idx for idx, theme in enumerate(THEME_DEFS)}
     ticker_to_themes: dict[str, list[str]] = {}
+    ticker_to_primary_theme: dict[str, str] = {}
+    ticker_to_theme_scores: dict[str, dict[str, int]] = {}
     for ticker, row in all_market.items():
         meta = supply_meta.get(ticker)
         if not meta:
             continue
         matched: list[str] = []
+        theme_scores: dict[str, int] = {}
         for theme_def in THEME_DEFS:
-            if match_theme(meta, theme_def):
+            match_score = theme_match_score(meta, theme_def)
+            if match_score > 0:
                 matched.append(theme_def["name"])
+                theme_scores[theme_def["name"]] = match_score
                 theme_candidates[theme_def["name"]].append((compute_preliminary_score(row, meta), row, meta))
         if matched:
+            matched.sort(key=lambda name: (theme_scores[name], -theme_order[name]), reverse=True)
             ticker_to_themes[ticker] = matched
+            ticker_to_primary_theme[ticker] = matched[0]
+            ticker_to_theme_scores[ticker] = theme_scores
 
     candidate_rows: dict[str, PriceRow] = {}
-    candidate_theme_defs: dict[str, dict[str, Any]] = {theme["name"]: theme for theme in THEME_DEFS}
+    candidate_theme_defs: dict[str, dict[str, Any]] = theme_def_map
     for theme_name, rows in theme_candidates.items():
         rows.sort(key=lambda item: item[0], reverse=True)
         kept = 0
@@ -1773,6 +1843,8 @@ def build_report() -> tuple[dict[str, Any], Path]:
         meta = supply_meta[ticker]
         for theme_name in ticker_to_themes.get(ticker, []):
             card = build_stock_card(row, meta, candidate_theme_defs[theme_name], stock_info_map[ticker], index_returns)
+            card["primaryTheme"] = ticker_to_primary_theme.get(ticker, theme_name)
+            card["themeMatchScore"] = ticker_to_theme_scores.get(ticker, {}).get(theme_name, 0)
             themed_stock_cards[theme_name].append(card)
 
     official_signal_cards = build_official_signal_cards(
@@ -1829,7 +1901,7 @@ def build_report() -> tuple[dict[str, Any], Path]:
                 continue
             if stock["speculationFlag"] == "attention_without_company_evidence":
                 continue
-            eligible_top_picks.append((theme["name"], stock))
+            eligible_top_picks.append((stock.get("primaryTheme") or theme["name"], stock))
     eligible_top_picks.sort(key=lambda pair: (pair[1]["stockScore"], pair[1]["ticker"]), reverse=True)
 
     top_picks = []
