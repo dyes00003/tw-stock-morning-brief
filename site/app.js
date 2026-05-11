@@ -66,7 +66,7 @@ function render(report) {
           <div class="focus-title">
             <h3>${pick.rank}. ${pick.name}</h3>
             <span class="ticker">${pick.ticker}</span>
-            <span class="chip">${pick.theme}</span>
+            <span class="chip">${formatThemeName(pick.theme)}</span>
           </div>
           <div class="badge-row compact-row">
             ${renderStateBadge(pick.state)}
@@ -74,6 +74,7 @@ function render(report) {
             ${renderGateBadge(pick.gateStatus)}
           </div>
           <p class="focus-note">${pick.reason}</p>
+          <p class="focus-subnote">所屬題材：${formatThemeName(pick.theme)}</p>
           <p class="focus-subnote">${formatSplitScoreLine(pick.scoreBreakdown, "stock")}</p>
           ${formatEvidenceSummary(pick.materialCompanyEvent30dSummary, pick.revenueEarnings30dSummary, pick.orderQualification30dSummary) ? `<p class="focus-subnote">${formatEvidenceSummary(pick.materialCompanyEvent30dSummary, pick.revenueEarnings30dSummary, pick.orderQualification30dSummary)}</p>` : ""}
           ${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal) ? `<p class="focus-subnote">${formatMopsSummary(pick.mops3dSummary, pick.mops3dSignal)}</p>` : ""}
@@ -1115,6 +1116,13 @@ function formatSignedAmount(value) {
   if (number > 0) return `+${number.toFixed(2)}`;
   if (number < 0) return number.toFixed(2);
   return "0.00";
+}
+
+function formatThemeName(theme) {
+  if (typeof theme === "string" && theme.trim()) {
+    return theme.trim();
+  }
+  return "未分類題材";
 }
 
 function normalizeSummaryPoints(summary) {
