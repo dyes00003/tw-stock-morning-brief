@@ -3,8 +3,8 @@ import {
   formatNumber,
   getNewDiscoveries,
   loadLatestReport,
-} from "./report-utils.js";
-import { initReadingMode } from "./reading-mode.js";
+} from "./report-utils.js?v=20260511-6";
+import { initReadingMode } from "./reading-mode.js?v=20260511-6";
 
 const app = document.getElementById("app");
 const newsNavLink = document.getElementById("news-nav-link");
