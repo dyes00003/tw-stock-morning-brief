@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
 import json
 import math
+import os
 import re
 import sys
 from copy import deepcopy
@@ -15,11 +17,14 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
+import requests
+
 ROOT = Path("/Users/huangyuxuan/Documents/New project")
 SITE_DIR = ROOT / "site"
 LATEST_JSON = SITE_DIR / "data" / "latest.json"
 SUPPLY_CHAIN_JSON = SITE_DIR / "data" / "tw_stock_supply_chain_tags.json"
 LOG_DIR = ROOT / "logs" / "tw-stock-morning-brief"
+OFFICIAL_CACHE_DIR = ROOT / "data" / "official_cache"
 TZ = ZoneInfo("Asia/Taipei")
 
 
@@ -33,6 +38,49 @@ def load_json(path: Path) -> dict[str, Any]:
 
 def save_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+
+
+def official_fetch_mode() -> str:
+    return clean_text(os.getenv("OFFICIAL_FETCH_MODE") or "prefer-live").lower() or "prefer-live"
+
+
+def cache_bucket_name(url: str) -> str:
+    host = url.split("//", 1)[-1].split("/", 1)[0].lower()
+    return re.sub(r"[^a-z0-9]+", "-", host).strip("-") or "official"
+
+
+def cache_path_for_request(method: str, url: str, request_payload: dict[str, Any] | None = None) -> Path:
+    raw_key = json.dumps(
+        {
+            "method": method,
+            "url": url,
+            "requestPayload": request_payload or {},
+        },
+        ensure_ascii=False,
+        sort_keys=True,
+    ).encode("utf-8")
+    digest = hashlib.sha1(raw_key).hexdigest()
+    return OFFICIAL_CACHE_DIR / cache_bucket_name(url) / f"{digest}.json"
+
+
+def load_cached_payload(path: Path) -> Any | None:
+    if not path.exists():
+        return None
+    payload = json.loads(path.read_text())
+    if isinstance(payload, dict) and "payload" in payload:
+        return payload["payload"]
+    return payload
+
+
+def save_cached_payload(path: Path, url: str, payload: Any, request_payload: dict[str, Any] | None = None) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    wrapped = {
+        "savedAt": now_local().isoformat(),
+        "url": url,
+        "requestPayload": request_payload or {},
+        "payload": payload,
+    }
+    path.write_text(json.dumps(wrapped, ensure_ascii=False, indent=2) + "\n")
 
 
 def clean_text(text: str | None) -> str:
@@ -102,15 +150,36 @@ def iso(d: date) -> str:
 
 
 def request_json(url: str) -> dict[str, Any]:
-    req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urlopen(req, timeout=30) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    cache_path = cache_path_for_request("GET", url)
+    if official_fetch_mode() == "cache-only":
+        cached = load_cached_payload(cache_path)
+        if cached is None:
+            raise RuntimeError(f"Cache miss for {url}")
+        return cached
+    try:
+        resp = requests.get(url, timeout=(5, 20), headers={"User-Agent": "Mozilla/5.0"})
+        resp.raise_for_status()
+        payload = resp.json()
+        save_cached_payload(cache_path, url, payload)
+        return payload
+    except (requests.RequestException, requests.exceptions.JSONDecodeError, TimeoutError, json.JSONDecodeError):
+        try:
+            req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urlopen(req, timeout=20) as resp:
+                payload = json.loads(resp.read().decode("utf-8"))
+            save_cached_payload(cache_path, url, payload)
+            return payload
+        except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+            cached = load_cached_payload(cache_path)
+            if cached is not None:
+                return cached
+            raise
 
 
 def try_request_json(url: str) -> dict[str, Any] | None:
     try:
         return request_json(url)
-    except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+    except (requests.RequestException, TimeoutError, json.JSONDecodeError, RuntimeError):
         return None
 
 
@@ -211,6 +280,12 @@ THEME_DEFS = [
     },
 ]
 
+IGNITION_SIGNAL_WINDOW_DAYS = 10
+IGNITION_THEME_LIMIT = 2
+OFFICIAL_SIGNAL_POOL_LIMIT = 10
+QUALIFIED_PRICE_SETUP_STATES = {"delayed_breakout", "base_above_signal"}
+POSITIVE_MOPS_DIRECTIONS = {"high_positive", "medium_positive"}
+
 
 @dataclass
 class PriceRow:
@@ -240,7 +315,7 @@ class HistoryPoint:
 
 def weekday_report_date(today: date) -> tuple[date, date]:
     report_date = today
-    anchor = today - timedelta(days=1)
+    anchor = today
     return report_date, anchor
 
 
@@ -481,6 +556,392 @@ def fetch_index_history(trading_dates: list[date]) -> list[tuple[date, float]]:
     return out
 
 
+def recent_positive_items(items: list[Any], anchor: date, window_days: int = IGNITION_SIGNAL_WINDOW_DAYS) -> list[Any]:
+    filtered = []
+    for item in items:
+        parsed = HELPERS["parse_roc_date"](item.date)
+        if not parsed:
+            continue
+        delta = (anchor - parsed).days
+        if 0 <= delta <= window_days and item.direction in POSITIVE_MOPS_DIRECTIONS:
+            filtered.append(item)
+    filtered.sort(
+        key=lambda item: (
+            HELPERS["DIRECTION_RANK"].get(item.direction, 0),
+            item.date,
+            item.time,
+            item.title,
+        ),
+        reverse=True,
+    )
+    return filtered
+
+
+def dominant_signal_kind(stock_info: dict[str, Any]) -> tuple[str, int]:
+    kinds = [
+        ("公司事件 / 擴產", stock_info["material_score"]),
+        ("營收 / 財報", stock_info["revenue_score"]),
+        ("訂單 / 客戶 / 認證", stock_info["order_score"]),
+    ]
+    return max(kinds, key=lambda item: item[1])
+
+
+def first_history_index_on_or_after(histories: list[HistoryPoint], target_date: date) -> int:
+    for idx, point in enumerate(histories):
+        if point.date >= target_date:
+            return idx
+    return len(histories) - 1
+
+
+def slice_return(points: list[HistoryPoint], start_idx: int, end_idx: int) -> float:
+    if start_idx < 0 or end_idx < 0 or start_idx >= len(points) or end_idx >= len(points):
+        return 0.0
+    start = points[start_idx].close
+    end = points[end_idx].close
+    if start <= 0:
+        return 0.0
+    return (end / start - 1) * 100
+
+
+def analyze_price_reaction(histories: list[HistoryPoint], signal_date: date) -> dict[str, Any]:
+    signal_idx = first_history_index_on_or_after(histories, signal_date)
+    signal_close = histories[signal_idx].close
+    prev_idx = max(signal_idx - 1, 0)
+    pre_base_idx = max(signal_idx - 5, 0)
+    latest_idx = len(histories) - 1
+    post_window = histories[signal_idx:]
+    peak_close = max((point.close for point in post_window), default=signal_close)
+    pre_signal_run_pct = slice_return(histories, pre_base_idx, prev_idx)
+    post_signal_gain_pct = slice_return(histories, signal_idx, latest_idx)
+    peak_post_signal_gain_pct = 0.0 if signal_close <= 0 else (peak_close / signal_close - 1) * 100
+    days_since_signal = latest_idx - signal_idx
+    held_above_signal = latest_idx > signal_idx and histories[latest_idx].close >= signal_close * 1.03
+    if pre_signal_run_pct >= 30:
+        status = "extended_before_signal"
+        label = "利多前已先漲過頭"
+    elif days_since_signal <= 3 and pre_signal_run_pct < 20 and 2 <= post_signal_gain_pct <= 18:
+        status = "delayed_breakout"
+        label = "公告後 1-3 天開始轉強"
+    elif 3 <= days_since_signal <= 8 and peak_post_signal_gain_pct >= 6 and held_above_signal:
+        status = "base_above_signal"
+        label = "先漲一段後橫盤未破訊號點"
+    elif days_since_signal >= 2 and histories[latest_idx].close < signal_close * 0.98:
+        status = "failed_follow_through"
+        label = "公告後追價失敗"
+    else:
+        status = "early_or_neutral"
+        label = "剛進觀察，尚未完全定型"
+    return {
+        "signalTradingDate": iso(histories[signal_idx].date),
+        "daysSinceSignal": days_since_signal,
+        "preSignalRunPct": round(pre_signal_run_pct, 2),
+        "postSignalGainPct": round(post_signal_gain_pct, 2),
+        "peakPostSignalGainPct": round(peak_post_signal_gain_pct, 2),
+        "heldAboveSignal": held_above_signal,
+        "status": status,
+        "label": label,
+    }
+
+
+def fetch_recent_flow_history(candidate_tickers: set[str], flow_dates: list[date]) -> dict[str, list[dict[str, Any]]]:
+    history: dict[str, list[dict[str, Any]]] = {ticker: [] for ticker in candidate_tickers}
+    for flow_date in flow_dates:
+        twse_bundle = try_request_json(
+            f"https://www.twse.com.tw/rwd/zh/fund/T86?response=json&date={flow_date:%Y%m%d}&selectType=ALLBUT0999"
+        )
+        tpex_bundle = try_request_json(
+            f"https://www.tpex.org.tw/www/zh-tw/insti/dailyTrade?date={flow_date:%Y/%m/%d}&type=Daily&response=json"
+        )
+        twse_map = parse_twse_t86_flows(twse_bundle) if twse_bundle and twse_bundle.get("data") else {}
+        tpex_map = parse_tpex_insti_flows(tpex_bundle) if tpex_bundle and tpex_bundle.get("tables") else {}
+        for ticker in candidate_tickers:
+            foreign_net, inst_net = twse_map.get(ticker) or tpex_map.get(ticker) or (0.0, 0.0)
+            history[ticker].append(
+                {
+                    "date": iso(flow_date),
+                    "foreignNet": foreign_net,
+                    "institutionNet": inst_net,
+                }
+            )
+    for ticker in history:
+        history[ticker].sort(key=lambda item: item["date"])
+    return history
+
+
+def positive_streak(flow_points: list[dict[str, Any]], key: str) -> int:
+    streak = 0
+    for point in reversed(flow_points):
+        if point[key] > 0:
+            streak += 1
+        else:
+            break
+    return streak
+
+
+def analyze_chip_confirmation(flow_points: list[dict[str, Any]]) -> dict[str, Any]:
+    if not flow_points:
+        return {
+            "score": 20,
+            "label": "近三日沒有額外籌碼資料",
+            "institutionStreak": 0,
+            "foreignTurnPositive": False,
+        }
+    inst_streak = positive_streak(flow_points, "institutionNet")
+    foreign_streak = positive_streak(flow_points, "foreignNet")
+    latest = flow_points[-1]
+    previous_foreign = [point["foreignNet"] for point in flow_points[:-1]]
+    foreign_turn_positive = latest["foreignNet"] > 0 and any(value < 0 for value in previous_foreign)
+    if inst_streak >= 2 or (latest["institutionNet"] > 0 and foreign_turn_positive):
+        score = 85
+        label = "法人連 2-3 日承接，且外資有轉買跡象"
+    elif latest["institutionNet"] > 0 or foreign_streak >= 1:
+        score = 70
+        label = "最新一日籌碼偏正向，但連續性還要觀察"
+    elif latest["institutionNet"] < 0 and latest["foreignNet"] < 0:
+        score = 25
+        label = "最新一日法人與外資同步偏空"
+    else:
+        score = 45
+        label = "籌碼中性，尚未給出明確發動訊號"
+    return {
+        "score": score,
+        "label": label,
+        "institutionStreak": inst_streak,
+        "foreignTurnPositive": foreign_turn_positive,
+        "latestInstitutionNet": int(latest["institutionNet"]),
+        "latestForeignNet": int(latest["foreignNet"]),
+    }
+
+
+def stock_signal_summary(stock_info: dict[str, Any], signal_kind: str, primary_item: Any) -> str:
+    if signal_kind == "公司事件 / 擴產":
+        return stock_info["material_summary"]
+    if signal_kind == "營收 / 財報":
+        return stock_info["revenue_summary"]
+    if signal_kind == "訂單 / 客戶 / 認證":
+        return stock_info["order_summary"]
+    return primary_item.summary or primary_item.title
+
+
+def build_official_signal_cards(
+    candidate_rows: dict[str, PriceRow],
+    stock_info_map: dict[str, dict[str, Any]],
+    ticker_to_themes: dict[str, list[str]],
+    flow_history: dict[str, list[dict[str, Any]]],
+    anchor: date,
+) -> list[dict[str, Any]]:
+    cards: list[dict[str, Any]] = []
+    for ticker, stock_info in stock_info_map.items():
+        recent_items = recent_positive_items(stock_info["raw_items_30d"], anchor)
+        if not recent_items:
+            continue
+        primary_item = recent_items[0]
+        signal_date = HELPERS["parse_roc_date"](primary_item.date)
+        if signal_date is None:
+            continue
+        signal_kind, signal_score = dominant_signal_kind(stock_info)
+        price_reaction = analyze_price_reaction(stock_info["history"], signal_date)
+        chip_confirmation = analyze_chip_confirmation(flow_history.get(ticker, []))
+        detail_confirmed = signal_score >= 70
+        cards.append(
+            {
+                "ticker": ticker,
+                "name": candidate_rows[ticker].name,
+                "themes": ticker_to_themes.get(ticker, []),
+                "signalDate": iso(signal_date),
+                "signalTitle": primary_item.title,
+                "signalDirection": primary_item.direction,
+                "signalKind": signal_kind,
+                "signalScore": signal_score,
+                "signalSummary": stock_signal_summary(stock_info, signal_kind, primary_item),
+                "recentOfficialSignalCount": len(recent_items),
+                "priceReaction": price_reaction,
+                "chipConfirmation": chip_confirmation,
+                "detailConfirmed": detail_confirmed,
+                "monthContinuationScore": stock_info.get("month_score", 0),
+                "shortImpulseScore": stock_info.get("short_score", 0),
+            }
+        )
+    cards.sort(
+        key=lambda card: (
+            card["signalScore"],
+            card["chipConfirmation"]["score"],
+            1 if card["priceReaction"]["status"] in QUALIFIED_PRICE_SETUP_STATES else 0,
+            card["signalDate"],
+            card["ticker"],
+        ),
+        reverse=True,
+    )
+    return cards
+
+
+def build_activation_scan(
+    theme_defs: list[dict[str, Any]],
+    official_signal_cards: list[dict[str, Any]],
+    report_date: date,
+) -> dict[str, Any]:
+    theme_groups: dict[str, list[dict[str, Any]]] = {theme["name"]: [] for theme in theme_defs}
+    for card in official_signal_cards:
+        for theme_name in card["themes"]:
+            if theme_name in theme_groups:
+                theme_groups[theme_name].append(card)
+
+    activation_themes: list[dict[str, Any]] = []
+    for theme_def in theme_defs:
+        group = theme_groups.get(theme_def["name"]) or []
+        if len(group) < 2:
+            continue
+        group = sorted(group, key=lambda card: (card["signalScore"], card["signalDate"], card["ticker"]), reverse=True)
+        signal_kind_counts: dict[str, int] = {}
+        for card in group:
+            signal_kind_counts[card["signalKind"]] = signal_kind_counts.get(card["signalKind"], 0) + 1
+        common_signal_kind, common_signal_count = max(signal_kind_counts.items(), key=lambda item: item[1])
+        detail_count = sum(1 for card in group if card["detailConfirmed"])
+        price_ready_count = sum(1 for card in group if card["priceReaction"]["status"] in QUALIFIED_PRICE_SETUP_STATES)
+        extended_count = sum(1 for card in group if card["priceReaction"]["status"] == "extended_before_signal")
+        failed_count = sum(1 for card in group if card["priceReaction"]["status"] == "failed_follow_through")
+        chip_positive_count = sum(1 for card in group if card["chipConfirmation"]["score"] >= 70)
+        leader = max(
+            group,
+            key=lambda card: (
+                card["priceReaction"]["postSignalGainPct"],
+                card["signalScore"],
+                card["chipConfirmation"]["score"],
+            ),
+        )
+        leader_gain = max(leader["priceReaction"]["postSignalGainPct"], 0.0)
+        second_line_opportunity_count = sum(
+            1
+            for card in group
+            if card["ticker"] != leader["ticker"]
+            and card["priceReaction"]["status"] != "extended_before_signal"
+            and card["priceReaction"]["status"] != "failed_follow_through"
+            and card["priceReaction"]["postSignalGainPct"] <= max(12.0, leader_gain * 0.6)
+        )
+
+        if len(group) >= 3 and detail_count >= 2:
+            breadth_score = 90
+        elif len(group) >= 2 and detail_count >= 1:
+            breadth_score = 75
+        else:
+            breadth_score = 55
+
+        consensus_score = 85 if common_signal_count >= 2 else 60
+        if price_ready_count >= 2 or (leader["priceReaction"]["status"] in QUALIFIED_PRICE_SETUP_STATES and second_line_opportunity_count >= 1):
+            price_score = 85
+        elif price_ready_count >= 1 and failed_count == 0:
+            price_score = 70
+        elif extended_count >= 1 and price_ready_count == 0:
+            price_score = 35
+        elif failed_count >= 1:
+            price_score = 25
+        else:
+            price_score = 50
+
+        if chip_positive_count >= 2:
+            chip_score = 85
+        elif chip_positive_count == 1:
+            chip_score = 70
+        else:
+            chip_score = 40
+
+        activation_score = clamp_int(
+            breadth_score * 0.35 + consensus_score * 0.20 + price_score * 0.25 + chip_score * 0.20,
+            0,
+            100,
+        )
+        if activation_score >= 75 and detail_count >= 1 and chip_positive_count >= 1 and (price_ready_count >= 1 or second_line_opportunity_count >= 1):
+            activation_state = "ready"
+        elif activation_score >= 60 and detail_count >= 1:
+            activation_state = "watch"
+        else:
+            activation_state = "filtered"
+
+        why_now = [
+            {
+                "label": "官方事件",
+                "text": f"最近 {IGNITION_SIGNAL_WINDOW_DAYS} 天有 {len(group)} 檔出現官方正向訊號，主軸以「{common_signal_kind}」為主。",
+            },
+            {
+                "label": "題材擴散",
+                "text": f"{detail_count} 檔已補到營收 / 訂單 / 公司事件細節，company breadth 分數 {breadth_score}。",
+            },
+            {
+                "label": "股價位置",
+                "text": f"{price_ready_count} 檔符合『剛反應、不是已反應完』，龍頭 {leader['ticker']} 已表態，第二線仍有 {second_line_opportunity_count} 檔補漲空間。",
+            },
+            {
+                "label": "籌碼確認",
+                "text": f"{chip_positive_count} 檔出現法人承接或外資轉買，籌碼確認分數 {chip_score}。",
+            },
+        ]
+        risks = []
+        if extended_count:
+            risks.append(f"題材內已有 {extended_count} 檔在利多前先漲過頭，追價容錯低。")
+        if failed_count:
+            risks.append(f"題材內已有 {failed_count} 檔公告後追價失敗，代表短線資金有分歧。")
+        if not risks:
+            risks.append("目前最大風險是後續沒有第二段營收 / 訂單驗證，題材可能重新掉回觀察池。")
+
+        next_trigger = (
+            "再補一檔營收 / 訂單細節或連續 2 日法人買超，即可升級成更高把握度的月內主線。"
+            if activation_state == "watch"
+            else "維持領先股不跌回訊號前平台，並觀察第二線是否開始接棒。"
+        )
+        summary = (
+            f"最近 {IGNITION_SIGNAL_WINDOW_DAYS} 天有 {len(group)} 檔官方正向訊號，主軸集中在 {common_signal_kind}；"
+            f"龍頭 {leader['ticker']} {leader['name']} 已先表態，題材仍保留第二線補漲空間。"
+        )
+        activation_themes.append(
+            {
+                "rank": 0,
+                "name": theme_def["name"],
+                "activationScore": activation_score,
+                "activationState": activation_state,
+                "summary": summary,
+                "commonSignalKind": common_signal_kind,
+                "officialSignalCount": len(group),
+                "detailSignalCount": detail_count,
+                "priceSetupCount": price_ready_count,
+                "secondLineOpportunityCount": second_line_opportunity_count,
+                "chipPositiveCount": chip_positive_count,
+                "whyNow": why_now,
+                "risks": risks,
+                "nextTrigger": next_trigger,
+                "focusStocks": [
+                    {
+                        "ticker": card["ticker"],
+                        "name": card["name"],
+                        "signalDate": card["signalDate"],
+                        "signalTitle": card["signalTitle"],
+                        "signalKind": card["signalKind"],
+                        "signalSummary": card["signalSummary"],
+                        "priceReactionLabel": card["priceReaction"]["label"],
+                        "chipLabel": card["chipConfirmation"]["label"],
+                    }
+                    for card in group[:5]
+                ],
+            }
+        )
+
+    activation_themes.sort(key=lambda theme: (theme["activationScore"], theme["name"]), reverse=True)
+    top_themes = [theme for theme in activation_themes if theme["activationState"] != "filtered"][:IGNITION_THEME_LIMIT]
+    for idx, theme in enumerate(top_themes, start=1):
+        theme["rank"] = idx
+
+    return {
+        "windowDays": IGNITION_SIGNAL_WINDOW_DAYS,
+        "selectionCap": IGNITION_THEME_LIMIT,
+        "summary": (
+            f"最近 {IGNITION_SIGNAL_WINDOW_DAYS} 天只保留官方正向訊號，最後挑出 {len(top_themes)} 個最接近『2-4 週剛啟動』條件的題材。"
+        ),
+        "method": "官方事件 → 題材擴散 → 股價反應 → 籌碼確認",
+        "themes": top_themes,
+        "officialSignalPool": official_signal_cards[:OFFICIAL_SIGNAL_POOL_LIMIT],
+        "asOf": iso(report_date),
+    }
+
+
 def lookup_return(points: list[HistoryPoint], window: int) -> float:
     if len(points) <= window:
         return 0.0
@@ -690,6 +1151,46 @@ def trading_week_range(report_date: date) -> dict[str, str]:
     return {"start": iso(monday), "end": iso(friday)}
 
 
+def number_tone(value: float) -> str:
+    if value > 0:
+        return "up"
+    if value < 0:
+        return "down"
+    return "flat"
+
+
+def blank_report_template(report_date: date, price_date: date) -> dict[str, Any]:
+    return {
+        "reportDate": iso(report_date),
+        "priceDate": iso(price_date),
+        "weekRange": trading_week_range(report_date),
+        "headline": "",
+        "deck": "",
+        "selectionHorizon": {
+            "basis": "20_trading_days",
+            "label": "未來 20 個交易日",
+            "style": "swing_month",
+        },
+        "marketSnapshot": {},
+        "macroDrivers": [],
+        "executiveSummary": [],
+        "themes": [],
+        "topPicks": [],
+        "observationThemes": [],
+        "observationStocks": [],
+        "activationScan": {},
+        "newDiscoveries": [],
+        "changesComparedToPrevious": {
+            "comparedTo": "從零重建",
+            "summary": "本版完全不參考既有晨報檔案，直接從官方資料與靜態題材定義重建。",
+            "items": [],
+        },
+        "sources": [],
+        "footnote": "",
+        "priceModel": {},
+    }
+
+
 def merge_supply_chain_meta() -> dict[str, dict[str, Any]]:
     payload = load_json(SUPPLY_CHAIN_JSON)
     out: dict[str, dict[str, Any]] = {}
@@ -773,6 +1274,8 @@ def build_stock_card(
         order_score,
         liq_score,
     )
+    stock_info["short_score"] = short_score
+    stock_info["month_score"] = month_score
     persistence_score = clamp_int(max(rs5, 0) * 0.3 + max(rs10, 0) * 0.25 + max(rs20, 0) * 0.2, 0, 100)
     breakdown = {
         "mops3dScore": mops3d_score,
@@ -1038,7 +1541,6 @@ def regime_band(score: int) -> tuple[str, str]:
 
 
 def build_regimes(
-    template: dict[str, Any],
     index_history: list[tuple[date, float]],
     foreign_flow_twd_bn: float,
     themes: list[dict[str, Any]],
@@ -1052,10 +1554,10 @@ def build_regimes(
         else:
             idx_ret[window] = 0.0
 
-    monthly_macro = safe_get(template.get("marketSnapshot", {}).get("marketRegime", {}).get("scoreBreakdown", {}), "macro", 5)
-    monthly_event_risk = safe_get(template.get("marketSnapshot", {}).get("marketRegime", {}).get("scoreBreakdown", {}), "eventRisk", 20)
-    short_macro = safe_get(template.get("marketSnapshot", {}).get("shortTermRegime", {}).get("scoreBreakdown", {}), "macro", 5)
-    short_event_risk = safe_get(template.get("marketSnapshot", {}).get("shortTermRegime", {}).get("scoreBreakdown", {}), "eventRisk", 20)
+    monthly_macro = 5
+    monthly_event_risk = 20
+    short_macro = 5
+    short_event_risk = 20
 
     confirm_or_expand = sum(theme["state"] in {"confirmation", "expansion"} for theme in themes)
     strong_breadth = sum(theme["breadthStats"]["outperformRatio"] >= 0.4 for theme in themes)
@@ -1132,7 +1634,7 @@ def build_regimes(
             f"{index_history[-1][0]} TAIEX 收 {idx_close[-1]:,.2f}，5 / 10 / 20 日延續性是本版主框架。",
             f"外資現貨買超 {foreign_flow_twd_bn:+.2f} 億，flow 直接影響主交易池上限。",
             f"月內前五主線平均 themeScore {avg_theme_score:.1f}，觀察池 breakdown 題材 {breakdown_count} 個。",
-            "macro 與 eventRisk 目前沿用前一版已驗證數值，這次重建主體是價格、法人、供應鏈與 MOPS 路徑。",
+            "macro 與 eventRisk 目前採固定 baseline，不讀取舊晨報檔案；這次重建主體是價格、法人、供應鏈與 MOPS 路徑。",
         ],
         "effectOnSelection": "月內 Regime 直接控制交易池主題與主選股數量。",
     }
@@ -1162,9 +1664,9 @@ def build_regimes(
 
 
 def build_report() -> tuple[dict[str, Any], Path]:
-    template = load_json(LATEST_JSON)
     report_date, anchor = weekday_report_date(now_local().date())
     price_date, twse_bundle = fetch_latest_twse_bundle(anchor)
+    template = blank_report_template(report_date, price_date)
     tpex_bundle = fetch_tpex_bundle(price_date)
     t86_bundle = fetch_twse_t86(price_date)
     bfi_bundle = fetch_twse_bfi82u(price_date)
@@ -1206,12 +1708,13 @@ def build_report() -> tuple[dict[str, Any], Path]:
                 continue
             candidate_rows.setdefault(row.ticker, row)
             kept += 1
-            if kept >= 8:
+            if kept >= 5:
                 break
 
     histories = fetch_candidate_histories(candidate_rows, price_date)
     trading_dates = recent_trading_dates(price_date, 20)
     index_history = fetch_index_history(trading_dates)
+    recent_flow_history = fetch_recent_flow_history(set(candidate_rows.keys()), trading_dates[-3:])
     index_returns = {}
     closes = [close for _, close in index_history]
     for window in (1, 3, 5, 10, 20):
@@ -1243,6 +1746,7 @@ def build_report() -> tuple[dict[str, Any], Path]:
         stock_info_map[ticker] = {
             "history": history,
             "price_date": iso(price_date),
+            "raw_items_30d": raw_items_30d,
             "mops3d_score": mops3d_score,
             "mops3d_signal": mops3d_signal,
             "mops3d_summary": mops3d_summary,
@@ -1270,6 +1774,15 @@ def build_report() -> tuple[dict[str, Any], Path]:
         for theme_name in ticker_to_themes.get(ticker, []):
             card = build_stock_card(row, meta, candidate_theme_defs[theme_name], stock_info_map[ticker], index_returns)
             themed_stock_cards[theme_name].append(card)
+
+    official_signal_cards = build_official_signal_cards(
+        candidate_rows,
+        stock_info_map,
+        ticker_to_themes,
+        recent_flow_history,
+        price_date,
+    )
+    activation_scan = build_activation_scan(THEME_DEFS, official_signal_cards, report_date)
 
     theme_cards: list[dict[str, Any]] = []
     observation_theme_cards: list[dict[str, Any]] = []
@@ -1299,7 +1812,7 @@ def build_report() -> tuple[dict[str, Any], Path]:
         theme["rank"] = idx
 
     foreign_flow_twd_bn = parse_foreign_flow_twd_bn(bfi_bundle)
-    monthly_regime, short_regime, divergence = build_regimes(template, index_history, foreign_flow_twd_bn, theme_cards[:5], observation_theme_cards[:5])
+    monthly_regime, short_regime, divergence = build_regimes(index_history, foreign_flow_twd_bn, theme_cards[:5], observation_theme_cards[:5])
     max_trade_themes, max_trade_stocks = trade_theme_limit(monthly_regime["score"])
     trade_themes = theme_cards[:max_trade_themes]
     overflow_trade_themes = theme_cards[max_trade_themes:]
@@ -1382,10 +1895,7 @@ def build_report() -> tuple[dict[str, Any], Path]:
         if strongest_theme
         else "無法驗證",
     }
-
-    before_themes = [theme["name"] for theme in template.get("themes") or []]
     after_themes = [theme["name"] for theme in trade_themes]
-    before_picks = [stock["ticker"] for stock in template.get("topPicks") or []]
     after_picks = [stock["ticker"] for stock in top_picks]
 
     discoveries = HELPERS["build_new_discoveries"](
@@ -1439,41 +1949,68 @@ def build_report() -> tuple[dict[str, Any], Path]:
         "shortTermRegime": short_regime,
         "regimeDivergenceSummary": divergence,
     }
+    report["macroDrivers"] = [
+        {
+            "label": "外資現貨",
+            "value": f"{foreign_flow_twd_bn:+.2f} 億",
+            "detail": f"以 {price_date} 官方 BFI82U 為準。",
+            "tone": number_tone(foreign_flow_twd_bn),
+        },
+        {
+            "label": "大盤 5 日",
+            "value": f"{index_returns[5]:+.2f}%",
+            "detail": "用 5 個交易日延續性判斷近端題材承接。",
+            "tone": number_tone(index_returns[5]),
+        },
+        {
+            "label": "大盤 20 日",
+            "value": f"{index_returns[20]:+.2f}%",
+            "detail": "用 20 個交易日延續性判斷月內題材背景。",
+            "tone": number_tone(index_returns[20]),
+        },
+    ]
     report["themes"] = trade_themes
     report["topPicks"] = top_picks
     report["observationThemes"] = observation_themes
     report["observationStocks"] = observation_stocks
+    report["activationScan"] = activation_scan
     report["newDiscoveries"] = discoveries
     report["headline"] = (
         f"{report_date.month}/{report_date.day} from-source 重建版：月內 Regime {monthly_regime['score']} 分 / {monthly_regime['mode']}、"
         f"短線 Regime {short_regime['score']} 分 / {short_regime['mode']}；"
-        f"本版已從官方價格、法人、供應鏈與 MOPS 路徑重建題材與個股排序。"
+        "本版完全不讀舊晨報檔案，直接從官方價格、法人、供應鏈與 MOPS 路徑重建題材與個股排序。"
     )
     report["deck"] = (
         f"這版不是沿用舊排名重算分數，而是用 {price_date} 官方 TWSE / TPEX 收盤、T86、BFI82U、TPEX 法人、"
-        "供應鏈底圖與 MOPS 近 30 日公司事件，重新建出候選題材池與交易池。"
+        "供應鏈底圖與 MOPS 近 30 日公司事件，從零重建候選題材池與交易池。"
     )
     report["executiveSummary"] = [
-        f"本版價格基準是 {price_date} 官方 TWSE / TPEX 收盤；題材與個股排名從零重建，不沿用前一版主題順序。",
+        f"本版價格基準是 {price_date} 官方 TWSE / TPEX 收盤；題材與個股排名從零重建，不讀取既有晨報檔案。",
         f"月內 Regime 為 {monthly_regime['score']} / {monthly_regime['mode']}，直接決定交易池上限；短線 Regime 為 {short_regime['score']} / {short_regime['mode']}，只做節奏提示。",
         f"新的月內前五主線依序為：{'、'.join(after_themes)}。",
         f"新的首頁主選股依序為：{'、'.join(after_picks)}。",
+        activation_scan["summary"],
         "排序核心已改成 30 日公司事件、營收 / 財報加速、訂單 / 認證與 5/10/20 日續航，而不是只重算既有 top picks。",
     ]
     report["changesComparedToPrevious"] = {
-        "summary": "這次用官方價格、法人、供應鏈底圖與 MOPS 近 30 日事件重新建池，前五題材與主選股都允許脫離上一版結果。",
+        "comparedTo": "從零重建",
+        "summary": "這次不參考每日晨報檔案，直接用官方價格、法人、供應鏈底圖與 MOPS 近 30 日事件重新建池。",
         "items": [
             {
                 "title": "前五題材重新由官方價格 + 供應鏈底圖建池",
-                "reason": f"上一版主線為 {'、'.join(before_themes)}；這版重建後為 {'、'.join(after_themes)}。",
+                "reason": f"本版從零重建後的主線依序為：{'、'.join(after_themes)}。",
             },
             {
                 "title": "主選股重新由 stockScore 決定",
-                "reason": f"上一版主選股為 {'、'.join(before_picks)}；這版重建後為 {'、'.join(after_picks)}。",
+                "reason": f"本版從零重建後的主選股依序為：{'、'.join(after_picks)}。",
             },
             {
-                "title": "macro / eventRisk 仍沿用已驗證值",
-                "reason": "這次新腳本重建的核心是價格、法人、供應鏈與 MOPS 路徑；macro 與地緣仍用上一版已驗證數值，避免在未腳本化前硬猜。",
+                "title": "新增『即將啟動題材』四層篩法",
+                "reason": activation_scan["summary"],
+            },
+            {
+                "title": "macro / eventRisk 改成固定 baseline",
+                "reason": "這版不讀舊晨報檔案，所以 macro 與 eventRisk 只保留固定 baseline，避免把人工敘事帶回重建流程。",
             },
         ],
     }
@@ -1503,13 +2040,19 @@ def build_report() -> tuple[dict[str, Any], Path]:
             "url": "https://mops.twse.com.tw/mops/#/web/t05st01",
         },
         {
+            "label": "題材啟動偵測方法",
+            "url": "https://mops.twse.com.tw/mops/#/web/t05st01",
+            "note": "以最近 10 天官方事件、族群擴散、股價位置與近三日法人流向重建 2-4 週題材啟動掃描。",
+        },
+        {
             "label": "台股供應鏈底圖 JSON",
             "url": "https://dyes00003.github.io/tw-stock-morning-brief/site/data/tw_stock_supply_chain_tags.json",
         },
     ]
     report["footnote"] = (
         "本版已從官方價格、官方法人、供應鏈底圖與官方 MOPS 路徑重建題材與個股排序；"
-        "但 macro 與 geopolitics 的 full rediscovery 目前仍有一部分沿用上一版已驗證數值。"
+        "另外新增最近 10 天『即將啟動題材』四層篩法，用官方事件、族群擴散、股價位置與籌碼確認去抓 2-4 週 setup；"
+        "macro 與 eventRisk 則改用固定 baseline，不再從每日晨報檔案沿用。"
     )
     report["priceModel"] = {
         "version": "20d_continuation_v2_from_source",
@@ -1548,13 +2091,16 @@ def write_log(
         f"- Run timestamp: {now_local().isoformat()}",
         f"- Report date: {after_report['reportDate']}",
         f"- Price date: {after_report['priceDate']}",
+        f"- Official fetch mode: {official_fetch_mode()}",
+        f"- Official cache dir: {OFFICIAL_CACHE_DIR}",
         "- Rebuild scope: official TWSE / TPEX prices, T86, BFI82U, TPEX institution flows, supply-chain tag JSON, MOPS t05st01 / detail APIs.",
-        "- Carried-forward scope: macroDrivers narrative and marketRegime macro / eventRisk buckets remain inherited from the prior verified brief unless separately scripted.",
+        "- Carry-forward scope: none. This run does not read latest.json or prior morning-brief logs as an input template.",
         "",
         "## Windows",
         "",
         f"- 3-day MOPS hybrid window: {', '.join(iso(d) for d in window_dates)}",
         f"- Candidate stock universe rebuilt from {len(candidate_rows)} official-price names with supply-chain matches.",
+        f"- Ignition scan themes: {len(after_report.get('activationScan', {}).get('themes') or [])} / official signal pool: {len(after_report.get('activationScan', {}).get('officialSignalPool') or [])}.",
         "",
         "## Theme Ranking",
         "",
@@ -1569,6 +2115,13 @@ def write_log(
             lines.append(
                 f"- {theme['name']} | score {theme['themeScore']} | state {theme['state']} | category {theme.get('observationCategory', 'n/a')}"
             )
+    ignition_themes = after_report.get("activationScan", {}).get("themes") or []
+    if ignition_themes:
+        lines.extend(["", "## Ignition Themes", ""])
+        for theme in ignition_themes:
+            lines.append(
+                f"- {theme['rank']}. {theme['name']} | activation {theme['activationScore']} | state {theme['activationState']} | official {theme['officialSignalCount']} | chip+ {theme['chipPositiveCount']}"
+            )
     lines.extend(["", "## Major Stock Evidence", ""])
     for ticker, info in sorted(
         stock_info_map.items(),
@@ -1582,13 +2135,20 @@ def write_log(
         lines.append(
             f"- {ticker} {candidate_rows[ticker].name}: material30d {info['material_score']}, revenue {info['revenue_score']}, order {info['order_score']}, mops3d {info['mops3d_score']} | {info['material_summary']}"
         )
+    signal_pool = after_report.get("activationScan", {}).get("officialSignalPool") or []
+    if signal_pool:
+        lines.extend(["", "## Recent Official Signal Pool", ""])
+        for item in signal_pool[:10]:
+            lines.append(
+                f"- {item['ticker']} {item['name']} | {item['signalDate']} | {item['signalKind']} | {item['priceReaction']['label']} | {item['chipConfirmation']['label']}"
+            )
     lines.extend(
         [
             "",
             "## Output Notes",
             "",
-            "- This run rebuilt themes / stocks / top picks from official price and MOPS data instead of re-sorting the previous latest.json theme list.",
-            "- Macro / geopolitical full rediscovery is still not fully scripted here; those buckets are explicitly carried forward.",
+            "- This run rebuilt themes / stocks / top picks from official price, institution and MOPS data without using previous morning-brief files as an input template.",
+            "- Macro / eventRisk buckets use a fixed baseline in this rebuild and are not inherited from prior report files.",
             "",
             "## Files Updated",
             "",
@@ -1601,7 +2161,14 @@ def write_log(
 
 
 def main() -> None:
-    report, log_path = build_report()
+    try:
+        report, log_path = build_report()
+    except Exception as exc:
+        raise RuntimeError(
+            f"Official rebuild failed in {official_fetch_mode()} mode. "
+            f"Check official endpoint reachability or seed cache under {OFFICIAL_CACHE_DIR}. "
+            f"Original error: {exc}"
+        ) from exc
     save_json(LATEST_JSON, report)
     print(str(log_path))
 

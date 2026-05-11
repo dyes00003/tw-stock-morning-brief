@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 import math
+import os
 import re
 from collections import defaultdict
 from copy import deepcopy
@@ -10,14 +12,15 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
+
+import requests
 
 ROOT = Path("/Users/huangyuxuan/Documents/New project")
 LATEST_JSON = ROOT / "site" / "data" / "latest.json"
 LOG_DIR = ROOT / "logs" / "tw-stock-morning-brief"
 MOPS_API_BASE = "https://mops.twse.com.tw/mops/api"
+OFFICIAL_CACHE_DIR = ROOT / "data" / "official_cache"
 TZ = ZoneInfo("Asia/Taipei")
 
 
@@ -33,19 +36,73 @@ def save_json(path: Path, payload: dict[str, Any]) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
 
 
-def post_json(url: str, payload: dict[str, Any]) -> dict[str, Any]:
-    body = json.dumps(payload).encode("utf-8")
-    req = Request(
-        url,
-        data=body,
-        headers={
-            "Content-Type": "application/json",
-            "User-Agent": "Mozilla/5.0",
+def official_fetch_mode() -> str:
+    raw = clean_text(os.getenv("OFFICIAL_FETCH_MODE") or "prefer-live").lower()
+    return raw or "prefer-live"
+
+
+def cache_path_for_request(method: str, url: str, request_payload: dict[str, Any] | None = None) -> Path:
+    raw_key = json.dumps(
+        {
+            "method": method,
+            "url": url,
+            "requestPayload": request_payload or {},
         },
-        method="POST",
-    )
-    with urlopen(req, timeout=8) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+        ensure_ascii=False,
+        sort_keys=True,
+    ).encode("utf-8")
+    digest = hashlib.sha1(raw_key).hexdigest()
+    host = url.split("//", 1)[-1].split("/", 1)[0].lower()
+    bucket = re.sub(r"[^a-z0-9]+", "-", host).strip("-") or "official"
+    return OFFICIAL_CACHE_DIR / bucket / f"{digest}.json"
+
+
+def load_cached_payload(path: Path) -> Any | None:
+    if not path.exists():
+        return None
+    payload = json.loads(path.read_text())
+    if isinstance(payload, dict) and "payload" in payload:
+        return payload["payload"]
+    return payload
+
+
+def save_cached_payload(path: Path, url: str, payload: Any, request_payload: dict[str, Any] | None = None) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    wrapped = {
+        "savedAt": now_local().isoformat(),
+        "url": url,
+        "requestPayload": request_payload or {},
+        "payload": payload,
+    }
+    path.write_text(json.dumps(wrapped, ensure_ascii=False, indent=2) + "\n")
+
+
+def post_json(url: str, payload: dict[str, Any]) -> dict[str, Any]:
+    cache_path = cache_path_for_request("POST", url, payload)
+    if official_fetch_mode() == "cache-only":
+        cached = load_cached_payload(cache_path)
+        if cached is None:
+            raise RuntimeError(f"Cache miss for {url}")
+        return cached
+    try:
+        resp = requests.post(
+            url,
+            json=payload,
+            timeout=(5, 12),
+            headers={
+                "Content-Type": "application/json",
+                "User-Agent": "Mozilla/5.0",
+            },
+        )
+        resp.raise_for_status()
+        parsed = resp.json()
+        save_cached_payload(cache_path, url, parsed, payload)
+        return parsed
+    except (requests.RequestException, TimeoutError, json.JSONDecodeError):
+        cached = load_cached_payload(cache_path)
+        if cached is not None:
+            return cached
+        raise
 
 
 def roc_year(year: int) -> str:
@@ -805,7 +862,7 @@ def fetch_stock_mops_items(ticker: str, window_dates: list[date]) -> list[MopsIt
                     "lastDay": last_day,
                 },
             )
-        except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+        except (requests.RequestException, TimeoutError, json.JSONDecodeError, RuntimeError):
             continue
         rows = ((resp.get("result") or {}).get("data") or [])
         for row in rows:
@@ -820,7 +877,7 @@ def fetch_stock_mops_items(ticker: str, window_dates: list[date]) -> list[MopsIt
                 continue
             try:
                 detail = post_json(f"{MOPS_API_BASE}/{api_name}", params)
-            except (HTTPError, URLError, TimeoutError, json.JSONDecodeError):
+            except (requests.RequestException, TimeoutError, json.JSONDecodeError, RuntimeError):
                 continue
             items.append(build_mops_item(detail, row, api_name, params))
     items.sort(key=lambda item: (item.date, item.time, item.title))
