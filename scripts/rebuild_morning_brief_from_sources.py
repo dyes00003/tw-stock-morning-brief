@@ -773,6 +773,8 @@ def build_official_signal_cards(
     candidate_rows: dict[str, PriceRow],
     stock_info_map: dict[str, dict[str, Any]],
     ticker_to_themes: dict[str, list[str]],
+    ticker_to_primary_theme: dict[str, str],
+    ticker_to_related_themes: dict[str, list[str]],
     flow_history: dict[str, list[dict[str, Any]]],
     anchor: date,
 ) -> list[dict[str, Any]]:
@@ -793,7 +795,9 @@ def build_official_signal_cards(
             {
                 "ticker": ticker,
                 "name": candidate_rows[ticker].name,
-                "themes": ticker_to_themes.get(ticker, []),
+                "themes": [ticker_to_primary_theme.get(ticker)] + ticker_to_related_themes.get(ticker, []),
+                "primaryTheme": ticker_to_primary_theme.get(ticker, ""),
+                "relatedThemes": ticker_to_related_themes.get(ticker, []),
                 "signalDate": iso(signal_date),
                 "signalTitle": primary_item.title,
                 "signalDirection": primary_item.direction,
@@ -1749,6 +1753,7 @@ def build_report() -> tuple[dict[str, Any], Path]:
     theme_order = {theme["name"]: idx for idx, theme in enumerate(THEME_DEFS)}
     ticker_to_themes: dict[str, list[str]] = {}
     ticker_to_primary_theme: dict[str, str] = {}
+    ticker_to_related_themes: dict[str, list[str]] = {}
     ticker_to_theme_scores: dict[str, dict[str, int]] = {}
     for ticker, row in all_market.items():
         meta = supply_meta.get(ticker)
@@ -1766,6 +1771,7 @@ def build_report() -> tuple[dict[str, Any], Path]:
             matched.sort(key=lambda name: (theme_scores[name], -theme_order[name]), reverse=True)
             ticker_to_themes[ticker] = matched
             ticker_to_primary_theme[ticker] = matched[0]
+            ticker_to_related_themes[ticker] = matched[1:]
             ticker_to_theme_scores[ticker] = theme_scores
 
     candidate_rows: dict[str, PriceRow] = {}
@@ -1841,16 +1847,25 @@ def build_report() -> tuple[dict[str, Any], Path]:
         if ticker not in stock_info_map:
             continue
         meta = supply_meta[ticker]
-        for theme_name in ticker_to_themes.get(ticker, []):
-            card = build_stock_card(row, meta, candidate_theme_defs[theme_name], stock_info_map[ticker], index_returns)
-            card["primaryTheme"] = ticker_to_primary_theme.get(ticker, theme_name)
-            card["themeMatchScore"] = ticker_to_theme_scores.get(ticker, {}).get(theme_name, 0)
-            themed_stock_cards[theme_name].append(card)
+        primary_theme = ticker_to_primary_theme.get(ticker)
+        if not primary_theme:
+            continue
+        card = build_stock_card(row, meta, candidate_theme_defs[primary_theme], stock_info_map[ticker], index_returns)
+        card["primaryTheme"] = primary_theme
+        card["relatedThemes"] = ticker_to_related_themes.get(ticker, [])
+        card["themeMatchScore"] = ticker_to_theme_scores.get(ticker, {}).get(primary_theme, 0)
+        card["relatedThemeScores"] = {
+            theme_name: ticker_to_theme_scores.get(ticker, {}).get(theme_name, 0)
+            for theme_name in ticker_to_related_themes.get(ticker, [])
+        }
+        themed_stock_cards[primary_theme].append(card)
 
     official_signal_cards = build_official_signal_cards(
         candidate_rows,
         stock_info_map,
         ticker_to_themes,
+        ticker_to_primary_theme,
+        ticker_to_related_themes,
         recent_flow_history,
         price_date,
     )
@@ -1926,6 +1941,8 @@ def build_report() -> tuple[dict[str, Any], Path]:
                 "mops3dSignal": stock["mops3dSignal"],
                 "mops3dSummary": stock["mops3dSummary"],
                 "mops3dItems": deepcopy(stock["mops3dItems"]),
+                "primaryTheme": stock.get("primaryTheme", theme_name),
+                "relatedThemes": deepcopy(stock.get("relatedThemes", [])),
                 "materialCompanyEvent30dSummary": stock["materialCompanyEvent30dSummary"],
                 "revenueEarnings30dSummary": stock["revenueEarnings30dSummary"],
                 "orderQualification30dSummary": stock["orderQualification30dSummary"],
